@@ -1,0 +1,39 @@
+{
+  "id": "figma",
+  "name": "Figma",
+  "icon": "design",
+  "categories": [
+    {
+      "name": "Tools",
+      "shortcuts": [
+        { "keys": "V", "action": "Move tool" },
+        { "keys": "F", "action": "Frame tool" },
+        { "keys": "R", "action": "Rectangle" },
+        { "keys": "T", "action": "Text tool" },
+        { "keys": "P", "action": "Pen tool" },
+        { "keys": "I", "action": "Eyedropper" },
+        { "keys": "H", "action": "Hand (pan)" }
+      ]
+    },
+    {
+      "name": "Objects",
+      "shortcuts": [
+        { "keys": "Ctrl+D", "action": "Duplicate" },
+        { "keys": "Ctrl+G", "action": "Group" },
+        { "keys": "Ctrl+Shift+G", "action": "Ungroup" },
+        { "keys": "Ctrl+C", "action": "Copy", "charybdis": "L2 Copy" },
+        { "keys": "Ctrl+V", "action": "Paste", "charybdis": "L2 Paste" },
+        { "keys": "Ctrl+Z", "action": "Undo", "charybdis": "L2 Undo" }
+      ]
+    },
+    {
+      "name": "View",
+      "shortcuts": [
+        { "keys": "Ctrl+1", "action": "Zoom to fit" },
+        { "keys": "Ctrl+0", "action": "Zoom 100%" },
+        { "keys": "Ctrl+\\", "action": "Toggle UI" },
+        { "keys": "Ctrl+Shift+E", "action": "Export" }
+      ]
+    }
+  ]
+}

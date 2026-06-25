@@ -1,0 +1,239 @@
+{
+  "id": "teams",
+  "name": "Microsoft Teams",
+  "icon": "chat",
+  "categories": [
+    {
+      "name": "Navigation",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+1",
+          "action": "Activity",
+          "charybdis": "L10 (x7,y3)"
+        },
+        {
+          "keys": "Ctrl+2",
+          "action": "Chat",
+          "charybdis": "L9 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+3",
+          "action": "Teams/channels"
+        },
+        {
+          "keys": "Ctrl+4",
+          "action": "Calendar"
+        },
+        {
+          "keys": "Ctrl+5",
+          "action": "Calls"
+        },
+        {
+          "keys": "Ctrl+6",
+          "action": "Files"
+        },
+        {
+          "keys": "Ctrl+E",
+          "action": "Search / command bar",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+/",
+          "action": "Show keyboard shortcuts",
+          "charybdis": "L5 (x9,y0)"
+        },
+        {
+          "keys": "Ctrl+.",
+          "action": "Show commands"
+        },
+        {
+          "keys": "Ctrl+Shift+F6",
+          "action": "Next section"
+        },
+        {
+          "keys": "Ctrl+F6",
+          "action": "Previous section"
+        },
+        {
+          "keys": "Alt+Left",
+          "action": "Go back",
+          "charybdis": "L9 (x9,y2)"
+        },
+        {
+          "keys": "Alt+Right",
+          "action": "Go forward"
+        }
+      ]
+    },
+    {
+      "name": "Messaging",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+N",
+          "action": "New chat",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+X",
+          "action": "Expand compose box",
+          "charybdis": "L5 (x4,y3)"
+        },
+        {
+          "keys": "Ctrl+Enter",
+          "action": "Send (expanded mode)",
+          "charybdis": "L5 (x5,y1)"
+        },
+        {
+          "keys": "Enter",
+          "action": "Send message",
+          "charybdis": "L2 (x3,y1)"
+        },
+        {
+          "keys": "Shift+Enter",
+          "action": "New line in message",
+          "charybdis": "L10 (x0,y0)"
+        },
+        {
+          "keys": "Ctrl+Shift+F",
+          "action": "Format text",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+B",
+          "action": "Bold",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+I",
+          "action": "Italic",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+U",
+          "action": "Underline",
+          "charybdis": "L10 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+U",
+          "action": "Mark as unread",
+          "charybdis": "L10 (x7,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+S",
+          "action": "Attach file",
+          "charybdis": "L10 (x7,y1)"
+        },
+        {
+          "keys": "Ctrl+K",
+          "action": "Insert link",
+          "charybdis": "L5 (x7,y1)"
+        },
+        {
+          "keys": "Up",
+          "action": "Edit last sent message",
+          "charybdis": "L1 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+C",
+          "action": "Copy",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+V",
+          "action": "Paste",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+Z",
+          "action": "Undo",
+          "charybdis": "L10 (x10,y2)"
+        },
+        {
+          "keys": "Ctrl+A",
+          "action": "Select all",
+          "charybdis": "L10 (x9,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Meetings & Calls",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+Shift+M",
+          "action": "Toggle mute",
+          "charybdis": "L5 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+O",
+          "action": "Toggle camera",
+          "charybdis": "L10 (x5,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+E",
+          "action": "Toggle screen share",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+K",
+          "action": "Raise/lower hand",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+B",
+          "action": "Toggle background blur",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+H",
+          "action": "Hang up / end call",
+          "charybdis": "L9 (x10,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+A",
+          "action": "Accept call",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+D",
+          "action": "Decline call",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+P",
+          "action": "Toggle chat in meeting",
+          "charybdis": "L10 (x5,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+R",
+          "action": "Start recording",
+          "charybdis": "L10 (x9,y3)"
+        }
+      ]
+    },
+    {
+      "name": "General",
+      "shortcuts": [
+        {
+          "keys": "Escape",
+          "action": "Close / go back",
+          "charybdis": "L2 (x0,y3)"
+        },
+        {
+          "keys": "Ctrl+F",
+          "action": "Find in conversation",
+          "charybdis": "L9 (x9,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+L",
+          "action": "Toggle sidebar",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+G",
+          "action": "Go to...",
+          "charybdis": "L10 (x9,y2)"
+        }
+      ]
+    }
+  ]
+}

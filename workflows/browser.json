@@ -1,0 +1,477 @@
+{
+  "id": "browser",
+  "name": "Browser (Chrome/Edge)",
+  "icon": "globe",
+  "categories": [
+    {
+      "name": "Tab Management",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+T",
+          "action": "New tab",
+          "charybdis": "L9 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+W",
+          "action": "Close tab",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Tab",
+          "action": "Next tab",
+          "charybdis": "L2 (x7,y0)"
+        },
+        {
+          "keys": "Ctrl+Shift+Tab",
+          "action": "Previous tab",
+          "charybdis": "L2 (x10,y0)"
+        },
+        {
+          "keys": "Ctrl+Shift+T",
+          "action": "Reopen closed tab",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+1",
+          "action": "Switch to tab 1",
+          "charybdis": "L10 (x7,y3)"
+        },
+        {
+          "keys": "Ctrl+2",
+          "action": "Switch to tab 2",
+          "charybdis": "L9 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+3",
+          "action": "Switch to tab 3"
+        },
+        {
+          "keys": "Ctrl+4",
+          "action": "Switch to tab 4"
+        },
+        {
+          "keys": "Ctrl+5",
+          "action": "Switch to tab 5"
+        },
+        {
+          "keys": "Ctrl+6",
+          "action": "Switch to tab 6"
+        },
+        {
+          "keys": "Ctrl+7",
+          "action": "Switch to tab 7"
+        },
+        {
+          "keys": "Ctrl+8",
+          "action": "Switch to tab 8"
+        },
+        {
+          "keys": "Ctrl+9",
+          "action": "Last tab",
+          "charybdis": "L10 (x0,y3)"
+        },
+        {
+          "keys": "Ctrl+N",
+          "action": "New window",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+N",
+          "action": "Incognito/InPrivate window",
+          "charybdis": "L10 (x9,y3)"
+        }
+      ]
+    },
+    {
+      "name": "Navigation",
+      "shortcuts": [
+        {
+          "keys": "Alt+Left",
+          "action": "Back",
+          "charybdis": "L9 (x9,y2)"
+        },
+        {
+          "keys": "Alt+Right",
+          "action": "Forward"
+        },
+        {
+          "keys": "F5",
+          "action": "Refresh page",
+          "charybdis": "L9 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+F5",
+          "action": "Hard refresh (bypass cache)"
+        },
+        {
+          "keys": "Ctrl+L",
+          "action": "Focus address bar",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Alt+D",
+          "action": "Focus address bar (alt)",
+          "charybdis": "L5 (x2,y1)"
+        },
+        {
+          "keys": "Ctrl+Enter",
+          "action": "Add www./. com to URL",
+          "charybdis": "L5 (x5,y1)"
+        },
+        {
+          "keys": "Alt+Home",
+          "action": "Open home page"
+        },
+        {
+          "keys": "Escape",
+          "action": "Stop loading / close suggestion",
+          "charybdis": "L2 (x0,y3)"
+        },
+        {
+          "keys": "Space",
+          "action": "Scroll down one screen",
+          "charybdis": "L0 (x4,y4)"
+        },
+        {
+          "keys": "Shift+Space",
+          "action": "Scroll up one screen",
+          "charybdis": "L10 (x8,y1)"
+        }
+      ]
+    },
+    {
+      "name": "Find & Page",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+F",
+          "action": "Find on page",
+          "charybdis": "L9 (x9,y1)"
+        },
+        {
+          "keys": "Ctrl+G",
+          "action": "Find next",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+G",
+          "action": "Find previous",
+          "charybdis": "L10 (x3,y3)"
+        },
+        {
+          "keys": "F3",
+          "action": "Find next (alt)",
+          "charybdis": "L1 (x2,y2)"
+        },
+        {
+          "keys": "Ctrl+H",
+          "action": "History",
+          "charybdis": "L10 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+J",
+          "action": "Downloads"
+        },
+        {
+          "keys": "Ctrl+D",
+          "action": "Bookmark page",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+B",
+          "action": "Toggle bookmarks bar",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+O",
+          "action": "Bookmark manager",
+          "charybdis": "L10 (x5,y1)"
+        },
+        {
+          "keys": "Ctrl+P",
+          "action": "Print",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+S",
+          "action": "Save page as",
+          "charybdis": "L5 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+U",
+          "action": "View page source",
+          "charybdis": "L10 (x7,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Zoom & View",
+      "shortcuts": [
+        {
+          "keys": "Ctrl++",
+          "action": "Zoom in"
+        },
+        {
+          "keys": "Ctrl+-",
+          "action": "Zoom out",
+          "charybdis": "L2 (x3,y3)"
+        },
+        {
+          "keys": "Ctrl+0",
+          "action": "Reset zoom",
+          "charybdis": "L10 (x10,y3)"
+        },
+        {
+          "keys": "F11",
+          "action": "Toggle fullscreen",
+          "charybdis": "L5 (x10,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Developer Tools",
+      "shortcuts": [
+        {
+          "keys": "F12",
+          "action": "Open DevTools",
+          "charybdis": "L1 (x4,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+I",
+          "action": "Open DevTools (alt)",
+          "charybdis": "L10 (x5,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+J",
+          "action": "Open Console"
+        },
+        {
+          "keys": "Ctrl+Shift+C",
+          "action": "Inspect element",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+M",
+          "action": "Toggle device toolbar",
+          "charybdis": "L5 (x9,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Clipboard & Edit",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+C",
+          "action": "Copy",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+V",
+          "action": "Paste",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+X",
+          "action": "Cut",
+          "charybdis": "L10 (x3,y0)"
+        },
+        {
+          "keys": "Ctrl+Z",
+          "action": "Undo",
+          "charybdis": "L10 (x10,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+V",
+          "action": "Paste without formatting",
+          "charybdis": "L5 (x3,y3)"
+        },
+        {
+          "keys": "Ctrl+A",
+          "action": "Select all",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Y",
+          "action": "Redo",
+          "charybdis": "L10 (x11,y1)"
+        }
+      ]
+    },
+    {
+      "name": "Edge Specific",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+Shift+B",
+          "action": "Toggle favorites bar",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+O",
+          "action": "Favorites manager",
+          "charybdis": "L10 (x5,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+E",
+          "action": "Toggle sidebar",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+Del",
+          "action": "Clear browsing data"
+        },
+        {
+          "keys": "Ctrl+Shift+P",
+          "action": "InPrivate window",
+          "charybdis": "L10 (x5,y3)"
+        },
+        {
+          "keys": "Alt+F",
+          "action": "Settings menu",
+          "charybdis": "L9 (x9,y2)"
+        },
+        {
+          "keys": "F1",
+          "action": "Help",
+          "charybdis": "L4 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+R",
+          "action": "Read aloud",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+U",
+          "action": "View source",
+          "charybdis": "L10 (x7,y1)"
+        }
+      ]
+    },
+    {
+      "name": "Vimium Extension",
+      "shortcuts": [
+        {
+          "keys": "j",
+          "action": "Scroll down",
+          "charybdis": "L0 (x8,y2)"
+        },
+        {
+          "keys": "k",
+          "action": "Scroll up",
+          "charybdis": "L0 (x9,y2)"
+        },
+        {
+          "keys": "f",
+          "action": "Open link in current tab",
+          "charybdis": "L9 (x7,y2)"
+        },
+        {
+          "keys": "F",
+          "action": "Open link in new tab",
+          "charybdis": "L5 (x5,y0)"
+        },
+        {
+          "keys": "d",
+          "action": "Scroll half page down",
+          "charybdis": "L0 (x3,y2)"
+        },
+        {
+          "keys": "u",
+          "action": "Scroll half page up",
+          "charybdis": "L1 (x9,y2)"
+        },
+        {
+          "keys": "H",
+          "action": "Go back in history"
+        },
+        {
+          "keys": "L",
+          "action": "Go forward in history"
+        },
+        {
+          "keys": "o",
+          "action": "Open URL/bookmark/history",
+          "charybdis": "L7 (x9,y2)"
+        },
+        {
+          "keys": "t",
+          "action": "Search open tabs",
+          "charybdis": "L7 (x9,y2)"
+        },
+        {
+          "keys": "x",
+          "action": "Close current tab",
+          "charybdis": "L0 (x2,y3)"
+        },
+        {
+          "keys": "X",
+          "action": "Restore closed tab"
+        },
+        {
+          "keys": "r",
+          "action": "Reload page",
+          "charybdis": "L7 (x9,y2)"
+        },
+        {
+          "keys": "gg",
+          "action": "Scroll to top",
+          "charybdis": "L0 (x5,y2)"
+        },
+        {
+          "keys": "G",
+          "action": "Scroll to bottom"
+        },
+        {
+          "keys": "gi",
+          "action": "Focus first input field",
+          "charybdis": "L7 (x3,y2)"
+        },
+        {
+          "keys": "yy",
+          "action": "Copy current URL",
+          "charybdis": "L0 (x7,y1)"
+        },
+        {
+          "keys": "J",
+          "action": "Previous tab"
+        },
+        {
+          "keys": "K",
+          "action": "Next tab"
+        },
+        {
+          "keys": "/",
+          "action": "Enter find mode",
+          "charybdis": "L0 (x11,y3)"
+        },
+        {
+          "keys": "n",
+          "action": "Find next match",
+          "charybdis": "L0 (x9,y3)"
+        },
+        {
+          "keys": "N",
+          "action": "Find previous match",
+          "charybdis": "L10 (x0,y0)"
+        },
+        {
+          "keys": "?",
+          "action": "Show Vimium help"
+        }
+      ]
+    },
+    {
+      "name": "Proton Pass Extension",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+Shift+L",
+          "action": "Autofill login",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+S",
+          "action": "Open Proton Pass popup",
+          "charybdis": "L10 (x7,y1)"
+        }
+      ]
+    }
+  ]
+}

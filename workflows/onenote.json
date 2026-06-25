@@ -1,0 +1,29 @@
+{
+  "id": "onenote",
+  "name": "OneNote",
+  "icon": "note",
+  "categories": [
+    {
+      "name": "Navigation",
+      "shortcuts": [
+        { "keys": "Ctrl+Page Down", "action": "Next page" },
+        { "keys": "Ctrl+Page Up", "action": "Previous page" },
+        { "keys": "Ctrl+Tab", "action": "Next section", "charybdis": "L2 Next Tab (x3,y0)" },
+        { "keys": "Ctrl+E", "action": "Search" },
+        { "keys": "Ctrl+N", "action": "New page" }
+      ]
+    },
+    {
+      "name": "Editing",
+      "shortcuts": [
+        { "keys": "Ctrl+C", "action": "Copy", "charybdis": "L2 Copy" },
+        { "keys": "Ctrl+V", "action": "Paste", "charybdis": "L2 Paste" },
+        { "keys": "Ctrl+Z", "action": "Undo", "charybdis": "L2 Undo" },
+        { "keys": "Ctrl+B", "action": "Bold" },
+        { "keys": "Ctrl+I", "action": "Italic" },
+        { "keys": "Ctrl+K", "action": "Insert link" },
+        { "keys": "Ctrl+1", "action": "To Do tag" }
+      ]
+    }
+  ]
+}

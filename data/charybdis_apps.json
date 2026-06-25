@@ -1,0 +1,103 @@
+{
+  "apps": [
+    {
+      "id": "edge",
+      "aliases": ["edge", "browser", "web"],
+      "launch": "msedge.exe",
+      "window_match": {
+        "exe": "msedge.exe",
+        "title": "Edge"
+      },
+      "new_instance": "msedge.exe --new-window",
+      "notes": "Microsoft Edge browser; useful with Vimium and Proton Pass."
+    },
+    {
+      "id": "m-files",
+      "aliases": ["m-files", "mfiles", "mf"],
+      "launch": "explorer.exe shell:AppsFolder",
+      "window_match": {
+        "exe": "MFClient.exe",
+        "title": "M-Files"
+      },
+      "new_instance": "explorer.exe shell:AppsFolder",
+      "notes": "M-Files client or vault window."
+    },
+    {
+      "id": "code",
+      "aliases": ["code", "vscode", "vs code"],
+      "launch": "code",
+      "window_match": {
+        "exe": "Code.exe",
+        "title": "Visual Studio Code"
+      },
+      "new_instance": "code -n",
+      "notes": "VS Code editor and consulting/coding workspace."
+    },
+    {
+      "id": "teams",
+      "aliases": ["teams", "ms teams"],
+      "launch": "ms-teams:",
+      "window_match": {
+        "exe": "ms-teams.exe",
+        "title": "Microsoft Teams"
+      },
+      "new_instance": "ms-teams:",
+      "notes": "Microsoft Teams calls, chat, mute, camera, and sharing workflows."
+    },
+    {
+      "id": "outlook",
+      "aliases": ["outlook", "mail", "email"],
+      "launch": "outlook",
+      "window_match": {
+        "exe": "OUTLOOK.EXE",
+        "title": "Outlook"
+      },
+      "new_instance": "outlook",
+      "notes": "Outlook mail and calendar."
+    },
+    {
+      "id": "excel",
+      "aliases": ["excel", "xlsx", "spreadsheet"],
+      "launch": "excel",
+      "window_match": {
+        "exe": "EXCEL.EXE",
+        "title": "Excel"
+      },
+      "new_instance": "excel",
+      "notes": "Excel sheets, filters, formulas, and workbook navigation."
+    },
+    {
+      "id": "terminal",
+      "aliases": ["terminal", "wt", "windows terminal"],
+      "launch": "wt",
+      "window_match": {
+        "exe": "WindowsTerminal.exe",
+        "title": "Terminal"
+      },
+      "new_instance": "wt",
+      "notes": "Windows Terminal for shells and project commands."
+    },
+    {
+      "id": "explorer",
+      "aliases": ["explorer", "files", "file explorer"],
+      "launch": "explorer.exe",
+      "window_match": {
+        "exe": "explorer.exe",
+        "title": "File Explorer"
+      },
+      "new_instance": "explorer.exe",
+      "notes": "Windows File Explorer."
+    },
+    {
+      "id": "proton-pass",
+      "aliases": ["proton", "proton pass", "pass"],
+      "launch": "msedge.exe",
+      "window_match": {
+        "exe": "msedge.exe",
+        "title": "Edge"
+      },
+      "new_instance": "msedge.exe --new-window",
+      "notes": "Routes to Edge; F23 in Edge sends the Proton Pass extension shortcut."
+    }
+  ]
+}

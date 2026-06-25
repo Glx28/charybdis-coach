@@ -1,0 +1,157 @@
+{
+  "id": "powerpoint",
+  "name": "Microsoft PowerPoint",
+  "icon": "slides",
+  "categories": [
+    {
+      "name": "Slideshow",
+      "shortcuts": [
+        {
+          "keys": "F5",
+          "action": "Start from beginning",
+          "charybdis": "L9 (x7,y2)"
+        },
+        {
+          "keys": "Shift+F5",
+          "action": "Start from current slide",
+          "charybdis": "L5 (x2,y0)"
+        },
+        {
+          "keys": "Escape",
+          "action": "End slideshow",
+          "charybdis": "L2 (x0,y3)"
+        },
+        {
+          "keys": "N",
+          "action": "Next slide (in show)",
+          "charybdis": "L0 (x9,y3)"
+        },
+        {
+          "keys": "P",
+          "action": "Previous slide (in show)",
+          "charybdis": "L1 (x9,y2)"
+        },
+        {
+          "keys": "B",
+          "action": "Black screen",
+          "charybdis": "L2 (x9,y2)"
+        },
+        {
+          "keys": "W",
+          "action": "White screen",
+          "charybdis": "L7 (x9,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Editing",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+M",
+          "action": "New slide",
+          "charybdis": "L10 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+D",
+          "action": "Duplicate slide",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+S",
+          "action": "Save",
+          "charybdis": "L5 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+Z",
+          "action": "Undo",
+          "charybdis": "L10 (x10,y2)"
+        },
+        {
+          "keys": "Ctrl+Y",
+          "action": "Redo",
+          "charybdis": "L10 (x11,y1)"
+        },
+        {
+          "keys": "Ctrl+C",
+          "action": "Copy",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+V",
+          "action": "Paste",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+G",
+          "action": "Group objects",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+G",
+          "action": "Ungroup objects",
+          "charybdis": "L10 (x3,y3)"
+        },
+        {
+          "keys": "Ctrl+A",
+          "action": "Select all",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+B",
+          "action": "Bold",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+I",
+          "action": "Italic",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Delete",
+          "action": "Delete selected",
+          "charybdis": "L2 (x10,y1)"
+        },
+        {
+          "keys": "Tab",
+          "action": "Next placeholder / indent",
+          "charybdis": "L0 (x0,y1)"
+        }
+      ]
+    },
+    {
+      "name": "Navigation",
+      "shortcuts": [
+        {
+          "keys": "Page Down",
+          "action": "Next slide",
+          "charybdis": "L7 (x9,y1)"
+        },
+        {
+          "keys": "Page Up",
+          "action": "Previous slide",
+          "charybdis": "L1 (x5,y3)"
+        },
+        {
+          "keys": "Ctrl+Home",
+          "action": "First slide",
+          "charybdis": "L10 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+End",
+          "action": "Last slide",
+          "charybdis": "L10 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+F",
+          "action": "Find",
+          "charybdis": "L9 (x9,y1)"
+        },
+        {
+          "keys": "Ctrl+H",
+          "action": "Replace",
+          "charybdis": "L10 (x3,y2)"
+        }
+      ]
+    }
+  ]
+}

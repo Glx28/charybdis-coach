@@ -1,0 +1,33 @@
+{
+  "id": "slack",
+  "name": "Slack",
+  "icon": "chat",
+  "categories": [
+    {
+      "name": "Navigation",
+      "shortcuts": [
+        { "keys": "Ctrl+K", "action": "Quick switcher" },
+        { "keys": "Alt+Up/Down", "action": "Previous/next channel" },
+        { "keys": "Ctrl+Shift+M", "action": "Mentions" },
+        { "keys": "Ctrl+Shift+A", "action": "All unreads" }
+      ]
+    },
+    {
+      "name": "Messaging",
+      "shortcuts": [
+        { "keys": "Enter", "action": "Send", "charybdis": "L2 Enter (x3,y1)" },
+        { "keys": "Shift+Enter", "action": "New line" },
+        { "keys": "Ctrl+B", "action": "Bold" },
+        { "keys": "Up", "action": "Edit last message" },
+        { "keys": "Ctrl+U", "action": "Upload file" }
+      ]
+    },
+    {
+      "name": "Calls",
+      "shortcuts": [
+        { "keys": "Ctrl+Shift+H", "action": "Start huddle" },
+        { "keys": "M", "action": "Toggle mute (in huddle)" }
+      ]
+    }
+  ]
+}

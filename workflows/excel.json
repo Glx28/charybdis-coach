@@ -1,0 +1,321 @@
+{
+  "id": "excel",
+  "name": "Microsoft Excel",
+  "icon": "table",
+  "categories": [
+    {
+      "name": "Navigation",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+Home",
+          "action": "Go to cell A1",
+          "charybdis": "L10 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+End",
+          "action": "Go to last used cell",
+          "charybdis": "L10 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+Left",
+          "action": "Jump to left edge of data",
+          "charybdis": "L1 (x7,y1)"
+        },
+        {
+          "keys": "Ctrl+Right",
+          "action": "Jump to right edge of data",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+Up",
+          "action": "Jump to top edge of data",
+          "charybdis": "L10 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+Down",
+          "action": "Jump to bottom edge of data",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+G",
+          "action": "Go To dialog",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+F",
+          "action": "Find",
+          "charybdis": "L9 (x9,y1)"
+        },
+        {
+          "keys": "Ctrl+H",
+          "action": "Find and replace",
+          "charybdis": "L10 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+Page Down",
+          "action": "Next sheet",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Page Up",
+          "action": "Previous sheet",
+          "charybdis": "L10 (x7,y2)"
+        },
+        {
+          "keys": "Tab",
+          "action": "Move to next cell",
+          "charybdis": "L0 (x0,y1)"
+        },
+        {
+          "keys": "Shift+Tab",
+          "action": "Move to previous cell",
+          "charybdis": "L10 (x0,y1)"
+        },
+        {
+          "keys": "Enter",
+          "action": "Confirm and move down",
+          "charybdis": "L2 (x3,y1)"
+        },
+        {
+          "keys": "Shift+Enter",
+          "action": "Confirm and move up",
+          "charybdis": "L10 (x0,y0)"
+        }
+      ]
+    },
+    {
+      "name": "Selection",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+A",
+          "action": "Select all / current region",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+End",
+          "action": "Select to last used cell",
+          "charybdis": "L10 (x4,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+Home",
+          "action": "Select to cell A1",
+          "charybdis": "L10 (x10,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+Left",
+          "action": "Select to left edge",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+Right",
+          "action": "Select to right edge",
+          "charybdis": "L10 (x2,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+Up",
+          "action": "Select to top edge",
+          "charybdis": "L10 (x3,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+Down",
+          "action": "Select to bottom edge",
+          "charybdis": "L10 (x4,y1)"
+        },
+        {
+          "keys": "Shift+Space",
+          "action": "Select entire row",
+          "charybdis": "L10 (x8,y1)"
+        },
+        {
+          "keys": "Ctrl+Space",
+          "action": "Select entire column",
+          "charybdis": "L10 (x1,y2)"
+        },
+        {
+          "keys": "Ctrl+Click",
+          "action": "Select non-adjacent cells"
+        }
+      ]
+    },
+    {
+      "name": "Editing",
+      "shortcuts": [
+        {
+          "keys": "F2",
+          "action": "Edit cell",
+          "charybdis": "L4 (x5,y2)"
+        },
+        {
+          "keys": "Escape",
+          "action": "Cancel edit",
+          "charybdis": "L2 (x0,y3)"
+        },
+        {
+          "keys": "Delete",
+          "action": "Clear cell contents",
+          "charybdis": "L2 (x10,y1)"
+        },
+        {
+          "keys": "Ctrl+C",
+          "action": "Copy",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+V",
+          "action": "Paste",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+X",
+          "action": "Cut",
+          "charybdis": "L10 (x3,y0)"
+        },
+        {
+          "keys": "Ctrl+Z",
+          "action": "Undo",
+          "charybdis": "L10 (x10,y2)"
+        },
+        {
+          "keys": "Ctrl+Y",
+          "action": "Redo",
+          "charybdis": "L10 (x11,y1)"
+        },
+        {
+          "keys": "Ctrl+D",
+          "action": "Fill down",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+R",
+          "action": "Fill right",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+;",
+          "action": "Insert current date",
+          "charybdis": "L10 (x9,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+;",
+          "action": "Insert current time",
+          "charybdis": "L10 (x5,y1)"
+        },
+        {
+          "keys": "Ctrl+S",
+          "action": "Save",
+          "charybdis": "L5 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+V",
+          "action": "Paste special",
+          "charybdis": "L5 (x3,y3)"
+        }
+      ]
+    },
+    {
+      "name": "Formatting",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+B",
+          "action": "Bold",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+I",
+          "action": "Italic",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+U",
+          "action": "Underline",
+          "charybdis": "L10 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+1",
+          "action": "Format Cells dialog",
+          "charybdis": "L10 (x7,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+!",
+          "action": "Number format"
+        },
+        {
+          "keys": "Ctrl+Shift+$",
+          "action": "Currency format"
+        },
+        {
+          "keys": "Ctrl+Shift+%",
+          "action": "Percent format"
+        },
+        {
+          "keys": "Ctrl+Shift+~",
+          "action": "General format"
+        }
+      ]
+    },
+    {
+      "name": "Rows & Columns",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+Shift++",
+          "action": "Insert cells/rows/columns"
+        },
+        {
+          "keys": "Ctrl+-",
+          "action": "Delete cells/rows/columns",
+          "charybdis": "L2 (x3,y3)"
+        },
+        {
+          "keys": "Ctrl+9",
+          "action": "Hide selected rows",
+          "charybdis": "L10 (x0,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+9",
+          "action": "Unhide rows",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+0",
+          "action": "Hide selected columns",
+          "charybdis": "L10 (x10,y3)"
+        }
+      ]
+    },
+    {
+      "name": "Formulas",
+      "shortcuts": [
+        {
+          "keys": "=",
+          "action": "Start formula",
+          "charybdis": "L10 (x8,y0)"
+        },
+        {
+          "keys": "Alt+=",
+          "action": "AutoSum",
+          "charybdis": "L10 (x4,y0)"
+        },
+        {
+          "keys": "Ctrl+`",
+          "action": "Show/hide formulas",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "F4",
+          "action": "Toggle absolute ref ($)",
+          "charybdis": "L10 (x2,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+Enter",
+          "action": "Array formula (legacy)",
+          "charybdis": "L10 (x12,y3)"
+        },
+        {
+          "keys": "F9",
+          "action": "Calculate all workbooks",
+          "charybdis": "L5 (x7,y0)"
+        }
+      ]
+    }
+  ]
+}

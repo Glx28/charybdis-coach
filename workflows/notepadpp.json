@@ -1,0 +1,35 @@
+{
+  "id": "notepadpp",
+  "name": "Notepad++",
+  "icon": "edit",
+  "categories": [
+    {
+      "name": "Editing",
+      "shortcuts": [
+        { "keys": "Ctrl+D", "action": "Duplicate line" },
+        { "keys": "Ctrl+L", "action": "Delete line" },
+        { "keys": "Ctrl+Q", "action": "Toggle comment" },
+        { "keys": "Ctrl+T", "action": "Swap line up" },
+        { "keys": "Ctrl+Shift+Up", "action": "Move line up" },
+        { "keys": "Ctrl+Shift+Down", "action": "Move line down" }
+      ]
+    },
+    {
+      "name": "Search",
+      "shortcuts": [
+        { "keys": "Ctrl+F", "action": "Find", "charybdis": "L1 Ctrl+F (x5,y1)" },
+        { "keys": "Ctrl+H", "action": "Replace", "charybdis": "L1 Ctrl+H (x5,y3)" },
+        { "keys": "F3", "action": "Find next" },
+        { "keys": "Ctrl+G", "action": "Go to line" }
+      ]
+    },
+    {
+      "name": "File",
+      "shortcuts": [
+        { "keys": "Ctrl+S", "action": "Save", "charybdis": "L5 Save (x1,y2)" },
+        { "keys": "Ctrl+W", "action": "Close tab", "charybdis": "L2 Close (x5,y1)" },
+        { "keys": "Ctrl+Tab", "action": "Next tab", "charybdis": "L2 Next Tab (x3,y0)" }
+      ]
+    }
+  ]
+}

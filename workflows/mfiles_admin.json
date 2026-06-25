@@ -1,0 +1,101 @@
+{
+  "id": "mfiles_admin",
+  "name": "M-Files Admin",
+  "icon": "vault",
+  "categories": [
+    {
+      "name": "Navigation",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+F",
+          "action": "Search/filter",
+          "charybdis": "L9 (x9,y1)"
+        },
+        {
+          "keys": "F5",
+          "action": "Refresh",
+          "charybdis": "L9 (x7,y2)"
+        },
+        {
+          "keys": "Enter",
+          "action": "Open/expand selected",
+          "charybdis": "L2 (x3,y1)"
+        },
+        {
+          "keys": "Escape",
+          "action": "Close dialog / cancel",
+          "charybdis": "L2 (x0,y3)"
+        },
+        {
+          "keys": "Alt+Left",
+          "action": "Navigate back",
+          "charybdis": "L9 (x9,y2)"
+        },
+        {
+          "keys": "Tab",
+          "action": "Next field",
+          "charybdis": "L0 (x0,y1)"
+        },
+        {
+          "keys": "Shift+Tab",
+          "action": "Previous field",
+          "charybdis": "L10 (x0,y1)"
+        }
+      ]
+    },
+    {
+      "name": "Admin Operations",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+S",
+          "action": "Save configuration",
+          "charybdis": "L5 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+Z",
+          "action": "Undo change",
+          "charybdis": "L10 (x10,y2)"
+        },
+        {
+          "keys": "Ctrl+N",
+          "action": "New item/object",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Delete",
+          "action": "Delete selected",
+          "charybdis": "L2 (x10,y1)"
+        },
+        {
+          "keys": "F2",
+          "action": "Rename",
+          "charybdis": "L4 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+C",
+          "action": "Copy",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+V",
+          "action": "Paste",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+A",
+          "action": "Select all",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Alt+Enter",
+          "action": "Properties"
+        },
+        {
+          "keys": "Ctrl+P",
+          "action": "Print",
+          "charybdis": "L10 (x9,y2)"
+        }
+      ]
+    }
+  ]
+}

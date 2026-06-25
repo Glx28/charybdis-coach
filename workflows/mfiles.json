@@ -1,0 +1,220 @@
+{
+  "id": "mfiles",
+  "name": "M-Files Desktop Client",
+  "icon": "vault",
+  "categories": [
+    {
+      "name": "Search & Navigation",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+F",
+          "action": "Quick search",
+          "charybdis": "L9 (x9,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+F",
+          "action": "Advanced search",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+G",
+          "action": "Go to vault",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Enter",
+          "action": "Open / expand selected",
+          "charybdis": "L2 (x3,y1)"
+        },
+        {
+          "keys": "Backspace",
+          "action": "Go back / up",
+          "charybdis": "L2 (x10,y1)"
+        },
+        {
+          "keys": "Alt+Left",
+          "action": "Navigate back",
+          "charybdis": "L9 (x9,y2)"
+        },
+        {
+          "keys": "Alt+Right",
+          "action": "Navigate forward"
+        },
+        {
+          "keys": "F5",
+          "action": "Refresh view",
+          "charybdis": "L9 (x7,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Document Operations",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+E",
+          "action": "Check out document",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+E",
+          "action": "Check in document",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+U",
+          "action": "Undo checkout",
+          "charybdis": "L10 (x7,y1)"
+        },
+        {
+          "keys": "Ctrl+N",
+          "action": "New document/object",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+O",
+          "action": "Open document",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+S",
+          "action": "Save / check in",
+          "charybdis": "L5 (x3,y2)"
+        },
+        {
+          "keys": "F2",
+          "action": "Rename object",
+          "charybdis": "L4 (x5,y2)"
+        },
+        {
+          "keys": "Delete",
+          "action": "Delete (to recycle)",
+          "charybdis": "L2 (x10,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+D",
+          "action": "Download copy",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+P",
+          "action": "Print",
+          "charybdis": "L10 (x9,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Metadata & Properties",
+      "shortcuts": [
+        {
+          "keys": "Alt+Enter",
+          "action": "Properties / metadata card"
+        },
+        {
+          "keys": "Ctrl+I",
+          "action": "Object info",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+C",
+          "action": "Copy object link",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+K",
+          "action": "Add relationship",
+          "charybdis": "L5 (x7,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+H",
+          "action": "Version history",
+          "charybdis": "L9 (x10,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Views & Selection",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+A",
+          "action": "Select all",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+1",
+          "action": "Switch to list view",
+          "charybdis": "L10 (x7,y3)"
+        },
+        {
+          "keys": "Ctrl+2",
+          "action": "Switch to icon view",
+          "charybdis": "L9 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+G",
+          "action": "Group by",
+          "charybdis": "L10 (x3,y3)"
+        },
+        {
+          "keys": "Ctrl+H",
+          "action": "History view",
+          "charybdis": "L10 (x3,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Workflow & Assignments",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+Shift+W",
+          "action": "Change workflow state",
+          "charybdis": "L10 (x3,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+A",
+          "action": "Assign to user",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+M",
+          "action": "Add to favorites",
+          "charybdis": "L10 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+F5",
+          "action": "Send notification",
+          "charybdis": "L9 (x4,y3)"
+        }
+      ]
+    },
+    {
+      "name": "Clipboard & Edit",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+C",
+          "action": "Copy",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+V",
+          "action": "Paste",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+X",
+          "action": "Cut",
+          "charybdis": "L10 (x3,y0)"
+        },
+        {
+          "keys": "Ctrl+Z",
+          "action": "Undo",
+          "charybdis": "L10 (x10,y2)"
+        },
+        {
+          "keys": "Ctrl+Y",
+          "action": "Redo",
+          "charybdis": "L10 (x11,y1)"
+        }
+      ]
+    }
+  ]
+}

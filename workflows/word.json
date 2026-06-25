@@ -1,0 +1,164 @@
+{
+  "id": "word",
+  "name": "Microsoft Word",
+  "icon": "doc",
+  "categories": [
+    {
+      "name": "Formatting",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+B",
+          "action": "Bold",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+I",
+          "action": "Italic",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+U",
+          "action": "Underline",
+          "charybdis": "L10 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+E",
+          "action": "Center align",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+L",
+          "action": "Left align",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+R",
+          "action": "Right align",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+J",
+          "action": "Justify"
+        },
+        {
+          "keys": "Ctrl+Shift+>",
+          "action": "Increase font size"
+        },
+        {
+          "keys": "Ctrl+Shift+<",
+          "action": "Decrease font size"
+        },
+        {
+          "keys": "Ctrl+1",
+          "action": "Single spacing",
+          "charybdis": "L10 (x7,y3)"
+        },
+        {
+          "keys": "Ctrl+2",
+          "action": "Double spacing",
+          "charybdis": "L9 (x5,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Editing",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+C",
+          "action": "Copy",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+V",
+          "action": "Paste",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+X",
+          "action": "Cut",
+          "charybdis": "L10 (x3,y0)"
+        },
+        {
+          "keys": "Ctrl+Z",
+          "action": "Undo",
+          "charybdis": "L10 (x10,y2)"
+        },
+        {
+          "keys": "Ctrl+Y",
+          "action": "Redo",
+          "charybdis": "L10 (x11,y1)"
+        },
+        {
+          "keys": "Ctrl+S",
+          "action": "Save",
+          "charybdis": "L5 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+A",
+          "action": "Select all",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+F",
+          "action": "Find",
+          "charybdis": "L9 (x9,y1)"
+        },
+        {
+          "keys": "Ctrl+H",
+          "action": "Find and replace",
+          "charybdis": "L10 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+K",
+          "action": "Insert hyperlink",
+          "charybdis": "L5 (x7,y1)"
+        },
+        {
+          "keys": "Ctrl+Enter",
+          "action": "Page break",
+          "charybdis": "L5 (x5,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+V",
+          "action": "Paste special",
+          "charybdis": "L5 (x3,y3)"
+        }
+      ]
+    },
+    {
+      "name": "Navigation",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+Home",
+          "action": "Go to beginning",
+          "charybdis": "L10 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+End",
+          "action": "Go to end",
+          "charybdis": "L10 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+G",
+          "action": "Go to page",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+P",
+          "action": "Print",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "F7",
+          "action": "Spell check",
+          "charybdis": "L1 (x3,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+N",
+          "action": "Normal style",
+          "charybdis": "L10 (x9,y3)"
+        }
+      ]
+    }
+  ]
+}

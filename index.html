@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Charybdis Coach</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect x='2' y='4' width='20' height='16' rx='2' fill='%23101720' stroke='%234cc9b0' stroke-width='2'/><rect x='5' y='8' width='3' height='3' rx='1' fill='%234cc9b0'/><rect x='10' y='8' width='3' height='3' rx='1' fill='%234cc9b0'/><rect x='15' y='8' width='3' height='3' rx='1' fill='%234cc9b0'/><rect x='6' y='13' width='11' height='3' rx='1' fill='%234cc9b0'/></svg>">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 7h14a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-4a3 3 0 0 1 3-3Zm2 3v4m4-4v4m4-4v4m4-3v2"/></svg>
+        </div>
+        <div>
+          <h1>Charybdis Coach</h1>
+          <p id="deviceLabel">USB Live Monitor</p>
+        </div>
+      </div>
+      <div class="status-strip" aria-live="polite">
+        <div class="status-pill layer-status"><span>🗂️ Layer</span><strong id="activeLayer">0</strong></div>
+        <div class="status-pill"><span>📱 App</span><strong id="activeApp">Unknown</strong></div>
+        <div class="status-pill"><span>⚡ Last</span><strong id="lastAction">Starting</strong></div>
+        <div class="status-pill transport"><span>📡 Transport</span><strong id="transport">USB</strong></div>
+      </div>
+      <button class="learn-button" id="learnButton" type="button" title="Learn app shortcuts">📖 Learn</button>
+      <button class="icon-button" id="keyDebugToggle" type="button" title="Toggle key input debug overlay">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 3v5l4 2"/></svg>
+      </button>
+      <button class="icon-button" id="fullscreenButton" type="button" title="Fullscreen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M8 21H3v-5m18 0v5h-5"/></svg>
+      </button>
+    </header>
+
+    <div id="beaconBanner" class="beacon-banner beacon-banner--hidden" role="status" aria-live="assertive" hidden>
+      <span class="beacon-banner__icon" aria-hidden="true">!</span>
+      <div class="beacon-banner__text">
+        <strong id="beaconBannerTitle">Beacon</strong>
+        <span id="beaconBannerDetail">Checking layer sync…</span>
+      </div>
+    </div>
+
+    <main class="workspace">
+      <aside class="layer-rail collapsed" id="layerRail" aria-label="Layers">
+        <div class="rail-title" id="railTitle">🗂️ Layers</div>
+        <div id="layerTabs" class="layer-tabs"></div>
+        <div class="rail-color-strip" id="railColorStrip"></div>
+      </aside>
+
+      <section class="coach-stage" aria-label="Keyboard coach">
+        <div class="stage-toolbar">
+          <label class="search-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
+            <input id="searchInput" type="search" autocomplete="off" placeholder="🔍 Search keys, actions, apps">
+          </label>
+          <div class="view-toggles" role="group" aria-label="View mode">
+            <button id="focusImportantButton" type="button">🔦 Focus</button>
+            <button id="showAllButton" type="button" class="active">📋 All</button>
+          </div>
+        </div>
+
+        <div id="keyboardMap" class="keyboard-map" aria-label="Charybdis keyboard map"></div>
+      </section>
+
+      <aside class="inspector" id="inspectorPanel" aria-label="Selected action">
+        <button type="button" class="inspector-collapse-btn" id="inspectorCollapseBtn" title="Collapse panel">◀</button>
+        <section class="panel selected-panel">
+          <div class="panel-heading">
+            <span id="selectedIcon" class="behavior-icon kind-letter" aria-hidden="true">Key</span>
+            <div>
+              <h2 id="selectedTitle">Select a key</h2>
+              <p id="selectedSubtitle">Layer details appear here</p>
+            </div>
+          </div>
+          <dl class="detail-list">
+            <div><dt>⚙️ Behavior</dt><dd id="selectedBehavior">-</dd></div>
+            <div><dt>📤 Output</dt><dd id="selectedOutput">-</dd></div>
+            <div><dt>⇧ Modifiers</dt><dd id="selectedModifiers">-</dd></div>
+            <div><dt>🎯 Purpose</dt><dd id="selectedPurpose">-</dd></div>
+            <div><dt>📝 Notes</dt><dd id="selectedNotes">-</dd></div>
+          </dl>
+        </section>
+
+        <section class="panel practice-panel">
+          <h2>🎯 Practice</h2>
+          <div class="practice-mode-select">
+            <select id="practiceAppSelect" class="practice-app-select">
+              <option value="">Layer mode (current layer)</option>
+            </select>
+          </div>
+          <div class="practice-controls" role="group" aria-label="Practice modes">
+            <button id="drillButton" type="button">⌨️ Drill (type)</button>
+            <button id="quizButton" type="button">🧩 Quiz (find)</button>
+            <button id="guidedButton" type="button">🗺️ Guided tour</button>
+            <button id="practiceStopButton" type="button">⏹️ Stop</button>
+          </div>
+          <p id="practicePrompt" class="practice-prompt">Pick a mode. Drill = type the prompted key. Quiz = click the key for the prompted action. Guided = step through this layer. Select an app above to practice its shortcuts across all layers.</p>
+          <div class="practice-stats">
+            <span>🏆 Score <strong id="practiceScore">0 / 0</strong></span>
+            <span>📈 Mastery <strong id="practiceMastery">0%</strong></span>
+            <button id="practiceResetButton" type="button" class="link-button">Reset</button>
+          </div>
+        </section>
+
+        <section class="panel now-panel">
+          <h2>📡 Now</h2>
+          <div class="now-grid">
+            <div><span>👆 Held</span><strong id="heldLayers">-</strong></div>
+            <div><span>🔒 Locked</span><strong id="lockedLayer">-</strong></div>
+            <div><span>🔀 Toggled</span><strong id="toggledLayers">-</strong></div>
+            <div><span>⏱️ State age</span><strong id="stateAge">-</strong></div>
+          </div>
+        </section>
+
+        <section class="panel events-panel">
+          <h2>⏱️ Timeline</h2>
+          <ol id="eventList" class="event-list"></ol>
+        </section>
+
+        <section class="panel workflow-panel" id="workflowPanel">
+          <div class="workflow-header">
+            <h2>📋 Workflow Guide</h2>
+            <select id="workflowAppSelect" class="workflow-select">
+              <option value="">Select an app...</option>
+            </select>
+          </div>
+          <input id="workflowSearch" type="search" autocomplete="off" placeholder="🔍 Filter shortcuts..." class="workflow-search-input">
+          <div id="workflowContent" class="workflow-content"></div>
+        </section>
+
+        <section class="panel apps-panel">
+          <h2>🚀 Launcher Apps</h2>
+          <div id="appList" class="app-list"></div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <div id="keyDebugOverlay" class="key-debug key-debug--hidden">
+    <div class="key-debug-header">Key Input Debug <button id="keyDebugClose" type="button">Hide</button></div>
+    <div class="key-debug-mods" id="keyDebugMods">Modifiers: none</div>
+    <ol id="keyDebugLog" class="key-debug-log"></ol>
+  </div>
+
+  <div id="learnOverlay" class="learn-overlay learn-overlay--hidden" role="dialog" aria-label="Learn shortcuts">
+    <div class="learn-topbar">
+      <button id="learnCloseButton" type="button" class="learn-close-btn" title="Close">❌ Close</button>
+      <div id="learnProgress" class="learn-progress"></div>
+      <label class="learn-auto-toggle"><input type="checkbox" id="learnAutoAdvance" checked> Auto-advance</label>
+    </div>
+
+    <div id="learnPickerView" class="learn-picker">
+      <h2>📖 Learn App Shortcuts</h2>
+      <p class="learn-picker-hint">Choose an app to start a guided tour of its keyboard shortcuts</p>
+      <div id="learnAppGrid" class="learn-app-grid"></div>
+    </div>
+
+    <div id="learnTourView" class="learn-tour learn-tour--hidden">
+      <div class="learn-step-area">
+        <div id="learnAccess" class="learn-access"></div>
+        <div id="learnStep" class="learn-step"></div>
+        <div id="learnWarning" class="learn-warning learn-warning--hidden"></div>
+      </div>
+      <div class="learn-nav">
+        <button id="learnPrevButton" type="button">⬅️ Previous</button>
+        <button id="learnBackToApps" type="button">📱 Back to Apps</button>
+        <button id="learnNextButton" type="button">➡️ Next</button>
+      </div>
+      <div id="learnKeyboardArea" class="learn-keyboard-area"></div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

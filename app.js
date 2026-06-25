@@ -1,0 +1,2209 @@
+(function () {
+  const LAYERS = ["0", "1", "2", "3", "4", "5", "7", "8", "9"];
+  const X_LEFT = [0, 1, 2, 3, 4, 5];
+  const X_RIGHT = [7, 8, 9, 10, 11, 12];
+  const MAX_EVENTS = 12;
+  const BEACON_STALE_MS = 12000;
+
+  const els = {
+    activeLayer: document.getElementById("activeLayer"),
+    activeApp: document.getElementById("activeApp"),
+    lastAction: document.getElementById("lastAction"),
+    transport: document.getElementById("transport"),
+    beaconBanner: document.getElementById("beaconBanner"),
+    beaconBannerTitle: document.getElementById("beaconBannerTitle"),
+    beaconBannerDetail: document.getElementById("beaconBannerDetail"),
+    deviceLabel: document.getElementById("deviceLabel"),
+    layerTabs: document.getElementById("layerTabs"),
+    keyboardMap: document.getElementById("keyboardMap"),
+    searchInput: document.getElementById("searchInput"),
+    focusImportantButton: document.getElementById("focusImportantButton"),
+    showAllButton: document.getElementById("showAllButton"),
+    fullscreenButton: document.getElementById("fullscreenButton"),
+    selectedIcon: document.getElementById("selectedIcon"),
+    selectedTitle: document.getElementById("selectedTitle"),
+    selectedSubtitle: document.getElementById("selectedSubtitle"),
+    selectedBehavior: document.getElementById("selectedBehavior"),
+    selectedOutput: document.getElementById("selectedOutput"),
+    selectedModifiers: document.getElementById("selectedModifiers"),
+    selectedPurpose: document.getElementById("selectedPurpose"),
+    selectedNotes: document.getElementById("selectedNotes"),
+    heldLayers: document.getElementById("heldLayers"),
+    lockedLayer: document.getElementById("lockedLayer"),
+    toggledLayers: document.getElementById("toggledLayers"),
+    stateAge: document.getElementById("stateAge"),
+    eventList: document.getElementById("eventList"),
+    appList: document.getElementById("appList"),
+    drillButton: document.getElementById("drillButton"),
+    quizButton: document.getElementById("quizButton"),
+    guidedButton: document.getElementById("guidedButton"),
+    practiceStopButton: document.getElementById("practiceStopButton"),
+    practiceResetButton: document.getElementById("practiceResetButton"),
+    practicePrompt: document.getElementById("practicePrompt"),
+    practiceScore: document.getElementById("practiceScore"),
+    practiceMastery: document.getElementById("practiceMastery"),
+    practiceAppSelect: document.getElementById("practiceAppSelect"),
+    workflowAppSelect: document.getElementById("workflowAppSelect"),
+    workflowSearch: document.getElementById("workflowSearch"),
+    workflowContent: document.getElementById("workflowContent")
+  };
+
+  const state = {
+    rows: [],
+    rowsByLayer: new Map(),
+    apps: [],
+    layoutSpec: {},
+    hostKeyboard: null,
+    displayedLayer: "0",
+    liveLayer: "0",
+    selectedKey: null,
+    query: "",
+    focusImportant: false,
+    lastState: null,
+    events: [],
+    practice: { mode: null, target: null, guidedList: [], guidedIndex: 0, attempts: 0, correct: 0 },
+    progress: {}
+  };
+
+  const LAYER_TAB_META = {
+    "0": { glyph: "⌨️ Aa", title: "Base typing" },
+    "1": { glyph: "🧭 Nav", title: "Navigation" },
+    "2": { glyph: "🖱️ Mou", title: "Mouse lock" },
+    "3": { glyph: "🪟 Win", title: "Window / apps" },
+    "4": { glyph: "🔧 Sys", title: "System / BT" },
+    "5": { glyph: "💻 Code", title: "Code / IDE" },
+    "7": { glyph: "🎮 RPG", title: "Game layer" },
+    "8": { glyph: "⚡ Spd", title: "Speed travel" },
+    "9": { glyph: "📁 DMS", title: "M-Files / DMS" }
+  };
+
+  function clean(text) {
+    return String(text || "").replace(/\s+/g, " ").trim();
+  }
+
+  function csvSplit(line) {
+    const out = [];
+    let cur = "";
+    let quoted = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      const next = line[i + 1];
+      if (ch === '"' && quoted && next === '"') {
+        cur += '"';
+        i += 1;
+      } else if (ch === '"') {
+        quoted = !quoted;
+      } else if (ch === "," && !quoted) {
+        out.push(cur);
+        cur = "";
+      } else {
+        cur += ch;
+      }
+    }
+    out.push(cur);
+    return out;
+  }
+
+  function parseCsv(text) {
+    const lines = text.trim().split(/\r?\n/).filter(Boolean);
+    const headers = csvSplit(lines.shift());
+    return lines.map((line) => {
+      const values = csvSplit(line);
+      const row = {};
+      headers.forEach((header, index) => {
+        row[header] = values[index] || "";
+      });
+      return row;
+    });
+  }
+
+  async function loadJson(path, fallback) {
+    try {
+      const res = await fetch(`${path}?t=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`${res.status}`);
+      return await res.json();
+    } catch {
+      return fallback;
+    }
+  }
+
+  async function loadText(path) {
+    const res = await fetch(`${path}?t=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Failed to load ${path}: ${res.status}`);
+    return await res.text();
+  }
+
+  function shortHint(text, max = 18) {
+    const value = clean(text);
+    if (!value) return "";
+    return value.length > max ? `${value.slice(0, max - 1)}…` : value;
+  }
+
+  function layerParam(row) {
+    const param = clean(row.parameter);
+    const match = param.match(/(\d+)/);
+    return match ? match[1] : "";
+  }
+
+  const SINGLE_LETTER_ACTION_MAP = [
+    [/^c$/i, /^l ctrl$/i, { emoji: "📄", action: "Copy" }],
+    [/^v$/i, /^l ctrl$/i, { emoji: "📥", action: "Paste" }],
+    [/^v$/i, /gui/i, { emoji: "🗂️", action: "ClipHist" }],
+    [/^x$/i, /^l ctrl$/i, { emoji: "✂️", action: "Cut" }],
+    [/^z$/i, /^l ctrl$/i, { emoji: "↩️", action: "Undo" }],
+    [/^y$/i, /^l ctrl$/i, { emoji: "↪️", action: "Redo" }],
+    [/^s$/i, /^l ctrl$/i, { emoji: "💾", action: "Save" }],
+    [/^s$/i, /gui.*shift|shift.*gui/i, { emoji: "📸", action: "Snip" }],
+    [/^s$/i, /gui/i, { emoji: "🔍", action: "Search" }],
+    [/^a$/i, /^l ctrl$/i, { emoji: "🔲", action: "Sel All" }],
+    [/^a$/i, /gui/i, { emoji: "⚙️", action: "QSett" }],
+    [/^f$/i, /^l ctrl$/i, { emoji: "🔎", action: "Find" }],
+    [/^h$/i, /^l ctrl$/i, { emoji: "🔁", action: "Replace" }],
+    [/^h$/i, /gui/i, { emoji: "🎙️", action: "Voice" }],
+    [/^d$/i, /gui.*ctrl|ctrl.*gui/i, { emoji: "🆕", action: "NewDesk" }],
+    [/^d$/i, /^l gui$/i, { emoji: "🏠", action: "Desktop" }],
+    [/^d$/i, /^l ctrl$/i, { emoji: "🔂", action: "Dupl" }],
+    [/^e$/i, /gui/i, { emoji: "📁", action: "Explorer" }],
+    [/^e$/i, /^l ctrl$/i, { emoji: "🔍", action: "Search" }],
+    [/^n$/i, /gui/i, { emoji: "🔔", action: "Notif" }],
+    [/^n$/i, /^l ctrl$/i, { emoji: "🆕", action: "New" }],
+    [/^c$/i, /gui/i, { emoji: "🤖", action: "Copilot" }],
+    [/^w$/i, /^l ctrl$/i, { emoji: "❌", action: "Close" }],
+    [/^r$/i, /gui/i, { emoji: "▶️", action: "Run" }],
+    [/^r$/i, /^l ctrl$/i, { emoji: "🔃", action: "Refresh" }],
+    [/^l$/i, /gui/i, { emoji: "🔒", action: "Lock" }],
+    [/^l$/i, /^l ctrl$/i, { emoji: "📍", action: "AddrBar" }],
+    [/^i$/i, /gui/i, { emoji: "⚙️", action: "Settings" }],
+    [/^i$/i, /^l ctrl$/i, { emoji: "ℹ️", action: "Info" }],
+    [/^t$/i, /gui/i, { emoji: "🧲", action: "Taskbar" }],
+    [/^t$/i, /^l ctrl$/i, { emoji: "➕", action: "NewTab" }],
+    [/^b$/i, /gui/i, { emoji: "🔽", action: "SysTray" }],
+    [/^b$/i, /^l ctrl$/i, { emoji: "🅱️", action: "Bold" }],
+    [/^u$/i, /gui/i, { emoji: "♿", action: "Access" }],
+    [/^u$/i, /^l ctrl$/i, { emoji: "🔡", action: "Underln" }],
+    [/^p$/i, /^l ctrl$/i, { emoji: "🖨️", action: "Print" }],
+    [/^g$/i, /^l ctrl$/i, { emoji: "📍", action: "GoTo" }],
+    [/^k$/i, /^l ctrl$/i, { emoji: "🔗", action: "Link" }],
+    [/^o$/i, /^l ctrl$/i, { emoji: "📂", action: "Open" }],
+    [/^m$/i, /gui/i, { emoji: "⏬", action: "MinAll" }],
+    [/^m$/i, /ctrl.*shift/i, { emoji: "🔇", action: "Mute" }],
+    [/^x$/i, /gui/i, { emoji: "⚡", action: "Power" }],
+    [/^j$/i, /^l ctrl$/i, { emoji: "💿", action: "Downld" }],
+  ];
+
+  function matchSingleLetterAction(label, modifiers) {
+    const l = clean(label);
+    const m = clean(modifiers);
+    for (const [labelPat, modPat, result] of SINGLE_LETTER_ACTION_MAP) {
+      if (labelPat.test(l) && modPat.test(m)) return result;
+    }
+    return null;
+  }
+
+  const KEYCAP_EMOJI_RULES = [
+    [/^copy$/i, null, "📄"],
+    [/^paste$/i, null, "📥"],
+    [/^cut$/i, null, "✂️"],
+    [/^undo$/i, null, "↩️"],
+    [/^redo$/i, null, "↪️"],
+    [/^save$/i, null, "💾"],
+    [/^search$/i, null, "🔍"],
+    [/^find$/i, null, "🔎"],
+    [/^close$/i, null, "❌"],
+    [/^sel all$/i, null, "🔲"],
+    [/^snip$/i, null, "📸"],
+    [/^screenshot$/i, null, "📸"],
+    [/^task view$/i, null, "🪟"],
+    [/^desktop$/i, null, "🏠"],
+    [/^next tab$/i, null, "⏭️"],
+    [/^prev tab$/i, null, "⏮️"],
+    [/^refresh$/i, null, "🔃"],
+    [/^zoom in$/i, null, "🔭"],
+    [/^zoom out$/i, null, "🔬"],
+    [/^alt\+tab$/i, null, "🔀"],
+    [/^cmdpal$/i, null, "🪄"],
+    [/^run$/i, null, "▶️"],
+    [/^print$/i, null, "🖨️"],
+    [/^mute$/i, null, "🔇"],
+    [/^camera$/i, null, "📷"],
+    [/^screen$/i, null, "📡"],
+    [/^share$/i, null, "📡"],
+    [/^reply$/i, null, "↩️"],
+    [/^forward$/i, null, "➡️"],
+    [/^attach$/i, null, "📎"],
+    [/^link$/i, null, "🔗"],
+    [/^new$/i, null, "🆕"],
+    [/^del$/i, null, "🗑️"],
+    [/^delete$/i, null, "🗑️"],
+    [/^rename$/i, null, "✏️"],
+    [/^bold$/i, null, "🅱️"],
+    [/^italic$/i, null, "🔤"],
+    [/^underline$/i, null, "🔡"],
+    [/^emoji$/i, null, "😀"],
+    [/^voice$/i, null, "🎙️"],
+    [/^copilot$/i, null, "🤖"],
+    [/^lock$/i, null, "🔒"],
+    [/^settings$/i, null, "⚙️"],
+    [/^notif$/i, null, "🔔"],
+    [/^minimize$/i, null, "⏬"],
+    [/^maximize$/i, null, "⏫"],
+    [/^snap$/i, null, "🧲"],
+    [/^split$/i, null, "↔️"],
+    [/^sidebar$/i, null, "📐"],
+    [/^terminal$/i, null, "💻"],
+    [/^debug$/i, null, "🐛"],
+    [/^breakpt$/i, null, "🔴"],
+    [/^step$/i, null, "👟"],
+    [/^bookmark$/i, null, "⭐"],
+    [/^history$/i, null, "🕰️"],
+    [/^download$/i, null, "💿"],
+    [/^upload$/i, null, "☁️"],
+    [/^comment$/i, null, "💬"],
+    [/^format$/i, null, "🎨"],
+    [/^insert$/i, null, "➕"],
+    [/^duplicate$/i, null, "🔂"],
+    [/^group$/i, null, "📦"],
+    [/^export$/i, null, "📤"],
+    [/^import$/i, null, "📥"],
+    [/^check.?out$/i, null, "🔓"],
+    [/^check.?in$/i, null, "🔐"],
+    [/^send$/i, null, "📨"],
+    [/^mark read$/i, null, "👁️"],
+    [/^mark unread$/i, null, "📩"],
+    [/^flag$/i, null, "🚩"],
+    [/^calendar$/i, null, "📅"],
+    [/^chat$/i, null, "🗨️"],
+    [/^call$/i, null, "📞"],
+    [/^hang.?up$/i, null, "📵"],
+    [/^accept$/i, null, "🟢"],
+    [/^decline$/i, null, "🔴"],
+    [/^record$/i, null, "⏺️"],
+    [/^hand$/i, null, "✋"],
+    [/^blur$/i, null, "🌫️"],
+    [/^fill$/i, null, "⬇️"],
+    [/^autosum$/i, null, "🧮"],
+    [/^formula$/i, null, "🧮"],
+    [/^navigate$/i, null, "🧭"],
+    [/^home$/i, null, "🏠"],
+    [/^end$/i, null, "🔚"],
+    [/^pgup$|^pg up$|^page.?up$/i, null, "⏫"],
+    [/^pgdn$|^pg dn$|^page.?dn$|^page.?down$/i, null, "⏬"],
+    [/^1 PU$|^9 PU$/i, null, "⏫"],
+    [/^3 PD$|^7 PD$/i, null, "⏬"],
+    [/^win$/i, null, "🪟"],
+    [/^menu$/i, null, "☰"],
+    [/^power$/i, null, "⚡"],
+    [/^play$/i, null, "▶️"],
+    [/^pause$/i, null, "⏸️"],
+    [/^stop$/i, null, "⏹️"],
+    [/^next$/i, null, "⏭️"],
+    [/^prev$/i, null, "⏮️"],
+    [/^vol.?up$/i, null, "🔊"],
+    [/^vol.?dn$|^vol.?down$/i, null, "🔉"],
+    [/^mute$/i, null, "🔇"],
+    [/^bright$/i, null, "☀️"],
+    [/^hover$/i, null, "💡"],
+    [/^selnx$/i, null, "🔦"],
+    [/^stpov$/i, null, "👟"],
+    [/^stpot$/i, null, "⤴️"],
+    [/^gosym$/i, null, "🔣"],
+    [/^bkpt$/i, null, "🔴"],
+    [/^rstr$/i, null, "🔁"],
+    [/^cmnt$/i, null, "💬"],
+    [/^explr$/i, null, "🗂️"],
+    [/^newfl$/i, null, "🆕"],
+    [/^fmt$/i, null, "🎨"],
+    [/^wrap$/i, null, "🔄"],
+    [/^lnup$/i, null, "⬆️"],
+    [/^lndn$/i, null, "⬇️"],
+    [/^cpdn$/i, null, "🔂"],
+    [/^insup$/i, null, "⤴️"],
+    [/^insln$/i, null, "➕"],
+    [/^open$/i, null, "📂"],
+    [/^peek$/i, null, "👁️"],
+    [/^goln$/i, null, "📍"],
+    [/^brkt$/i, null, "🔗"],
+    [/^sett$/i, null, "⚙️"],
+    [/^delln$/i, null, "🗑️"],
+    [/^term$/i, null, "⬛"],
+    [/^selal$/i, null, "🔦"],
+    [/^indnt$/i, null, "➡️"],
+    [/^outdn$/i, null, "⬅️"],
+    [/^toggle$/i, null, "🔀"],
+    [/^copy$/i, null, "📄"],
+    [/^paste$/i, null, "📥"],
+    [/^undo$/i, null, "↩️"],
+    [/^redo$/i, null, "↪️"],
+    [/^snip$/i, null, "📸"],
+    [/^zoom in$/i, null, "🔭"],
+    [/^zoom out$/i, null, "🔬"],
+    [/^close win$/i, null, "💥"],
+    [/^minall$/i, null, "⏬"],
+    [/^cliph$/i, null, "🗂️"],
+    [/^lang$/i, null, "🌐"],
+    [/^tskmg$/i, null, "📊"],
+    [/^tskcy$/i, null, "🧲"],
+    [/^systr$/i, null, "🔽"],
+    [/^qsett$/i, null, "⚙️"],
+    [/^acces$/i, null, "♿"],
+    [/^explorer$/i, null, "📁"],
+    [/^dms$/i, null, "🏛️"],
+    [/^excel$/i, null, "📊"],
+    [/^code$/i, null, "💻"],
+    [/^hand$/i, null, "✋"],
+    [/^hangup$/i, null, "📵"],
+    [/^accept$/i, null, "🟢"],
+    [/^ctrl\+g$/i, null, "📍"],
+    [/^ctrl\+o$/i, null, "📂"],
+    [/^ctrl\+k$/i, null, "🔗"],
+    [/^ctrl\+s$/i, null, "💾"],
+    [/^ctrl\+l$/i, null, "📍"],
+    [/^ctrl\+b$/i, null, "🅱️"],
+    [/^ctrl\+u$/i, null, "🔡"],
+    [/^ctrl\+e$/i, null, "🔍"],
+    [/^ctrl\+p$/i, null, "🖨️"],
+    [/^ctrl\+r$/i, null, "🔃"],
+    [/^ctrl\+d$/i, null, "🔂"],
+    [/^ctrl\+i$/i, null, "ℹ️"],
+    [/^ctrl\+w$/i, null, "❌"],
+    [/^ctrl\+n$/i, null, "🆕"],
+    [/^mb1$/i, null, "👆"],
+    [/^mb2$/i, null, "🤞"],
+    [/^mb3$/i, null, "🖖"],
+    [/^mb4$/i, null, "👈"],
+    [/^mb5$/i, null, "👉"],
+    [/^sel all$/i, null, "🔲"],
+    [/^alt\+tab$/i, null, "🔀"],
+    [/^sidebar$/i, null, "📐"],
+    [/^probs$/i, null, "⚠️"],
+    [/^ext$/i, null, "🧩"],
+    [/^git$/i, null, "🌿"],
+    [/^srcctl$/i, null, "🌿"],
+    [/^nxtpr$/i, null, "🚨"],
+    [/^prvpr$/i, null, "🚨"],
+    [/^defn$/i, null, "🎯"],
+    [/^refs$/i, null, "🔎"],
+    [/^impl$/i, null, "🏗️"],
+    [/^type$/i, null, "🏷️"],
+    [/^select$/i, null, "🔲"],
+    [/^srch$/i, null, "🔍"],
+    [/^repl$/i, null, "🔁"],
+    [/^nxtch$/i, null, "⏭️"],
+    [/^prvch$/i, null, "⏮️"],
+    [/^inbox$/i, null, "📬"],
+    [/^newterm$/i, null, "⬛"],
+    [/^systray$/i, null, "🔽"],
+  ];
+
+  function keycapEmoji(label, modifiers, purpose) {
+    const labelClean = clean(label);
+    const modsClean = clean(modifiers);
+    const combined = `${labelClean} ${purpose}`.toLowerCase();
+    if (/base typing key for the main work layout/i.test(purpose)) return "";
+    for (const [labelPattern, modPattern, emoji] of KEYCAP_EMOJI_RULES) {
+      if (labelPattern.test(labelClean)) {
+        if (!modPattern || modPattern.test(modsClean)) return emoji;
+      }
+    }
+    if (!modsClean) return "";
+    if (/copy/i.test(combined)) return "📄";
+    if (/paste/i.test(combined)) return "📥";
+    if (/cut\b/i.test(combined)) return "✂️";
+    if (/undo/i.test(combined)) return "↩️";
+    if (/redo/i.test(combined)) return "↪️";
+    if (/save/i.test(combined)) return "💾";
+    if (/search/i.test(combined)) return "🔍";
+    if (/find/i.test(combined)) return "🔎";
+    if (/close.*tab|close.*window/i.test(combined)) return "❌";
+    if (/close/i.test(combined)) return "❌";
+    if (/select all/i.test(combined)) return "🔲";
+    if (/screenshot|snip/i.test(combined)) return "📸";
+    if (/task view/i.test(combined)) return "🪟";
+    if (/desktop/i.test(combined)) return "🏠";
+    if (/next tab/i.test(combined)) return "⏭️";
+    if (/prev.*tab/i.test(combined)) return "⏮️";
+    if (/refresh|reload/i.test(combined)) return "🔃";
+    if (/zoom.*in/i.test(combined)) return "🔭";
+    if (/zoom.*out/i.test(combined)) return "🔬";
+    if (/zoom/i.test(combined)) return "🔭";
+    if (/switch.*app|alt.*tab/i.test(combined)) return "🔀";
+    if (/command.*palette|powertoys/i.test(combined)) return "🪄";
+    if (/delete.*line/i.test(combined)) return "🗑️";
+    if (/delete|word del/i.test(combined)) return "🗑️";
+    if (/rename/i.test(combined)) return "✏️";
+    if (/clipboard/i.test(combined)) return "🗂️";
+    if (/print/i.test(combined)) return "🖨️";
+    if (/mute/i.test(combined)) return "🔇";
+    if (/camera/i.test(combined)) return "📷";
+    if (/screen.*share/i.test(combined)) return "📡";
+    if (/emoji/i.test(combined)) return "😀";
+    if (/voice/i.test(combined)) return "🎙️";
+    if (/copilot/i.test(combined)) return "🤖";
+    if (/lock.*pc/i.test(combined)) return "🔒";
+    if (/settings/i.test(combined)) return "⚙️";
+    if (/notification/i.test(combined)) return "🔔";
+    if (/minimize.*all/i.test(combined)) return "⏬";
+    if (/minimize/i.test(combined)) return "⏬";
+    if (/maximize/i.test(combined)) return "⏫";
+    if (/snap/i.test(combined)) return "🧲";
+    if (/move.*monitor/i.test(combined)) return "🖥️";
+    if (/new.*virtual/i.test(combined)) return "🆕";
+    if (/switch.*desktop/i.test(combined)) return "🔀";
+    if (/file.*explorer/i.test(combined)) return "📁";
+    if (/run.*dialog/i.test(combined)) return "▶️";
+    if (/power.*user/i.test(combined)) return "⚡";
+    if (/switch.*lang|switch.*input/i.test(combined)) return "🌐";
+    if (/toggle.*sidebar/i.test(combined)) return "📐";
+    if (/bold/i.test(combined)) return "🅱️";
+    if (/italic/i.test(combined)) return "🔤";
+    if (/underline/i.test(combined)) return "🔡";
+    if (/format/i.test(combined)) return "🎨";
+    if (/toggle.*comment/i.test(combined)) return "💬";
+    if (/comment/i.test(combined)) return "💬";
+    if (/link|hyperlink/i.test(combined)) return "🔗";
+    if (/reply/i.test(combined)) return "↩️";
+    if (/forward/i.test(combined)) return "➡️";
+    if (/attach/i.test(combined)) return "📎";
+    if (/send/i.test(combined)) return "📨";
+    if (/word.*move|word.*jump/i.test(combined)) return "⏩";
+    if (/navigat/i.test(combined)) return "🧭";
+    if (/page.*break/i.test(combined)) return "📃";
+    if (/new.*tab/i.test(combined)) return "➕";
+    if (/new.*window/i.test(combined)) return "🪟";
+    if (/new.*chat/i.test(combined)) return "🗨️";
+    if (/new.*file|new.*doc|new.*page/i.test(combined)) return "🆕";
+    if (/bookmark/i.test(combined)) return "⭐";
+    if (/favorite/i.test(combined)) return "💛";
+    if (/history/i.test(combined)) return "🕰️";
+    if (/download/i.test(combined)) return "💿";
+    if (/upload/i.test(combined)) return "☁️";
+    if (/app.*taskbar|launcher|pinned app/i.test(combined)) return "🧲";
+    if (/toggle.*output|usb.*ble/i.test(combined)) return "🔌";
+    if (/step.*over/i.test(combined)) return "👟";
+    if (/step.*into/i.test(combined)) return "⤵️";
+    if (/step.*out/i.test(combined)) return "⤴️";
+    if (/breakpoint/i.test(combined)) return "🔴";
+    if (/restart.*debug/i.test(combined)) return "🔁";
+    if (/debug/i.test(combined)) return "🐛";
+    if (/hover.*info/i.test(combined)) return "💡";
+    if (/select.*next|select.*occur/i.test(combined)) return "🔦";
+    if (/go.*symbol/i.test(combined)) return "🔣";
+    if (/explorer.*panel/i.test(combined)) return "🗂️";
+    if (/word.*wrap/i.test(combined)) return "🔄";
+    if (/move.*line/i.test(combined)) return "↕️";
+    if (/copy.*line/i.test(combined)) return "🔂";
+    if (/insert.*line/i.test(combined)) return "➕";
+    if (/split.*editor/i.test(combined)) return "↔️";
+    if (/quick.*open/i.test(combined)) return "⚡";
+    if (/peek.*def/i.test(combined)) return "👁️";
+    if (/go.*line/i.test(combined)) return "📍";
+    if (/jump.*bracket/i.test(combined)) return "🔗";
+    if (/toggle.*terminal/i.test(combined)) return "⬛";
+    if (/address.*bar/i.test(combined)) return "📍";
+    if (/select.*line|select all/i.test(combined)) return "🔲";
+    if (/duplicate/i.test(combined)) return "🔂";
+    if (/object.*info/i.test(combined)) return "ℹ️";
+    if (/raise.*hand/i.test(combined)) return "✋";
+    if (/end.*call|hang.*up/i.test(combined)) return "📵";
+    if (/accept.*call/i.test(combined)) return "🟢";
+    if (/system.*tray|focus.*tray/i.test(combined)) return "🔽";
+    if (/accessibility/i.test(combined)) return "♿";
+    if (/quick.*settings/i.test(combined)) return "⚙️";
+    if (/input.*language/i.test(combined)) return "🌐";
+    if (/cycle.*taskbar/i.test(combined)) return "🧲";
+    if (/window.*menu/i.test(combined)) return "☰";
+    if (/refresh|run/i.test(combined)) return "🔃";
+    if (/quick.*switcher/i.test(combined)) return "⚡";
+    if (/insert.*link/i.test(combined)) return "🔗";
+    if (/open.*file/i.test(combined)) return "📂";
+    if (/go.*vault|go.*page/i.test(combined)) return "📍";
+    if (/programming.*shortcut|editing.*shortcut/i.test(combined)) return "⌨️";
+    if (/control-modified/i.test(combined)) return "⌨️";
+    if (/navigation.*key.*cursor/i.test(combined)) return "🧭";
+    if (/macro.*key/i.test(combined)) return "🔧";
+    if (/rpg.*game.*action|game.*confirm/i.test(combined)) return "🎮";
+    if (/rpg.*game.*movement|game.*navigation/i.test(combined)) return "🕹️";
+    if (/mouse.*qol/i.test(combined)) return "🖱️";
+    if (/function.*key.*access/i.test(combined)) return "🎹";
+    if (/base.*typing.*key/i.test(combined)) return "";
+    return "";
+  }
+
+  function classifyKey(row) {
+    const behavior = clean(row.behavior);
+    const behaviorLower = behavior.toLowerCase();
+    const label = clean(row.visual_label);
+    const labelLower = label.toLowerCase();
+    const param = clean(row.parameter);
+    const modifiers = clean(row.modifiers);
+    const combined = `${label} ${param} ${behavior}`.toLowerCase();
+
+    const coachMap = {
+      coach_l1_hold: { kind: "nav", primary: "Nav", badge: "🧭", secondary: "Hold → L1" },
+      coach_l2_hold: { kind: "mouse-hold", primary: "Mouse", badge: "🖱️", secondary: "Hold → L2" },
+      coach_l3_hold: { kind: "window", primary: "Window", badge: "🪟", secondary: "Hold → L3" },
+      coach_l4_hold: { kind: "system-layer", primary: "System", badge: "🔧", secondary: "Hold → L4" },
+      coach_mouse_lock: { kind: "lock", primary: "MLock", badge: "🔒", secondary: "Lock mouse L2" },
+      coach_game_lock: { kind: "game", primary: "Game", badge: "🎮", secondary: "Lock → L7" },
+      coach_base: { kind: "home", primary: "Base", badge: "🏠", secondary: "Return L0" },
+      coach_travel_toggle: { kind: "speed", primary: "Speed", badge: "⚡", secondary: "Toggle L8" },
+      coach_travel_off: { kind: "speed-off", primary: "Prec", badge: "🎯", secondary: "Exit speed" },
+      coach_recover_base: { kind: "home", primary: "Base", badge: "🏠", secondary: "Recover L0" },
+      coach_scroll_toggle: { kind: "scroll", primary: "Scroll", badge: "📜", secondary: "Toggle L6" },
+      coach_l8_hold: { kind: "speed-hold", primary: "Speed", badge: "⚡", secondary: "Hold L8" }
+    };
+    if (coachMap[behaviorLower]) return { ...coachMap[behaviorLower] };
+
+    if (/reset|bootloader/i.test(behavior) || /reset|bootloader/i.test(label)) {
+      return { kind: "danger", primary: label || "Reset", badge: "⚠️", secondary: behavior };
+    }
+    if (/studio/i.test(behavior)) {
+      return { kind: "studio", primary: "Studio", badge: "🔓", secondary: "Unlock" };
+    }
+    if (/transparent|none/i.test(behavior)) {
+      return { kind: "transparent", primary: "·", badge: "", secondary: "" };
+    }
+    if (/mouse key press/i.test(behavior)) {
+      const btn = label.replace(/mouse key press/i, "").trim() || param.replace(/select:/i, "") || "Btn";
+      const mbEmojis = { MB1: "👆", MB2: "🤞", MB3: "🖖", MB4: "👈", MB5: "👉" };
+      const mbEmoji = mbEmojis[btn.toUpperCase()] || "🖱️";
+      return { kind: "mouse-btn", primary: btn, badge: mbEmoji, secondary: shortHint(param, 14) };
+    }
+    if (/bluetooth/i.test(behavior)) {
+      return { kind: "bluetooth", primary: label || "BT", badge: "📶", secondary: shortHint(param, 16) };
+    }
+    if (/output/i.test(behavior)) {
+      return { kind: "output", primary: label || "Out", badge: "🔌", secondary: shortHint(param, 16) };
+    }
+    if (/toggle layer/i.test(behavior)) {
+      const layer = layerParam(row);
+      if (layer === "6") return { kind: "scroll", primary: "Scroll", badge: "📜", secondary: "Toggle L6" };
+      if (layer === "8") return { kind: "speed", primary: "Speed", badge: "⚡", secondary: "Toggle L8" };
+      return { kind: "toggle", primary: label || `T${layer}`, badge: "🔀", secondary: `Toggle L${layer}` };
+    }
+    if (/momentary layer/i.test(behavior)) {
+      const layer = layerParam(row);
+      if (layer === "8") return { kind: "speed-hold", primary: "Speed", badge: "⚡", secondary: "Hold L8" };
+      return { kind: "momentary", primary: label || `M${layer}`, badge: "👆", secondary: `Hold L${layer}` };
+    }
+    if (/to layer/i.test(behavior)) {
+      const layer = layerParam(row);
+      if (layer === "0") return { kind: "home", primary: "Exit", badge: "🏠", secondary: "To L0" };
+      if (layer === "7") return { kind: "game", primary: "Game", badge: "🎮", secondary: "To L7" };
+      return { kind: "jump", primary: label || `L${layer}`, badge: "➡️", secondary: `To L${layer}` };
+    }
+
+    if (/leftarrow|←/i.test(combined)) return { kind: "arrow", primary: "←", badge: "", secondary: shortHint(modifiers, 12) };
+    if (/rightarrow|→/i.test(combined)) return { kind: "arrow", primary: "→", badge: "", secondary: shortHint(modifiers, 12) };
+    if (/uparrow|↑/i.test(combined)) return { kind: "arrow", primary: "↑", badge: "", secondary: shortHint(modifiers, 12) };
+    if (/downarrow|↓/i.test(combined)) return { kind: "arrow", primary: "↓", badge: "", secondary: shortHint(modifiers, 12) };
+
+    if (/key press/i.test(behavior)) {
+      const primary = label || param.replace(/^Keyboard\s+/i, "").split(" and ")[0] || "?";
+      if (/^f\d{1,2}$/i.test(primary)) {
+        return { kind: "function", primary: primary.toUpperCase(), badge: "🎹", secondary: shortHint(modifiers, 12) };
+      }
+      if (/shift|ctrl|control|alt|gui|win/i.test(`${primary} ${label}`)) {
+        return { kind: "modifier", primary: label || primary, badge: "⇧", secondary: shortHint(modifiers, 12) };
+      }
+      if (/space|spacebar|␣/i.test(`${primary} ${label}`)) {
+        return { kind: "space", primary: "␣", badge: "", secondary: shortHint(modifiers, 12) };
+      }
+      if (/enter|return|ret/i.test(`${primary} ${label}`)) {
+        return { kind: "enter", primary: "↵", badge: "", secondary: shortHint(modifiers, 12) };
+      }
+      if (/delete|bksp|backspace/i.test(`${primary} ${label}`)) {
+        const delEmoji = /base typing/i.test(clean(row.purpose)) ? "" : "🗑️";
+        return { kind: "edit", primary: label || "Del", badge: delEmoji, secondary: shortHint(modifiers, 12) };
+      }
+      if (/tab/i.test(`${primary} ${label}`)) {
+        const tabEmoji = /base typing/i.test(clean(row.purpose)) ? "" : "↔️";
+        return { kind: "edit", primary: "Tab", badge: tabEmoji, secondary: shortHint(modifiers, 12) };
+      }
+      if (/escape|esc/i.test(`${primary} ${label}`)) {
+        const escEmoji = /base typing/i.test(clean(row.purpose)) ? "" : "🚫";
+        return { kind: "edit", primary: "Esc", badge: escEmoji, secondary: shortHint(modifiers, 12) };
+      }
+      if (/^[a-z]$/i.test(primary) && modifiers) {
+        const singleMatch = matchSingleLetterAction(primary, modifiers);
+        if (singleMatch) {
+          return { kind: "letter", primary: singleMatch.action, badge: singleMatch.emoji, secondary: shortHint(modifiers, 14) };
+        }
+      }
+      const keyEmoji = keycapEmoji(primary, modifiers, clean(row.purpose));
+      if (keyEmoji) {
+        return { kind: "letter", primary, badge: keyEmoji, secondary: shortHint(modifiers, 14) };
+      }
+      return {
+        kind: "letter",
+        primary,
+        badge: "",
+        secondary: shortHint(modifiers, 14)
+      };
+    }
+
+    return { kind: "action", primary: label || "?", badge: "···", secondary: shortHint(behavior, 16) };
+  }
+
+  function behaviorKind(row) {
+    return classifyKey(row).kind;
+  }
+
+  function behaviorCaption(row) {
+    return classifyKey(row).secondary || clean(row.behavior) || clean(row.visual_label);
+  }
+
+  function visualFor(row) {
+    return classifyKey(row);
+  }
+
+  function rowSearchText(row) {
+    return [
+      row.layer,
+      row.layer_role,
+      row.visual_label,
+      row.behavior,
+      row.parameter,
+      row.modifiers,
+      row.purpose,
+      row.usage_notes
+    ].map(clean).join(" ").toLowerCase();
+  }
+
+  function isImportant(row) {
+    return !/transparent|none/i.test(row.behavior)
+      && (/layer|mouse|bluetooth|output|reset|bootloader|studio/i.test(`${row.behavior} ${row.visual_label} ${row.purpose}`)
+        || row.modifiers
+        || ["0", "1", "2", "3", "4", "7", "8"].includes(row.layer));
+  }
+
+  function groupRows() {
+    state.rowsByLayer.clear();
+    for (const layer of LAYERS) state.rowsByLayer.set(layer, []);
+    for (const row of state.rows) {
+      if (!state.rowsByLayer.has(row.layer)) state.rowsByLayer.set(row.layer, []);
+      state.rowsByLayer.get(row.layer).push(row);
+    }
+  }
+
+  function layerRole(layer) {
+    const rows = state.rowsByLayer.get(layer) || [];
+    return clean(rows[0]?.layer_role || state.layoutSpec.layers?.[layer] || `Layer ${layer}`);
+  }
+
+  function renderLayerTabs() {
+    els.layerTabs.innerHTML = "";
+    for (const layer of LAYERS) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "layer-tab";
+      button.dataset.layer = layer;
+      button.title = layerRole(layer);
+      const tabMeta = LAYER_TAB_META[layer] || { glyph: layer, title: layerRole(layer) };
+      button.innerHTML = `<strong class="layer-tab-num">${layer}</strong><span class="layer-tab-glyph">${escapeHtml(tabMeta.glyph)}</span><span class="layer-tab-role">${escapeHtml(shortLayerRole(layerRole(layer)))}</span>`;
+      button.addEventListener("click", () => {
+        state.displayedLayer = layer;
+        render();
+      });
+      els.layerTabs.appendChild(button);
+    }
+  }
+
+  function shortLayerRole(role) {
+    return clean(role).replace(" and ", " / ").replace("Window, app, language, mouse/game/travel control", "Window");
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function keyId(row) {
+    return `${row.layer}:${row.x}:${row.y}`;
+  }
+
+  function renderKeyboard() {
+    els.keyboardMap.innerHTML = "";
+    const rows = state.rowsByLayer.get(state.displayedLayer) || [];
+    const rowMap = new Map(rows.map((row) => [`${row.x}:${row.y}`, row]));
+    els.keyboardMap.appendChild(renderHand("left", X_LEFT, rowMap));
+    els.keyboardMap.appendChild(renderHand("right", X_RIGHT, rowMap));
+    applyFilters();
+  }
+
+  function renderHand(side, xs, rowMap) {
+    const hand = document.createElement("div");
+    hand.className = `hand ${side}`;
+    for (let y = 0; y <= 5; y++) {
+      for (const x of xs) {
+        const row = rowMap.get(`${x}:${y}`);
+        if (!row) {
+          const spacer = document.createElement("div");
+          spacer.className = "key-spacer";
+          hand.appendChild(spacer);
+          continue;
+        }
+        const visual = visualFor(row);
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `keycap kind-${visual.kind}`;
+        if (visual.kind === "danger") button.classList.add("warning");
+        if (visual.kind === "transparent") button.classList.add("transparent");
+        button.dataset.search = rowSearchText(row);
+        button.dataset.important = String(isImportant(row));
+        button.dataset.keyId = keyId(row);
+        button.title = `${clean(row.visual_label)} — ${clean(row.behavior)} — ${clean(row.parameter)}`;
+        const badgeHtml = visual.badge
+          ? `<span class="key-badge" aria-hidden="true">${escapeHtml(visual.badge)}</span>`
+          : "";
+        const secondaryHtml = visual.secondary
+          ? `<div class="key-secondary">${escapeHtml(visual.secondary)}</div>`
+          : "";
+        button.innerHTML = [
+          badgeHtml,
+          `<div class="key-primary">${escapeHtml(visual.primary)}</div>`,
+          secondaryHtml
+        ].join("");
+        button.addEventListener("click", () => onUserSelectKey(row));
+        hand.appendChild(button);
+      }
+    }
+    return hand;
+  }
+
+  function selectKey(row) {
+    state.selectedKey = row;
+    const visual = visualFor(row);
+    els.selectedIcon.className = `behavior-icon kind-${visual.kind}`;
+    els.selectedIcon.textContent = visual.badge || visual.primary.slice(0, 3);
+    els.selectedTitle.textContent = clean(row.visual_label) || "Unnamed key";
+    els.selectedSubtitle.textContent = `Layer ${row.layer} - x${row.x} y${row.y}`;
+    els.selectedBehavior.textContent = clean(row.behavior) || "-";
+    els.selectedOutput.textContent = clean(row.parameter) || "-";
+    els.selectedModifiers.textContent = clean(row.modifiers) || "-";
+    els.selectedPurpose.textContent = clean(row.purpose) || "-";
+    els.selectedNotes.textContent = clean(row.usage_notes) || "-";
+    document.querySelectorAll(".keycap.selected").forEach((el) => el.classList.remove("selected"));
+    document.querySelector(`[data-key-id="${CSS.escape(keyId(row))}"]`)?.classList.add("selected");
+  }
+
+  function renderApps() {
+    els.appList.innerHTML = "";
+    for (const app of state.apps) {
+      const chip = document.createElement("span");
+      chip.className = "app-chip";
+      chip.title = app.notes || app.id;
+      chip.textContent = app.aliases?.[0] || app.id;
+      els.appList.appendChild(chip);
+    }
+  }
+
+  function applyFilters() {
+    const query = state.query.toLowerCase();
+    document.querySelectorAll(".keycap").forEach((el) => {
+      const matchesSearch = !query || el.dataset.search.includes(query);
+      const matchesFocus = !state.focusImportant || el.dataset.important === "true";
+      el.classList.toggle("filtered-out", !(matchesSearch && matchesFocus));
+    });
+  }
+
+  function renderStatus() {
+    els.activeLayer.textContent = state.liveLayer || state.displayedLayer || "0";
+    try { updateRailStrip(); } catch {}
+    document.querySelectorAll(".layer-tab").forEach((tab) => {
+      const layer = tab.dataset.layer;
+      tab.classList.toggle("active", layer === state.displayedLayer);
+      tab.classList.toggle("live", layer === state.liveLayer && layer !== state.displayedLayer);
+    });
+    document.querySelectorAll(".keycap.beacon-live-key, .keycap.beacon-source-key").forEach((el) => {
+      el.classList.remove("beacon-live-key", "beacon-source-key");
+    });
+    const liveKey = state.lastState?.lastKey;
+    if (liveKey?.layer && liveKey.x !== "" && liveKey.y !== "") {
+      const selector = `[data-key-id="${CSS.escape(`${liveKey.layer}:${liveKey.x}:${liveKey.y}`)}"]`;
+      const keyEl = document.querySelector(selector);
+      if (keyEl) {
+        const onDisplayedLayer = String(liveKey.layer) === state.displayedLayer;
+        keyEl.classList.add(onDisplayedLayer ? "beacon-live-key" : "beacon-source-key");
+      }
+    }
+  }
+
+  function renderEvents() {
+    els.eventList.innerHTML = "";
+    for (const event of state.events.slice(0, MAX_EVENTS)) {
+      const li = document.createElement("li");
+      const when = event.updatedAt ? new Date(event.updatedAt) : new Date();
+      li.innerHTML = `<time>${escapeHtml(when.toLocaleTimeString())}</time>${escapeHtml(event.lastAction || "State update")}`;
+      els.eventList.appendChild(li);
+    }
+  }
+
+  function beaconAgeMs(live, field) {
+    if (!live) return Number.POSITIVE_INFINITY;
+    const ts = live[field] || (field === "beaconHeartbeatAt" ? live.updatedAt : "");
+    if (!ts) return Number.POSITIVE_INFINITY;
+    const parsed = Date.parse(ts);
+    if (Number.isNaN(parsed)) return Number.POSITIVE_INFINITY;
+    return Math.max(0, Date.now() - parsed);
+  }
+
+  function beaconStatus(live) {
+    const restartHint = "Run scripts\\windows\\start_charybdis_coach.ps1 or restart_beacon_listener.ps1.";
+    if (!live) {
+      return {
+        level: "error",
+        alive: false,
+        stale: true,
+        ageSec: null,
+        title: "Beacon not detected",
+        detail: `No state file from the beacon listener. ${restartHint}`,
+        transportLabel: "No beacon",
+        source: ""
+      };
+    }
+
+    const hasHeartbeat = live.beaconHeartbeatAt != null && live.beaconHeartbeatAt !== "";
+    const hasBeaconMeta = live.beaconAlive === true || Boolean(live.beaconSource) || hasHeartbeat;
+    const heartbeatAgeMs = beaconAgeMs(live, "beaconHeartbeatAt");
+    const updateAgeMs = beaconAgeMs(live, "updatedAt");
+    const ageMs = hasHeartbeat ? heartbeatAgeMs : updateAgeMs;
+    const ageSec = Number.isFinite(ageMs) ? Math.max(0, Math.round(ageMs / 1000)) : null;
+    const explicitDead = live.beaconAlive === false;
+    const stale = explicitDead || ageMs > BEACON_STALE_MS;
+    const source = clean(live.beaconSource) || (hasBeaconMeta ? "listener" : "");
+
+    if (stale) {
+      const level = !hasBeaconMeta || explicitDead || (ageSec != null && ageSec > BEACON_STALE_MS * 2)
+        ? "error"
+        : "warn";
+      const title = explicitDead ? "Beacon listener stopped" : "Beacon not responding";
+      let detail = `Layer thumb sync is offline`;
+      if (ageSec != null) detail += ` (${ageSec}s since last signal)`;
+      if (source) detail += `. Last source: ${source}`;
+      if (!hasBeaconMeta) detail += ". State file has no beacon heartbeat — listener may be dead or an old build.";
+      detail += `. ${restartHint}`;
+      return {
+        level,
+        alive: false,
+        stale: true,
+        ageSec,
+        title,
+        detail,
+        transportLabel: ageSec != null ? `No beacon (${ageSec}s)` : "No beacon",
+        source
+      };
+    }
+
+    const transportBase = clean(live.transport) || "USB";
+    const transportLabel = hasBeaconMeta ? `Beacon live · ${transportBase}` : transportBase;
+    return {
+      level: "ok",
+      alive: true,
+      stale: false,
+      ageSec,
+      title: "Beacon connected",
+      detail: source
+        ? `Layer sync active (${source}, PID ${live.beaconPid ?? "?"})`
+        : "Layer sync active",
+      transportLabel,
+      source
+    };
+  }
+
+  function beaconListenerStale(live) {
+    return beaconStatus(live).stale;
+  }
+
+  function renderBeaconBanner(live) {
+    if (!els.beaconBanner) return;
+    const status = beaconStatus(live);
+    const show = status.stale;
+    els.beaconBanner.hidden = !show;
+    els.beaconBanner.classList.toggle("beacon-banner--hidden", !show);
+    els.beaconBanner.classList.remove("beacon-banner--ok", "beacon-banner--warn", "beacon-banner--error");
+    if (show) {
+      els.beaconBanner.classList.add(`beacon-banner--${status.level}`);
+    }
+    if (els.beaconBannerTitle) els.beaconBannerTitle.textContent = status.title;
+    if (els.beaconBannerDetail) els.beaconBannerDetail.textContent = status.detail;
+  }
+
+  function renderNow() {
+    const live = state.lastState;
+    const beacon = beaconStatus(live);
+    const liveObj = live || {};
+    els.activeApp.textContent = clean(liveObj.activeApp) || "Unknown";
+    els.lastAction.textContent = clean(liveObj.lastAction) || "Ready";
+    const ageSec = liveObj.updatedAt
+      ? Math.max(0, Math.round((Date.now() - Date.parse(liveObj.updatedAt)) / 1000))
+      : null;
+    els.transport.textContent = beacon.transportLabel;
+    els.heldLayers.textContent = formatList(liveObj.heldLayers);
+    els.lockedLayer.textContent = clean(liveObj.lockedLayer) || "-";
+    els.toggledLayers.textContent = formatList(liveObj.toggledLayers);
+    els.stateAge.textContent = ageSec != null ? `${ageSec}s` : "-";
+
+    if (els.transport) {
+      els.transport.title = beacon.stale
+        ? beacon.detail
+        : (clean(state.layoutSpec?.host_keyboard?.primary)
+          ? "Beacon listener updating layer state; coach matches physical keys (event.code) for Norwegian Windows"
+          : beacon.detail);
+      els.transport.classList.toggle("stale-sync", beacon.stale);
+      els.transport.classList.toggle("beacon-down", beacon.stale);
+      els.transport.classList.toggle("beacon-live", beacon.alive);
+    }
+    renderBeaconBanner(live);
+  }
+
+  function formatList(value) {
+    if (Array.isArray(value) && value.length) return value.join(", ");
+    return "-";
+  }
+
+  function normalizeLayerList(value) {
+    if (!Array.isArray(value)) return [];
+    return value.map((item) => String(item));
+  }
+
+  function deriveLiveLayer(live) {
+    // Match beacon listener priority: speed overlay > locked > held > toggled > base.
+    if (!live) return state.liveLayer;
+    const toggled = normalizeLayerList(live.toggledLayers);
+    const held = normalizeLayerList(live.heldLayers);
+    if (toggled.includes("8")) return "8";
+    if (live.lockedLayer) return String(live.lockedLayer);
+    if (held.length) return held[held.length - 1];
+    if (toggled.length) return toggled[toggled.length - 1];
+    return "0";
+  }
+
+  function pushEvent(live) {
+    if (!live?.lastAction) return;
+    const last = state.events[0];
+    if (last && last.lastAction === live.lastAction && last.updatedAt === live.updatedAt) return;
+    state.events.unshift({ lastAction: live.lastAction, updatedAt: live.updatedAt });
+    state.events = state.events.slice(0, MAX_EVENTS);
+  }
+
+  async function pollState() {
+    const live = await loadJson("../charybdis-tools/runtime/charybdis_state.json", null);
+    state.lastState = live;
+    if (live) {
+      const newLiveLayer = deriveLiveLayer(live);
+
+      const held = normalizeLayerList(live.heldLayers);
+      const locked = live.lockedLayer ? String(live.lockedLayer) : "";
+      const toggled = normalizeLayerList(live.toggledLayers);
+      // Always show the layer the keyboard is actually on; lastKey highlights the thumb source key.
+      const preferredDisplay = newLiveLayer;
+      const layerChanged = newLiveLayer !== state.liveLayer;
+      const displayChanged = preferredDisplay !== state.displayedLayer;
+
+      if (layerChanged || displayChanged) {
+        state.liveLayer = newLiveLayer;
+        state.displayedLayer = preferredDisplay;
+        render();
+      } else {
+        state.liveLayer = newLiveLayer;
+        renderNow();
+        renderStatus();
+      }
+
+      pushEvent(live);
+      renderEvents();
+    }
+    renderNow();
+  }
+
+  function render() {
+    renderLayerTabs();
+    renderKeyboard();
+    renderStatus();
+    if (state.selectedKey && state.selectedKey.layer === state.displayedLayer) {
+      selectKey(state.selectedKey);
+    } else {
+      const first = (state.rowsByLayer.get(state.displayedLayer) || []).find((row) => behaviorKind(row) !== "transparent");
+      if (first) selectKey(first);
+    }
+  }
+
+  // ----- Workflow guide -----
+  const workflowState = { index: null, apps: new Map(), activeApp: null, query: "" };
+
+  async function loadWorkflowIndex() {
+    workflowState.index = await loadJson("./workflows/index.json", { apps: [] });
+    if (!els.workflowAppSelect) return;
+    els.workflowAppSelect.innerHTML = '<option value="">Select an app...</option>';
+    for (const app of (workflowState.index.apps || [])) {
+      const opt = document.createElement("option");
+      opt.value = app.id;
+      opt.textContent = app.name;
+      els.workflowAppSelect.appendChild(opt);
+    }
+  }
+
+  async function loadWorkflowApp(appId) {
+    if (!appId) { workflowState.activeApp = null; renderWorkflow(); return; }
+    if (!workflowState.apps.has(appId)) {
+      const entry = (workflowState.index.apps || []).find((a) => a.id === appId);
+      if (!entry) return;
+      const data = await loadJson(`./workflows/${entry.file}`, null);
+      if (data) workflowState.apps.set(appId, data);
+    }
+    workflowState.activeApp = workflowState.apps.get(appId) || null;
+    renderWorkflow();
+  }
+
+  const ACTION_EMOJI_MAP = [
+    [/\bcopy\b/i, "📄"],
+    [/\bpaste\b/i, "📥"],
+    [/\bcut\b/i, "✂️"],
+    [/\bundo\b/i, "↩️"],
+    [/\bredo\b/i, "↪️"],
+    [/\bsave\b/i, "💾"],
+    [/\bprint\b/i, "🖨️"],
+    [/\bsearch\b|quick search/i, "🔍"],
+    [/\bfind\b/i, "🔎"],
+    [/\breplace\b/i, "🔁"],
+    [/\bdelete\b|clear cell/i, "🗑️"],
+    [/\brename\b/i, "✏️"],
+    [/\bnew tab\b/i, "➕"],
+    [/\bclose tab\b|close editor\b|close pane/i, "❌"],
+    [/\bnext tab\b|switch.*tab/i, "⏭️"],
+    [/\bprevious tab\b/i, "⏮️"],
+    [/\breopen closed tab\b|restore closed/i, "♻️"],
+    [/\bnew window\b/i, "🪟"],
+    [/\bnew file\b|new document\b|new page\b|new item/i, "🆕"],
+    [/\bnew folder\b/i, "📁"],
+    [/\bnew chat\b|new message/i, "🗨️"],
+    [/\bnew slide\b/i, "🖼️"],
+    [/\bopen file\b|open document\b|open selected/i, "📂"],
+    [/\brefresh\b|reload/i, "🔃"],
+    [/\bbookmark\b/i, "⭐"],
+    [/\bfavorites\b/i, "💛"],
+    [/\bhistory\b/i, "🕰️"],
+    [/\bdownload\b/i, "💿"],
+    [/\bzoom in\b/i, "🔭"],
+    [/\bzoom out\b/i, "🔬"],
+    [/\breset zoom\b|zoom 100/i, "🔭"],
+    [/\bfullscreen\b/i, "🔲"],
+    [/\bbold\b/i, "🅱️"],
+    [/\bitalic\b/i, "🔤"],
+    [/\bunderline\b/i, "🔡"],
+    [/\bstrikethrough\b/i, "✖️"],
+    [/\bformat\b/i, "🎨"],
+    [/\bcomment\b/i, "💬"],
+    [/\bsend message\b|^send\b|send \(/i, "📨"],
+    [/\breply\b/i, "↩️"],
+    [/\bforward\b(?!.*pane)/i, "➡️"],
+    [/\bback\b(?!ground)|go back|navigate back/i, "⬅️"],
+    [/\battach\b/i, "📎"],
+    [/\bupload\b/i, "☁️"],
+    [/\binsert link\b|hyperlink\b/i, "🔗"],
+    [/\binsert.*date\b/i, "📅"],
+    [/\binsert.*time\b/i, "🕐"],
+    [/\bemoji\b/i, "😀"],
+    [/\bclipboard history\b/i, "🗂️"],
+    [/\bscreenshot\b|snip\b/i, "📸"],
+    [/\block pc\b/i, "🔒"],
+    [/\bvoice typing\b/i, "🎙️"],
+    [/\bcopilot\b/i, "🤖"],
+    [/\btask manager\b/i, "📊"],
+    [/\bsettings\b|settings menu/i, "⚙️"],
+    [/\bnotification\b/i, "🔔"],
+    [/\bmute\b|toggle mute/i, "🔇"],
+    [/\bcamera\b|toggle camera/i, "📷"],
+    [/\bscreen share\b/i, "📡"],
+    [/\braise.*hand|lower.*hand/i, "✋"],
+    [/\bhang up\b|end call\b/i, "📵"],
+    [/\baccept call\b/i, "🟢"],
+    [/\bdecline call\b/i, "🔴"],
+    [/\brecording\b|start recording/i, "⏺️"],
+    [/\bstart.*debug\b|continue debug/i, "▶️"],
+    [/\bstop debug\b/i, "⏹️"],
+    [/\bbreakpoint\b/i, "🔴"],
+    [/\bstep over\b/i, "👟"],
+    [/\bstep into\b/i, "⤵️"],
+    [/\bstep out\b/i, "⤴️"],
+    [/\brestart debug\b/i, "🔁"],
+    [/\bcommand palette\b/i, "🪄"],
+    [/\bquick open\b|quick switcher/i, "⚡"],
+    [/\btoggle terminal\b/i, "⬛"],
+    [/\bnew terminal\b/i, "⬛"],
+    [/\btoggle sidebar\b/i, "📐"],
+    [/\bsplit\b.*editor|split pane/i, "↔️"],
+    [/\bgo to definition\b/i, "🎯"],
+    [/\bpeek definition\b/i, "👁️"],
+    [/\bgo to line\b|go to page/i, "📍"],
+    [/\bgo to symbol\b/i, "🔣"],
+    [/\bexplorer panel\b/i, "📂"],
+    [/\bsource control\b/i, "🌿"],
+    [/\bextensions panel\b/i, "🧩"],
+    [/\bproblems panel\b/i, "⚠️"],
+    [/\bnext problem\b/i, "🚨"],
+    [/\bprevious problem\b/i, "🚨"],
+    [/\bselect all\b/i, "🔲"],
+    [/\bindent\b/i, "➡️"],
+    [/\boutdent\b/i, "⬅️"],
+    [/\bmove line\b/i, "↕️"],
+    [/\bcopy line\b/i, "🔂"],
+    [/\bdelete line\b/i, "🗑️"],
+    [/\binsert line\b/i, "➕"],
+    [/\bswitch apps\b/i, "🔀"],
+    [/\bclose window\b/i, "❌"],
+    [/\bshow.*desktop\b/i, "🏠"],
+    [/\btask view\b/i, "🪟"],
+    [/\bsnap window\b/i, "🧲"],
+    [/\bmaximize\b/i, "⏫"],
+    [/\bminimize\b/i, "⏬"],
+    [/\bmove to.*monitor\b/i, "🖥️"],
+    [/\bvirtual desktop\b|new virtual/i, "🆕"],
+    [/\bswitch desktop\b/i, "🔀"],
+    [/\bclose.*desktop\b/i, "❌"],
+    [/\bfile explorer\b/i, "📁"],
+    [/\brun dialog\b/i, "▶️"],
+    [/\bpower user\b/i, "⚡"],
+    [/\bswitch.*language\b|switch.*input/i, "🌐"],
+    [/\bactivity\b/i, "📊"],
+    [/\bchat\b/i, "🗨️"],
+    [/\bcalendar\b|appointment|meeting/i, "📅"],
+    [/\bcalls\b/i, "📞"],
+    [/\bfiles\b/i, "📁"],
+    [/\bmail\b|inbox/i, "📧"],
+    [/\bmark as read\b/i, "👁️"],
+    [/\bmark as unread\b/i, "📩"],
+    [/\bflag\b|follow up/i, "🚩"],
+    [/\bspell check\b/i, "📝"],
+    [/\bnumber format\b|currency format|percent format|general format/i, "💲"],
+    [/\bformula\b|autosum/i, "🧮"],
+    [/\bcalculate\b/i, "🧮"],
+    [/\bfill down\b|fill right\b/i, "⬇️"],
+    [/\bparent folder\b|go up/i, "⬆️"],
+    [/\bhide.*rows\b|hide.*columns\b/i, "👁️‍🗨️"],
+    [/\bunhide\b/i, "👁️"],
+    [/\binsert cell|insert.*row|insert.*column/i, "➕"],
+    [/\bdelete cell|delete.*row|delete.*column/i, "🗑️"],
+    [/\bgroup\b/i, "📦"],
+    [/\bungroup\b/i, "📦"],
+    [/\bduplicate\b/i, "🔂"],
+    [/\bslideshow\b|start from\b/i, "▶️"],
+    [/\bend slideshow\b/i, "⏹️"],
+    [/\bnext slide\b/i, "⏭️"],
+    [/\bprevious slide\b/i, "⏮️"],
+    [/\bblack screen\b/i, "⬛"],
+    [/\bwhite screen\b/i, "⬜"],
+    [/\bcheck out\b/i, "🔓"],
+    [/\bcheck in\b/i, "🔐"],
+    [/\bundo checkout\b/i, "↩️"],
+    [/\bversion history\b/i, "📜"],
+    [/\bworkflow\b/i, "🔄"],
+    [/\bassign\b/i, "👤"],
+    [/\bnotif/i, "🔔"],
+    [/\brelationship\b/i, "🔗"],
+    [/\bvault\b/i, "🏦"],
+    [/\bobject info\b/i, "ℹ️"],
+    [/\bcopy.*link\b|copy.*path\b|copy.*url\b/i, "🔗"],
+    [/\bhuddle\b/i, "🎧"],
+    [/\bdeafen\b/i, "🔈"],
+    [/\bautofill\b|login/i, "🔑"],
+    [/\bdevtools\b|inspect/i, "🛠️"],
+    [/\bconsole\b/i, "⬛"],
+    [/\bdevice toolbar\b/i, "📱"],
+    [/\bread aloud\b/i, "🔊"],
+    [/\bview.*source\b|page source/i, "🔬"],
+    [/\bscroll\b/i, "📜"],
+    [/\bfocus.*input\b|focus.*address/i, "📍"],
+    [/\bautocomplete\b/i, "⚡"],
+    [/\bprevious command\b|next command/i, "📜"],
+    [/\bclear screen\b/i, "🧹"],
+    [/\breverse search\b/i, "🔍"],
+    [/\bpreview pane\b/i, "👁️"],
+    [/\bproperties\b|metadata/i, "🏷️"],
+    [/\bexport\b/i, "📤"],
+    [/\btoggle ui\b/i, "👁️"],
+    [/\bmove tool\b/i, "↔️"],
+    [/\bframe tool\b/i, "🖼️"],
+    [/\brectangle\b/i, "⬜"],
+    [/\btext tool\b/i, "✏️"],
+    [/\bpen tool\b/i, "🖊️"],
+    [/\beyedropper\b/i, "💧"],
+    [/\bhand.*pan\b/i, "✋"],
+    [/\bto do\b/i, "☑️"],
+    [/\bnew line\b/i, "↵"],
+    [/\bpage break\b/i, "📃"],
+    [/\balign\b/i, "📐"],
+    [/\bspacing\b/i, "📏"],
+    [/\bnormal style\b/i, "📝"],
+    [/\bhelp\b/i, "❓"],
+    [/\bkeyboard shortcuts\b|show shortcuts/i, "⌨️"],
+    [/\bblur\b|background blur/i, "🌫️"],
+    [/\binprivate\b|incognito\b/i, "🕶️"],
+    [/\bopen.*pinned\b|taskbar\b|system tray/i, "📌"],
+    [/\babsolute ref\b/i, "📌"],
+    [/\barray formula\b/i, "📊"],
+    [/\bshow.*formula\b/i, "📊"],
+    [/\bedit cell\b/i, "✏️"],
+    [/\bcancel\b/i, "❌"],
+    [/\bnext section\b|previous section/i, "📑"],
+    [/\bexpand\b/i, "📐"],
+    [/\bconnect\b|cast\b/i, "📡"],
+    [/\bproject.*display/i, "📺"],
+    [/\bquick settings\b|action center/i, "⚙️"],
+    [/\bedit last/i, "✏️"],
+    [/\bselect.*occurrence/i, "🔦"],
+    [/\bjump to.*bracket/i, "🔗"],
+    [/\bformat selection\b|format document/i, "🎨"],
+    [/\baccept suggestion\b/i, "✅"],
+  ];
+
+  const CATEGORY_EMOJI_MAP = {
+    "Window Management": "🪟",
+    "Virtual Desktops": "🖥️",
+    "System Shortcuts": "🔧",
+    "Taskbar": "📌",
+    "Input & Language": "🌐",
+    "Universal Clipboard & Edit": "📋",
+    "Clipboard & Edit": "📋",
+    "Tab Management": "📑",
+    "Navigation": "🧭",
+    "Find & Page": "🔎",
+    "Zoom & View": "🔍",
+    "Developer Tools": "🛠️",
+    "Vimium Extension": "⌨️",
+    "Proton Pass Extension": "🔑",
+    "Edge Specific": "🌐",
+    "General": "⚙️",
+    "Messaging": "💬",
+    "Meetings & Calls": "📞",
+    "File Operations": "📁",
+    "Editing": "✏️",
+    "Multi-cursor": "🖊️",
+    "Search & Replace": "🔎",
+    "Search & Navigation": "🔍",
+    "Debug": "🐛",
+    "Selection": "⬛",
+    "Formatting": "🎨",
+    "Rows & Columns": "📊",
+    "Formulas": "🧮",
+    "View & Search": "🔍",
+    "Mail Navigation": "📧",
+    "Mail Actions": "📨",
+    "Calendar": "📅",
+    "Tabs & Panes": "📑",
+    "Terminal Actions": "💻",
+    "Zoom & Settings": "⚙️",
+    "Slideshow": "▶️",
+    "Tools": "🔧",
+    "Objects": "📦",
+    "View": "👁️",
+    "Document Operations": "📄",
+    "Metadata & Properties": "📋",
+    "Views & Selection": "👁️",
+    "Workflow & Assignments": "🔄",
+    "Admin Operations": "🔧",
+    "Voice & Video": "🎥",
+    "Calls": "📞",
+    "Search": "🔍",
+    "File": "📁",
+  };
+
+  function emojiForAction(action) {
+    for (const [pattern, emoji] of ACTION_EMOJI_MAP) {
+      if (pattern.test(action)) return emoji;
+    }
+    return "";
+  }
+
+  function emojiForCategory(name) {
+    return CATEGORY_EMOJI_MAP[name] || "";
+  }
+
+  function renderWorkflow() {
+    if (!els.workflowContent) return;
+    const app = workflowState.activeApp;
+    if (!app) {
+      els.workflowContent.innerHTML = '<div class="workflow-empty">Select an app to see its shortcuts and how they map to your Charybdis layers.</div>';
+      return;
+    }
+    const query = workflowState.query.toLowerCase();
+    let html = "";
+    for (const cat of (app.categories || [])) {
+      const rows = cat.shortcuts.map((s) => {
+        const text = `${s.keys} ${s.action} ${s.charybdis || ""}`.toLowerCase();
+        const hidden = query && !text.includes(query);
+        const cls = hidden ? ' class="workflow-shortcut filtered-out"' : ' class="workflow-shortcut"';
+        const actionEmoji = emojiForAction(s.action);
+        const actionDisplay = actionEmoji ? `${actionEmoji} ${s.action}` : s.action;
+        let row = `<div${cls}><span class="workflow-keys">${escapeHtml(s.keys)}</span><span class="workflow-action">${escapeHtml(actionDisplay)}</span>`;
+        if (s.charybdis) row += `<span class="workflow-charybdis">${escapeHtml(s.charybdis)}</span>`;
+        row += "</div>";
+        return { html: row, hidden };
+      });
+      const anyVisible = rows.some((r) => !r.hidden);
+      const catEmoji = emojiForCategory(cat.name);
+      const catDisplay = catEmoji ? `${catEmoji} ${cat.name}` : cat.name;
+      if (anyVisible || !query) {
+        html += `<div class="workflow-category"><div class="workflow-category-name">${escapeHtml(catDisplay)}</div>`;
+        html += rows.map((r) => r.html).join("");
+        html += "</div>";
+      }
+    }
+    els.workflowContent.innerHTML = html || '<div class="workflow-empty">No shortcuts match your filter.</div>';
+  }
+
+  function setupWorkflow() {
+    if (els.workflowAppSelect) {
+      els.workflowAppSelect.addEventListener("change", (e) => {
+        loadWorkflowApp(e.target.value);
+        try { localStorage.setItem("charybdis-workflow-app", e.target.value); } catch {}
+      });
+    }
+    if (els.workflowSearch) {
+      els.workflowSearch.addEventListener("input", (e) => {
+        workflowState.query = e.target.value || "";
+        renderWorkflow();
+      });
+    }
+    const saved = localStorage.getItem("charybdis-workflow-app");
+    if (saved && els.workflowAppSelect) {
+      els.workflowAppSelect.value = saved;
+      loadWorkflowApp(saved);
+    }
+    populatePracticeAppSelect();
+  }
+
+  async function populatePracticeAppSelect() {
+    if (!els.practiceAppSelect || !workflowState.index) return;
+    els.practiceAppSelect.innerHTML = '<option value="">Layer mode (current layer)</option>';
+    for (const entry of (workflowState.index.apps || [])) {
+      const opt = document.createElement("option");
+      opt.value = entry.id;
+      opt.textContent = `${entry.name} shortcuts`;
+      els.practiceAppSelect.appendChild(opt);
+      if (!workflowState.apps.has(entry.id)) {
+        const data = await loadJson(`./workflows/${entry.file}`, null);
+        if (data) workflowState.apps.set(entry.id, data);
+      }
+    }
+  }
+
+  async function init() {
+    const [csvText, layoutSpec, appsConfig, hostKeyboard] = await Promise.all([
+      loadText("./data/keybindings_explained.csv"),
+      loadJson("./data/layout_spec.json", {}),
+      loadJson("./data/charybdis_apps.json", { apps: [] }),
+      loadJson("./data/windows_norwegian_host.json", null)
+    ]);
+    state.rows = parseCsv(csvText);
+    state.layoutSpec = layoutSpec || {};
+    state.hostKeyboard = hostKeyboard;
+    state.apps = appsConfig.apps || [];
+    const device = clean(state.layoutSpec.device) || "Charybdis";
+    const host = clean(state.layoutSpec.host_keyboard?.primary) || clean(hostKeyboard?.name) || "";
+    els.deviceLabel.textContent = host ? `${device} · ${host}` : device;
+    if (els.transport && host) {
+      els.transport.title = "Coach matches physical keys (event.code) for Norwegian Windows; firmware sends US HID scancodes.";
+    }
+    groupRows();
+    renderApps();
+    render();
+    setupPractice();
+    await loadWorkflowIndex();
+    setupWorkflow();
+    await pollState();
+    setInterval(pollState, 500);
+    setInterval(renderNow, 1000);
+  }
+
+  // ----- Practice / learning modes (drill, quiz, guided, progress) -----
+  const PROGRESS_KEY = "charybdis-coach-progress-v1";
+
+  function loadProgress() {
+    try {
+      state.progress = JSON.parse(localStorage.getItem(PROGRESS_KEY)) || {};
+    } catch {
+      state.progress = {};
+    }
+  }
+
+  function saveProgress() {
+    try {
+      localStorage.setItem(PROGRESS_KEY, JSON.stringify(state.progress));
+    } catch {
+      /* storage unavailable — practice still works for the session */
+    }
+  }
+
+  function practiceableRows(layer) {
+    return (state.rowsByLayer.get(layer) || []).filter((row) => isImportant(row) && behaviorKind(row) !== "transparent");
+  }
+
+  function allPracticeableRows() {
+    return LAYERS.flatMap((layer) => practiceableRows(layer));
+  }
+
+  function masteryPercent() {
+    const all = allPracticeableRows();
+    if (!all.length) return 0;
+    const known = all.filter((row) => (state.progress[keyId(row)] || {}).correct > 0).length;
+    return Math.round((known / all.length) * 100);
+  }
+
+  function updatePracticeUI() {
+    if (!els.practiceScore) return;
+    els.practiceScore.textContent = `${state.practice.correct} / ${state.practice.attempts}`;
+    els.practiceMastery.textContent = `${masteryPercent()}%`;
+  }
+
+  function setPrompt(text) {
+    if (els.practicePrompt) els.practicePrompt.textContent = text;
+  }
+
+  function recordAttempt(row, correct) {
+    state.practice.attempts++;
+    if (correct) state.practice.correct++;
+    const id = keyId(row);
+    const entry = state.progress[id] || { seen: 0, correct: 0 };
+    entry.seen++;
+    if (correct) entry.correct++;
+    state.progress[id] = entry;
+    saveProgress();
+    updatePracticeUI();
+  }
+
+  function flashKey(row, cls) {
+    const el = document.querySelector(`[data-key-id="${CSS.escape(keyId(row))}"]`);
+    if (!el) return;
+    el.classList.add(cls);
+    setTimeout(() => el.classList.remove(cls), 600);
+  }
+
+  function pickWeightedTarget(rows) {
+    // Prefer keys the user has gotten wrong or not seen, so practice targets weak spots.
+    if (!rows.length) return null;
+    const scored = rows.map((row) => {
+      const p = state.progress[keyId(row)] || { seen: 0, correct: 0 };
+      const weight = 1 + Math.max(0, p.seen - p.correct) * 2 + (p.seen === 0 ? 2 : 0);
+      return { row, weight };
+    });
+    const total = scored.reduce((s, x) => s + x.weight, 0);
+    let r = Math.random() * total;
+    for (const x of scored) {
+      r -= x.weight;
+      if (r <= 0) return x.row;
+    }
+    return scored[scored.length - 1].row;
+  }
+
+  function startDrill() {
+    setActiveMode("drill");
+    nextDrill();
+  }
+
+  function nextDrill() {
+    const rows = practiceableRows(state.displayedLayer).filter((row) => behaviorKind(row) === "key");
+    const pool = rows.length ? rows : practiceableRows(state.displayedLayer);
+    const target = pickWeightedTarget(pool);
+    state.practice.target = target;
+    if (!target) {
+      setPrompt("No drillable keys on this layer. Switch layers and try again.");
+      return;
+    }
+    setPrompt(`DRILL — type this key on your keyboard: "${clean(target.visual_label) || clean(target.parameter)}"  (Layer ${target.layer})`);
+    selectKey(target);
+  }
+
+  function checkDrillAnswer(row) {
+    if (state.practice.mode !== "drill" || !state.practice.target) return;
+    const correct = keyId(row) === keyId(state.practice.target);
+    recordAttempt(state.practice.target, correct);
+    flashKey(state.practice.target, correct ? "answer-correct" : "answer-wrong");
+    if (correct) {
+      setPrompt(`✓ Correct! "${clean(state.practice.target.visual_label)}". Next…`);
+      setTimeout(nextDrill, 650);
+    } else {
+      setPrompt(`✗ That was "${clean(row.visual_label)}". Target is "${clean(state.practice.target.visual_label)}" — try again.`);
+    }
+  }
+
+  function startQuiz() {
+    setActiveMode("quiz");
+    const appId = getSelectedPracticeApp();
+    if (appId) {
+      state.practice.appShortcuts = appShortcutRows(appId);
+      if (!state.practice.appShortcuts.length) {
+        setPrompt(`No mapped shortcuts found for this app. Select a different app or use layer mode.`);
+        return;
+      }
+    } else {
+      state.practice.appShortcuts = null;
+    }
+    nextQuiz();
+  }
+
+  function nextQuiz() {
+    const appId = getSelectedPracticeApp();
+    if (appId && state.practice.appShortcuts?.length) {
+      const shortcuts = state.practice.appShortcuts;
+      const idx = Math.floor(Math.random() * shortcuts.length);
+      const sc = shortcuts[idx];
+      state.practice.target = sc.row;
+      state.practice.appContext = sc;
+      if (sc.row.layer !== state.displayedLayer) {
+        state.displayedLayer = sc.row.layer;
+        render();
+      }
+      selectKey(sc.row);
+      setPrompt(`APP QUIZ — In ${appId}, find the key for: "${sc.appAction}" (${sc.appKeys})  ·  Layer ${sc.row.layer}`);
+      return;
+    }
+    const target = pickWeightedTarget(practiceableRows(state.displayedLayer));
+    state.practice.target = target;
+    if (!target) {
+      setPrompt("No quizzable keys on this layer. Switch layers and try again.");
+      return;
+    }
+    const clue = clean(target.purpose) || clean(target.usage_notes) || `${clean(target.behavior)} ${clean(target.parameter)}`;
+    setPrompt(`QUIZ — click the key that does this:  "${clue}"  (Layer ${target.layer})`);
+  }
+
+  function checkQuizAnswer(row) {
+    if (state.practice.mode !== "quiz" || !state.practice.target) return;
+    const correct = keyId(row) === keyId(state.practice.target);
+    recordAttempt(state.practice.target, correct);
+    flashKey(state.practice.target, correct ? "answer-correct" : "answer-wrong");
+    if (correct) {
+      setPrompt(`✓ Correct — "${clean(state.practice.target.visual_label)}". Next…`);
+      setTimeout(nextQuiz, 700);
+    } else {
+      setPrompt(`✗ Not quite. You clicked "${clean(row.visual_label)}". Keep looking…`);
+    }
+  }
+
+  function startGuided() {
+    setActiveMode("guided");
+    const appId = getSelectedPracticeApp();
+    if (appId) {
+      state.practice.appShortcuts = appShortcutRows(appId);
+      state.practice.guidedList = state.practice.appShortcuts.map((s) => s.row);
+      state.practice.guidedAppData = state.practice.appShortcuts;
+    } else {
+      state.practice.guidedList = practiceableRows(state.displayedLayer);
+      state.practice.guidedAppData = null;
+      state.practice.appShortcuts = null;
+    }
+    state.practice.guidedIndex = 0;
+    guidedShow();
+  }
+
+  function guidedShow() {
+    const list = state.practice.guidedList;
+    if (!list.length) {
+      setPrompt("Nothing to tour. " + (getSelectedPracticeApp() ? "No mapped shortcuts for this app." : "Switch layers and try again."));
+      return;
+    }
+    const i = ((state.practice.guidedIndex % list.length) + list.length) % list.length;
+    state.practice.guidedIndex = i;
+    const row = list[i];
+    if (row.layer !== state.displayedLayer) {
+      state.displayedLayer = row.layer;
+      render();
+    }
+    selectKey(row);
+    flashKey(row, "answer-correct");
+    const appData = state.practice.guidedAppData?.[i];
+    if (appData) {
+      setPrompt(`APP GUIDE ${i + 1}/${list.length} — ${appData.category}: "${appData.appAction}" (${appData.appKeys})  ·  Key: "${clean(row.visual_label)}" on Layer ${row.layer}  ·  click to advance`);
+    } else {
+      setPrompt(`GUIDED ${i + 1}/${list.length} — "${clean(row.visual_label)}": ${clean(row.purpose) || clean(row.usage_notes)}  ·  click another key to advance.`);
+    }
+    state.practice.guidedIndex = i + 1;
+  }
+
+  function setActiveMode(mode) {
+    state.practice.mode = mode;
+    [["drill", els.drillButton], ["quiz", els.quizButton], ["guided", els.guidedButton]].forEach(([m, btn]) => {
+      if (btn) btn.classList.toggle("active", m === mode);
+    });
+  }
+
+  function getSelectedPracticeApp() {
+    return els.practiceAppSelect?.value || "";
+  }
+
+  function appShortcutRows(appId) {
+    const app = workflowState.apps.get(appId);
+    if (!app) return [];
+    const results = [];
+    for (const cat of (app.categories || [])) {
+      for (const s of (cat.shortcuts || [])) {
+        if (!s.charybdis) continue;
+        const layerMatch = s.charybdis.match(/L(\d+)/);
+        if (!layerMatch) continue;
+        const layer = layerMatch[1];
+        const posMatch = s.charybdis.match(/x(\d+),\s*y(\d+)/);
+        let matchedRow = null;
+        if (posMatch) {
+          matchedRow = (state.rowsByLayer.get(layer) || []).find((r) => r.x === posMatch[1] && r.y === posMatch[2]);
+        }
+        if (!matchedRow) {
+          matchedRow = (state.rowsByLayer.get(layer) || []).find((r) => clean(r.visual_label).toLowerCase() === s.action.toLowerCase().split(" ")[0]);
+        }
+        if (matchedRow) {
+          results.push({ row: matchedRow, appAction: s.action, appKeys: s.keys, category: cat.name });
+        }
+      }
+    }
+    return results;
+  }
+
+  function stopPractice() {
+    state.practice.mode = null;
+    state.practice.target = null;
+    state.practice.appShortcuts = null;
+    setActiveMode(null);
+    setPrompt("Practice stopped. Pick a mode to start again.");
+  }
+
+  function onUserSelectKey(row) {
+    selectKey(row);
+    if (state.practice.mode === "quiz") checkQuizAnswer(row);
+    else if (state.practice.mode === "guided") guidedShow();
+  }
+
+  function setupPractice() {
+    loadProgress();
+    updatePracticeUI();
+    if (els.drillButton) els.drillButton.addEventListener("click", startDrill);
+    if (els.quizButton) els.quizButton.addEventListener("click", startQuiz);
+    if (els.guidedButton) els.guidedButton.addEventListener("click", startGuided);
+    if (els.practiceStopButton) els.practiceStopButton.addEventListener("click", stopPractice);
+    if (els.practiceResetButton) {
+      els.practiceResetButton.addEventListener("click", () => {
+        state.progress = {};
+        saveProgress();
+        state.practice.attempts = 0;
+        state.practice.correct = 0;
+        updatePracticeUI();
+        setPrompt("Progress reset.");
+      });
+    }
+  }
+  els.searchInput.addEventListener("input", (event) => {
+    state.query = event.target.value || "";
+    applyFilters();
+  });
+
+  els.focusImportantButton.addEventListener("click", () => {
+    state.focusImportant = true;
+    els.focusImportantButton.classList.add("active");
+    els.showAllButton.classList.remove("active");
+    applyFilters();
+  });
+
+  els.showAllButton.addEventListener("click", () => {
+    state.focusImportant = false;
+    els.showAllButton.classList.add("active");
+    els.focusImportantButton.classList.remove("active");
+    applyFilters();
+  });
+
+  // ----- Collapsible panels -----
+  const layerRail = document.getElementById("layerRail");
+  const railTitle = document.getElementById("railTitle");
+  const railColorStrip = document.getElementById("railColorStrip");
+  const inspectorPanel = document.getElementById("inspectorPanel");
+
+  const LAYER_STRIP_COLORS = {
+    "0": "#4cc9b0", "1": "#3dd6c6", "2": "#b78cff", "3": "#6eb5ff",
+    "4": "#ff9f6e", "5": "#56d4e8", "7": "#a78bfa", "8": "#ffb347", "9": "#e8a44c"
+  };
+
+  function buildRailColorStrip() {
+    if (!railColorStrip) return;
+    railColorStrip.innerHTML = "";
+    for (const layer of LAYERS) {
+      const swatch = document.createElement("div");
+      swatch.className = "rail-swatch";
+      swatch.dataset.layer = layer;
+      const color = LAYER_STRIP_COLORS[layer] || "#4cc9b0";
+      swatch.style.background = color;
+      swatch.style.setProperty("--swatch-color", color);
+      swatch.title = (LAYER_TAB_META[layer]?.title || `Layer ${layer}`);
+      swatch.addEventListener("click", (e) => {
+        e.stopPropagation();
+        state.displayedLayer = layer;
+        render();
+        updateRailStrip();
+      });
+      railColorStrip.appendChild(swatch);
+    }
+    updateRailStrip();
+  }
+
+  function updateRailStrip() {
+    if (!railColorStrip) return;
+    railColorStrip.querySelectorAll(".rail-swatch").forEach((sw) => {
+      sw.classList.toggle("active", sw.dataset.layer === state.displayedLayer);
+    });
+  }
+
+  function toggleRail() {
+    layerRail.classList.toggle("collapsed");
+  }
+
+  function toggleInspector() {
+    inspectorPanel.classList.toggle("collapsed");
+  }
+
+  if (railTitle) railTitle.addEventListener("click", toggleRail);
+  if (railColorStrip) railColorStrip.addEventListener("click", (e) => {
+    if (e.target === railColorStrip) toggleRail();
+  });
+  if (layerRail) layerRail.addEventListener("click", (e) => {
+    if (layerRail.classList.contains("collapsed") && e.target === layerRail) toggleRail();
+  });
+  if (inspectorPanel) {
+    inspectorPanel.addEventListener("click", (e) => {
+      if (inspectorPanel.classList.contains("collapsed")) {
+        e.stopPropagation();
+        toggleInspector();
+      }
+    });
+  }
+
+  const inspectorCollapseBtn = document.getElementById("inspectorCollapseBtn");
+  if (inspectorCollapseBtn) inspectorCollapseBtn.addEventListener("click", toggleInspector);
+
+  if (inspectorPanel) inspectorPanel.classList.add("collapsed");
+  buildRailColorStrip();
+
+  els.fullscreenButton.addEventListener("click", async () => {
+    if (!document.fullscreenElement) {
+      await document.documentElement.requestFullscreen();
+    } else {
+      await document.exitFullscreen();
+    }
+  });
+
+  const US_EVENT_KEY_MAP = {
+    Escape: "Escape",
+    Backspace: "Delete",
+    Delete: "Delete",
+    Tab: "Tab",
+    Enter: "Return",
+    " ": "Spacebar",
+    ArrowLeft: "LeftArrow",
+    ArrowRight: "RightArrow",
+    ArrowUp: "UpArrow",
+    ArrowDown: "DownArrow",
+    Home: "Home",
+    End: "End",
+    PageUp: "PageUp",
+    PageDown: "PageDown",
+    Insert: "Insert",
+    F1: "F1", F2: "F2", F3: "F3", F4: "F4", F5: "F5", F6: "F6",
+    F7: "F7", F8: "F8", F9: "F9", F10: "F10", F11: "F11", F12: "F12",
+    "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
+    "6": "6", "7": "7", "8": "8", "9": "9", "0": "0",
+    q: "Q", w: "W", e: "E", r: "R", t: "T",
+    y: "Y", u: "U", i: "I", o: "O", p: "P",
+    a: "A", s: "S", d: "D", f: "F", g: "G",
+    h: "H", j: "J", k: "K", l: "L",
+    ";": "SemiColon", "'": "Left Apos and Double", "\\": "Backslash and Pipe",
+    z: "Z", x: "X", c: "C", v: "V", b: "B",
+    n: "N", m: "M", ",": "Comma", ".": "Period",
+    "/": "ForwardSlash", "-": "Minus", "=": "Equal",
+    "`": "Grave", "[": "LeftBrace", "]": "RightBracket",
+    Control: "LeftControl",
+    Shift: "LeftShift",
+    Alt: "LeftAlt",
+    Meta: "GUI"
+  };
+
+  function hostCodeMap() {
+    return state.hostKeyboard?.event_code_to_zmk || {};
+  }
+
+  function hostKeyAliasMap() {
+    return state.hostKeyboard?.event_key_to_zmk || {};
+  }
+
+  function zmkTokensForLookup(token) {
+    const value = clean(token);
+    if (!value) return [];
+    const hostAliases = state.hostKeyboard?.zmk_parameter_aliases || {};
+    const aliases = {
+      SemiColon: ["SemiColon", "SemiColon and Colon"],
+      "Left Apos and Double": ["Left Apos and Double", "Apostrophe", "Keyboard Apostrophe"],
+      "Left Brace": ["Left Brace", "Left Bracket"],
+      "Right Bracket": ["Right Bracket", "Right Brace"],
+      "Backslash and Pipe": ["Backslash and Pipe", "Backslash"],
+      "Comma and LessThan": ["Comma and LessThan", "Comma"],
+      "ForwardSlash and QuestionMark": ["ForwardSlash and QuestionMark", "ForwardSlash"],
+      Period: ["Period", "Period and GreaterThan"],
+      Spacebar: ["Spacebar", "Space"],
+      Return: ["Return", "Return Enter", "Enter"],
+      Grave: ["Grave", "Grave Accent and Tilde"],
+      GUI: ["GUI", "Left GUI", "L GUI"],
+      ...hostAliases
+    };
+    const base = value.replace(/^Keyboard\s+/i, "");
+    for (const [key, list] of Object.entries(aliases)) {
+      if (base === key || list.includes(base)) return list;
+    }
+    return [base];
+  }
+
+  function matchRowsByZmkToken(keyRows, token) {
+    for (const candidate of zmkTokensForLookup(token)) {
+      const exact = keyRows.find((row) => normalizeParamToken(row.parameter) === normalizeParamToken(candidate));
+      if (exact) return exact;
+      const partial = keyRows.find((row) => paramMatchesToken(row.parameter, candidate));
+      if (partial) return partial;
+    }
+    return null;
+  }
+
+  function normalizeParamToken(value) {
+    return clean(value)
+      .replace(/^Keyboard\s+/i, "")
+      .replace(/^Keypad\s+/i, "")
+      .replace(/\s+and\s+/gi, " and ")
+      .toUpperCase();
+  }
+
+  function paramMatchesToken(param, token) {
+    const normalized = normalizeParamToken(param);
+    const search = normalizeParamToken(token);
+    if (!normalized || !search) return false;
+    if (normalized === search) return true;
+    if (normalized.endsWith(` ${search}`) || normalized.endsWith(`::${search}`)) return true;
+    const parts = normalized.split(/\s+and\s+/i).map((part) => part.trim());
+    return parts.some((part) => part === search || part.endsWith(` ${search}`));
+  }
+
+  function matchableRows(rows) {
+    return rows.filter((row) => /key press|mouse key press/i.test(row.behavior));
+  }
+
+  function resolveKeyFromKeyboardEvent(eventKey, eventCode, rows) {
+    const keyRows = matchableRows(rows);
+    if (!keyRows.length) return null;
+
+    // 1) Physical key (layout-independent) — required for Windows Norwegian.
+    if (eventCode) {
+      const codeToken = hostCodeMap()[eventCode];
+      if (codeToken) {
+        const codeMatch = matchRowsByZmkToken(keyRows, codeToken);
+        if (codeMatch) return codeMatch;
+      }
+    }
+
+    // 2) Norwegian localized character (øæå) from event.key.
+    const hostAlias = hostKeyAliasMap()[eventKey];
+    if (hostAlias) {
+      const aliasMatch = matchRowsByZmkToken(keyRows, hostAlias);
+      if (aliasMatch) return aliasMatch;
+    }
+
+    // 3) Coach visual label (ø, æ, å, ←, single letters).
+    const labelMatch = keyRows.find((row) => clean(row.visual_label).toUpperCase() === String(eventKey).toUpperCase());
+    if (labelMatch) return labelMatch;
+
+    const arrowHints = {
+      ArrowLeft: /leftarrow|←/i,
+      ArrowRight: /rightarrow|→/i,
+      ArrowUp: /uparrow|↑/i,
+      ArrowDown: /downarrow|↓/i
+    };
+    if (arrowHints[eventKey]) {
+      const arrowMatch = keyRows.find((row) => arrowHints[eventKey].test(`${row.visual_label} ${row.parameter}`));
+      if (arrowMatch) return arrowMatch;
+    }
+
+    // 4) US-layout event.key fallback (English Windows or legacy).
+    const zmkKey = US_EVENT_KEY_MAP[eventKey] || US_EVENT_KEY_MAP[String(eventKey).toLowerCase()];
+    if (!zmkKey) return null;
+    return matchRowsByZmkToken(keyRows, zmkKey);
+  }
+
+  function overlayRowForMatch(matchRow, displayLayer) {
+    if (!matchRow) return null;
+    const layer = String(displayLayer);
+    if (String(matchRow.layer) === layer) {
+      return { row: matchRow, fallthrough: false };
+    }
+    const overlay = (state.rowsByLayer.get(layer) || []).find(
+      (row) => row.x === matchRow.x && row.y === matchRow.y
+    );
+    if (!overlay) return null;
+    return { row: overlay, fallthrough: true };
+  }
+
+  function resolveActiveKeyPress(event) {
+    const eventKey = event.key;
+    const eventCode = event.code || "";
+    const displayLayer = state.liveLayer || state.displayedLayer || "0";
+    const overlayRows = state.rowsByLayer.get(displayLayer) || [];
+
+    let match = resolveKeyFromKeyboardEvent(eventKey, eventCode, overlayRows);
+    if (match) return overlayRowForMatch(match, displayLayer);
+
+    if (displayLayer !== "0") {
+      const baseRows = state.rowsByLayer.get("0") || [];
+      match = resolveKeyFromKeyboardEvent(eventKey, eventCode, baseRows);
+      if (match) return overlayRowForMatch(match, displayLayer);
+    }
+
+    return null;
+  }
+
+  // Physical keypress highlighting (separate from beacon thumb highlights).
+  const keyPressTimeouts = new Map();
+
+  const MODIFIER_EVENT_KEYS = new Set(["Control", "Shift", "Alt", "Meta"]);
+
+  function flashPhysicalKey(matchInfo) {
+    if (!matchInfo?.row) return;
+    const id = keyId(matchInfo.row);
+    const selector = `[data-key-id="${CSS.escape(id)}"]`;
+    const keyEl = document.querySelector(selector);
+    if (!keyEl) return;
+
+    const prevTimeout = keyPressTimeouts.get(id);
+    if (prevTimeout) clearTimeout(prevTimeout);
+
+    keyEl.classList.remove("press-flash", "press-fallthrough");
+    keyEl.classList.add(matchInfo.fallthrough ? "press-fallthrough" : "press-flash");
+
+    const timeout = setTimeout(() => {
+      keyEl.classList.remove("press-flash", "press-fallthrough");
+      keyPressTimeouts.delete(id);
+    }, 450);
+
+    keyPressTimeouts.set(id, timeout);
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.target === els.searchInput) return;
+    if (MODIFIER_EVENT_KEYS.has(event.key)) return;
+    if (event.ctrlKey && event.altKey && event.shiftKey) return;
+
+    const matchInfo = resolveActiveKeyPress(event);
+    if (!matchInfo) return;
+
+    flashPhysicalKey(matchInfo);
+
+    if (state.practice.mode === "drill") {
+      checkDrillAnswer(matchInfo.row);
+    }
+
+    if (learnState.active && learnEls.autoAdvance?.checked) {
+      const currentStep = learnState.shortcuts[learnState.index];
+      if (currentStep && keyId(matchInfo.row) === keyId(currentStep.row)) {
+        setTimeout(learnAdvance, 500);
+      }
+    }
+  });
+
+  // ----- Learn overlay (fullscreen guided app training) -----
+  const learnState = { active: false, appId: null, shortcuts: [], index: 0 };
+  const learnEls = {
+    overlay: document.getElementById("learnOverlay"),
+    pickerView: document.getElementById("learnPickerView"),
+    tourView: document.getElementById("learnTourView"),
+    appGrid: document.getElementById("learnAppGrid"),
+    closeBtn: document.getElementById("learnCloseButton"),
+    backBtn: document.getElementById("learnBackToApps"),
+    access: document.getElementById("learnAccess"),
+    step: document.getElementById("learnStep"),
+    warning: document.getElementById("learnWarning"),
+    progress: document.getElementById("learnProgress"),
+    prevBtn: document.getElementById("learnPrevButton"),
+    nextBtn: document.getElementById("learnNextButton"),
+    keyboardArea: document.getElementById("learnKeyboardArea"),
+    autoAdvance: document.getElementById("learnAutoAdvance"),
+  };
+
+  const LAYER_ACCESS_INFO = {
+    "0": "⌨️ Base layer — no thumb hold needed",
+    "1": "🧭 Hold <strong>Nav</strong> (left thumb x3,y4)",
+    "2": "🖱️ Hold <strong>Mouse</strong> (left thumb x5,y5) or Mouse Lock (L3 x10,y2)",
+    "3": "🪟 Hold <strong>Window</strong> (right thumb x8,y4)",
+    "4": "🔧 Hold <strong>System</strong> (right thumb x7,y4)",
+    "5": "💻 Toggle <strong>Code</strong> (hold Nav → tap x0,y1)",
+    "7": "🎮 Lock <strong>Game</strong> (hold Window → tap x12,y2)",
+    "8": "⚡ Toggle <strong>Speed</strong> (hold Nav → tap x4,y2)",
+    "9": "📁 Toggle <strong>M-Files</strong> (hold System → tap x2,y3)",
+  };
+  const LAYER_FULL_NAMES = { "0": "⌨️ Base", "1": "🧭 Nav (Layer 1)", "2": "🖱️ Mouse (Layer 2)", "3": "🪟 Window (Layer 3)", "4": "🔧 System (Layer 4)", "5": "💻 Code/IDE (Layer 5)", "7": "🎮 Game (Layer 7)", "8": "⚡ Speed (Layer 8)", "9": "📁 M-Files (Layer 9)" };
+  const LAYER_COLORS = { "0": "#4cc9b0", "1": "#3dd6c6", "2": "#b78cff", "3": "#6eb5ff", "4": "#ff9f6e", "5": "#56d4e8", "7": "#a78bfa", "8": "#ffb347", "9": "#e8a44c" };
+  const DANGEROUS_KEYS = new Set(["Alt+F4", "Ctrl+W", "Win+D", "Win+L", "Ctrl+Shift+Esc", "Alt+Tab", "Win+Tab"]);
+
+  async function openLearnOverlay() {
+    if (!learnEls.overlay) return;
+    learnEls.overlay.classList.remove("learn-overlay--hidden");
+    learnState.active = false;
+    showLearnPicker();
+
+    for (const entry of (workflowState.index?.apps || [])) {
+      if (!workflowState.apps.has(entry.id)) {
+        const data = await loadJson(`./workflows/${entry.file}`, null);
+        if (data) workflowState.apps.set(entry.id, data);
+      }
+    }
+    showLearnPicker();
+  }
+
+  function showLearnPicker() {
+    if (learnEls.pickerView) learnEls.pickerView.style.display = "";
+    if (learnEls.tourView) learnEls.tourView.classList.add("learn-tour--hidden");
+    if (learnEls.progress) learnEls.progress.textContent = "";
+    if (!learnEls.appGrid) return;
+    learnEls.appGrid.innerHTML = "";
+    for (const entry of (workflowState.index?.apps || [])) {
+      const app = workflowState.apps.get(entry.id);
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "learn-app-card";
+      btn.textContent = app?.name || entry.name;
+      btn.addEventListener("click", () => startLearnTour(entry.id));
+      learnEls.appGrid.appendChild(btn);
+    }
+  }
+
+  function closeLearnOverlay() {
+    if (!learnEls.overlay) return;
+    learnEls.overlay.classList.add("learn-overlay--hidden");
+    learnState.active = false;
+  }
+
+  async function startLearnTour(appId) {
+    if (!appId) return;
+    if (!workflowState.apps.has(appId)) {
+      const entry = (workflowState.index?.apps || []).find((a) => a.id === appId);
+      if (entry) {
+        const data = await loadJson(`./workflows/${entry.file}`, null);
+        if (data) workflowState.apps.set(appId, data);
+      }
+    }
+    const shortcuts = appShortcutRows(appId);
+    if (!shortcuts.length) return;
+
+    const safe = shortcuts.filter((s) => !DANGEROUS_KEYS.has(s.appKeys));
+    const dangerous = shortcuts.filter((s) => DANGEROUS_KEYS.has(s.appKeys));
+    const sorted = [...safe, ...dangerous];
+
+    learnState.active = true;
+    learnState.appId = appId;
+    learnState.shortcuts = sorted;
+    learnState.index = 0;
+
+    if (learnEls.pickerView) learnEls.pickerView.style.display = "none";
+    if (learnEls.tourView) learnEls.tourView.classList.remove("learn-tour--hidden");
+    showLearnStep();
+  }
+
+  function showLearnStep() {
+    if (!learnState.active || !learnState.shortcuts.length) return;
+    const idx = Math.max(0, Math.min(learnState.index, learnState.shortcuts.length - 1));
+    learnState.index = idx;
+    const sc = learnState.shortcuts[idx];
+    const layer = sc.row.layer;
+    const layerName = LAYER_FULL_NAMES[layer] || `Layer ${layer}`;
+    const layerColor = LAYER_COLORS[layer] || "#ccc";
+    const accessInfo = LAYER_ACCESS_INFO[layer] || `Activate Layer ${layer}`;
+
+    if (learnEls.access) learnEls.access.innerHTML = accessInfo;
+
+    learnEls.step.innerHTML = [
+      `<strong>${escapeHtml(sc.appAction)}</strong>`,
+      `<span class="learn-keys">${escapeHtml(sc.appKeys)}</span>`,
+      `<span class="learn-pos">Key: ${escapeHtml(clean(sc.row.visual_label))} &middot; x${sc.row.x}, y${sc.row.y} &middot; ${layerName}</span>`,
+    ].join("");
+
+    if (learnEls.progress) learnEls.progress.textContent = `${idx + 1} / ${learnState.shortcuts.length} — ${sc.category}`;
+
+    const isDangerous = DANGEROUS_KEYS.has(sc.appKeys);
+    if (learnEls.warning) {
+      learnEls.warning.classList.toggle("learn-warning--hidden", !isDangerous);
+      if (isDangerous) learnEls.warning.textContent = `This shortcut (${sc.appKeys}) may affect other windows or close tabs. Use with care.`;
+    }
+
+    if (sc.row.layer !== state.displayedLayer) {
+      state.displayedLayer = sc.row.layer;
+      render();
+    }
+    renderLearnKeyboard(sc);
+  }
+
+  function renderLearnKeyboard(sc) {
+    if (!learnEls.keyboardArea) return;
+    learnEls.keyboardArea.innerHTML = "";
+    const rows = state.rowsByLayer.get(state.displayedLayer) || [];
+    const rowMap = new Map(rows.map((r) => [`${r.x}:${r.y}`, r]));
+    learnEls.keyboardArea.appendChild(renderHand("left", X_LEFT, rowMap));
+    learnEls.keyboardArea.appendChild(renderHand("right", X_RIGHT, rowMap));
+    learnEls.keyboardArea.className = "learn-keyboard-area keyboard-map";
+    const targetId = keyId(sc.row);
+    const targetEl = learnEls.keyboardArea.querySelector(`[data-key-id="${CSS.escape(targetId)}"]`);
+    if (targetEl) {
+      targetEl.classList.add("answer-correct");
+      targetEl.scrollIntoView({ block: "center", inline: "center" });
+    }
+  }
+
+  function learnAdvance() {
+    if (!learnState.active) return;
+    learnState.index = Math.min(learnState.shortcuts.length - 1, learnState.index + 1);
+    showLearnStep();
+  }
+
+  if (document.getElementById("learnButton")) {
+    document.getElementById("learnButton").addEventListener("click", openLearnOverlay);
+  }
+  if (learnEls.closeBtn) learnEls.closeBtn.addEventListener("click", closeLearnOverlay);
+  if (learnEls.backBtn) learnEls.backBtn.addEventListener("click", showLearnPicker);
+  if (learnEls.prevBtn) learnEls.prevBtn.addEventListener("click", () => { if (learnState.active) { learnState.index = Math.max(0, learnState.index - 1); showLearnStep(); } });
+  if (learnEls.nextBtn) learnEls.nextBtn.addEventListener("click", learnAdvance);
+
+  // ----- Key input debug overlay -----
+  const keyDebugEl = document.getElementById("keyDebugOverlay");
+  const keyDebugLog = document.getElementById("keyDebugLog");
+  const keyDebugMods = document.getElementById("keyDebugMods");
+  const keyDebugToggleBtn = document.getElementById("keyDebugToggle");
+  const keyDebugCloseBtn = document.getElementById("keyDebugClose");
+  let keyDebugVisible = false;
+  const MAX_DEBUG_EVENTS = 20;
+
+  function toggleKeyDebug() {
+    keyDebugVisible = !keyDebugVisible;
+    if (keyDebugEl) keyDebugEl.classList.toggle("key-debug--hidden", !keyDebugVisible);
+  }
+
+  if (keyDebugToggleBtn) keyDebugToggleBtn.addEventListener("click", toggleKeyDebug);
+  if (keyDebugCloseBtn) keyDebugCloseBtn.addEventListener("click", () => { keyDebugVisible = false; if (keyDebugEl) keyDebugEl.classList.add("key-debug--hidden"); });
+
+  function logKeyEvent(e) {
+    if (!keyDebugVisible || !keyDebugLog) return;
+    const mods = [e.ctrlKey && "Ctrl", e.shiftKey && "Shift", e.altKey && "Alt", e.metaKey && "Win"].filter(Boolean).join("+") || "none";
+    if (keyDebugMods) keyDebugMods.textContent = `Modifiers: ${mods}`;
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="key-event-type">${e.type}</span> <span class="key-event-key">${escapeHtml(e.key)}</span> code=${escapeHtml(e.code)} mods=${mods}`;
+    keyDebugLog.prepend(li);
+    while (keyDebugLog.children.length > MAX_DEBUG_EVENTS) keyDebugLog.lastChild.remove();
+  }
+
+  document.addEventListener("keydown", logKeyEvent);
+  document.addEventListener("keyup", logKeyEvent);
+
+  init().catch((error) => {
+    els.keyboardMap.innerHTML = `<div class="panel selected-panel"><h2>Coach failed to load</h2><p>${escapeHtml(error.message)}</p></div>`;
+  });
+})();

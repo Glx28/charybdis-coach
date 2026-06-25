@@ -1,0 +1,176 @@
+{
+  "id": "outlook",
+  "name": "Microsoft Outlook",
+  "icon": "mail",
+  "categories": [
+    {
+      "name": "Mail Navigation",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+1",
+          "action": "Switch to Mail",
+          "charybdis": "L10 (x7,y3)"
+        },
+        {
+          "keys": "Ctrl+2",
+          "action": "Switch to Calendar",
+          "charybdis": "L9 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+3",
+          "action": "Switch to Contacts"
+        },
+        {
+          "keys": "Ctrl+Shift+I",
+          "action": "Go to Inbox",
+          "charybdis": "L10 (x5,y1)"
+        },
+        {
+          "keys": "Ctrl+E",
+          "action": "Search",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "F3",
+          "action": "Search (alt)",
+          "charybdis": "L1 (x2,y2)"
+        },
+        {
+          "keys": "F9",
+          "action": "Send/Receive all",
+          "charybdis": "L5 (x7,y0)"
+        }
+      ]
+    },
+    {
+      "name": "Mail Actions",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+N",
+          "action": "New mail",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+R",
+          "action": "Reply",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+R",
+          "action": "Reply all",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+F",
+          "action": "Forward",
+          "charybdis": "L9 (x9,y1)"
+        },
+        {
+          "keys": "Ctrl+Enter",
+          "action": "Send message",
+          "charybdis": "L5 (x5,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+M",
+          "action": "New message (alt)",
+          "charybdis": "L5 (x9,y2)"
+        },
+        {
+          "keys": "Delete",
+          "action": "Delete message",
+          "charybdis": "L2 (x10,y1)"
+        },
+        {
+          "keys": "Ctrl+D",
+          "action": "Delete (alt)",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Q",
+          "action": "Mark as read",
+          "charybdis": "L2 (x5,y1)"
+        },
+        {
+          "keys": "Ctrl+U",
+          "action": "Mark as unread",
+          "charybdis": "L10 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+G",
+          "action": "Flag / follow up",
+          "charybdis": "L10 (x3,y3)"
+        }
+      ]
+    },
+    {
+      "name": "Editing",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+C",
+          "action": "Copy",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+V",
+          "action": "Paste",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+Z",
+          "action": "Undo",
+          "charybdis": "L10 (x10,y2)"
+        },
+        {
+          "keys": "Ctrl+A",
+          "action": "Select all",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+B",
+          "action": "Bold",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+I",
+          "action": "Italic",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+K",
+          "action": "Insert hyperlink",
+          "charybdis": "L5 (x7,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+V",
+          "action": "Paste as plain text",
+          "charybdis": "L5 (x3,y3)"
+        }
+      ]
+    },
+    {
+      "name": "Calendar",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+Shift+A",
+          "action": "New appointment",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+Q",
+          "action": "New meeting",
+          "charybdis": "L10 (x7,y1)"
+        },
+        {
+          "keys": "Alt+Down",
+          "action": "Next week (month view)",
+          "charybdis": "L5 (x2,y1)"
+        },
+        {
+          "keys": "Alt+Up",
+          "action": "Previous week",
+          "charybdis": "L5 (x1,y1)"
+        }
+      ]
+    }
+  ]
+}

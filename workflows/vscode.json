@@ -1,0 +1,417 @@
+{
+  "id": "vscode",
+  "name": "Visual Studio Code",
+  "icon": "code",
+  "categories": [
+    {
+      "name": "General",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+Shift+P",
+          "action": "Command palette",
+          "charybdis": "L10 (x5,y3)"
+        },
+        {
+          "keys": "Ctrl+P",
+          "action": "Quick open file",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+N",
+          "action": "New window",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+,",
+          "action": "Open settings",
+          "charybdis": "L5 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+K Ctrl+S",
+          "action": "Keyboard shortcuts",
+          "charybdis": "L5 (x7,y1)"
+        },
+        {
+          "keys": "Ctrl+`",
+          "action": "Toggle terminal",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+`",
+          "action": "New terminal",
+          "charybdis": "L5 (x3,y3)"
+        },
+        {
+          "keys": "Ctrl+B",
+          "action": "Toggle sidebar",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+J",
+          "action": "Toggle bottom panel"
+        },
+        {
+          "keys": "Ctrl+\\",
+          "action": "Split editor",
+          "charybdis": "L5 (x7,y1)"
+        }
+      ]
+    },
+    {
+      "name": "File Operations",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+S",
+          "action": "Save",
+          "charybdis": "L5 (x3,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+S",
+          "action": "Save as",
+          "charybdis": "L10 (x7,y1)"
+        },
+        {
+          "keys": "Ctrl+K S",
+          "action": "Save all",
+          "charybdis": "L5 (x7,y1)"
+        },
+        {
+          "keys": "Ctrl+N",
+          "action": "New file",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+O",
+          "action": "Open file",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+W",
+          "action": "Close editor",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+K Ctrl+W",
+          "action": "Close all editors",
+          "charybdis": "L5 (x7,y1)"
+        }
+      ]
+    },
+    {
+      "name": "Editing",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+C",
+          "action": "Copy (line if no selection)",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+X",
+          "action": "Cut (line if no selection)",
+          "charybdis": "L10 (x3,y0)"
+        },
+        {
+          "keys": "Ctrl+V",
+          "action": "Paste",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+Z",
+          "action": "Undo",
+          "charybdis": "L10 (x10,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+Z",
+          "action": "Redo"
+        },
+        {
+          "keys": "Ctrl+Y",
+          "action": "Redo (alt)",
+          "charybdis": "L10 (x11,y1)"
+        },
+        {
+          "keys": "Ctrl+D",
+          "action": "Select next occurrence",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+L",
+          "action": "Select all occurrences",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Alt+Up",
+          "action": "Move line up",
+          "charybdis": "L5 (x1,y1)"
+        },
+        {
+          "keys": "Alt+Down",
+          "action": "Move line down",
+          "charybdis": "L5 (x2,y1)"
+        },
+        {
+          "keys": "Shift+Alt+Up",
+          "action": "Copy line up"
+        },
+        {
+          "keys": "Shift+Alt+Down",
+          "action": "Copy line down",
+          "charybdis": "L5 (x3,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+K",
+          "action": "Delete line",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Enter",
+          "action": "Insert line below",
+          "charybdis": "L5 (x5,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+Enter",
+          "action": "Insert line above",
+          "charybdis": "L10 (x12,y3)"
+        },
+        {
+          "keys": "Ctrl+/",
+          "action": "Toggle line comment",
+          "charybdis": "L5 (x9,y0)"
+        },
+        {
+          "keys": "Shift+Alt+A",
+          "action": "Toggle block comment",
+          "charybdis": "L5 (x3,y1)"
+        },
+        {
+          "keys": "Ctrl+]",
+          "action": "Indent line",
+          "charybdis": "L5 (x7,y2)"
+        },
+        {
+          "keys": "Ctrl+[",
+          "action": "Outdent line",
+          "charybdis": "L10 (x0,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+\\",
+          "action": "Jump to matching bracket",
+          "charybdis": "L5 (x2,y2)"
+        },
+        {
+          "keys": "Ctrl+Shift+F",
+          "action": "Format document",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+K Ctrl+F",
+          "action": "Format selection",
+          "charybdis": "L5 (x7,y1)"
+        },
+        {
+          "keys": "Tab",
+          "action": "Indent / accept suggestion",
+          "charybdis": "L0 (x0,y1)"
+        },
+        {
+          "keys": "Shift+Tab",
+          "action": "Outdent",
+          "charybdis": "L10 (x0,y1)"
+        }
+      ]
+    },
+    {
+      "name": "Navigation",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+G",
+          "action": "Go to line",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "F12",
+          "action": "Go to definition",
+          "charybdis": "L1 (x4,y3)"
+        },
+        {
+          "keys": "Alt+F12",
+          "action": "Peek definition",
+          "charybdis": "L5 (x11,y1)"
+        },
+        {
+          "keys": "Ctrl+Shift+O",
+          "action": "Go to symbol in file",
+          "charybdis": "L10 (x5,y1)"
+        },
+        {
+          "keys": "Ctrl+T",
+          "action": "Go to symbol in workspace",
+          "charybdis": "L9 (x5,y2)"
+        },
+        {
+          "keys": "Ctrl+Tab",
+          "action": "Switch editor tab",
+          "charybdis": "L2 (x7,y0)"
+        },
+        {
+          "keys": "Alt+Left",
+          "action": "Navigate back",
+          "charybdis": "L9 (x9,y2)"
+        },
+        {
+          "keys": "Alt+Right",
+          "action": "Navigate forward"
+        },
+        {
+          "keys": "Ctrl+Shift+M",
+          "action": "Toggle problems panel",
+          "charybdis": "L5 (x9,y2)"
+        },
+        {
+          "keys": "F8",
+          "action": "Go to next problem",
+          "charybdis": "L5 (x11,y3)"
+        },
+        {
+          "keys": "Shift+F8",
+          "action": "Go to previous problem",
+          "charybdis": "L5 (x12,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+E",
+          "action": "Explorer panel",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+F",
+          "action": "Search across files",
+          "charybdis": "L10 (x9,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+G",
+          "action": "Source control panel",
+          "charybdis": "L10 (x3,y3)"
+        },
+        {
+          "keys": "Ctrl+Shift+X",
+          "action": "Extensions panel",
+          "charybdis": "L5 (x4,y3)"
+        }
+      ]
+    },
+    {
+      "name": "Multi-cursor",
+      "shortcuts": [
+        {
+          "keys": "Alt+Click",
+          "action": "Add cursor at position"
+        },
+        {
+          "keys": "Ctrl+Alt+Up",
+          "action": "Add cursor above"
+        },
+        {
+          "keys": "Ctrl+Alt+Down",
+          "action": "Add cursor below"
+        },
+        {
+          "keys": "Ctrl+U",
+          "action": "Undo last cursor",
+          "charybdis": "L10 (x7,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Search & Replace",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+F",
+          "action": "Find",
+          "charybdis": "L9 (x9,y1)"
+        },
+        {
+          "keys": "Ctrl+H",
+          "action": "Find and replace",
+          "charybdis": "L10 (x3,y2)"
+        },
+        {
+          "keys": "F3",
+          "action": "Find next",
+          "charybdis": "L1 (x2,y2)"
+        },
+        {
+          "keys": "Shift+F3",
+          "action": "Find previous"
+        },
+        {
+          "keys": "Ctrl+Shift+H",
+          "action": "Replace in files",
+          "charybdis": "L9 (x10,y2)"
+        }
+      ]
+    },
+    {
+      "name": "Debug",
+      "shortcuts": [
+        {
+          "keys": "F5",
+          "action": "Start/continue debugging",
+          "charybdis": "L9 (x7,y2)"
+        },
+        {
+          "keys": "Shift+F5",
+          "action": "Stop debugging",
+          "charybdis": "L5 (x2,y0)"
+        },
+        {
+          "keys": "F9",
+          "action": "Toggle breakpoint",
+          "charybdis": "L5 (x7,y0)"
+        },
+        {
+          "keys": "F10",
+          "action": "Step over",
+          "charybdis": "L5 (x3,y0)"
+        },
+        {
+          "keys": "F11",
+          "action": "Step into",
+          "charybdis": "L5 (x10,y2)"
+        },
+        {
+          "keys": "Shift+F11",
+          "action": "Step out",
+          "charybdis": "L5 (x5,y0)"
+        },
+        {
+          "keys": "Ctrl+Shift+F5",
+          "action": "Restart debugging",
+          "charybdis": "L9 (x4,y3)"
+        }
+      ]
+    },
+    {
+      "name": "Selection",
+      "shortcuts": [
+        {
+          "keys": "Ctrl+A",
+          "action": "Select all",
+          "charybdis": "L10 (x9,y2)"
+        },
+        {
+          "keys": "Ctrl+L",
+          "action": "Select current line",
+          "charybdis": "L5 (x5,y2)"
+        },
+        {
+          "keys": "Shift+Alt+Right",
+          "action": "Expand selection"
+        },
+        {
+          "keys": "Shift+Alt+Left",
+          "action": "Shrink selection"
+        }
+      ]
+    }
+  ]
+}
