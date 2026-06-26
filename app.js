@@ -139,6 +139,137 @@
     return value.length > max ? `${value.slice(0, max - 1)}…` : value;
   }
 
+  function modifierParts(modifiers) {
+    return clean(modifiers)
+      .split(",")
+      .map((part) => part.trim())
+      .filter(Boolean)
+      .map((part) => part
+        .replace(/^L\s+Ctrl$/i, "Ctrl")
+        .replace(/^R\s+Ctrl$/i, "Ctrl")
+        .replace(/^LeftControl$/i, "Ctrl")
+        .replace(/^L\s+Shift$/i, "Shift")
+        .replace(/^R\s+Shift$/i, "Shift")
+        .replace(/^LeftShift$/i, "Shift")
+        .replace(/^L\s+Alt$/i, "Alt")
+        .replace(/^R\s+Alt$/i, "AltGr")
+        .replace(/^LeftAlt$/i, "Alt")
+        .replace(/^RightAlt$/i, "AltGr")
+        .replace(/^L\s+GUI$/i, "Win")
+        .replace(/^Left GUI$/i, "Win")
+        .replace(/^Left\s+GUI$/i, "Win")
+        .replace(/^GUI$/i, "Win"));
+  }
+
+  function hasModifier(modifiers, pattern) {
+    return modifierParts(modifiers).some((part) => pattern.test(part));
+  }
+
+  const US_PARAM_LABELS = {
+    "1": "1", "1 and Bang": "1",
+    "2": "2", "2 and At": "2",
+    "3": "3", "3 and Hash": "3",
+    "4": "4", "4 and Dollar": "4",
+    "5": "5", "5 and Percent": "5",
+    "6": "6", "6 and Caret": "6",
+    "7": "7", "7 and Ampersand": "7",
+    "8": "8", "8 and Star": "8",
+    "9": "9", "9 and Left Bracket": "9",
+    "0": "0", "0 and Right Bracket": "0",
+    "SemiColon": ";", "SemiColon and Colon": ";",
+    "Left Apos and Double": "'",
+    "Left Brace": "[", "Left Bracket": "[",
+    "Right Bracket": "]", "Right Brace": "]",
+    "Backslash and Pipe": "\\", "Backslash": "\\",
+    "ForwardSlash and QuestionMark": "/", "ForwardSlash": "/",
+    "Minus": "-", "Equal": "=", "Equal and Plus": "=",
+    "Comma": ",", "Comma and LessThan": ",",
+    "Period": ".", "Period and GreaterThan": ".",
+    "Grave": "`", "Grave Accent and Tilde": "`"
+  };
+
+  function hostOutputEntryForToken(token) {
+    const map = state.hostKeyboard?.zmk_to_host_output || {};
+    const raw = clean(token).replace(/^Keyboard\s+/i, "");
+    const candidates = [raw, ...zmkTokensForLookup(raw)];
+    for (const candidate of candidates) {
+      if (map[candidate]) return map[candidate];
+    }
+    for (const candidate of candidates) {
+      const parts = clean(candidate).split(/\s+and\s+/i).map((part) => part.trim());
+      for (const part of parts) {
+        if (map[part]) return map[part];
+      }
+    }
+    return null;
+  }
+
+  function hostOutputEntryForParam(param) {
+    return hostOutputEntryForToken(param);
+  }
+
+  function hostGlyphFromEntry(entry, modifiers = "") {
+    if (!entry) return "";
+    if (hasModifier(modifiers, /^AltGr$/i) && entry.altgr) return entry.altgr;
+    if (hasModifier(modifiers, /^Shift$/i) && entry.shift) return entry.shift;
+    return entry.normal || "";
+  }
+
+  function usGlyphForParam(param) {
+    const raw = clean(param).replace(/^Keyboard\s+/i, "");
+    const candidates = [raw, ...zmkTokensForLookup(raw)];
+    for (const candidate of candidates) {
+      if (US_PARAM_LABELS[candidate]) return US_PARAM_LABELS[candidate];
+    }
+    const entry = hostOutputEntryForParam(raw);
+    if (entry?.us) return entry.us;
+    return raw.split(/\s+and\s+/i)[0] || raw;
+  }
+
+  function comboDisplay(modifiers, keyLabel) {
+    const parts = modifierParts(modifiers);
+    if (keyLabel) parts.push(keyLabel);
+    return parts.join("+");
+  }
+
+  function hostShortcutForRow(row) {
+    if (!/key press/i.test(clean(row.behavior))) return "";
+    const entry = hostOutputEntryForParam(row.parameter);
+    const hostKey = hostGlyphFromEntry(entry, row.modifiers) || usGlyphForParam(row.parameter);
+    return comboDisplay(row.modifiers, hostKey);
+  }
+
+  function usShortcutForRow(row) {
+    if (!/key press/i.test(clean(row.behavior))) return "";
+    return comboDisplay(row.modifiers, usGlyphForParam(row.parameter));
+  }
+
+  function hostShortcutMeta(row) {
+    const host = hostShortcutForRow(row);
+    const us = usShortcutForRow(row);
+    return {
+      host,
+      us,
+      differs: Boolean(host && us && host !== us)
+    };
+  }
+
+  function hostPrimaryForPrintable(label, param) {
+    const entry = hostOutputEntryForParam(param);
+    if (!entry) return "";
+    const host = hostGlyphFromEntry(entry, "");
+    const current = clean(label);
+    if (!current) return host;
+    if (/^[^\w\s]{1,2}$/i.test(current) || /^[øæåØÆÅ]$/i.test(current)) return host;
+    return "";
+  }
+
+  function outputDisplayForRow(row) {
+    const meta = hostShortcutMeta(row);
+    if (!meta.host) return clean(row.parameter) || "-";
+    return meta.differs ? `${meta.host} (US HID: ${meta.us})` : meta.host;
+  }
+
   function layerParam(row) {
     const param = clean(row.parameter);
     const match = param.match(/(\d+)/);
@@ -599,47 +730,49 @@
     if (/downarrow|↓/i.test(combined)) return { kind: "arrow", primary: "↓", badge: "", secondary: shortHint(modifiers, 12) };
 
     if (/key press/i.test(behavior)) {
-      const primary = label || param.replace(/^Keyboard\s+/i, "").split(" and ")[0] || "?";
+      const hostPrimary = hostPrimaryForPrintable(label, param);
+      const primary = hostPrimary || label || param.replace(/^Keyboard\s+/i, "").split(" and ")[0] || "?";
+      const shortcutHint = modifiers ? shortHint(hostShortcutForRow(row) || modifiers, 14) : "";
       if (/^f\d{1,2}$/i.test(primary)) {
         const fBadge = modifiers ? "🎹" : "";
-        return { kind: "function", primary: primary.toUpperCase(), badge: fBadge, secondary: shortHint(modifiers, 12) };
+        return { kind: "function", primary: primary.toUpperCase(), badge: fBadge, secondary: shortcutHint };
       }
       if (/shift|ctrl|control|alt|gui|win/i.test(`${primary} ${label}`)) {
-        return { kind: "modifier", primary: label || primary, badge: "⇧", secondary: shortHint(modifiers, 12) };
+        return { kind: "modifier", primary: label || primary, badge: "⇧", secondary: shortcutHint };
       }
       if (/space|spacebar|␣/i.test(`${primary} ${label}`)) {
-        return { kind: "space", primary: "␣", badge: "", secondary: shortHint(modifiers, 12) };
+        return { kind: "space", primary: "␣", badge: "", secondary: shortcutHint };
       }
       if (/enter|return|ret/i.test(`${primary} ${label}`)) {
-        return { kind: "enter", primary: "↵", badge: "", secondary: shortHint(modifiers, 12) };
+        return { kind: "enter", primary: "↵", badge: "", secondary: shortcutHint };
       }
       if (/delete|bksp|backspace/i.test(`${primary} ${label}`)) {
         const delEmoji = /base typing/i.test(clean(row.purpose)) ? "" : "🗑️";
-        return { kind: "edit", primary: label || "Del", badge: delEmoji, secondary: shortHint(modifiers, 12) };
+        return { kind: "edit", primary: label || "Del", badge: delEmoji, secondary: shortcutHint };
       }
       if (/tab/i.test(`${primary} ${label}`)) {
         const tabEmoji = /base typing/i.test(clean(row.purpose)) ? "" : "↔️";
-        return { kind: "edit", primary: "Tab", badge: tabEmoji, secondary: shortHint(modifiers, 12) };
+        return { kind: "edit", primary: "Tab", badge: tabEmoji, secondary: shortcutHint };
       }
       if (/escape|esc/i.test(`${primary} ${label}`)) {
         const escEmoji = /base typing/i.test(clean(row.purpose)) ? "" : "🚫";
-        return { kind: "edit", primary: "Esc", badge: escEmoji, secondary: shortHint(modifiers, 12) };
+        return { kind: "edit", primary: "Esc", badge: escEmoji, secondary: shortcutHint };
       }
       if (/^[a-z]$/i.test(primary) && modifiers) {
         const singleMatch = matchSingleLetterAction(primary, modifiers);
         if (singleMatch) {
-          return { kind: "letter", primary: singleMatch.action, badge: singleMatch.emoji, secondary: shortHint(modifiers, 14) };
+          return { kind: "letter", primary: singleMatch.action, badge: singleMatch.emoji, secondary: shortcutHint };
         }
       }
       const keyEmoji = keycapEmoji(primary, modifiers, clean(row.purpose));
       if (keyEmoji) {
-        return { kind: "letter", primary, badge: keyEmoji, secondary: shortHint(modifiers, 14) };
+        return { kind: "letter", primary, badge: keyEmoji, secondary: shortcutHint };
       }
       return {
         kind: "letter",
         primary,
         badge: "",
-        secondary: shortHint(modifiers, 14)
+        secondary: shortcutHint
       };
     }
 
@@ -756,7 +889,7 @@
         button.dataset.search = rowSearchText(row);
         button.dataset.important = String(isImportant(row));
         button.dataset.keyId = keyId(row);
-        button.title = `${clean(row.visual_label)} — ${clean(row.behavior)} — ${clean(row.parameter)}`;
+        button.title = `${clean(row.visual_label)} — ${clean(row.behavior)} — ${outputDisplayForRow(row)}`;
         const badgeHtml = visual.badge
           ? `<span class="key-badge" aria-hidden="true">${escapeHtml(visual.badge)}</span>`
           : "";
@@ -783,7 +916,7 @@
     els.selectedTitle.textContent = clean(row.visual_label) || "Unnamed key";
     els.selectedSubtitle.textContent = `Layer ${row.layer} - x${row.x} y${row.y}`;
     els.selectedBehavior.textContent = clean(row.behavior) || "-";
-    els.selectedOutput.textContent = clean(row.parameter) || "-";
+    els.selectedOutput.textContent = outputDisplayForRow(row);
     els.selectedModifiers.textContent = clean(row.modifiers) || "-";
     els.selectedPurpose.textContent = clean(row.purpose) || "-";
     els.selectedNotes.textContent = clean(row.usage_notes) || "-";
@@ -1325,6 +1458,33 @@
     return CATEGORY_EMOJI_MAP[name] || "";
   }
 
+  function rowForWorkflowShortcut(shortcut) {
+    if (!shortcut?.charybdis) return null;
+    const layerMatch = shortcut.charybdis.match(/L(\d+)/);
+    if (!layerMatch) return null;
+    const layer = layerMatch[1];
+    const posMatch = shortcut.charybdis.match(/x(\d+),\s*y(\d+)/);
+    if (posMatch) {
+      return (state.rowsByLayer.get(layer) || []).find((row) => row.x === posMatch[1] && row.y === posMatch[2]) || null;
+    }
+    return (state.rowsByLayer.get(layer) || []).find(
+      (row) => clean(row.visual_label).toLowerCase() === clean(shortcut.action).toLowerCase().split(" ")[0]
+    ) || null;
+  }
+
+  function displayKeysForShortcut(shortcut) {
+    const row = rowForWorkflowShortcut(shortcut);
+    if (!row) return { display: shortcut.keys, original: shortcut.keys, row: null, differs: false };
+    const meta = hostShortcutMeta(row);
+    const display = meta.host || shortcut.keys;
+    return {
+      display,
+      original: shortcut.keys,
+      row,
+      differs: Boolean(display && shortcut.keys && display !== shortcut.keys)
+    };
+  }
+
   function renderWorkflow() {
     if (!els.workflowContent) return;
     const app = workflowState.activeApp;
@@ -1341,7 +1501,9 @@
         const cls = hidden ? ' class="workflow-shortcut filtered-out"' : ' class="workflow-shortcut"';
         const actionEmoji = emojiForAction(s.action);
         const actionDisplay = actionEmoji ? `${actionEmoji} ${s.action}` : s.action;
-        let row = `<div${cls}><span class="workflow-keys">${escapeHtml(s.keys)}</span><span class="workflow-action">${escapeHtml(actionDisplay)}</span>`;
+        const keys = displayKeysForShortcut(s);
+        const title = keys.differs ? ` title="${escapeHtml(`Norwegian Windows from Charybdis: ${keys.display} | App shortcut: ${keys.original}`)}"` : "";
+        let row = `<div${cls}><span class="workflow-keys"${title}>${escapeHtml(keys.display)}</span><span class="workflow-action">${escapeHtml(actionDisplay)}</span>`;
         if (s.charybdis) row += `<span class="workflow-charybdis">${escapeHtml(s.charybdis)}</span>`;
         row += "</div>";
         return { html: row, hidden };
@@ -1561,7 +1723,7 @@
         render();
       }
       selectKey(sc.row);
-      setPrompt(`APP QUIZ — In ${appId}, find the key for: "${sc.appAction}" (${sc.appKeys})  ·  Layer ${sc.row.layer}`);
+      setPrompt(`APP QUIZ — In ${appId}, find the key for: "${sc.appAction}" (${sc.appKeysDisplay || sc.appKeys})  ·  Layer ${sc.row.layer}`);
       return;
     }
     const target = pickWeightedTarget(practiceableRows(state.displayedLayer));
@@ -1620,7 +1782,7 @@
     flashKey(row, "answer-correct");
     const appData = state.practice.guidedAppData?.[i];
     if (appData) {
-      setPrompt(`APP GUIDE ${i + 1}/${list.length} — ${appData.category}: "${appData.appAction}" (${appData.appKeys})  ·  Key: "${clean(row.visual_label)}" on Layer ${row.layer}  ·  click to advance`);
+      setPrompt(`APP GUIDE ${i + 1}/${list.length} — ${appData.category}: "${appData.appAction}" (${appData.appKeysDisplay || appData.appKeys})  ·  Key: "${clean(row.visual_label)}" on Layer ${row.layer}  ·  click to advance`);
     } else {
       setPrompt(`GUIDED ${i + 1}/${list.length} — "${clean(row.visual_label)}": ${clean(row.purpose) || clean(row.usage_notes)}  ·  click another key to advance.`);
     }
@@ -1644,20 +1806,16 @@
     const results = [];
     for (const cat of (app.categories || [])) {
       for (const s of (cat.shortcuts || [])) {
-        if (!s.charybdis) continue;
-        const layerMatch = s.charybdis.match(/L(\d+)/);
-        if (!layerMatch) continue;
-        const layer = layerMatch[1];
-        const posMatch = s.charybdis.match(/x(\d+),\s*y(\d+)/);
-        let matchedRow = null;
-        if (posMatch) {
-          matchedRow = (state.rowsByLayer.get(layer) || []).find((r) => r.x === posMatch[1] && r.y === posMatch[2]);
-        }
-        if (!matchedRow) {
-          matchedRow = (state.rowsByLayer.get(layer) || []).find((r) => clean(r.visual_label).toLowerCase() === s.action.toLowerCase().split(" ")[0]);
-        }
+        const matchedRow = rowForWorkflowShortcut(s);
         if (matchedRow) {
-          results.push({ row: matchedRow, appAction: s.action, appKeys: s.keys, category: cat.name });
+          const keys = displayKeysForShortcut(s);
+          results.push({
+            row: matchedRow,
+            appAction: s.action,
+            appKeys: s.keys,
+            appKeysDisplay: keys.display,
+            category: cat.name
+          });
         }
       }
     }
@@ -2126,7 +2284,7 @@
 
     learnEls.step.innerHTML = [
       `<strong>${escapeHtml(sc.appAction)}</strong>`,
-      `<span class="learn-keys">${escapeHtml(sc.appKeys)}</span>`,
+      `<span class="learn-keys">${escapeHtml(sc.appKeysDisplay || sc.appKeys)}</span>`,
       `<span class="learn-pos">Key: ${escapeHtml(clean(sc.row.visual_label))} &middot; x${sc.row.x}, y${sc.row.y} &middot; ${layerName}</span>`,
     ].join("");
 
@@ -2135,7 +2293,7 @@
     const isDangerous = DANGEROUS_KEYS.has(sc.appKeys);
     if (learnEls.warning) {
       learnEls.warning.classList.toggle("learn-warning--hidden", !isDangerous);
-      if (isDangerous) learnEls.warning.textContent = `This shortcut (${sc.appKeys}) may affect other windows or close tabs. Use with care.`;
+      if (isDangerous) learnEls.warning.textContent = `This shortcut (${sc.appKeysDisplay || sc.appKeys}) may affect other windows or close tabs. Use with care.`;
     }
 
     if (sc.row.layer !== state.displayedLayer) {
