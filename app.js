@@ -601,7 +601,8 @@
     if (/key press/i.test(behavior)) {
       const primary = label || param.replace(/^Keyboard\s+/i, "").split(" and ")[0] || "?";
       if (/^f\d{1,2}$/i.test(primary)) {
-        return { kind: "function", primary: primary.toUpperCase(), badge: "🎹", secondary: shortHint(modifiers, 12) };
+        const fBadge = modifiers ? "🎹" : "";
+        return { kind: "function", primary: primary.toUpperCase(), badge: fBadge, secondary: shortHint(modifiers, 12) };
       }
       if (/shift|ctrl|control|alt|gui|win/i.test(`${primary} ${label}`)) {
         return { kind: "modifier", primary: label || primary, badge: "⇧", secondary: shortHint(modifiers, 12) };
@@ -991,7 +992,8 @@
   }
 
   async function pollState() {
-    const live = await loadJson("../charybdis-tools/runtime/charybdis_state.json", null);
+    const stateUrl = window.CHARYBDIS_STATE_URL || "../charybdis-tools/runtime/charybdis_state.json";
+    const live = await loadJson(stateUrl, null);
     state.lastState = live;
     if (live) {
       const newLiveLayer = deriveLiveLayer(live);
@@ -1416,7 +1418,7 @@
     await loadWorkflowIndex();
     setupWorkflow();
     await pollState();
-    setInterval(pollState, 500);
+    setInterval(pollState, 150);
     setInterval(renderNow, 1000);
   }
 

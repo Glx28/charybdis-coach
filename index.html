@@ -25,13 +25,15 @@
         <div class="status-pill"><span>⚡ Last</span><strong id="lastAction">Starting</strong></div>
         <div class="status-pill transport"><span>📡 Transport</span><strong id="transport">USB</strong></div>
       </div>
-      <button class="learn-button" id="learnButton" type="button" title="Learn app shortcuts">📖 Learn</button>
-      <button class="icon-button" id="keyDebugToggle" type="button" title="Toggle key input debug overlay">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 3v5l4 2"/></svg>
-      </button>
-      <button class="icon-button" id="fullscreenButton" type="button" title="Fullscreen">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M8 21H3v-5m18 0v5h-5"/></svg>
-      </button>
+      <div class="topbar-actions">
+        <button class="learn-button" id="learnButton" type="button" title="Learn app shortcuts">📖 Learn</button>
+        <button class="icon-button" id="keyDebugToggle" type="button" title="Toggle key input debug overlay">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 3v5l4 2"/></svg>
+        </button>
+        <button class="icon-button" id="fullscreenButton" type="button" title="Fullscreen">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M8 21H3v-5m18 0v5h-5"/></svg>
+        </button>
+      </div>
     </header>
 
     <div id="beaconBanner" class="beacon-banner beacon-banner--hidden" role="status" aria-live="assertive" hidden>
