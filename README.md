@@ -2,6 +2,8 @@
 
 Browser-based interactive keyboard layout coach for the Charybdis split keyboard. Visualizes all 616 keys across 11 layers, tracks live layer state, and provides per-app workflow guides.
 
+Part of the [Charybdis Keyboard System](https://github.com/Glx28/charybdis-tools#readme) — see the parent README for full setup and how data flows between repos.
+
 ## Quick Start
 
 ```powershell
