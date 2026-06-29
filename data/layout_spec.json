@@ -20,13 +20,13 @@
     "1": "Navigation and function",
     "2": "Mouse and trackball support",
     "3": "Window and monitor management",
-    "4": "Bluetooth, output, system, F13-F24 macros",
-    "5": "Code/IDE (VS Code shortcuts)",
-    "6": "Reserved transparent layer",
-    "7": "RPG/Game layer",
-    "8": "Pointer travel overlay",
-    "9": "M-Files/DMS document management",
-    "10": "Excel spreadsheet layer"
+    "4": "Language, host, system",
+    "5": "App helpers",
+    "6": "Mac overlay",
+    "7": "spare",
+    "8": "spare",
+    "9": "experimental",
+    "10": "emergency/recovery"
   },
   "host_triggers": {
     "F13": "Spare macro/app trigger (æ now direct on base 12,2 via Norwegian layout)",
