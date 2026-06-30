@@ -601,8 +601,17 @@ svg {
 }
 
 .keycap.kind-transparent .key-primary {
-  font-size: 1.35rem;
-  opacity: 0.35;
+  font-size: clamp(0.72rem, 1vw, 0.95rem);
+  opacity: 0.68;
+}
+
+.keycap.kind-transparent .key-badge {
+  font-size: 0.9rem;
+  opacity: 0.62;
+}
+
+.keycap.kind-transparent .key-secondary {
+  opacity: 0.58;
 }
 
 .keycap.kind-nav { border-color: #2a8f84; background: #0f2a28; color: #b8fff4; }

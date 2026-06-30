@@ -1,617 +1,617 @@
-"layer","layer_role","x","y","visual_label","behavior","parameter","modifiers","purpose","usage_notes"
-"0","Base typing and thumb access","0","0","escape","Key Press","Escape","","Evolved Run 7 key assignment.","Sends Escape."
-"0","Base typing and thumb access","1","0","1","Key Press","1 and Bang","","Evolved Run 7 key assignment.","Sends 1 and Bang."
-"0","Base typing and thumb access","2","0","2","Key Press","2 and At","","Evolved Run 7 key assignment.","Sends 2 and At."
-"0","Base typing and thumb access","3","0","3","Key Press","3 and Hash","","Evolved Run 7 key assignment.","Sends 3 and Hash."
-"0","Base typing and thumb access","4","0","4","Key Press","4 and Dollar","","Evolved Run 7 key assignment.","Sends 4 and Dollar."
-"0","Base typing and thumb access","5","0","5","Key Press","5 and Percent","","Evolved Run 7 key assignment.","Sends 5 and Percent."
-"0","Base typing and thumb access","7","0","6","Key Press","6 and Caret","","Evolved Run 7 key assignment.","Sends 6 and Caret."
-"0","Base typing and thumb access","8","0","7","Key Press","7 and Ampersand","","Evolved Run 7 key assignment.","Sends 7 and Ampersand."
-"0","Base typing and thumb access","9","0","8","Key Press","8 and Star","","Evolved Run 7 key assignment.","Sends 8 and Star."
-"0","Base typing and thumb access","10","0","9","Key Press","9 and Left Bracket","","Evolved Run 7 key assignment.","Sends 9 and Left Bracket."
-"0","Base typing and thumb access","11","0","0","Key Press","0 and Right Bracket","","Evolved Run 7 key assignment.","Sends 0 and Right Bracket."
-"0","Base typing and thumb access","12","0","delete","Key Press","Delete","","Evolved Run 7 key assignment.","Sends Delete."
-"0","Base typing and thumb access","0","1","tab","Key Press","Tab","","Evolved Run 7 key assignment.","Sends Tab."
-"0","Base typing and thumb access","1","1","q","Key Press","Q","","Evolved Run 7 key assignment.","Sends Q."
-"0","Base typing and thumb access","2","1","w","Key Press","W","","Evolved Run 7 key assignment.","Sends W."
-"0","Base typing and thumb access","3","1","e","Key Press","E","","Evolved Run 7 key assignment.","Sends E."
-"0","Base typing and thumb access","4","1","r","Key Press","R","","Evolved Run 7 key assignment.","Sends R."
-"0","Base typing and thumb access","5","1","t","Key Press","T","","Evolved Run 7 key assignment.","Sends T."
-"0","Base typing and thumb access","7","1","y","Key Press","Y","","Evolved Run 7 key assignment.","Sends Y."
-"0","Base typing and thumb access","8","1","u","Key Press","U","","Evolved Run 7 key assignment.","Sends U."
-"0","Base typing and thumb access","9","1","i","Key Press","I","","Evolved Run 7 key assignment.","Sends I."
-"0","Base typing and thumb access","10","1","o","Key Press","O","","Evolved Run 7 key assignment.","Sends O."
-"0","Base typing and thumb access","11","1","p","Key Press","P","","Evolved Run 7 key assignment.","Sends P."
-"0","Base typing and thumb access","12","1","left brace","Key Press","Left Brace","","Evolved Run 7 key assignment.","Sends Left Brace."
-"0","Base typing and thumb access","0","2","leftshift","Key Press","LeftShift","","Evolved Run 7 key assignment.","Sends LeftShift."
-"0","Base typing and thumb access","1","2","a","Key Press","A","","Evolved Run 7 key assignment.","Sends A."
-"0","Base typing and thumb access","2","2","s","Key Press","S","","Evolved Run 7 key assignment.","Sends S."
-"0","Base typing and thumb access","3","2","d","Key Press","D","","Evolved Run 7 key assignment.","Sends D."
-"0","Base typing and thumb access","4","2","f","Key Press","F","","Evolved Run 7 key assignment.","Sends F."
-"0","Base typing and thumb access","5","2","g","Key Press","G","","Evolved Run 7 key assignment.","Sends G."
-"0","Base typing and thumb access","7","2","h","Key Press","H","","Evolved Run 7 key assignment.","Sends H."
-"0","Base typing and thumb access","8","2","j","Key Press","J","","Evolved Run 7 key assignment.","Sends J."
-"0","Base typing and thumb access","9","2","k","Key Press","K","","Evolved Run 7 key assignment.","Sends K."
-"0","Base typing and thumb access","10","2","l","Key Press","L","","Evolved Run 7 key assignment.","Sends L."
-"0","Base typing and thumb access","11","2","semicolon","Key Press","SemiColon and Colon","","Evolved Run 7 key assignment.","Sends SemiColon and Colon."
-"0","Base typing and thumb access","12","2","left apos","Key Press","Left Apos and Double","","Evolved Run 7 key assignment.","Sends Left Apos and Double."
-"0","Base typing and thumb access","0","3","leftcontrol","Key Press","LeftControl","","Evolved Run 7 key assignment.","Sends LeftControl."
-"0","Base typing and thumb access","1","3","z","Key Press","Z","","Evolved Run 7 key assignment.","Sends Z."
-"0","Base typing and thumb access","2","3","x","Key Press","X","","Evolved Run 7 key assignment.","Sends X."
-"0","Base typing and thumb access","3","3","c","Key Press","C","","Evolved Run 7 key assignment.","Sends C."
-"0","Base typing and thumb access","4","3","v","Key Press","V","","Evolved Run 7 key assignment.","Sends V."
-"0","Base typing and thumb access","5","3","b","Key Press","B","","Evolved Run 7 key assignment.","Sends B."
-"0","Base typing and thumb access","7","3","n","Key Press","N","","Evolved Run 7 key assignment.","Sends N."
-"0","Base typing and thumb access","8","3","m","Key Press","M","","Evolved Run 7 key assignment.","Sends M."
-"0","Base typing and thumb access","9","3","comma","Key Press","Comma and LessThan","","Evolved Run 7 key assignment.","Sends Comma and LessThan."
-"0","Base typing and thumb access","10","3","period","Key Press","Period and GreaterThan","","Evolved Run 7 key assignment.","Sends Period and GreaterThan."
-"0","Base typing and thumb access","11","3","forwardslash","Key Press","ForwardSlash and QuestionMark","","Evolved Run 7 key assignment.","Sends ForwardSlash and QuestionMark."
-"0","Base typing and thumb access","12","3","backslash","Key Press","Backslash and Pipe","","Evolved Run 7 key assignment.","Sends Backslash and Pipe."
-"0","Base typing and thumb access","3","4","coach l1 hold","coach_l1_hold","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_l1_hold."
-"0","Base typing and thumb access","4","4","spacebar","Key Press","Spacebar","","Evolved Run 7 key assignment.","Sends Spacebar."
-"0","Base typing and thumb access","5","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"0","Base typing and thumb access","7","4","coach l3 hold","coach_l3_hold","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_l3_hold."
-"0","Base typing and thumb access","8","4","coach l4 hold","coach_l4_hold","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_l4_hold."
-"0","Base typing and thumb access","4","5","coach l2 hold","coach_l2_hold","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_l2_hold."
-"0","Base typing and thumb access","5","5","downarrow","Key Press","DownArrow","","Evolved Run 7 key assignment.","Sends DownArrow."
-"0","Base typing and thumb access","7","5","return enter","Key Press","Return Enter","","Evolved Run 7 key assignment.","Sends Return Enter."
-"1","Navigation, function keys, programming/editing helpers","0","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"1","Navigation, function keys, programming/editing helpers","1","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"1","Navigation, function keys, programming/editing helpers","2","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"1","Navigation, function keys, programming/editing helpers","3","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"1","Navigation, function keys, programming/editing helpers","4","0","printscreen","Key Press","PrintScreen and SysReq","","Evolved Run 7 key assignment.","Sends PrintScreen and SysReq."
-"1","Navigation, function keys, programming/editing helpers","5","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"1","Navigation, function keys, programming/editing helpers","7","0","Ctrl+Z","Key Press","Z","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Z."
-"1","Navigation, function keys, programming/editing helpers","8","0","Ctrl+Shift+C","Key Press","C","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+C."
-"1","Navigation, function keys, programming/editing helpers","9","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"1","Navigation, function keys, programming/editing helpers","10","0","Bluetooth","Bluetooth","BT_SEL 1","","Evolved Run 7 Bluetooth/profile assignment.","Sends BT_SEL 1."
-"1","Navigation, function keys, programming/editing helpers","11","0","Alt+Shift+Down","Key Press","DownArrow","L Alt+L Shift","Evolved Run 7 key assignment.","Sends Alt+Shift+DownArrow."
-"1","Navigation, function keys, programming/editing helpers","12","0","Ctrl+Shift+`","Key Press","Grave Accent and Tilde","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Grave Accent and Tilde."
-"1","Navigation, function keys, programming/editing helpers","0","1","Ctrl+Shift+1","Key Press","1 and Bang","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+1 and Bang."
-"1","Navigation, function keys, programming/editing helpers","1","1","Toggle Layer","Toggle Layer","Layer::5","","Evolved Run 7 layer access key.","Toggle Layer Layer::5."
-"1","Navigation, function keys, programming/editing helpers","2","1","Ctrl+H","Key Press","H","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+H."
-"1","Navigation, function keys, programming/editing helpers","3","1","Ctrl+J","Key Press","J","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+J."
-"1","Navigation, function keys, programming/editing helpers","4","1","f1","Key Press","F1","","Evolved Run 7 key assignment.","Sends F1."
-"1","Navigation, function keys, programming/editing helpers","5","1","f10","Key Press","F10","","Evolved Run 7 key assignment.","Sends F10."
-"1","Navigation, function keys, programming/editing helpers","7","1","Ctrl+Shift+Z","Key Press","Z","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Z."
-"1","Navigation, function keys, programming/editing helpers","8","1","Alt+Up","Key Press","UpArrow","L Alt","Evolved Run 7 key assignment.","Sends Alt+UpArrow."
-"1","Navigation, function keys, programming/editing helpers","9","1","Shift+Alt+Down","Key Press","DownArrow","L Shift+L Alt","Evolved Run 7 key assignment.","Sends Shift+Alt+DownArrow."
-"1","Navigation, function keys, programming/editing helpers","10","1","Ctrl+Shift+V","Key Press","V","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+V."
-"1","Navigation, function keys, programming/editing helpers","11","1","Ctrl+Shift+<","Key Press","Comma and LessThan","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Comma and LessThan."
-"1","Navigation, function keys, programming/editing helpers","12","1","end","Key Press","End","","Evolved Run 7 key assignment.","Sends End."
-"1","Navigation, function keys, programming/editing helpers","0","2","f4","Key Press","F4","","Evolved Run 7 key assignment.","Sends F4."
-"1","Navigation, function keys, programming/editing helpers","1","2","Ctrl+2","Key Press","2 and At","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+2 and At."
-"1","Navigation, function keys, programming/editing helpers","2","2","Enter","Key Press","Return Enter","","Evolved Run 7 key assignment.","Sends Return Enter."
-"1","Navigation, function keys, programming/editing helpers","3","2","Momentary Layer","Momentary Layer","Layer::6","","Evolved Run 7 layer access key.","Momentary Layer Layer::6."
-"1","Navigation, function keys, programming/editing helpers","4","2","f6","Key Press","F6","","Evolved Run 7 key assignment.","Sends F6."
-"1","Navigation, function keys, programming/editing helpers","5","2","f5","Key Press","F5","","Evolved Run 7 key assignment.","Sends F5."
-"1","Navigation, function keys, programming/editing helpers","7","2","Ctrl+Y","Key Press","Y","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Y."
-"1","Navigation, function keys, programming/editing helpers","8","2","Ctrl+C","Key Press","C","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+C."
-"1","Navigation, function keys, programming/editing helpers","9","2","Ctrl+V","Key Press","V","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+V."
-"1","Navigation, function keys, programming/editing helpers","10","2","Ctrl+Enter","Key Press","Return Enter","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Return Enter."
-"1","Navigation, function keys, programming/editing helpers","11","2","Ctrl+Shift+F","Key Press","F","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+F."
-"1","Navigation, function keys, programming/editing helpers","12","2","f18","Key Press","F18","","Evolved Run 7 key assignment.","Sends F18."
-"1","Navigation, function keys, programming/editing helpers","0","3","right bracket","Key Press","0 and Right Bracket","","Evolved Run 7 key assignment.","Sends 0 and Right Bracket."
-"1","Navigation, function keys, programming/editing helpers","1","3","F3","Key Press","F3","","Evolved Run 7 key assignment.","Sends F3."
-"1","Navigation, function keys, programming/editing helpers","2","3","Ctrl+Shift+G","Key Press","G","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+G."
-"1","Navigation, function keys, programming/editing helpers","3","3","F11","Key Press","F11","","Evolved Run 7 key assignment.","Sends F11."
-"1","Navigation, function keys, programming/editing helpers","4","3","Shift+F3","Key Press","F3","L Shift","Evolved Run 7 key assignment.","Sends Shift+F3."
-"1","Navigation, function keys, programming/editing helpers","5","3","Ctrl+Shift+>","Key Press","Period and GreaterThan","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Period and GreaterThan."
-"1","Navigation, function keys, programming/editing helpers","7","3","Ctrl+Shift+X","Key Press","X","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+X."
-"1","Navigation, function keys, programming/editing helpers","8","3","Alt+Down","Key Press","DownArrow","L Alt","Evolved Run 7 key assignment.","Sends Alt+DownArrow."
-"1","Navigation, function keys, programming/editing helpers","9","3","coach game lock","coach_game_lock","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_game_lock."
-"1","Navigation, function keys, programming/editing helpers","10","3","Ctrl+E","Key Press","E","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+E."
-"1","Navigation, function keys, programming/editing helpers","11","3","left brace","Key Press","Left Brace","","Evolved Run 7 key assignment.","Sends Left Brace."
-"1","Navigation, function keys, programming/editing helpers","12","3","f14","Key Press","F14","","Evolved Run 7 key assignment.","Sends F14."
-"1","Navigation, function keys, programming/editing helpers","3","4","F1","Key Press","F1","","Evolved Run 7 key assignment.","Sends F1."
-"1","Navigation, function keys, programming/editing helpers","4","4","F7","Key Press","F7","","Evolved Run 7 key assignment.","Sends F7."
-"1","Navigation, function keys, programming/editing helpers","5","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"1","Navigation, function keys, programming/editing helpers","7","4","Ctrl+X","Key Press","X","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+X."
-"1","Navigation, function keys, programming/editing helpers","8","4","Ctrl+Shift+K","Key Press","K","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+K."
-"1","Navigation, function keys, programming/editing helpers","4","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"1","Navigation, function keys, programming/editing helpers","5","5","Shift+F8","Key Press","F8","L Shift","Evolved Run 7 key assignment.","Sends Shift+F8."
-"1","Navigation, function keys, programming/editing helpers","7","5","left bracket","Key Press","9 and Left Bracket","","Evolved Run 7 key assignment.","Sends 9 and Left Bracket."
-"2","Mouse lock and button layer","0","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"2","Mouse lock and button layer","1","0","f12","Key Press","F12","","Evolved Run 7 key assignment.","Sends F12."
-"2","Mouse lock and button layer","2","0","Ctrl+Alt+Up","Key Press","UpArrow","L Ctrl+L Alt","Evolved Run 7 key assignment.","Sends Ctrl+Alt+UpArrow."
-"2","Mouse lock and button layer","3","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"2","Mouse lock and button layer","4","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"2","Mouse lock and button layer","5","0","Bluetooth","Bluetooth","BT_SEL 2","","Evolved Run 7 Bluetooth/profile assignment.","Sends BT_SEL 2."
-"2","Mouse lock and button layer","7","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"2","Mouse lock and button layer","8","0","Ctrl+Left","Key Press","LeftArrow","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+LeftArrow."
-"2","Mouse lock and button layer","9","0","f15","Key Press","F15","","Evolved Run 7 key assignment.","Sends F15."
-"2","Mouse lock and button layer","10","0","semicolon","Key Press","SemiColon and Colon","","Evolved Run 7 key assignment.","Sends SemiColon and Colon."
-"2","Mouse lock and button layer","11","0","Ctrl+Shift+W","Key Press","W","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+W."
-"2","Mouse lock and button layer","12","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"2","Mouse lock and button layer","0","1","dash","Key Press","Dash and Underscore","","Evolved Run 7 key assignment.","Sends Dash and Underscore."
-"2","Mouse lock and button layer","1","1","Ctrl+Alt+Down","Key Press","DownArrow","L Ctrl+L Alt","Evolved Run 7 key assignment.","Sends Ctrl+Alt+DownArrow."
-"2","Mouse lock and button layer","2","1","Win+S","Key Press","S","L GUI","Evolved Run 7 key assignment.","Sends GUI+S."
-"2","Mouse lock and button layer","3","1","right brace","Key Press","Right Brace","","Evolved Run 7 key assignment.","Sends Right Brace."
-"2","Mouse lock and button layer","4","1","leftarrow","Key Press","LeftArrow","","Evolved Run 7 key assignment.","Sends LeftArrow."
-"2","Mouse lock and button layer","5","1","F10","Key Press","F10","","Evolved Run 7 key assignment.","Sends F10."
-"2","Mouse lock and button layer","7","1","F9","Key Press","F9","","Evolved Run 7 key assignment.","Sends F9."
-"2","Mouse lock and button layer","8","1","Ctrl+Right","Key Press","RightArrow","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+RightArrow."
-"2","Mouse lock and button layer","9","1","Ctrl+U","Key Press","U","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+U."
-"2","Mouse lock and button layer","10","1","Shift+Tab","Key Press","Tab","L Shift","Evolved Run 7 key assignment.","Sends Shift+Tab."
-"2","Mouse lock and button layer","11","1","dash","Key Press","Dash and Underscore","","Evolved Run 7 key assignment.","Sends Dash and Underscore."
-"2","Mouse lock and button layer","12","1","f17","Key Press","F17","","Evolved Run 7 key assignment.","Sends F17."
-"2","Mouse lock and button layer","0","2","leftarrow","Key Press","LeftArrow","","Evolved Run 7 key assignment.","Sends LeftArrow."
-"2","Mouse lock and button layer","1","2","Alt+Tab","Key Press","Tab","L Alt","Evolved Run 7 key assignment.","Sends Alt+Tab."
-"2","Mouse lock and button layer","2","2","Win+Left","Key Press","LeftArrow","L GUI","Evolved Run 7 key assignment.","Sends GUI+LeftArrow."
-"2","Mouse lock and button layer","3","2","Win+Right","Key Press","RightArrow","L GUI","Evolved Run 7 key assignment.","Sends GUI+RightArrow."
-"2","Mouse lock and button layer","4","2","Backspace","Key Press","Delete","","Evolved Run 7 key assignment.","Sends Delete."
-"2","Mouse lock and button layer","5","2","uparrow","Key Press","UpArrow","","Evolved Run 7 key assignment.","Sends UpArrow."
-"2","Mouse lock and button layer","7","2","f9","Key Press","F9","","Evolved Run 7 key assignment.","Sends F9."
-"2","Mouse lock and button layer","8","2","MB4","Mouse Key Press","MB4","","Evolved Run 7 mouse button assignment.","Sends MB4."
-"2","Mouse lock and button layer","9","2","coach travel toggle","coach_travel_toggle","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_travel_toggle."
-"2","Mouse lock and button layer","10","2","coach base","coach_base","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_base."
-"2","Mouse lock and button layer","11","2","Ctrl+Shift+M","Key Press","M","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+M."
-"2","Mouse lock and button layer","12","2","Toggle Layer","Toggle Layer","Layer::6","","Evolved Run 7 layer access key.","Toggle Layer Layer::6."
-"2","Mouse lock and button layer","0","3","rightarrow","Key Press","RightArrow","","Evolved Run 7 key assignment.","Sends RightArrow."
-"2","Mouse lock and button layer","1","3","MB3","Mouse Key Press","MB3","","Evolved Run 7 mouse button assignment.","Sends MB3."
-"2","Mouse lock and button layer","2","3","Shift+F11","Key Press","F11","L Shift","Evolved Run 7 key assignment.","Sends Shift+F11."
-"2","Mouse lock and button layer","3","3","MB1","Mouse Key Press","MB1","","Evolved Run 7 mouse button assignment.","Sends MB1."
-"2","Mouse lock and button layer","4","3","MB5","Mouse Key Press","MB5","","Evolved Run 7 mouse button assignment.","Sends MB5."
-"2","Mouse lock and button layer","5","3","end","Key Press","End","","Evolved Run 7 key assignment.","Sends End."
-"2","Mouse lock and button layer","7","3","forwardslash","Key Press","ForwardSlash and QuestionMark","","Evolved Run 7 key assignment.","Sends ForwardSlash and QuestionMark."
-"2","Mouse lock and button layer","8","3","F4","Key Press","F4","","Evolved Run 7 key assignment.","Sends F4."
-"2","Mouse lock and button layer","9","3","Ctrl+Shift+R","Key Press","R","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+R."
-"2","Mouse lock and button layer","10","3","Alt+F12","Key Press","F12","L Alt","Evolved Run 7 key assignment.","Sends Alt+F12."
-"2","Mouse lock and button layer","11","3","Momentary Layer","Momentary Layer","Layer::8","","Evolved Run 7 layer access key.","Momentary Layer Layer::8."
-"2","Mouse lock and button layer","12","3","Win+1","Key Press","1 and Bang","L GUI","Evolved Run 7 key assignment.","Sends GUI+1 and Bang."
-"2","Mouse lock and button layer","3","4","Ctrl+O","Key Press","O","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+O."
-"2","Mouse lock and button layer","4","4","MB2","Mouse Key Press","MB2","","Evolved Run 7 mouse button assignment.","Sends MB2."
-"2","Mouse lock and button layer","5","4","Bootloader","Bootloader","","","Evolved Run 7 key assignment.","Sends Bootloader."
-"2","Mouse lock and button layer","7","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"2","Mouse lock and button layer","8","4","uparrow","Key Press","UpArrow","","Evolved Run 7 key assignment.","Sends UpArrow."
-"2","Mouse lock and button layer","4","5","downarrow","Key Press","DownArrow","","Evolved Run 7 key assignment.","Sends DownArrow."
-"2","Mouse lock and button layer","5","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"2","Mouse lock and button layer","7","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","0","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","1","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","2","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","3","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","4","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","5","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","7","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","8","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","9","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","10","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","11","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","12","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","0","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","1","1","Ctrl+Shift+Tab","Key Press","Tab","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Tab."
-"3","Window, app, language, mouse/game/travel control","2","1","equals","Key Press","Equals and Plus","","Evolved Run 7 key assignment.","Sends Equals and Plus."
-"3","Window, app, language, mouse/game/travel control","3","1","f8","Key Press","F8","","Evolved Run 7 key assignment.","Sends F8."
-"3","Window, app, language, mouse/game/travel control","4","1","F5","Key Press","F5","","Evolved Run 7 key assignment.","Sends F5."
-"3","Window, app, language, mouse/game/travel control","5","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","7","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","8","1","period","Key Press","Period and GreaterThan","","Evolved Run 7 key assignment.","Sends Period and GreaterThan."
-"3","Window, app, language, mouse/game/travel control","9","1","f20","Key Press","F20","","Evolved Run 7 key assignment.","Sends F20."
-"3","Window, app, language, mouse/game/travel control","10","1","f22","Key Press","F22","","Evolved Run 7 key assignment.","Sends F22."
-"3","Window, app, language, mouse/game/travel control","11","1","f11","Key Press","F11","","Evolved Run 7 key assignment.","Sends F11."
-"3","Window, app, language, mouse/game/travel control","12","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","0","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","1","2","pageup","Key Press","PageUp","","Evolved Run 7 key assignment.","Sends PageUp."
-"3","Window, app, language, mouse/game/travel control","2","2","Delete","Key Press","Delete","","Evolved Run 7 key assignment.","Sends Delete."
-"3","Window, app, language, mouse/game/travel control","3","2","Bluetooth","Bluetooth","BT_SEL 4","","Evolved Run 7 Bluetooth/profile assignment.","Sends BT_SEL 4."
-"3","Window, app, language, mouse/game/travel control","4","2","F2","Key Press","F2","","Evolved Run 7 key assignment.","Sends F2."
-"3","Window, app, language, mouse/game/travel control","5","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","7","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","8","2","f19","Key Press","F19","","Evolved Run 7 key assignment.","Sends F19."
-"3","Window, app, language, mouse/game/travel control","9","2","coach game lock","coach_game_lock","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_game_lock."
-"3","Window, app, language, mouse/game/travel control","10","2","pagedown","Key Press","PageDown","","Evolved Run 7 key assignment.","Sends PageDown."
-"3","Window, app, language, mouse/game/travel control","11","2","comma","Key Press","Comma and LessThan","","Evolved Run 7 key assignment.","Sends Comma and LessThan."
-"3","Window, app, language, mouse/game/travel control","12","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","0","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","1","3","f7","Key Press","F7","","Evolved Run 7 key assignment.","Sends F7."
-"3","Window, app, language, mouse/game/travel control","2","3","Ctrl+Shift+T","Key Press","T","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+T."
-"3","Window, app, language, mouse/game/travel control","3","3","f2","Key Press","F2","","Evolved Run 7 key assignment.","Sends F2."
-"3","Window, app, language, mouse/game/travel control","4","3","Bluetooth","Bluetooth","BT_SEL 3","","Evolved Run 7 Bluetooth/profile assignment.","Sends BT_SEL 3."
-"3","Window, app, language, mouse/game/travel control","5","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","7","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","8","3","coach mouse lock","coach_mouse_lock","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_mouse_lock."
-"3","Window, app, language, mouse/game/travel control","9","3","leftalt","Key Press","LeftAlt","","Evolved Run 7 key assignment.","Sends LeftAlt."
-"3","Window, app, language, mouse/game/travel control","10","3","f13","Key Press","F13","","Evolved Run 7 key assignment.","Sends F13."
-"3","Window, app, language, mouse/game/travel control","11","3","Alt+Right","Key Press","RightArrow","L Alt","Evolved Run 7 key assignment.","Sends Alt+RightArrow."
-"3","Window, app, language, mouse/game/travel control","12","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","3","4","grave accent","Key Press","Grave Accent and Tilde","","Evolved Run 7 key assignment.","Sends Grave Accent and Tilde."
-"3","Window, app, language, mouse/game/travel control","4","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","5","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","7","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","8","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","4","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","5","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"3","Window, app, language, mouse/game/travel control","7","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","0","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","1","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","2","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","3","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","4","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","5","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","7","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","8","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","9","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","10","0","Studio Unlock","Studio Unlock","","","Unlocks ZMK Studio access from the keyboard.","Sends default_transform:default_transform."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","11","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","12","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","0","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","1","1","Win+.","Key Press","Period and GreaterThan","L GUI","Evolved Run 7 key assignment.","Sends GUI+Period and GreaterThan."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","2","1","Win+4","Key Press","4 and Dollar","L GUI","Evolved Run 7 key assignment.","Sends GUI+4 and Dollar."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","3","1","Win+5","Key Press","5 and Percent","L GUI","Evolved Run 7 key assignment.","Sends GUI+5 and Percent."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","4","1","Shift+Space","Key Press","Spacebar","L Shift","Evolved Run 7 key assignment.","Sends Shift+Spacebar."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","5","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","7","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","8","1","Ctrl+Home","Key Press","Home","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Home."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","9","1","Ctrl+Up","Key Press","UpArrow","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+UpArrow."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","10","1","Win+I","Key Press","I","L GUI","Evolved Run 7 key assignment.","Sends GUI+I."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","11","1","Ctrl+`","Key Press","Grave Accent and Tilde","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Grave Accent and Tilde."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","12","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","0","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","1","2","F12","Key Press","F12","","Evolved Run 7 key assignment.","Sends F12."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","2","2","Ctrl+D","Key Press","D","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+D."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","3","2","Ctrl+P","Key Press","P","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+P."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","4","2","Ctrl+S","Key Press","S","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+S."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","5","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","7","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","8","2","Win+R","Key Press","R","L GUI","Evolved Run 7 key assignment.","Sends GUI+R."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","9","2","Tab","Key Press","Tab","","Evolved Run 7 key assignment.","Sends Tab."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","10","2","Ctrl+Shift+P","Key Press","P","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+P."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","11","2","Ctrl+/","Key Press","ForwardSlash and QuestionMark","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+ForwardSlash and QuestionMark."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","12","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","0","3","Toggle Layer","Toggle Layer","Layer::10","","Evolved Run 7 layer access key.","Toggle Layer Layer::10."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","1","3","Ctrl+Shift+Esc","Key Press","Escape","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Escape."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","2","3","Toggle Layer","Toggle Layer","Layer::9","","Evolved Run 7 layer access key.","Toggle Layer Layer::9."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","3","3","Win+;","Key Press","SemiColon and Colon","L GUI","Evolved Run 7 key assignment.","Sends GUI+SemiColon and Colon."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","4","3","Ctrl+-","Key Press","Dash and Underscore","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Dash and Underscore."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","5","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","7","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","8","3","Ctrl+End","Key Press","End","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+End."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","9","3","Ctrl+Down","Key Press","DownArrow","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+DownArrow."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","10","3","Win+L","Key Press","L","L GUI","Evolved Run 7 key assignment.","Sends GUI+L."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","11","3","Win+X","Key Press","X","L GUI","Evolved Run 7 key assignment.","Sends GUI+X."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","12","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","3","4","Bluetooth","Bluetooth","BT_SEL 0","","Evolved Run 7 Bluetooth/profile assignment.","Sends BT_SEL 0."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","4","4","equals","Key Press","Equals and Plus","","Evolved Run 7 key assignment.","Sends Equals and Plus."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","5","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","7","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","8","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","4","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","5","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"4","Bluetooth, output, Studio/system, F13-F24 macro layer","7","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","0","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","1","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","2","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","3","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","4","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","5","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","7","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","8","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","9","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","10","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","11","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","12","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","0","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","1","1","Ctrl+Space","Key Press","Spacebar","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Spacebar."
-"5","Code/IDE layer (VS Code shortcuts)","2","1","Ctrl+Shift+Up","Key Press","UpArrow","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+UpArrow."
-"5","Code/IDE layer (VS Code shortcuts)","3","1","Alt+=","Key Press","Equals and Plus","L Alt","Evolved Run 7 key assignment.","Sends Alt+Equals and Plus."
-"5","Code/IDE layer (VS Code shortcuts)","4","1","Alt+D","Key Press","D","L Alt","Evolved Run 7 key assignment.","Sends Alt+D."
-"5","Code/IDE layer (VS Code shortcuts)","5","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","7","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","8","1","Ctrl+0","Key Press","0 and Right Bracket","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+0 and Right Bracket."
-"5","Code/IDE layer (VS Code shortcuts)","9","1","Alt+F","Key Press","F","L Alt","Evolved Run 7 key assignment.","Sends Alt+F."
-"5","Code/IDE layer (VS Code shortcuts)","10","1","Ctrl+Page Down","Key Press","PageDown","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+PageDown."
-"5","Code/IDE layer (VS Code shortcuts)","11","1","Ctrl+Shift+Left","Key Press","LeftArrow","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+LeftArrow."
-"5","Code/IDE layer (VS Code shortcuts)","12","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","0","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","1","2","Alt+Enter","Key Press","Return Enter","L Alt","Evolved Run 7 key assignment.","Sends Alt+Return Enter."
-"5","Code/IDE layer (VS Code shortcuts)","2","2","Ctrl+N","Key Press","N","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+N."
-"5","Code/IDE layer (VS Code shortcuts)","3","2","Ctrl+R","Key Press","R","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+R."
-"5","Code/IDE layer (VS Code shortcuts)","4","2","Ctrl+1","Key Press","1 and Bang","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+1 and Bang."
-"5","Code/IDE layer (VS Code shortcuts)","5","2","Ctrl+Shift+9","Key Press","9 and Left Bracket","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+9 and Left Bracket."
-"5","Code/IDE layer (VS Code shortcuts)","7","2","Ctrl+Shift+6","Key Press","6 and Caret","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+6 and Caret."
-"5","Code/IDE layer (VS Code shortcuts)","8","2","Ctrl+3","Key Press","3 and Hash","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+3 and Hash."
-"5","Code/IDE layer (VS Code shortcuts)","9","2","Ctrl+4","Key Press","4 and Dollar","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+4 and Dollar."
-"5","Code/IDE layer (VS Code shortcuts)","10","2","Ctrl+Shift+E","Key Press","E","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+E."
-"5","Code/IDE layer (VS Code shortcuts)","11","2","coach travel toggle","coach_travel_toggle","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_travel_toggle."
-"5","Code/IDE layer (VS Code shortcuts)","12","2","Ctrl+Shift+~","Key Press","Grave Accent and Tilde","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Grave Accent and Tilde."
-"5","Code/IDE layer (VS Code shortcuts)","0","3","Ctrl+Shift+2","Key Press","2 and At","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+2 and At."
-"5","Code/IDE layer (VS Code shortcuts)","1","3","Ctrl+Shift+Down","Key Press","DownArrow","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+DownArrow."
-"5","Code/IDE layer (VS Code shortcuts)","2","3","Ctrl+Shift++","Key Press","Equals and Plus","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Equals and Plus."
-"5","Code/IDE layer (VS Code shortcuts)","3","3","Ctrl+F5","Key Press","F5","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+F5."
-"5","Code/IDE layer (VS Code shortcuts)","4","3","Ctrl++","Key Press","Equals and Plus","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Equals and Plus."
-"5","Code/IDE layer (VS Code shortcuts)","5","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","7","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","8","3","Ctrl+Shift+J","Key Press","J","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+J."
-"5","Code/IDE layer (VS Code shortcuts)","9","3","Ctrl+Shift+N","Key Press","N","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+N."
-"5","Code/IDE layer (VS Code shortcuts)","10","3","Ctrl+Page Up","Key Press","PageUp","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+PageUp."
-"5","Code/IDE layer (VS Code shortcuts)","11","3","Ctrl+Shift+Right","Key Press","RightArrow","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+RightArrow."
-"5","Code/IDE layer (VS Code shortcuts)","12","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","3","4","coach base","coach_base","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_base."
-"5","Code/IDE layer (VS Code shortcuts)","4","4","Alt+Home","Key Press","Home","L Alt","Evolved Run 7 key assignment.","Sends Alt+Home."
-"5","Code/IDE layer (VS Code shortcuts)","5","4","Ctrl+Shift+;","Key Press","SemiColon and Colon","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+SemiColon and Colon."
-"5","Code/IDE layer (VS Code shortcuts)","7","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","8","4","Alt+P","Key Press","P","L Alt","Evolved Run 7 key assignment.","Sends Alt+P."
-"5","Code/IDE layer (VS Code shortcuts)","4","5","Shift+Delete","Key Press","Delete","L Shift","Evolved Run 7 key assignment.","Sends Shift+Delete."
-"5","Code/IDE layer (VS Code shortcuts)","5","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"5","Code/IDE layer (VS Code shortcuts)","7","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","0","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","1","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","2","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","3","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","4","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","5","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","7","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","8","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","9","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","10","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","11","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","12","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","0","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","1","1","Ctrl+Shift+L","Key Press","L","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+L."
-"6","Reserved transparent layer","2","1","Ctrl+Shift+S","Key Press","S","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+S."
-"6","Reserved transparent layer","3","1","Ctrl+K","Key Press","K","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+K."
-"6","Reserved transparent layer","4","1","Ctrl+Shift+B","Key Press","B","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+B."
-"6","Reserved transparent layer","5","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","7","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","8","1","rightarrow","Key Press","RightArrow","","Evolved Run 7 key assignment.","Sends RightArrow."
-"6","Reserved transparent layer","9","1","Ctrl+6","Key Press","6 and Caret","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+6 and Caret."
-"6","Reserved transparent layer","10","1","Ctrl+Shift+F6","Key Press","F6","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+F6."
-"6","Reserved transparent layer","11","1","Ctrl+W","Key Press","W","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+W."
-"6","Reserved transparent layer","12","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","0","2","Bluetooth","Bluetooth","BT_SEL ?","","Evolved Run 7 Bluetooth/profile assignment.","Sends BT_SEL ?."
-"6","Reserved transparent layer","1","2","Ctrl+Q","Key Press","Q","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Q."
-"6","Reserved transparent layer","2","2","Ctrl+F","Key Press","F","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+F."
-"6","Reserved transparent layer","3","2","Ctrl+Shift+U","Key Press","U","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+U."
-"6","Reserved transparent layer","4","2","Win+Ctrl+Left","Key Press","LeftArrow","L GUI+L Ctrl","Evolved Run 7 key assignment.","Sends GUI+Ctrl+LeftArrow."
-"6","Reserved transparent layer","5","2","Win+Ctrl+D","Key Press","D","L GUI+L Ctrl","Evolved Run 7 key assignment.","Sends GUI+Ctrl+D."
-"6","Reserved transparent layer","7","2","home","Key Press","Home","","Evolved Run 7 key assignment.","Sends Home."
-"6","Reserved transparent layer","8","2","Ctrl+.","Key Press","Period and GreaterThan","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Period and GreaterThan."
-"6","Reserved transparent layer","9","2","Ctrl+T","Key Press","T","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+T."
-"6","Reserved transparent layer","10","2","Ctrl+Shift+I","Key Press","I","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+I."
-"6","Reserved transparent layer","11","2","Alt+Left","Key Press","LeftArrow","L Alt","Evolved Run 7 key assignment.","Sends Alt+LeftArrow."
-"6","Reserved transparent layer","12","2","Ctrl+Shift+Del","Key Press","Delete Forward","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Delete Forward."
-"6","Reserved transparent layer","0","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","1","3","Ctrl+8","Key Press","8 and Star","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+8 and Star."
-"6","Reserved transparent layer","2","3","Alt+Shift+Up","Key Press","UpArrow","L Alt+L Shift","Evolved Run 7 key assignment.","Sends Alt+Shift+UpArrow."
-"6","Reserved transparent layer","3","3","Ctrl+L","Key Press","L","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+L."
-"6","Reserved transparent layer","4","3","Ctrl+Shift+D","Key Press","D","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+D."
-"6","Reserved transparent layer","5","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","7","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","8","3","Win+K","Key Press","K","L GUI","Evolved Run 7 key assignment.","Sends GUI+K."
-"6","Reserved transparent layer","9","3","Ctrl+5","Key Press","5 and Percent","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+5 and Percent."
-"6","Reserved transparent layer","10","3","Ctrl+Tab","Key Press","Tab","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Tab."
-"6","Reserved transparent layer","11","3","Ctrl+I","Key Press","I","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+I."
-"6","Reserved transparent layer","12","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","3","4","coach base","coach_base","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_base."
-"6","Reserved transparent layer","4","4","Win+Ctrl+Right","Key Press","RightArrow","L GUI+L Ctrl","Evolved Run 7 key assignment.","Sends GUI+Ctrl+RightArrow."
-"6","Reserved transparent layer","5","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","7","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","8","4","Ctrl+7","Key Press","7 and Ampersand","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+7 and Ampersand."
-"6","Reserved transparent layer","4","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","5","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"6","Reserved transparent layer","7","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"7","RPG/Game layer","0","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","1","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","2","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","3","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","4","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","5","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","7","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","8","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","9","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","10","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","11","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","12","0","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","0","1","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","1","1","9 PU","Key Press","9 and PageUp","","RPG/game movement or menu navigation.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","2","1","↑","Key Press","UpArrow","","RPG/game movement or menu navigation.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","3","1","3 PD","Key Press","3 and PageDn","","RPG/game movement or menu navigation.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","4","1","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","5","1","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","7","1","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","8","1","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","9","1","3 PD","Key Press","3 and PageDn","","RPG/game movement or menu navigation. Right-hand column-mirror of left x3 (reversed cluster).","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","10","1","↑","Key Press","UpArrow","","RPG/game movement or menu navigation. Right-hand column-mirror of left x2.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","11","1","9 PU","Key Press","9 and PageUp","","RPG/game movement or menu navigation. Right-hand column-mirror of left x1.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","12","1","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","0","2","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","1","2","←","Key Press","LeftArrow","","RPG/game movement or menu navigation.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","2","2","↓","Key Press","DownArrow","","RPG/game movement or menu navigation.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","3","2","→","Key Press","RightArrow","","RPG/game movement or menu navigation.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","4","2","Z","Key Press","Z","","RPG/game action, cancel, menu, dash, pause, or confirm key.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","5","2","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","7","2","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","8","2","Z","Key Press","Z","","RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x4 (outer column).","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","9","2","←","Key Press","LeftArrow","","RPG/game movement: left arrow on left column of right-hand cluster (x9).","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","10","2","↓","Key Press","DownArrow","","RPG/game movement or menu navigation. Right-hand column-mirror of left x2.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","11","2","→","Key Press","RightArrow","","RPG/game movement: right arrow on right column of right-hand cluster (x11).","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","12","2","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","0","3","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","1","3","X","Key Press","X","","RPG/game action, cancel, menu, dash, pause, or confirm key.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","2","3","C","Key Press","C","","RPG/game action, cancel, menu, dash, pause, or confirm key.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","3","3","Shft","Key Press","LeftShift","","RPG/game action, cancel, menu, dash, pause, or confirm key.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","4","3","Esc","Key Press","Escape","","RPG/game action, cancel, menu, dash, pause, or confirm key.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","5","3","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","7","3","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","8","3","Esc","Key Press","Escape","","RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x4 (outer column).","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","9","3","Shft","Key Press","LeftShift","","RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x3.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","10","3","C","Key Press","C","","RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x2.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","11","3","X","Key Press","X","","RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x1.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","12","3","Transparent","Transparent","","","Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.","Intentionally leaves the underlying layer behavior available."
-"7","RPG/Game layer","3","4","Exit Base","coach_base","","","Left-thumb exit from locked game layer to base. Must use coach_base (not plain To Layer) so the beacon listener clears lockedLayer 7.","Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22). Same macro as mouse-layer Base exits."
-"7","RPG/Game layer","4","4","␣","Key Press","Spacebar","","RPG/game action, cancel, menu, dash, pause, or confirm key.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","5","4","Exit Base","coach_base","","","Left support-thumb exit from locked game layer to base.","Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22)."
-"7","RPG/Game layer","7","4","Exit Base","coach_base","","","Right-thumb exit from locked game layer to base.","Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22)."
-"7","RPG/Game layer","8","4","Exit Base","coach_base","","","Second right-thumb exit from locked game layer to base.","Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22)."
-"7","RPG/Game layer","4","5","Click","Mouse Key Press","default_transform","","Mouse button binding: select:MB1.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","5","5","Right Click","Mouse Key Press","default_transform","","Mouse button binding: select:MB2.","Use for RPG/game play; exit keys return to base layer."
-"7","RPG/Game layer","7","5","Ret","Key Press","Return Enter","","RPG/game action, cancel, menu, dash, pause, or confirm key.","Use for RPG/game play; exit keys return to base layer."
-"8","Pointer travel overlay","0","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","1","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","2","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","3","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","4","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","5","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","7","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","8","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","9","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","10","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","11","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","12","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","0","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","1","1","Ctrl+Shift+Home","Key Press","Home","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Home."
-"8","Pointer travel overlay","2","1","Ctrl+Shift+!","Key Press","1 and Bang","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+1 and Bang."
-"8","Pointer travel overlay","3","1","Ctrl+Shift+%","Key Press","5 and Percent","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+5 and Percent."
-"8","Pointer travel overlay","4","1","Alt+Shift++","Key Press","Equals and Plus","L Alt+L Shift","Evolved Run 7 key assignment.","Sends Alt+Shift+Equals and Plus."
-"8","Pointer travel overlay","5","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","7","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","8","1","Page Up","Key Press","PageUp","","Evolved Run 7 key assignment.","Sends PageUp."
-"8","Pointer travel overlay","9","1","Win+M","Key Press","M","L GUI","Evolved Run 7 key assignment.","Sends GUI+M."
-"8","Pointer travel overlay","10","1","Down","Key Press","DownArrow","","Evolved Run 7 key assignment.","Sends DownArrow."
-"8","Pointer travel overlay","11","1","Ctrl+9","Key Press","9 and Left Bracket","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+9 and Left Bracket."
-"8","Pointer travel overlay","12","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","0","2","Win+Home","Key Press","Home","L GUI","Evolved Run 7 key assignment.","Sends GUI+Home."
-"8","Pointer travel overlay","1","2","Win+Tab","Key Press","Tab","L GUI","Evolved Run 7 key assignment.","Sends GUI+Tab."
-"8","Pointer travel overlay","2","2","Win+Up","Key Press","UpArrow","L GUI","Evolved Run 7 key assignment.","Sends GUI+UpArrow."
-"8","Pointer travel overlay","3","2","Win+Down","Key Press","DownArrow","L GUI","Evolved Run 7 key assignment.","Sends GUI+DownArrow."
-"8","Pointer travel overlay","4","2","Win+Shift+Left","Key Press","LeftArrow","L GUI+L Shift","Evolved Run 7 key assignment.","Sends GUI+Shift+LeftArrow."
-"8","Pointer travel overlay","5","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","7","2","Ctrl+G","Key Press","G","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+G."
-"8","Pointer travel overlay","8","2","Win+Shift+Right","Key Press","RightArrow","L GUI+L Shift","Evolved Run 7 key assignment.","Sends GUI+Shift+RightArrow."
-"8","Pointer travel overlay","9","2","Win+E","Key Press","E","L GUI","Evolved Run 7 key assignment.","Sends GUI+E."
-"8","Pointer travel overlay","10","2","Alt+F4","Key Press","F4","L Alt","Evolved Run 7 key assignment.","Sends Alt+F4."
-"8","Pointer travel overlay","11","2","Win+D","Key Press","D","L GUI","Evolved Run 7 key assignment.","Sends GUI+D."
-"8","Pointer travel overlay","12","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","0","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","1","3","Ctrl+;","Key Press","SemiColon and Colon","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+SemiColon and Colon."
-"8","Pointer travel overlay","2","3","Ctrl+Shift+$","Key Press","4 and Dollar","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+4 and Dollar."
-"8","Pointer travel overlay","3","3","Alt+Shift+-","Key Press","Dash and Underscore","L Alt+L Shift","Evolved Run 7 key assignment.","Sends Alt+Shift+Dash and Underscore."
-"8","Pointer travel overlay","4","3","Page Down","Key Press","PageDown","","Evolved Run 7 key assignment.","Sends PageDown."
-"8","Pointer travel overlay","5","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","7","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","8","3","Ctrl+F6","Key Press","F6","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+F6."
-"8","Pointer travel overlay","9","3","Win+Ctrl+F4","Key Press","F4","L GUI+L Ctrl","Evolved Run 7 key assignment.","Sends GUI+Ctrl+F4."
-"8","Pointer travel overlay","10","3","Ctrl+Shift+Q","Key Press","Q","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Q."
-"8","Pointer travel overlay","11","3","Ctrl+Shift+End","Key Press","End","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+End."
-"8","Pointer travel overlay","12","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","3","4","f16","Key Press","F16","","Evolved Run 7 key assignment.","Sends F16."
-"8","Pointer travel overlay","4","4","left gui","Key Press","Left GUI","","Evolved Run 7 key assignment.","Sends Left GUI."
-"8","Pointer travel overlay","5","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","7","4","coach travel off","coach_travel_off","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_travel_off."
-"8","Pointer travel overlay","8","4","home","Key Press","Home","","Evolved Run 7 key assignment.","Sends Home."
-"8","Pointer travel overlay","4","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","5","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"8","Pointer travel overlay","7","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","0","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","1","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","2","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","3","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","4","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","5","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","7","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","8","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","9","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","10","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","11","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","12","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","0","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","1","1","Win+B","Key Press","B","L GUI","Evolved Run 7 key assignment.","Sends GUI+B."
-"9","M-Files/DMS document management","2","1","coach base","coach_base","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_base."
-"9","M-Files/DMS document management","3","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","4","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","5","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","7","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","8","1","f21","Key Press","F21","","Evolved Run 7 key assignment.","Sends F21."
-"9","M-Files/DMS document management","9","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","10","1","Win+P","Key Press","P","L GUI","Evolved Run 7 key assignment.","Sends GUI+P."
-"9","M-Files/DMS document management","11","1","Win+N","Key Press","N","L GUI","Evolved Run 7 key assignment.","Sends GUI+N."
-"9","M-Files/DMS document management","12","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","0","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","1","2","Win+2","Key Press","2 and At","L GUI","Evolved Run 7 key assignment.","Sends GUI+2 and At."
-"9","M-Files/DMS document management","2","2","Win+3","Key Press","3 and Hash","L GUI","Evolved Run 7 key assignment.","Sends GUI+3 and Hash."
-"9","M-Files/DMS document management","3","2","Win+H","Key Press","H","L GUI","Evolved Run 7 key assignment.","Sends GUI+H."
-"9","M-Files/DMS document management","4","2","Win+Space","Key Press","Spacebar","L GUI","Evolved Run 7 key assignment.","Sends GUI+Spacebar."
-"9","M-Files/DMS document management","5","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","7","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","8","2","Win+C","Key Press","C","L GUI","Evolved Run 7 key assignment.","Sends GUI+C."
-"9","M-Files/DMS document management","9","2","Momentary Layer","Momentary Layer","Layer::6","","Evolved Run 7 layer access key.","Momentary Layer Layer::6."
-"9","M-Files/DMS document management","10","2","Win+V","Key Press","V","L GUI","Evolved Run 7 key assignment.","Sends GUI+V."
-"9","M-Files/DMS document management","11","2","Win+Shift+S","Key Press","S","L GUI+L Shift","Evolved Run 7 key assignment.","Sends GUI+Shift+S."
-"9","M-Files/DMS document management","12","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","0","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","1","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","2","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","3","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","4","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","5","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","7","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","8","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","9","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","10","3","Win+A","Key Press","A","L GUI","Evolved Run 7 key assignment.","Sends GUI+A."
-"9","M-Files/DMS document management","11","3","Win+T","Key Press","T","L GUI","Evolved Run 7 key assignment.","Sends GUI+T."
-"9","M-Files/DMS document management","12","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","3","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","4","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","5","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","7","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","8","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","4","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","5","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"9","M-Files/DMS document management","7","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","0","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","1","0","Shift+F5","Key Press","F5","L Shift","Evolved Run 7 key assignment.","Sends Shift+F5."
-"10","Excel spreadsheet layer","2","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","3","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","4","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","5","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","7","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","8","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","9","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","10","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","11","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","12","0","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","0","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","1","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","2","1","Ctrl+B","Key Press","B","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+B."
-"10","Excel spreadsheet layer","3","1","Shift+Alt+Right","Key Press","RightArrow","L Shift+L Alt","Evolved Run 7 key assignment.","Sends Shift+Alt+RightArrow."
-"10","Excel spreadsheet layer","4","1","Escape","Key Press","Escape","","Evolved Run 7 key assignment.","Sends Escape."
-"10","Excel spreadsheet layer","5","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","7","1","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","8","1","Shift+Alt+A","Key Press","A","L Shift+L Alt","Evolved Run 7 key assignment.","Sends Shift+Alt+A."
-"10","Excel spreadsheet layer","9","1","Ctrl+A","Key Press","A","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+A."
-"10","Excel spreadsheet layer","10","1","Ctrl+\","Key Press","Backslash and Pipe","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Backslash and Pipe."
-"10","Excel spreadsheet layer","11","1","grave accent","Key Press","Grave Accent and Tilde","","Evolved Run 7 key assignment.","Sends Grave Accent and Tilde."
-"10","Excel spreadsheet layer","12","1","Ctrl+Shift+Enter","Key Press","Return Enter","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Return Enter."
-"10","Excel spreadsheet layer","0","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","1","2","Ctrl+[","Key Press","Left Brace","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Left Brace."
-"10","Excel spreadsheet layer","2","2","Shift+Alt+Left","Key Press","LeftArrow","L Shift+L Alt","Evolved Run 7 key assignment.","Sends Shift+Alt+LeftArrow."
-"10","Excel spreadsheet layer","3","2","Shift+Enter","Key Press","Return Enter","L Shift","Evolved Run 7 key assignment.","Sends Shift+Return Enter."
-"10","Excel spreadsheet layer","4","2","Ctrl+Shift+\","Key Press","Backslash and Pipe","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+Backslash and Pipe."
-"10","Excel spreadsheet layer","5","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","7","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","8","2","Space","Key Press","Spacebar","","Evolved Run 7 key assignment.","Sends Spacebar."
-"10","Excel spreadsheet layer","9","2","F8","Key Press","F8","","Evolved Run 7 key assignment.","Sends F8."
-"10","Excel spreadsheet layer","10","2","Ctrl+]","Key Press","Right Brace","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Right Brace."
-"10","Excel spreadsheet layer","11","2","Ctrl+,","Key Press","Comma and LessThan","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+Comma and LessThan."
-"10","Excel spreadsheet layer","12","2","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","0","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","1","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","2","3","Ctrl+Shift+F5","Key Press","F5","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+F5."
-"10","Excel spreadsheet layer","3","3","Ctrl+M","Key Press","M","L Ctrl","Evolved Run 7 key assignment.","Sends Ctrl+M."
-"10","Excel spreadsheet layer","4","3","Ctrl+Shift+O","Key Press","O","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+O."
-"10","Excel spreadsheet layer","5","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","7","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","8","3","Ctrl+Shift+A","Key Press","A","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+A."
-"10","Excel spreadsheet layer","9","3","Up","Key Press","UpArrow","","Evolved Run 7 key assignment.","Sends UpArrow."
-"10","Excel spreadsheet layer","10","3","Ctrl+Shift+H","Key Press","H","L Ctrl+L Shift","Evolved Run 7 key assignment.","Sends Ctrl+Shift+H."
-"10","Excel spreadsheet layer","11","3","Shift+Alt+Up","Key Press","UpArrow","L Shift+L Alt","Evolved Run 7 key assignment.","Sends Shift+Alt+UpArrow."
-"10","Excel spreadsheet layer","12","3","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","3","4","coach base","coach_base","","","Coach layer/control behavior in the evolved Run 7 layout.","Invokes coach_base."
-"10","Excel spreadsheet layer","4","4","Alt+Shift+D","Key Press","D","L Alt+L Shift","Evolved Run 7 key assignment.","Sends Alt+Shift+D."
-"10","Excel spreadsheet layer","5","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","7","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","8","4","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","4","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","5","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
-"10","Excel spreadsheet layer","7","5","Transparent","Transparent","","","Transparent key slot in the evolved Run 7 layout.","Falls through to lower layers when available."
+layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
+0,0,0,Esc,Key Press,Escape,,Base typing key for the main work layout.,Sends Escape.,canonical (frozen/critical)
+0,1,0,1,Key Press,1 and Bang,,Base typing key for the main work layout.,Sends 1 and Bang.,canonical (frozen/critical)
+0,2,0,2,Key Press,2 and At,,Base typing key for the main work layout.,Sends 2 and At.,canonical (frozen/critical)
+0,3,0,3,Key Press,3 and Hash,,Base typing key for the main work layout.,Sends 3 and Hash.,canonical (frozen/critical)
+0,4,0,4,Key Press,4 and Dollar,,Base typing key for the main work layout.,Sends 4 and Dollar.,canonical (frozen/critical)
+0,5,0,5,Key Press,5 and Percent,,Base typing key for the main work layout.,Sends 5 and Percent.,canonical (frozen/critical)
+0,7,0,6,Key Press,6 and Caret,,Base typing key for the main work layout.,Sends 6 and Caret.,canonical (frozen/critical)
+0,8,0,7,Key Press,7 and Ampersand,,Base typing key for the main work layout.,Sends 7 and Ampersand.,canonical (frozen/critical)
+0,9,0,8,Key Press,8 and Star,,Base typing key for the main work layout.,Sends 8 and Star.,canonical (frozen/critical)
+0,10,0,9,Key Press,9 and Left Bracket,,Base typing key for the main work layout.,Sends 9 and Left Bracket.,canonical (frozen/critical)
+0,11,0,0,Key Press,0 and Right Bracket,,Base typing key for the main work layout.,Sends 0 and Right Bracket.,canonical (frozen/critical)
+0,12,0,BkSp,Key Press,Delete,,Base typing key for the main work layout.,Sends Delete.,canonical (frozen/critical)
+0,0,1,Tab,Key Press,Tab,,Base typing key for the main work layout.,Sends Tab.,canonical (frozen/critical)
+0,1,1,Q,Key Press,Q,,Base typing key for the main work layout.,Sends Q.,canonical (frozen/critical)
+0,2,1,W,Key Press,W,,Base typing key for the main work layout.,Sends W.,canonical (frozen/critical)
+0,3,1,E,Key Press,E,,Base typing key for the main work layout.,Sends E.,canonical (frozen/critical)
+0,4,1,R,Key Press,R,,Base typing key for the main work layout.,Sends R.,canonical (frozen/critical)
+0,5,1,T,Key Press,T,,Base typing key for the main work layout.,Sends T.,canonical (frozen/critical)
+0,7,1,Y,Key Press,Y,,Base typing key for the main work layout.,Sends Y.,canonical (frozen/critical)
+0,8,1,U,Key Press,U,,Base typing key for the main work layout.,Sends U.,canonical (frozen/critical)
+0,9,1,I,Key Press,I,,Base typing key for the main work layout.,Sends I.,canonical (frozen/critical)
+0,10,1,O,Key Press,O,,Base typing key for the main work layout.,Sends O.,canonical (frozen/critical)
+0,11,1,P,Key Press,P,,Base typing key for the main work layout.,Sends P.,canonical (frozen/critical)
+0,12,1,å,Key Press,Left Brace,,"Norwegian å. Sends the [ scancode (ZMK Studio name 'Left Brace', same key as Layer 1 x9 y3) = å on Norwegian Windows. Label is for the coach only.",Sends the [ scancode = å on Norwegian Windows layout (= [ on US).,canonical (frozen/critical)
+0,0,2,Shft,Key Press,LeftShift,,Base typing key for the main work layout.,Sends LeftShift.,canonical (frozen/critical)
+0,1,2,A,Key Press,A,,Base typing key for the main work layout.,Sends A.,canonical (frozen/critical)
+0,2,2,S,Key Press,S,,Base typing key for the main work layout.,Sends S.,canonical (frozen/critical)
+0,3,2,D,Key Press,D,,Base typing key for the main work layout.,Sends D.,canonical (frozen/critical)
+0,4,2,F,Key Press,F,,Base typing key for the main work layout.,Sends F.,canonical (frozen/critical)
+0,5,2,G,Key Press,G,,Base typing key for the main work layout.,Sends G.,canonical (frozen/critical)
+0,7,2,H,Key Press,H,,Base typing key for the main work layout.,Sends H.,canonical (frozen/critical)
+0,8,2,J,Key Press,J,,Base typing key for the main work layout.,Sends J.,canonical (frozen/critical)
+0,9,2,K,Key Press,K,,Base typing key for the main work layout.,Sends K.,canonical (frozen/critical)
+0,10,2,L,Key Press,L,,Base typing key for the main work layout.,Sends L.,canonical (frozen/critical)
+0,11,2,ø,Key Press,SemiColon and Colon,,Norwegian ø. Keycode is unchanged (SemiColon scancode); Windows Norwegian layout renders it as ø. Label is for the coach only.,Sends SemiColon scancode = ø on Norwegian Windows layout (= ; on US).,canonical (frozen/critical)
+0,12,2,æ,Key Press,Left Apos and Double,,Norwegian æ. Keycode is unchanged (Apostrophe/Quote scancode); Windows Norwegian layout renders it as æ. Label is for the coach only.,Sends Apostrophe scancode = æ on Norwegian Windows layout (= ' on US).,canonical (frozen/critical)
+0,0,3,Ctrl,Key Press,LeftControl,,Base typing key for the main work layout.,Sends LeftControl.,canonical (frozen/critical)
+0,1,3,Z,Key Press,Z,,Base typing key for the main work layout.,Sends Z.,canonical (frozen/critical)
+0,2,3,X,Key Press,X,,Base typing key for the main work layout.,Sends X.,canonical (frozen/critical)
+0,3,3,C,Key Press,C,,Base typing key for the main work layout.,Sends C.,canonical (frozen/critical)
+0,4,3,V,Key Press,V,,Base typing key for the main work layout.,Sends V.,canonical (frozen/critical)
+0,5,3,B,Key Press,B,,Base typing key for the main work layout.,Sends B.,canonical (frozen/critical)
+0,7,3,N,Key Press,N,,Base typing key for the main work layout.,Sends N.,canonical (frozen/critical)
+0,8,3,M,Key Press,M,,Base typing key for the main work layout.,Sends M.,canonical (frozen/critical)
+0,9,3,",",Key Press,Comma and LessThan,,Base typing key for the main work layout.,Sends Comma and LessThan.,canonical (frozen/critical)
+0,10,3,.,Key Press,Period and GreaterThan,,CRITICAL v1.9: Period must be on base layer for typing flow. Moves [ to Layer 1.,Sends Period.,canonical (frozen/critical)
+0,11,3,/,Key Press,ForwardSlash and QuestionMark,,Base typing key for the main work layout.,Sends ForwardSlash and QuestionMark.,canonical (frozen/critical)
+0,12,3,\,Key Press,Backslash and Pipe,,"International backslash/pipe (US HID). On Norwegian Windows this key is layout-dependent (often |); not English apostrophe — use Win+Space to US English for ' in contractions, or type ø/æ on their base positions.",Sends Backslash and Pipe scancode.,canonical (frozen/critical)
+0,3,4,Nav,coach_l1_hold,,,Hold Nav for layer 1 navigation/editing.,Coach beacon: momentary layer 1 + BLE hold signal (Ctrl+Alt+Shift+F13/F14).,canonical (frozen/critical)
+0,4,4,␣,Key Press,Spacebar,,"Thumb/control key for typing, layer access, mouse access, or Enter.",Sends Spacebar.,canonical (frozen/critical)
+0,5,4,Scroll,Momentary Layer,Layer::6,,Dynamic layer access: @access:L1->L6:hold:Scroll,Target layer 6,evolved
+0,7,4,System,coach_l4_hold,,,Hold System for layer 4 Bluetooth/output/helpers.,Coach beacon: momentary layer 4 + BLE hold signal (Ctrl+Alt+Shift+F19/F20).,canonical (frozen/critical)
+0,8,4,Window,coach_l3_hold,,,Hold Window for layer 3 window/app/desktop control.,Coach beacon: momentary layer 3 + BLE hold signal (Ctrl+Alt+Shift+F17/F18).,canonical (frozen/critical)
+0,4,5,DMS,Toggle Layer,Layer::9,,Dynamic layer access: @access:L4->L9:toggle:DMS,Target layer 9,evolved
+0,5,5,Mouse,coach_l2_hold,,,Dynamic layer access: @access:L0->L2:hold:Mouse,Target layer 2,evolved
+0,7,5,Ret,Key Press,Return Enter,,"Thumb/control key for typing, layer access, mouse access, or Enter.",Sends Return Enter.,canonical (frozen/critical)
+1,0,0,Dash and Underscore,Key Press,Dash and Underscore,,Raw Dash and Underscore completion key.,"App: Raw Keys, importance=3.0",evolved
+1,1,0,=,Key Press,Equals and Plus,,Start formula,"App: Microsoft Excel, importance=5.0",evolved
+1,2,0,Grave Accent and Tilde,Key Press,Grave Accent and Tilde,,Raw Grave Accent and Tilde completion key.,"App: Raw Keys, importance=3.0",evolved
+1,3,0,Right Brace,Key Press,Right Brace,,Raw Right Brace completion key.,"App: Raw Keys, importance=3.0",evolved
+1,4,0,Page Up,Key Press,PageUp,,Previous slide,"App: Microsoft PowerPoint, importance=1.2000000000000002",evolved
+1,5,0,Page Down,Key Press,PageDown,,Next slide,"App: Microsoft PowerPoint, importance=1.2000000000000002",evolved
+1,7,0,Home,Key Press,Home,,Raw Home completion key.,"App: Raw Keys, importance=3.0",evolved
+1,8,0,End,Key Press,End,,Raw End completion key.,"App: Raw Keys, importance=3.0",evolved
+1,9,0,Ctrl+Home,Key Press,Home,L Ctrl,Go to cell A1,"App: Microsoft Excel, importance=3.0",evolved
+1,10,0,Ctrl+Shift+Home,Key Press,Home,L Ctrl+L Shift,Select to cell A1,"App: Microsoft Excel, importance=1.5",evolved
+1,11,0,Alt+Shift+-,Key Press,Dash and Underscore,L Alt+L Shift,Split pane horizontal,"App: Windows Terminal / PowerShell, importance=1.2000000000000002",evolved
+1,12,0,Alt+Shift++,Key Press,Equals and Plus,L Alt+L Shift,Split pane vertical,"App: Windows Terminal / PowerShell, importance=1.2000000000000002",evolved
+1,0,1,Ctrl++,Key Press,Equals and Plus,L Ctrl,Zoom in,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+1,1,1,Ctrl+-,Key Press,Dash and Underscore,L Ctrl,Zoom out,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+1,2,1,Ctrl+],Key Press,Right Brace,L Ctrl,Indent line,"App: Visual Studio Code, importance=2.7",evolved
+1,3,1,Alt+=,Key Press,Equals and Plus,L Alt,AutoSum,"App: Microsoft Excel, importance=3.0",evolved
+1,4,1,Ctrl+Shift+End,Key Press,End,L Ctrl+L Shift,Select to last used cell,"App: Microsoft Excel, importance=1.5",evolved
+1,5,1,Ctrl+`,Key Press,Grave Accent and Tilde,L Ctrl,Toggle terminal,"App: Visual Studio Code, importance=9.0",evolved
+1,7,1,Ctrl+Shift+`,Key Press,Grave Accent and Tilde,L Ctrl+L Shift,New terminal,"App: Visual Studio Code, importance=5.4",evolved
+1,8,1,transparent,Transparent,,,,,transparent
+1,9,1,Ctrl+Shift++,Key Press,Equals and Plus,L Ctrl+L Shift,Insert cells/rows/columns,"App: Microsoft Excel, importance=3.0",evolved
+1,10,1,Ctrl+Shift+U,Key Press,U,L Ctrl+L Shift,Mark as unread,"App: Microsoft Teams, importance=3.0",evolved
+1,11,1,transparent,Transparent,,,,,transparent
+1,12,1,transparent,Transparent,,,,,transparent
+1,0,2,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+1,1,2,transparent,Transparent,,,,,transparent
+1,2,2,Ctrl+Shift+U,Key Press,U,L Ctrl+L Shift,Mark as unread,"App: Microsoft Teams, importance=3.0",evolved
+1,3,2,MB4,Mouse Key Press,MB4,,Back button,"App: Mouse, importance=7.0",evolved
+1,4,2,Ctrl+P,Key Press,P,L Ctrl,Print,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+1,5,2,F2,Key Press,F2,,Rename,"App: Windows 11, importance=6.0",evolved
+1,7,2,Win+S,Key Press,S,L GUI,Search,"App: Windows 11, importance=10.0",evolved
+1,8,2,transparent,Transparent,,,,,transparent
+1,9,2,Win+2,Key Press,2 and At,L GUI,Open/switch pinned app 2,"App: Windows 11, importance=6.0",evolved
+1,10,2,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
+1,11,2,Ctrl+End,Key Press,End,L Ctrl,Go to last used cell,"App: Microsoft Excel, importance=3.0",evolved
+1,12,2,Ctrl+Page Down,Key Press,PageDown,L Ctrl,Next sheet,"App: Microsoft Excel, importance=3.0",evolved
+1,0,3,transparent,Transparent,,,,,transparent
+1,1,3,MB5,Mouse Key Press,MB5,,Forward button,"App: Mouse, importance=7.0",evolved
+1,2,3,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+1,3,3,Win+.,Key Press,Period and GreaterThan,L GUI,Emoji picker,"App: Windows 11, importance=3.0",evolved
+1,4,3,F2,Key Press,F2,,Rename,"App: Windows 11, importance=6.0",evolved
+1,5,3,Ctrl+Shift+T,Key Press,T,L Ctrl+L Shift,Reopen closed tab,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+1,7,3,Ctrl+C,Key Press,C,L Ctrl,Copy,"App: Microsoft Teams, importance=10.0",evolved
+1,8,3,Shift+F11,Key Press,F11,L Shift,Step out,"App: Visual Studio Code, importance=5.4",evolved
+1,9,3,transparent,Transparent,,,,,transparent
+1,10,3,transparent,Transparent,,,,,transparent
+1,11,3,transparent,Transparent,,,,,transparent
+1,12,3,transparent,Transparent,,,,,transparent
+1,3,4,Speed,Momentary Layer,Layer::8,,Dynamic layer access: @access:L2->L8:hold:Speed,Target layer 8,evolved
+1,4,4,Ctrl+2,Key Press,2 and At,L Ctrl,Chat,"App: Microsoft Teams, importance=10.0",evolved
+1,5,4,Alt+F,Key Press,F,L Alt,Settings menu,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+1,7,4,coach_game_lock,coach_game_lock,,,Dynamic layer access: @access:L1->L7:toggle:coach_game_lock,Target layer 7,evolved
+1,8,4,Speed,coach_travel_toggle,,,Dynamic layer access: @access:L1->L8:toggle:Speed,Target layer 8,evolved
+1,4,5,Ctrl+Page Up,Key Press,PageUp,L Ctrl,Previous sheet,"App: Microsoft Excel, importance=3.0",evolved
+1,5,5,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
+1,7,5,transparent,Transparent,,,,,transparent
+2,0,0,Win+B,Key Press,B,L GUI,Focus system tray,"App: Windows 11, importance=1.0",evolved
+2,1,0,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+2,2,0,Ctrl+Space,Key Press,Spacebar,L Ctrl,Select entire column,"App: Microsoft Excel, importance=3.0",evolved
+2,3,0,F10,Key Press,F10,,Step over,"App: Visual Studio Code, importance=5.4",evolved
+2,4,0,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Find previous,"App: Browser (Chrome/Edge), importance=0.95",evolved
+2,5,0,Win+Up,Key Press,UpArrow,L GUI,Maximize window,"App: Windows 11, importance=6.0",evolved
+2,7,0,transparent,Transparent,,,,,transparent
+2,8,0,Ctrl+I,Key Press,I,L Ctrl,Italic,"App: Microsoft Teams, importance=3.0",evolved
+2,9,0,transparent,Transparent,,,,,transparent
+2,10,0,Ctrl+F,Key Press,F,L Ctrl,Find in conversation,"App: Microsoft Teams, importance=6.0",evolved
+2,11,0,transparent,Transparent,,,,,transparent
+2,12,0,transparent,Transparent,,,,,transparent
+2,0,1,Win+E,Key Press,E,L GUI,File Explorer,"App: Windows 11, importance=6.0",evolved
+2,1,1,transparent,Transparent,,,,,transparent
+2,2,1,Ctrl+W,Key Press,W,L Ctrl,Close tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+2,3,1,Alt+Enter,Key Press,Return Enter,L Alt,Properties / metadata card,"App: M-Files Desktop Client, importance=8.5",evolved
+2,4,1,Ctrl+Shift+V,Key Press,V,L Ctrl+L Shift,Paste without formatting,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+2,5,1,transparent,Transparent,,,,,transparent
+2,7,1,transparent,Transparent,,,,,transparent
+2,8,1,transparent,Transparent,,,,,transparent
+2,9,1,Ctrl+S,Key Press,S,L Ctrl,Save page as,"App: Browser (Chrome/Edge), importance=0.95",evolved
+2,10,1,Ctrl+A,Key Press,A,L Ctrl,Select all,"App: Microsoft Teams, importance=3.0",evolved
+2,11,1,transparent,Transparent,,,,,transparent
+2,12,1,transparent,Transparent,,,,,transparent
+2,0,2,Ctrl+Shift+W,Key Press,W,L Ctrl+L Shift,Change workflow state,"App: M-Files Desktop Client, importance=5.1",evolved
+2,1,2,Ctrl+H,Key Press,H,L Ctrl,History,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+2,2,2,Ctrl+1,Key Press,1 and Bang,L Ctrl,Activity,"App: Microsoft Teams, importance=6.0",evolved
+2,3,2,Ctrl+W,Key Press,W,L Ctrl,Close tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+2,4,2,Ctrl+2,Key Press,2 and At,L Ctrl,Chat,"App: Microsoft Teams, importance=10.0",evolved
+2,5,2,Ctrl+Shift+O,Key Press,O,L Ctrl+L Shift,Toggle camera,"App: Microsoft Teams, importance=6.0",evolved
+2,7,2,Ctrl+C,Key Press,C,L Ctrl,Copy,"App: Microsoft Teams, importance=10.0",evolved
+2,8,2,Ctrl+Shift+C,Key Press,C,L Ctrl+L Shift,Inspect element,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+2,9,2,coach_travel_toggle,coach_travel_toggle,,,Dynamic layer access: @access:L2->L8:toggle:coach_travel_toggle,Target layer 8,evolved
+2,10,2,transparent,Transparent,,,,,transparent
+2,11,2,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+2,12,2,F9,Key Press,F9,,Toggle breakpoint,"App: Visual Studio Code, importance=5.4",evolved
+2,0,3,transparent,Transparent,,,,,transparent
+2,1,3,transparent,Transparent,,,,,transparent
+2,2,3,Shift+Alt+A,Key Press,A,L Shift+L Alt,Toggle block comment,"App: Visual Studio Code, importance=2.7",evolved
+2,3,3,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+2,4,3,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+2,5,3,Ctrl+C,Key Press,C,L Ctrl,Copy,"App: Microsoft Teams, importance=10.0",evolved
+2,7,3,transparent,Transparent,,,,,transparent
+2,8,3,transparent,Transparent,,,,,transparent
+2,9,3,transparent,Transparent,,,,,transparent
+2,10,3,transparent,Transparent,,,,,transparent
+2,11,3,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
+2,12,3,transparent,Transparent,,,,,transparent
+2,3,4,Win+E,Key Press,E,L GUI,File Explorer,"App: Windows 11, importance=6.0",evolved
+2,4,4,Alt+Tab,Key Press,Tab,L Alt,Switch apps,"App: Windows 11, importance=10.0",evolved
+2,5,4,Ctrl+Tab,Key Press,Tab,L Ctrl,Next tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+2,7,4,Scroll,Toggle Layer,Layer::6,,Dynamic layer access: @access:L2->L6:toggle:Scroll,Target layer 6,evolved
+2,8,4,Ctrl+Left,Key Press,LeftArrow,L Ctrl,Jump to left edge of data,"App: Microsoft Excel, importance=5.0",evolved
+2,4,5,coach_base,coach_base,,,Dynamic layer access: @access:L2->L0:toggle:coach_base,Target layer 0,evolved
+2,5,5,Win+I,Key Press,I,L GUI,Settings,"App: Windows 11, importance=3.0",evolved
+2,7,5,Ctrl+Shift+K,Key Press,K,L Ctrl+L Shift,Raise/lower hand,"App: Microsoft Teams, importance=3.0",evolved
+3,0,0,transparent,Transparent,,,,,transparent
+3,1,0,Ctrl+Shift+A,Key Press,A,L Ctrl+L Shift,Accept call,"App: Microsoft Teams, importance=6.0",evolved
+3,2,0,transparent,Transparent,,,,,transparent
+3,3,0,F11,Key Press,F11,,Toggle fullscreen,"App: Browser (Chrome/Edge), importance=0.95",evolved
+3,4,0,F4,Key Press,F4,,Toggle absolute ref ($),"App: Microsoft Excel, importance=5.0",evolved
+3,5,0,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
+3,7,0,Ctrl+Shift+$,Key Press,4 and Dollar,L Ctrl+L Shift,Currency format,"App: Microsoft Excel, importance=1.5",evolved
+3,8,0,Win+B,Key Press,B,L GUI,Focus system tray,"App: Windows 11, importance=1.0",evolved
+3,9,0,Ctrl+P,Key Press,P,L Ctrl,Print,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+3,10,0,transparent,Transparent,,,,,transparent
+3,11,0,transparent,Transparent,,,,,transparent
+3,12,0,Ctrl+V,Key Press,V,L Ctrl,Paste,"App: Microsoft Teams, importance=10.0",evolved
+3,0,1,Ctrl+Shift+X,Key Press,X,L Ctrl+L Shift,Expand compose box,"App: Microsoft Teams, importance=3.0",evolved
+3,1,1,transparent,Transparent,,,,,transparent
+3,2,1,transparent,Transparent,,,,,transparent
+3,3,1,Ctrl+Shift+M,Key Press,M,L Ctrl+L Shift,Toggle mute,"App: Microsoft Teams, importance=10.0",evolved
+3,4,1,Win+M,Key Press,M,L GUI,Minimize all windows,"App: Windows 11, importance=1.0",evolved
+3,5,1,transparent,Transparent,,,,,transparent
+3,7,1,transparent,Transparent,,,,,transparent
+3,8,1,Ctrl+Shift+V,Key Press,V,L Ctrl+L Shift,Paste without formatting,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+3,9,1,transparent,Transparent,,,,,transparent
+3,10,1,Ctrl+S,Key Press,S,L Ctrl,Save page as,"App: Browser (Chrome/Edge), importance=0.95",evolved
+3,11,1,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+3,12,1,Shift+F8,Key Press,F8,L Shift,Go to previous problem,"App: Visual Studio Code, importance=0.9",evolved
+3,0,2,Ctrl+U,Key Press,U,L Ctrl,Underline,"App: Microsoft Teams, importance=1.0",evolved
+3,1,2,Alt+D,Key Press,D,L Alt,Focus address bar (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+3,2,2,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+3,3,2,Ctrl+B,Key Press,B,L Ctrl,Bold,"App: Microsoft Teams, importance=6.0",evolved
+3,4,2,Win+4,Key Press,4 and Dollar,L GUI,Open/switch pinned app 4,"App: Windows 11, importance=3.0",evolved
+3,5,2,Win+5,Key Press,5 and Percent,L GUI,Open/switch pinned app 5,"App: Windows 11, importance=3.0",evolved
+3,7,2,Win+S,Key Press,S,L GUI,Search,"App: Windows 11, importance=10.0",evolved
+3,8,2,Shift+Space,Key Press,Spacebar,L Shift,Scroll up one screen,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+3,9,2,F3,Key Press,F3,,Find next (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+3,10,2,Win+L,Key Press,L,L GUI,Lock PC,"App: Windows 11, importance=3.0",evolved
+3,11,2,transparent,Transparent,,,,,transparent
+3,12,2,Ctrl+K,Key Press,K,L Ctrl,Insert link,"App: Microsoft Teams, importance=3.0",evolved
+3,0,3,Ctrl+Shift+F5,Key Press,F5,L Ctrl+L Shift,Restart debugging,"App: Visual Studio Code, importance=2.7",evolved
+3,1,3,transparent,Transparent,,,,,transparent
+3,2,3,Win+Space,Key Press,Spacebar,L GUI,Switch input language,"App: Windows 11, importance=6.0",evolved
+3,3,3,Win+D,Key Press,D,L GUI,Show/hide desktop,"App: Windows 11, importance=6.0",evolved
+3,4,3,Win+Shift+S,Key Press,S,L GUI+L Shift,Screenshot (Snip),"App: Windows 11, importance=6.0",evolved
+3,5,3,Win+P,Key Press,P,L GUI,Project / display mode,"App: Windows 11, importance=1.0",evolved
+3,7,3,transparent,Transparent,,,,,transparent
+3,8,3,Ctrl+Y,Key Press,Y,L Ctrl,Redo,"App: Windows 11, importance=3.0",evolved
+3,9,3,Exit Travel,coach_travel_off,,,Dynamic layer access: @access:L8->L0:toggle:Exit_Travel,Target layer 0,evolved
+3,10,3,Ctrl+R,Key Press,R,L Ctrl,Reply,"App: Microsoft Outlook, importance=7.0",evolved
+3,11,3,transparent,Transparent,,,,,transparent
+3,12,3,Ctrl+Shift+N,Key Press,N,L Ctrl+L Shift,Incognito/InPrivate window,"App: Browser (Chrome/Edge), importance=0.95",evolved
+3,3,4,transparent,Transparent,,,,,transparent
+3,4,4,Win+C,Key Press,C,L GUI,Open Copilot,"App: Windows 11, importance=6.0",evolved
+3,5,4,Ctrl+V,Key Press,V,L Ctrl,Paste,"App: Microsoft Teams, importance=10.0",evolved
+3,7,4,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Find previous,"App: Browser (Chrome/Edge), importance=0.95",evolved
+3,8,4,F4,Key Press,F4,,Toggle absolute ref ($),"App: Microsoft Excel, importance=5.0",evolved
+3,4,5,Code,Toggle Layer,Layer::5,,Dynamic layer access: @access:L1->L5:toggle:Code,Target layer 5,evolved
+3,5,5,transparent,Transparent,,,,,transparent
+3,7,5,Ctrl+K,Key Press,K,L Ctrl,Insert link,"App: Microsoft Teams, importance=3.0",evolved
+4,0,0,transparent,Transparent,,,,,transparent
+4,1,0,Ctrl+N,Key Press,N,L Ctrl,New chat,"App: Microsoft Teams, importance=6.0",evolved
+4,2,0,Ctrl+End,Key Press,End,L Ctrl,Go to last used cell,"App: Microsoft Excel, importance=3.0",evolved
+4,3,0,Ctrl+2,Key Press,2 and At,L Ctrl,Chat,"App: Microsoft Teams, importance=10.0",evolved
+4,4,0,Alt+Right,Key Press,RightArrow,L Alt,Go forward,"App: Microsoft Teams, importance=3.0",evolved
+4,5,0,Shift+F3,Key Press,F3,L Shift,Find previous,"App: Visual Studio Code, importance=2.7",evolved
+4,7,0,Alt+Shift+Up,Key Press,UpArrow,L Alt+L Shift,Previous unread,"App: Discord, importance=0.6000000000000001",evolved
+4,8,0,transparent,Transparent,,,,,transparent
+4,9,0,Win+Ctrl+D,Key Press,D,L GUI+L Ctrl,New virtual desktop,"App: Windows 11, importance=3.0",evolved
+4,10,0,transparent,Transparent,,,,,transparent
+4,11,0,transparent,Transparent,,,,,transparent
+4,12,0,transparent,Transparent,,,,,transparent
+4,0,1,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+4,1,1,Ctrl+O,Key Press,O,L Ctrl,Open file,"App: Visual Studio Code, importance=2.7",evolved
+4,2,1,transparent,Transparent,,,,,transparent
+4,3,1,Ctrl+O,Key Press,O,L Ctrl,Open file,"App: Visual Studio Code, importance=2.7",evolved
+4,4,1,transparent,Transparent,,,,,transparent
+4,5,1,Win+H,Key Press,H,L GUI,Voice typing,"App: Windows 11, importance=6.0",evolved
+4,7,1,transparent,Transparent,,,,,transparent
+4,8,1,Ctrl+F,Key Press,F,L Ctrl,Find in conversation,"App: Microsoft Teams, importance=6.0",evolved
+4,9,1,transparent,Transparent,,,,,transparent
+4,10,1,Ctrl+L,Key Press,L,L Ctrl,Focus address bar,"App: Browser (Chrome/Edge), importance=9.5",evolved
+4,11,1,transparent,Transparent,,,,,transparent
+4,12,1,Ctrl+Shift+Esc,Key Press,Escape,L Ctrl+L Shift,Task Manager,"App: Windows 11, importance=3.0",evolved
+4,0,2,transparent,Transparent,,,,,transparent
+4,1,2,Ctrl+Enter,Key Press,Return Enter,L Ctrl,Send (expanded mode),"App: Microsoft Teams, importance=10.0",evolved
+4,2,2,"Ctrl+,",Key Press,Comma and LessThan,L Ctrl,Open settings,"App: Visual Studio Code, importance=2.7",evolved
+4,3,2,Alt+F4,Key Press,F4,L Alt,Close window,"App: Windows 11, importance=6.0",evolved
+4,4,2,Win+1,Key Press,1 and Bang,L GUI,Open/switch pinned app 1,"App: Windows 11, importance=10.0",evolved
+4,5,2,Ctrl+F5,Key Press,F5,L Ctrl,Hard refresh (bypass cache),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+4,7,2,transparent,Transparent,,,,,transparent
+4,8,2,transparent,Transparent,,,,,transparent
+4,9,2,transparent,Transparent,,,,,transparent
+4,10,2,transparent,Transparent,,,,,transparent
+4,11,2,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+4,12,2,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+4,0,3,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+4,1,3,Ctrl+9,Key Press,9 and Left Bracket,L Ctrl,Last tab,"App: Browser (Chrome/Edge), importance=0.95",evolved
+4,2,3,Win+R,Key Press,R,L GUI,Run dialog,"App: Windows 11, importance=3.0",evolved
+4,3,3,Ctrl+D,Key Press,D,L Ctrl,Bookmark page,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+4,4,3,Ctrl+H,Key Press,H,L Ctrl,History,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+4,5,3,transparent,Transparent,,,,,transparent
+4,7,3,Alt+Shift+Down,Key Press,DownArrow,L Alt+L Shift,Next unread,"App: Discord, importance=0.6000000000000001",evolved
+4,8,3,Ctrl+Q,Key Press,Q,L Ctrl,Mark as read,"App: Microsoft Outlook, importance=4.199999999999999",evolved
+4,9,3,transparent,Transparent,,,,,transparent
+4,10,3,F7,Key Press,F7,,Spell check,"App: Microsoft Word, importance=0.8999999999999999",evolved
+4,11,3,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
+4,12,3,Ctrl+Shift+A,Key Press,A,L Ctrl+L Shift,Accept call,"App: Microsoft Teams, importance=6.0",evolved
+4,3,4,transparent,Transparent,,,,,transparent
+4,4,4,Ctrl+T,Key Press,T,L Ctrl,New tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+4,5,4,Ctrl+E,Key Press,E,L Ctrl,Search / command bar,"App: Microsoft Teams, importance=10.0",evolved
+4,7,4,Win+Ctrl+D,Key Press,D,L GUI+L Ctrl,New virtual desktop,"App: Windows 11, importance=3.0",evolved
+4,8,4,Scroll,Momentary Layer,Layer::6,,Dynamic layer access: @access:L2->L6:hold:Scroll,Target layer 6,evolved
+4,4,5,Ctrl+[,Key Press,Left Brace,L Ctrl,Outdent line,"App: Visual Studio Code, importance=2.7",evolved
+4,5,5,transparent,Transparent,,,,,transparent
+4,7,5,transparent,Transparent,,,,,transparent
+5,0,0,transparent,Transparent,,,,,transparent
+5,1,0,transparent,Transparent,,,,,transparent
+5,2,0,Shift+F5,Key Press,F5,L Shift,Stop debugging,"App: Visual Studio Code, importance=2.7",evolved
+5,3,0,transparent,Transparent,,,,,transparent
+5,4,0,Ctrl+Shift+W,Key Press,W,L Ctrl+L Shift,Change workflow state,"App: M-Files Desktop Client, importance=5.1",evolved
+5,5,0,transparent,Transparent,,,,,transparent
+5,7,0,transparent,Transparent,,,,,transparent
+5,8,0,Ctrl+I,Key Press,I,L Ctrl,Italic,"App: Microsoft Teams, importance=3.0",evolved
+5,9,0,Win+Ctrl+D,Key Press,D,L GUI+L Ctrl,New virtual desktop,"App: Windows 11, importance=3.0",evolved
+5,10,0,transparent,Transparent,,,,,transparent
+5,11,0,transparent,Transparent,,,,,transparent
+5,12,0,transparent,Transparent,,,,,transparent
+5,0,1,transparent,Transparent,,,,,transparent
+5,1,1,Ctrl+Shift+F,Key Press,F,L Ctrl+L Shift,Format text,"App: Microsoft Teams, importance=3.0",evolved
+5,2,1,Ctrl+.,Key Press,Period and GreaterThan,L Ctrl,Show commands,"App: Microsoft Teams, importance=3.0",evolved
+5,3,1,transparent,Transparent,,,,,transparent
+5,4,1,Ctrl+Shift+L,Key Press,L,L Ctrl+L Shift,Toggle sidebar,"App: Microsoft Teams, importance=3.0",evolved
+5,5,1,transparent,Transparent,,,,,transparent
+5,7,1,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
+5,8,1,transparent,Transparent,,,,,transparent
+5,9,1,transparent,Transparent,,,,,transparent
+5,10,1,F1,Key Press,F1,,Help,"App: Browser (Chrome/Edge), importance=0.19",evolved
+5,11,1,transparent,Transparent,,,,,transparent
+5,12,1,transparent,Transparent,,,,,transparent
+5,0,2,Win+T,Key Press,T,L GUI,Cycle taskbar apps,"App: Windows 11, importance=1.0",evolved
+5,1,2,Ctrl+S,Key Press,S,L Ctrl,Save page as,"App: Browser (Chrome/Edge), importance=0.95",evolved
+5,2,2,Ctrl+J,Key Press,J,L Ctrl,Downloads,"App: Browser (Chrome/Edge), importance=0.95",evolved
+5,3,2,Ctrl+K Ctrl+F,Key Press,F,L Ctrl+K Ctrl,Format selection,"App: Visual Studio Code, importance=2.7",evolved
+5,4,2,Ctrl+Shift+K,Key Press,K,L Ctrl+L Shift,Raise/lower hand,"App: Microsoft Teams, importance=3.0",evolved
+5,5,2,Ctrl+5,Key Press,5 and Percent,L Ctrl,Calls,"App: Microsoft Teams, importance=3.0",evolved
+5,7,2,transparent,Transparent,,,,,transparent
+5,8,2,transparent,Transparent,,,,,transparent
+5,9,2,transparent,Transparent,,,,,transparent
+5,10,2,Alt+Shift+D,Key Press,D,L Alt+L Shift,Split pane (auto),"App: Windows Terminal / PowerShell, importance=2.4000000000000004",evolved
+5,11,2,coach_travel_toggle,coach_travel_toggle,,,Dynamic layer access: @access:L5->L8:toggle:coach_travel_toggle,Target layer 8,evolved
+5,12,2,Ctrl+Shift+Q,Key Press,Q,L Ctrl+L Shift,New meeting,"App: Microsoft Outlook, importance=2.0999999999999996",evolved
+5,0,3,transparent,Transparent,,,,,transparent
+5,1,3,Ctrl+Shift+V,Key Press,V,L Ctrl+L Shift,Paste without formatting,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+5,2,3,transparent,Transparent,,,,,transparent
+5,3,3,Ctrl+Shift+P,Key Press,P,L Ctrl+L Shift,Toggle chat in meeting,"App: Microsoft Teams, importance=3.0",evolved
+5,4,3,Ctrl+Shift+X,Key Press,X,L Ctrl+L Shift,Expand compose box,"App: Microsoft Teams, importance=3.0",evolved
+5,5,3,F8,Key Press,F8,,Go to next problem,"App: Visual Studio Code, importance=2.7",evolved
+5,7,3,transparent,Transparent,,,,,transparent
+5,8,3,F10,Key Press,F10,,Step over,"App: Visual Studio Code, importance=5.4",evolved
+5,9,3,transparent,Transparent,,,,,transparent
+5,10,3,Ctrl+Shift+I,Key Press,I,L Ctrl+L Shift,Open DevTools (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+5,11,3,transparent,Transparent,,,,,transparent
+5,12,3,transparent,Transparent,,,,,transparent
+5,3,4,transparent,Transparent,,,,,transparent
+5,4,4,transparent,Transparent,,,,,transparent
+5,5,4,Ctrl+0,Key Press,0 and Right Bracket,L Ctrl,Reset zoom,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+5,7,4,transparent,Transparent,,,,,transparent
+5,8,4,Win+Tab,Key Press,Tab,L GUI,Task View,"App: Windows 11, importance=6.0",evolved
+5,4,5,Ctrl+Click,Mouse Key Press,MB1,L Ctrl,Select non-adjacent cells,"App: Microsoft Excel, importance=1.5",evolved
+5,5,5,Ctrl+;,Key Press,SemiColon and Colon,L Ctrl,Insert current date,"App: Microsoft Excel, importance=1.5",evolved
+5,7,5,Ctrl+Shift+!,Key Press,1 and Bang,L Ctrl+L Shift,Number format,"App: Microsoft Excel, importance=1.5",evolved
+6,0,0,transparent,Transparent,,,,,transparent
+6,1,0,Ctrl+X,Key Press,X,L Ctrl,Cut,"App: Windows 11, importance=6.0",evolved
+6,2,0,transparent,Transparent,,,,,transparent
+6,3,0,transparent,Transparent,,,,,transparent
+6,4,0,Shift+Enter,Key Press,Return Enter,L Shift,New line in message,"App: Microsoft Teams, importance=6.0",evolved
+6,5,0,transparent,Transparent,,,,,transparent
+6,7,0,transparent,Transparent,,,,,transparent
+6,8,0,transparent,Transparent,,,,,transparent
+6,9,0,Ctrl+Shift+S,Key Press,S,L Ctrl+L Shift,Attach file,"App: Microsoft Teams, importance=3.0",evolved
+6,10,0,transparent,Transparent,,,,,transparent
+6,11,0,transparent,Transparent,,,,,transparent
+6,12,0,transparent,Transparent,,,,,transparent
+6,0,1,Ctrl+Alt+Up,Key Press,UpArrow,L Ctrl+L Alt,Add cursor above,"App: Visual Studio Code, importance=5.4",evolved
+6,1,1,transparent,Transparent,,,,,transparent
+6,2,1,transparent,Transparent,,,,,transparent
+6,3,1,F10,Key Press,F10,,Step over,"App: Visual Studio Code, importance=5.4",evolved
+6,4,1,Shift+Click,Mouse Key Press,MB1,L Shift,Select range,"App: File Explorer, importance=2.7",evolved
+6,5,1,Win+A,Key Press,A,L GUI,Quick settings / Action center,"App: Windows 11, importance=1.0",evolved
+6,7,1,Alt+Left,Key Press,LeftArrow,L Alt,Go back,"App: Microsoft Teams, importance=6.0",evolved
+6,8,1,transparent,Transparent,,,,,transparent
+6,9,1,transparent,Transparent,,,,,transparent
+6,10,1,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+6,11,1,transparent,Transparent,,,,,transparent
+6,12,1,transparent,Transparent,,,,,transparent
+6,0,2,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+6,1,2,Ctrl+Shift+%,Key Press,5 and Percent,L Ctrl+L Shift,Percent format,"App: Microsoft Excel, importance=1.5",evolved
+6,2,2,F9,Key Press,F9,,Toggle breakpoint,"App: Visual Studio Code, importance=5.4",evolved
+6,3,2,transparent,Transparent,,,,,transparent
+6,4,2,Ctrl+3,Key Press,3 and Hash,L Ctrl,Teams/channels,"App: Microsoft Teams, importance=6.0",evolved
+6,5,2,transparent,Transparent,,,,,transparent
+6,7,2,F12,Key Press,F12,,Open DevTools,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+6,8,2,Win+Down,Key Press,DownArrow,L GUI,Minimize / restore,"App: Windows 11, importance=6.0",evolved
+6,9,2,transparent,Transparent,,,,,transparent
+6,10,2,transparent,Transparent,,,,,transparent
+6,11,2,Ctrl+O,Key Press,O,L Ctrl,Open file,"App: Visual Studio Code, importance=2.7",evolved
+6,12,2,Win+Left,Key Press,LeftArrow,L GUI,Snap window left,"App: Windows 11, importance=10.0",evolved
+6,0,3,transparent,Transparent,,,,,transparent
+6,1,3,Ctrl+Shift+Z,Key Press,Z,L Ctrl+L Shift,Redo,"App: Visual Studio Code, importance=5.4",evolved
+6,2,3,transparent,Transparent,,,,,transparent
+6,3,3,transparent,Transparent,,,,,transparent
+6,4,3,transparent,Transparent,,,,,transparent
+6,5,3,MB3,Mouse Key Press,MB3,,Middle click,"App: Mouse, importance=7.0",evolved
+6,7,3,coach_game_lock,coach_game_lock,,,Dynamic layer access: @access:L10->L7:toggle:coach_game_lock,Target layer 7,evolved
+6,8,3,Win+Ctrl+Left,Key Press,LeftArrow,L GUI+L Ctrl,Switch desktop left,"App: Windows 11, importance=3.0",evolved
+6,9,3,Ctrl+6,Key Press,6 and Caret,L Ctrl,Files,"App: Microsoft Teams, importance=3.0",evolved
+6,10,3,transparent,Transparent,,,,,transparent
+6,11,3,Ctrl+Shift+C,Key Press,C,L Ctrl+L Shift,Inspect element,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+6,12,3,transparent,Transparent,,,,,transparent
+6,3,4,transparent,Transparent,,,,,transparent
+6,4,4,Ctrl+L,Key Press,L,L Ctrl,Focus address bar,"App: Browser (Chrome/Edge), importance=9.5",evolved
+6,5,4,Win+3,Key Press,3 and Hash,L GUI,Open/switch pinned app 3,"App: Windows 11, importance=6.0",evolved
+6,7,4,Excel,Toggle Layer,Layer::10,,Dynamic layer access: @access:L4->L10:toggle:Excel,Target layer 10,evolved
+6,8,4,Ctrl+Shift+Tab,Key Press,Tab,L Ctrl+L Shift,Previous tab,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+6,4,5,transparent,Transparent,,,,,transparent
+6,5,5,transparent,Transparent,,,,,transparent
+6,7,5,Ctrl+F6,Key Press,F6,L Ctrl,Previous section,"App: Microsoft Teams, importance=1.0",evolved
+7,0,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,1,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,2,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,3,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,4,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,5,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,7,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,8,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,9,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,10,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,11,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,12,0,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,0,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,1,1,9 PU,Key Press,9 and PageUp,,RPG/game movement or menu navigation.,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,2,1,↑,Key Press,UpArrow,,RPG/game movement or menu navigation.,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,3,1,3 PD,Key Press,3 and PageDn,,RPG/game movement or menu navigation.,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,4,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,5,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,7,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,8,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,9,1,3 PD,Key Press,3 and PageDn,,RPG/game movement or menu navigation. Right-hand column-mirror of left x3 (reversed cluster).,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,10,1,↑,Key Press,UpArrow,,RPG/game movement or menu navigation. Right-hand column-mirror of left x2.,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,11,1,9 PU,Key Press,9 and PageUp,,RPG/game movement or menu navigation. Right-hand column-mirror of left x1.,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,12,1,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,0,2,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,1,2,←,Key Press,LeftArrow,,RPG/game movement or menu navigation.,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,2,2,↓,Key Press,DownArrow,,RPG/game movement or menu navigation.,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,3,2,→,Key Press,RightArrow,,RPG/game movement or menu navigation.,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,4,2,Z,Key Press,Z,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,5,2,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,7,2,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,8,2,Z,Key Press,Z,,"RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x4 (outer column).",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,9,2,←,Key Press,LeftArrow,,RPG/game movement: left arrow on left column of right-hand cluster (x9).,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,10,2,↓,Key Press,DownArrow,,RPG/game movement or menu navigation. Right-hand column-mirror of left x2.,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,11,2,→,Key Press,RightArrow,,RPG/game movement: right arrow on right column of right-hand cluster (x11).,Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,12,2,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,0,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,1,3,X,Key Press,X,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,2,3,C,Key Press,C,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,3,3,Shft,Key Press,LeftShift,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,4,3,Esc,Key Press,Escape,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,5,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,7,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,8,3,Esc,Key Press,Escape,,"RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x4 (outer column).",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,9,3,Shft,Key Press,LeftShift,,"RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x3.",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,10,3,C,Key Press,C,,"RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x2.",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,11,3,X,Key Press,X,,"RPG/game action, cancel, menu, dash, pause, or confirm key. Right-hand column-mirror of left x1.",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,12,3,Transparent,Transparent,,,Transparent/reserved: falls through to lower active layer or does nothing if no lower binding applies.,Intentionally leaves the underlying layer behavior available.,canonical (frozen/critical)
+7,3,4,Exit Base,coach_base,,,Left-thumb exit from locked game layer to base. Must use coach_base (not plain To Layer) so the beacon listener clears lockedLayer 7.,Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22). Same macro as mouse-layer Base exits.,canonical (frozen/critical)
+7,4,4,␣,Key Press,Spacebar,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+7,5,4,Exit Base,coach_base,,,Left support-thumb exit from locked game layer to base.,Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22).,canonical (frozen/critical)
+7,7,4,Exit Base,coach_base,,,Right-thumb exit from locked game layer to base.,Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22).,canonical (frozen/critical)
+7,8,4,Exit Base,coach_base,,,Second right-thumb exit from locked game layer to base.,Coach beacon: to layer 0 + clear lock (Ctrl+Alt+Shift+F22).,canonical (frozen/critical)
+7,4,5,transparent,Transparent,,,,,transparent
+7,5,5,MB2,Mouse Key Press,MB2,,Right click,"App: Mouse, importance=9.0",evolved
+7,7,5,Ret,Key Press,Return Enter,,"RPG/game action, cancel, menu, dash, pause, or confirm key.",Use for RPG/game play; exit keys return to base layer.,canonical (frozen/critical)
+8,0,0,transparent,Transparent,,,,,transparent
+8,1,0,transparent,Transparent,,,,,transparent
+8,2,0,transparent,Transparent,,,,,transparent
+8,3,0,transparent,Transparent,,,,,transparent
+8,4,0,transparent,Transparent,,,,,transparent
+8,5,0,transparent,Transparent,,,,,transparent
+8,7,0,transparent,Transparent,,,,,transparent
+8,8,0,transparent,Transparent,,,,,transparent
+8,9,0,transparent,Transparent,,,,,transparent
+8,10,0,transparent,Transparent,,,,,transparent
+8,11,0,transparent,Transparent,,,,,transparent
+8,12,0,transparent,Transparent,,,,,transparent
+8,0,1,transparent,Transparent,,,,,transparent
+8,1,1,transparent,Transparent,,,,,transparent
+8,2,1,F11,Key Press,F11,,Toggle fullscreen,"App: Browser (Chrome/Edge), importance=0.95",evolved
+8,3,1,Win+B,Key Press,B,L GUI,Focus system tray,"App: Windows 11, importance=1.0",evolved
+8,4,1,transparent,Transparent,,,,,transparent
+8,5,1,transparent,Transparent,,,,,transparent
+8,7,1,transparent,Transparent,,,,,transparent
+8,8,1,transparent,Transparent,,,,,transparent
+8,9,1,transparent,Transparent,,,,,transparent
+8,10,1,transparent,Transparent,,,,,transparent
+8,11,1,Ctrl+Shift+J,Key Press,J,L Ctrl+L Shift,Open Console,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+8,12,1,transparent,Transparent,,,,,transparent
+8,0,2,transparent,Transparent,,,,,transparent
+8,1,2,Win+Right,Key Press,RightArrow,L GUI,Snap window right,"App: Windows 11, importance=10.0",evolved
+8,2,2,MB1,Mouse Key Press,MB1,,Left click,"App: Mouse, importance=9.0",evolved
+8,3,2,Ctrl+Shift+F6,Key Press,F6,L Ctrl+L Shift,Next section,"App: Microsoft Teams, importance=3.0",evolved
+8,4,2,Ctrl+4,Key Press,4 and Dollar,L Ctrl,Calendar,"App: Microsoft Teams, importance=6.0",evolved
+8,5,2,F9,Key Press,F9,,Toggle breakpoint,"App: Visual Studio Code, importance=5.4",evolved
+8,7,2,Win+Shift+Right,Key Press,RightArrow,L GUI+L Shift,Move to right monitor,"App: Windows 11, importance=6.0",evolved
+8,8,2,Ctrl+\,Key Press,Backslash and Pipe,L Ctrl,Split editor,"App: Visual Studio Code, importance=2.7",evolved
+8,9,2,Ctrl+S,Key Press,S,L Ctrl,Save page as,"App: Browser (Chrome/Edge), importance=0.95",evolved
+8,10,2,Ctrl+Shift+Left,Key Press,LeftArrow,L Ctrl+L Shift,Select to left edge,"App: Microsoft Excel, importance=3.0",evolved
+8,11,2,Win+Ctrl+F4,Key Press,F4,L GUI+L Ctrl,Close current desktop,"App: Windows 11, importance=1.0",evolved
+8,12,2,transparent,Transparent,,,,,transparent
+8,0,3,transparent,Transparent,,,,,transparent
+8,1,3,transparent,Transparent,,,,,transparent
+8,2,3,transparent,Transparent,,,,,transparent
+8,3,3,Ctrl+Shift+B,Key Press,B,L Ctrl+L Shift,Toggle background blur,"App: Microsoft Teams, importance=3.0",evolved
+8,4,3,transparent,Transparent,,,,,transparent
+8,5,3,transparent,Transparent,,,,,transparent
+8,7,3,transparent,Transparent,,,,,transparent
+8,8,3,transparent,Transparent,,,,,transparent
+8,9,3,transparent,Transparent,,,,,transparent
+8,10,3,transparent,Transparent,,,,,transparent
+8,11,3,transparent,Transparent,,,,,transparent
+8,12,3,transparent,Transparent,,,,,transparent
+8,3,4,Shift+Alt+Right,Key Press,RightArrow,L Shift+L Alt,Expand selection,"App: Visual Studio Code, importance=2.7",evolved
+8,4,4,Shift+Tab,Key Press,Tab,L Shift,Outdent,"App: Visual Studio Code, importance=5.4",evolved
+8,5,4,Alt+Click,Mouse Key Press,MB1,L Alt,Add cursor at position,"App: Visual Studio Code, importance=5.4",evolved
+8,7,4,coach_mouse_lock,coach_mouse_lock,,,Dynamic layer access: @access:L10->L2:toggle:coach_mouse_lock,Target layer 2,evolved
+8,8,4,transparent,Transparent,,,,,transparent
+8,4,5,transparent,Transparent,,,,,transparent
+8,5,5,transparent,Transparent,,,,,transparent
+8,7,5,Alt+Up,Key Press,UpArrow,L Alt,Move line up,"App: Visual Studio Code, importance=5.4",evolved
+9,0,0,transparent,Transparent,,,,,transparent
+9,1,0,transparent,Transparent,,,,,transparent
+9,2,0,transparent,Transparent,,,,,transparent
+9,3,0,transparent,Transparent,,,,,transparent
+9,4,0,transparent,Transparent,,,,,transparent
+9,5,0,transparent,Transparent,,,,,transparent
+9,7,0,transparent,Transparent,,,,,transparent
+9,8,0,transparent,Transparent,,,,,transparent
+9,9,0,transparent,Transparent,,,,,transparent
+9,10,0,transparent,Transparent,,,,,transparent
+9,11,0,transparent,Transparent,,,,,transparent
+9,12,0,transparent,Transparent,,,,,transparent
+9,0,1,transparent,Transparent,,,,,transparent
+9,1,1,Ctrl+6,Key Press,6 and Caret,L Ctrl,Files,"App: Microsoft Teams, importance=3.0",evolved
+9,2,1,Win+V,Key Press,V,L GUI,Clipboard history,"App: Windows 11, importance=6.0",evolved
+9,3,1,transparent,Transparent,,,,,transparent
+9,4,1,Ctrl+M,Key Press,M,L Ctrl,Add to favorites,"App: M-Files Desktop Client, importance=2.55",evolved
+9,5,1,Ctrl+1,Key Press,1 and Bang,L Ctrl,Activity,"App: Microsoft Teams, importance=6.0",evolved
+9,7,1,Ctrl+P,Key Press,P,L Ctrl,Print,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+9,8,1,transparent,Transparent,,,,,transparent
+9,9,1,transparent,Transparent,,,,,transparent
+9,10,1,transparent,Transparent,,,,,transparent
+9,11,1,transparent,Transparent,,,,,transparent
+9,12,1,transparent,Transparent,,,,,transparent
+9,0,2,transparent,Transparent,,,,,transparent
+9,1,2,transparent,Transparent,,,,,transparent
+9,2,2,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+9,3,2,Alt+Down,Key Press,DownArrow,L Alt,Move line down,"App: Visual Studio Code, importance=5.4",evolved
+9,4,2,Alt+F12,Key Press,F12,L Alt,Peek definition,"App: Visual Studio Code, importance=5.4",evolved
+9,5,2,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
+9,7,2,Shift+Alt+Down,Key Press,DownArrow,L Shift+L Alt,Copy line down,"App: Visual Studio Code, importance=5.4",evolved
+9,8,2,transparent,Transparent,,,,,transparent
+9,9,2,transparent,Transparent,,,,,transparent
+9,10,2,Ctrl+O,Key Press,O,L Ctrl,Open file,"App: Visual Studio Code, importance=2.7",evolved
+9,11,2,transparent,Transparent,,,,,transparent
+9,12,2,transparent,Transparent,,,,,transparent
+9,0,3,transparent,Transparent,,,,,transparent
+9,1,3,transparent,Transparent,,,,,transparent
+9,2,3,transparent,Transparent,,,,,transparent
+9,3,3,F4,Key Press,F4,,Toggle absolute ref ($),"App: Microsoft Excel, importance=5.0",evolved
+9,4,3,Ctrl+Shift+Right,Key Press,RightArrow,L Ctrl+L Shift,Select to right edge,"App: Microsoft Excel, importance=3.0",evolved
+9,5,3,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Find previous,"App: Browser (Chrome/Edge), importance=0.95",evolved
+9,7,3,Ctrl+Shift+K,Key Press,K,L Ctrl+L Shift,Raise/lower hand,"App: Microsoft Teams, importance=3.0",evolved
+9,8,3,transparent,Transparent,,,,,transparent
+9,9,3,transparent,Transparent,,,,,transparent
+9,10,3,transparent,Transparent,,,,,transparent
+9,11,3,transparent,Transparent,,,,,transparent
+9,12,3,transparent,Transparent,,,,,transparent
+9,3,4,transparent,Transparent,,,,,transparent
+9,4,4,Alt+Shift,Key Press,Shift,L Alt,Switch keyboard layout (alt),"App: Windows 11, importance=3.0",evolved
+9,5,4,Base,coach_base,,,Dynamic layer access: @access:L5->L0:toggle:Base,Target layer 0,evolved
+9,7,4,Win+X,Key Press,X,L GUI,Power User menu,"App: Windows 11, importance=3.0",evolved
+9,8,4,Ctrl+Shift+R,Key Press,R,L Ctrl+L Shift,Start recording,"App: Microsoft Teams, importance=1.0",evolved
+9,4,5,Ctrl+Alt+Down,Key Press,DownArrow,L Ctrl+L Alt,Add cursor below,"App: Visual Studio Code, importance=5.4",evolved
+9,5,5,Shift+Alt+Up,Key Press,UpArrow,L Shift+L Alt,Copy line up,"App: Visual Studio Code, importance=2.7",evolved
+9,7,5,Win+Shift+Left,Key Press,LeftArrow,L GUI+L Shift,Move to left monitor,"App: Windows 11, importance=6.0",evolved
+10,0,0,transparent,Transparent,,,,,transparent
+10,1,0,transparent,Transparent,,,,,transparent
+10,2,0,Ctrl+Shift+Down,Key Press,DownArrow,L Ctrl+L Shift,Select to bottom edge,"App: Microsoft Excel, importance=3.0",evolved
+10,3,0,Ctrl+X,Key Press,X,L Ctrl,Cut,"App: Windows 11, importance=6.0",evolved
+10,4,0,transparent,Transparent,,,,,transparent
+10,5,0,transparent,Transparent,,,,,transparent
+10,7,0,transparent,Transparent,,,,,transparent
+10,8,0,transparent,Transparent,,,,,transparent
+10,9,0,transparent,Transparent,,,,,transparent
+10,10,0,transparent,Transparent,,,,,transparent
+10,11,0,transparent,Transparent,,,,,transparent
+10,12,0,transparent,Transparent,,,,,transparent
+10,0,1,Ctrl+Shift+Up,Key Press,UpArrow,L Ctrl+L Shift,Select to top edge,"App: Microsoft Excel, importance=3.0",evolved
+10,1,1,transparent,Transparent,,,,,transparent
+10,2,1,Ctrl+V,Key Press,V,L Ctrl,Paste,"App: Microsoft Teams, importance=10.0",evolved
+10,3,1,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+10,4,1,Ctrl+Shift+\,Key Press,Backslash and Pipe,L Ctrl+L Shift,Jump to matching bracket,"App: Visual Studio Code, importance=2.7",evolved
+10,5,1,transparent,Transparent,,,,,transparent
+10,7,1,Ctrl+Down,Key Press,DownArrow,L Ctrl,Jump to bottom edge of data,"App: Microsoft Excel, importance=3.0",evolved
+10,8,1,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+10,9,1,transparent,Transparent,,,,,transparent
+10,10,1,transparent,Transparent,,,,,transparent
+10,11,1,transparent,Transparent,,,,,transparent
+10,12,1,transparent,Transparent,,,,,transparent
+10,0,2,Ctrl+F,Key Press,F,L Ctrl,Find in conversation,"App: Microsoft Teams, importance=6.0",evolved
+10,1,2,transparent,Transparent,,,,,transparent
+10,2,2,transparent,Transparent,,,,,transparent
+10,3,2,Ctrl+Shift+D,Key Press,D,L Ctrl+L Shift,Decline call,"App: Microsoft Teams, importance=3.0",evolved
+10,4,2,transparent,Transparent,,,,,transparent
+10,5,2,Ctrl+Right,Key Press,RightArrow,L Ctrl,Jump to right edge of data,"App: Microsoft Excel, importance=5.0",evolved
+10,7,2,transparent,Transparent,,,,,transparent
+10,8,2,Shift+Alt+Left,Key Press,LeftArrow,L Shift+L Alt,Shrink selection,"App: Visual Studio Code, importance=2.7",evolved
+10,9,2,Ctrl+Up,Key Press,UpArrow,L Ctrl,Jump to top edge of data,"App: Microsoft Excel, importance=3.0",evolved
+10,10,2,Ctrl+Z,Key Press,Z,L Ctrl,Undo,"App: Microsoft Teams, importance=6.0",evolved
+10,11,2,transparent,Transparent,,,,,transparent
+10,12,2,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
+10,0,3,Ctrl+Shift+A,Key Press,A,L Ctrl+L Shift,Accept call,"App: Microsoft Teams, importance=6.0",evolved
+10,1,3,Ctrl+Z,Key Press,Z,L Ctrl,Undo,"App: Microsoft Teams, importance=6.0",evolved
+10,2,3,transparent,Transparent,,,,,transparent
+10,3,3,Ctrl+Shift+1,Key Press,1 and Bang,L Ctrl+L Shift,Extra large icons,"App: File Explorer, importance=0.09000000000000001",evolved
+10,4,3,Ctrl+Shift+S,Key Press,S,L Ctrl+L Shift,Attach file,"App: Microsoft Teams, importance=3.0",evolved
+10,5,3,transparent,Transparent,,,,,transparent
+10,7,3,transparent,Transparent,,,,,transparent
+10,8,3,transparent,Transparent,,,,,transparent
+10,9,3,transparent,Transparent,,,,,transparent
+10,10,3,transparent,Transparent,,,,,transparent
+10,11,3,transparent,Transparent,,,,,transparent
+10,12,3,transparent,Transparent,,,,,transparent
+10,3,4,Ctrl+Shift+Enter,Key Press,Return Enter,L Ctrl+L Shift,Insert line above,"App: Visual Studio Code, importance=2.7",evolved
+10,4,4,Ctrl+U,Key Press,U,L Ctrl,Underline,"App: Microsoft Teams, importance=1.0",evolved
+10,5,4,transparent,Transparent,,,,,transparent
+10,7,4,Win+T,Key Press,T,L GUI,Cycle taskbar apps,"App: Windows 11, importance=1.0",evolved
+10,8,4,Win+;,Key Press,SemiColon and Colon,L GUI,Emoji picker,"App: Windows 11, importance=3.0",evolved
+10,4,5,transparent,Transparent,,,,,transparent
+10,5,5,Win+Ctrl+Right,Key Press,RightArrow,L GUI+L Ctrl,Switch desktop right,"App: Windows 11, importance=3.0",evolved
+10,7,5,Base,coach_base,,,Dynamic layer access: @access:L10->L0:toggle:Base,Target layer 0,evolved

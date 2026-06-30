@@ -268,6 +268,10 @@
   }
 
   function outputDisplayForRow(row) {
+    if (/transparent|none/i.test(clean(row.behavior))) {
+      const through = transparentFallthroughLabel(row);
+      return through ? `Falls through to ${through}` : "Transparent";
+    }
     const meta = hostShortcutMeta(row);
     if (!meta.host) return clean(row.parameter) || "-";
     return meta.differs ? `${meta.host} (US HID: ${meta.us})` : meta.host;
@@ -707,7 +711,13 @@
       return { kind: "studio", primary: "Studio", badge: "🔓", secondary: "Unlock" };
     }
     if (/transparent|none/i.test(behavior)) {
-      return { kind: "transparent", primary: "·", badge: "", secondary: "" };
+      const through = transparentFallthroughLabel(row);
+      return {
+        kind: "transparent",
+        primary: through || "·",
+        badge: "↧",
+        secondary: through ? "fall-through" : ""
+      };
     }
     if (/mouse key press/i.test(behavior)) {
       const btn = label.replace(/mouse key press/i, "").trim() || param.replace(/select:/i, "") || "Btn";
@@ -806,11 +816,29 @@
     return classifyKey(row);
   }
 
+  function lowerBindingFor(row) {
+    const layer = Number(row?.layer || 0);
+    if (!Number.isFinite(layer) || layer <= 0) return null;
+    for (let lower = layer - 1; lower >= 0; lower--) {
+      const lowerRows = state.rowsByLayer.get(String(lower)) || [];
+      const candidate = lowerRows.find((item) => item.x === row.x && item.y === row.y);
+      if (candidate && !/transparent|none/i.test(candidate.behavior)) return candidate;
+    }
+    return null;
+  }
+
+  function transparentFallthroughLabel(row) {
+    const lower = lowerBindingFor(row);
+    if (!lower) return "";
+    return clean(lower.visual_label) || clean(lower.parameter) || clean(lower.behavior);
+  }
+
   function rowSearchText(row) {
     return [
       row.layer,
       row.layer_role,
       row.dynamic_role,
+      transparentFallthroughLabel(row),
       row.app,
       row.category,
       row.visual_label,
