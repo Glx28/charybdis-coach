@@ -1,5 +1,5 @@
 (function () {
-  const LAYERS = ["0", "1", "2", "3", "4", "5", "7", "8", "9"];
+  let LAYERS = [];
   const X_LEFT = [0, 1, 2, 3, 4, 5];
   const X_RIGHT = [7, 8, 9, 10, 11, 12];
   const MAX_EVENTS = 12;
@@ -51,6 +51,7 @@
   const state = {
     rows: [],
     rowsByLayer: new Map(),
+    layerProfiles: new Map(),
     apps: [],
     layoutSpec: {},
     hostKeyboard: null,
@@ -65,16 +66,18 @@
     progress: {}
   };
 
-  const LAYER_TAB_META = {
-    "0": { glyph: "⌨️ Aa", title: "Base typing" },
-    "1": { glyph: "🧭 Nav", title: "Navigation" },
-    "2": { glyph: "🖱️ Mou", title: "Mouse lock" },
-    "3": { glyph: "🪟 Win", title: "Window / apps" },
-    "4": { glyph: "🔧 Sys", title: "System / BT" },
-    "5": { glyph: "💻 Code", title: "Code / IDE" },
-    "7": { glyph: "🎮 RPG", title: "Game layer" },
-    "8": { glyph: "⚡ Spd", title: "Speed travel" },
-    "9": { glyph: "📁 DMS", title: "M-Files / DMS" }
+  const LAYER_KIND_META = {
+    base: { glyph: "⌨️ Aa", title: "Base typing", color: "#4cc9b0" },
+    mouse: { glyph: "🖱️ Mou", title: "Mouse / pointer", color: "#b78cff" },
+    scroll: { glyph: "📜 Scr", title: "Scroll / trackball scroll", color: "#c9e265" },
+    nav: { glyph: "🧭 Nav", title: "Navigation", color: "#3dd6c6" },
+    window: { glyph: "🪟 Win", title: "Windows / app control", color: "#6eb5ff" },
+    system: { glyph: "🔧 Sys", title: "System / device", color: "#ff9f6e" },
+    code: { glyph: "💻 Dev", title: "Developer workflow", color: "#56d4e8" },
+    app: { glyph: "📋 App", title: "App workflow", color: "#68a5ff" },
+    game: { glyph: "🎮 Game", title: "Game / fallback", color: "#a78bfa" },
+    travel: { glyph: "⚡ Spd", title: "Travel / speed", color: "#ffb347" },
+    utility: { glyph: "🔀 Mix", title: "Mixed utility", color: "#4cc9b0" }
   };
 
   function clean(text) {
@@ -182,7 +185,7 @@
     "Right Bracket": "]", "Right Brace": "]",
     "Backslash and Pipe": "\\", "Backslash": "\\",
     "ForwardSlash and QuestionMark": "/", "ForwardSlash": "/",
-    "Minus": "-", "Equal": "=", "Equal and Plus": "=",
+    "Minus": "-", "Equal": "=", "Equals": "=", "Equal and Plus": "=", "Equals and Plus": "=",
     "Comma": ",", "Comma and LessThan": ",",
     "Period": ".", "Period and GreaterThan": ".",
     "Grave": "`", "Grave Accent and Tilde": "`"
@@ -671,10 +674,8 @@
 
     const coachMap = {
       coach_l1_hold: { kind: "nav", primary: "Nav", badge: "🧭", secondary: "Hold → L1" },
-      coach_l2_hold: { kind: "mouse-hold", primary: "Mouse", badge: "🖱️", secondary: "Hold → L2" },
       coach_l3_hold: { kind: "window", primary: "Window", badge: "🪟", secondary: "Hold → L3" },
       coach_l4_hold: { kind: "system-layer", primary: "System", badge: "🔧", secondary: "Hold → L4" },
-      coach_mouse_lock: { kind: "lock", primary: "MLock", badge: "🔒", secondary: "Lock mouse L2" },
       coach_game_lock: { kind: "game", primary: "Game", badge: "🎮", secondary: "Lock → L7" },
       coach_base: { kind: "home", primary: "Base", badge: "🏠", secondary: "Return L0" },
       coach_travel_toggle: { kind: "speed", primary: "Speed", badge: "⚡", secondary: "Toggle L8" },
@@ -683,6 +684,20 @@
       coach_scroll_toggle: { kind: "scroll", primary: "Scroll", badge: "📜", secondary: "Toggle L6" },
       coach_l8_hold: { kind: "speed-hold", primary: "Speed", badge: "⚡", secondary: "Hold L8" }
     };
+    const layerAccessBehaviors = {
+      coach_l2_hold: { kind: "momentary", target: "2", verb: "Hold" },
+      coach_mouse_lock: { kind: "lock", target: "2", verb: "Lock" }
+    };
+    if (layerAccessBehaviors[behaviorLower]) {
+      const info = layerAccessBehaviors[behaviorLower];
+      const meta = dynamicLayerMeta(info.target);
+      return {
+        kind: info.kind,
+        primary: clean(label) || `L${info.target}`,
+        badge: meta.glyph || "👆",
+        secondary: `${info.verb} → L${info.target} ${meta.role || meta.title || ""}`.trim()
+      };
+    }
     if (coachMap[behaviorLower]) return { ...coachMap[behaviorLower] };
 
     if (/reset|bootloader/i.test(behavior) || /reset|bootloader/i.test(label)) {
@@ -795,6 +810,9 @@
     return [
       row.layer,
       row.layer_role,
+      row.dynamic_role,
+      row.app,
+      row.category,
       row.visual_label,
       row.behavior,
       row.parameter,
@@ -808,19 +826,134 @@
     return !/transparent|none/i.test(row.behavior)
       && (/layer|mouse|bluetooth|output|reset|bootloader|studio/i.test(`${row.behavior} ${row.visual_label} ${row.purpose}`)
         || row.modifiers
-        || ["0", "1", "2", "3", "4", "7", "8"].includes(row.layer));
+        || /workflow|navigation|debug|system|window|scroll|mouse|layer_access/i.test(`${row.dynamic_role} ${row.category} ${row.app}`));
+  }
+
+  function numberSort(a, b) {
+    return Number(a) - Number(b);
+  }
+
+  function rowApp(row) {
+    const notes = clean(row.usage_notes);
+    const appMatch = notes.match(/\bApp:\s*([^,;]+)/i);
+    if (appMatch) return clean(appMatch[1]);
+    return clean(row.app || "");
+  }
+
+  function rowCategory(row) {
+    return clean(row.category || "");
+  }
+
+  function inferRowTags(row) {
+    const text = `${row.visual_label} ${row.behavior} ${row.parameter} ${row.purpose} ${row.usage_notes}`.toLowerCase();
+    const tags = [];
+    if (/base typing key|_base_|permanent l0/i.test(text)) tags.push("base");
+    if (/mouse key press|\bmb[1-5]\b|click|mouse/i.test(text)) tags.push("mouse");
+    if (/scroll|layer::6|trackball scroll/i.test(text)) tags.push("scroll");
+    if (/leftarrow|rightarrow|uparrow|downarrow|pageup|pagedown|\bhome\b|\bend\b|navigation/i.test(text)) tags.push("nav");
+    if (/win\+|window|desktop|taskbar|snap|system tray|notification/i.test(text)) tags.push("window");
+    if (/bluetooth|output|reset|bootloader|studio|system|settings|device/i.test(text)) tags.push("system");
+    if (/code|debug|terminal|vscode|developer|git|source control|command palette/i.test(text)) tags.push("code");
+    if (/game|rpg/i.test(text)) tags.push("game");
+    if (/travel|speed/i.test(text)) tags.push("travel");
+    if (/layer access|momentary layer|toggle layer|to layer|coach_/i.test(text)) tags.push("access");
+    return tags;
+  }
+
+  function dominantEntries(counter, max = 3) {
+    return [...counter.entries()]
+      .filter(([, count]) => count > 0)
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, max);
+  }
+
+  function classifyLayerProfile(layer, rows) {
+    const activeRows = rows.filter((row) => !/transparent|none/i.test(row.behavior));
+    const tagCounts = new Map();
+    const appCounts = new Map();
+    const categoryCounts = new Map();
+    for (const row of activeRows) {
+      for (const tag of inferRowTags(row)) tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+      const app = rowApp(row);
+      const category = rowCategory(row);
+      if (app) appCounts.set(app, (appCounts.get(app) || 0) + 1);
+      if (category) categoryCounts.set(category, (categoryCounts.get(category) || 0) + 1);
+    }
+    const total = Math.max(1, activeRows.length);
+    const score = (tag) => (tagCounts.get(tag) || 0) / total;
+    let kind = "utility";
+    if (score("base") > 0.45 && layer === "0") kind = "base";
+    else if (score("game") > 0.18 || (layer === "7" && score("nav") > 0.2)) kind = "game";
+    else if (score("mouse") > 0.16) kind = "mouse";
+    else if (score("scroll") > 0.16) kind = "scroll";
+    else if (score("code") > 0.2) kind = "code";
+    else if (score("window") > 0.18) kind = "window";
+    else if (score("system") > 0.16) kind = "system";
+    else if (score("nav") > 0.2) kind = "nav";
+    else if (appCounts.size > 0) kind = "app";
+
+    const topApps = dominantEntries(appCounts, 3);
+    const topCats = dominantEntries(categoryCounts, 3);
+    const meta = LAYER_KIND_META[kind] || LAYER_KIND_META.utility;
+    const appText = topApps.map(([name]) => name).join(" / ");
+    const catText = topCats.map(([name]) => name).join(" / ");
+    const role = appText || catText || meta.title;
+    return {
+      layer,
+      kind,
+      glyph: meta.glyph,
+      color: meta.color,
+      title: `${meta.title}${role && role !== meta.title ? ` · ${role}` : ""}`,
+      role,
+      activeCount: activeRows.length,
+      totalCount: rows.length,
+      topApps,
+      topCats,
+      tags: dominantEntries(tagCounts, 6)
+    };
+  }
+
+  function normalizeRows(rows) {
+    return rows.map((row) => {
+      const normalized = { ...row };
+      normalized.layer = clean(normalized.layer);
+      normalized.x = clean(normalized.x);
+      normalized.y = clean(normalized.y);
+      normalized.visual_label = clean(normalized.visual_label || normalized.label);
+      normalized.behavior = clean(normalized.behavior);
+      normalized.parameter = clean(normalized.parameter);
+      normalized.modifiers = clean(normalized.modifiers);
+      normalized.purpose = clean(normalized.purpose);
+      normalized.usage_notes = clean(normalized.usage_notes);
+      normalized.app = rowApp(normalized);
+      normalized.category = rowCategory(normalized);
+      return normalized;
+    });
   }
 
   function groupRows() {
     state.rowsByLayer.clear();
+    state.layerProfiles.clear();
+    LAYERS = [...new Set(state.rows.map((row) => row.layer).filter(Boolean))].sort(numberSort);
     for (const layer of LAYERS) state.rowsByLayer.set(layer, []);
     for (const row of state.rows) {
       if (!state.rowsByLayer.has(row.layer)) state.rowsByLayer.set(row.layer, []);
       state.rowsByLayer.get(row.layer).push(row);
     }
+    LAYERS = [...state.rowsByLayer.keys()].sort(numberSort);
+    for (const layer of LAYERS) {
+      const profile = classifyLayerProfile(layer, state.rowsByLayer.get(layer) || []);
+      state.layerProfiles.set(layer, profile);
+      for (const row of state.rowsByLayer.get(layer) || []) {
+        row.dynamic_role = profile.role;
+        row.layer_kind = profile.kind;
+      }
+    }
   }
 
   function layerRole(layer) {
+    const profile = state.layerProfiles.get(String(layer));
+    if (profile?.role) return profile.role;
     const rows = state.rowsByLayer.get(layer) || [];
     return clean(rows[0]?.layer_role || state.layoutSpec.layers?.[layer] || `Layer ${layer}`);
   }
@@ -832,9 +965,9 @@
       button.type = "button";
       button.className = "layer-tab";
       button.dataset.layer = layer;
-      button.title = layerRole(layer);
-      const tabMeta = LAYER_TAB_META[layer] || { glyph: layer, title: layerRole(layer) };
-      button.innerHTML = `<strong class="layer-tab-num">${layer}</strong><span class="layer-tab-glyph">${escapeHtml(tabMeta.glyph)}</span><span class="layer-tab-role">${escapeHtml(shortLayerRole(layerRole(layer)))}</span>`;
+      const tabMeta = dynamicLayerMeta(layer);
+      button.title = tabMeta.title;
+      button.innerHTML = `<strong class="layer-tab-num">${layer}</strong><span class="layer-tab-glyph">${escapeHtml(tabMeta.glyph)}</span><span class="layer-tab-role">${escapeHtml(shortLayerRole(tabMeta.role))}</span>`;
       button.addEventListener("click", () => {
         state.displayedLayer = layer;
         render();
@@ -845,6 +978,17 @@
 
   function shortLayerRole(role) {
     return clean(role).replace(" and ", " / ").replace("Window, app, language, mouse/game/travel control", "Window");
+  }
+
+  function dynamicLayerMeta(layer) {
+    const profile = state.layerProfiles.get(String(layer));
+    if (!profile) return { ...LAYER_KIND_META.utility, role: layerRole(layer), title: layerRole(layer) };
+    return {
+      glyph: profile.glyph,
+      title: `Layer ${layer}: ${profile.title}`,
+      role: profile.role || profile.title,
+      color: profile.color
+    };
   }
 
   function escapeHtml(value) {
@@ -1105,11 +1249,10 @@
   }
 
   function deriveLiveLayer(live) {
-    // Match beacon listener priority: speed overlay > locked > held > toggled > base.
+    // Dynamic priority: explicit lock, active hold, latest toggle, then base.
     if (!live) return state.liveLayer;
     const toggled = normalizeLayerList(live.toggledLayers);
     const held = normalizeLayerList(live.heldLayers);
-    if (toggled.includes("8")) return "8";
     if (live.lockedLayer) return String(live.lockedLayer);
     if (held.length) return held[held.length - 1];
     if (toggled.length) return toggled[toggled.length - 1];
@@ -1459,22 +1602,38 @@
   }
 
   function rowForWorkflowShortcut(shortcut) {
-    if (!shortcut?.charybdis) return null;
-    const layerMatch = shortcut.charybdis.match(/L(\d+)/);
-    if (!layerMatch) return null;
-    const layer = layerMatch[1];
-    const posMatch = shortcut.charybdis.match(/x(\d+),\s*y(\d+)/);
-    if (posMatch) {
-      return (state.rowsByLayer.get(layer) || []).find((row) => row.x === posMatch[1] && row.y === posMatch[2]) || null;
+    if (!shortcut) return null;
+    const byKeys = rowForShortcutKeys(shortcut.keys, shortcut.action);
+    if (byKeys) return byKeys;
+
+    // Legacy workflow files may contain stale position hints. Use those only
+    // after key/action matching fails, because evolved layouts move layers.
+    if (shortcut.charybdis) {
+      const layerMatch = shortcut.charybdis.match(/L(\d+)/);
+      const posMatch = shortcut.charybdis.match(/x(\d+),\s*y(\d+)/);
+      if (layerMatch && posMatch) {
+        const layer = layerMatch[1];
+        const row = (state.rowsByLayer.get(layer) || []).find((item) => item.x === posMatch[1] && item.y === posMatch[2]) || null;
+        if (row && rowMatchesShortcut(row, shortcut.keys, shortcut.action)) return row;
+      }
     }
-    return (state.rowsByLayer.get(layer) || []).find(
-      (row) => clean(row.visual_label).toLowerCase() === clean(shortcut.action).toLowerCase().split(" ")[0]
-    ) || null;
+    return rowForShortcutAction(shortcut.action);
   }
 
   function displayKeysForShortcut(shortcut) {
     const row = rowForWorkflowShortcut(shortcut);
-    if (!row) return { display: shortcut.keys, original: shortcut.keys, row: null, differs: false };
+    if (!row) {
+      const gap = workflowShortcutGap(shortcut);
+      return {
+        display: shortcut.keys,
+        original: shortcut.keys,
+        row: null,
+        differs: false,
+        missing: true,
+        gapLabel: gap.label,
+        gapDetail: gap.detail
+      };
+    }
     const meta = hostShortcutMeta(row);
     const display = meta.host || shortcut.keys;
     return {
@@ -1483,6 +1642,97 @@
       row,
       differs: Boolean(display && shortcut.keys && display !== shortcut.keys)
     };
+  }
+
+  function workflowShortcutGap(shortcut) {
+    const keys = clean(shortcut?.keys);
+    const action = clean(shortcut?.action);
+    if (/click|drag|wheel|mouse/i.test(keys)) {
+      return { label: "Pointer", detail: "Pointer-modified action; not a single keyboard binding in the layout CSV" };
+    }
+    if (/\S+\s+\S+/.test(keys) && /ctrl|alt|shift|win|cmd/i.test(keys)) {
+      return { label: "Sequence", detail: "Multi-step app chord; optimize by sequence usage, not one key slot" };
+    }
+    if (/^[/?a-z0-9]{1,3}$/i.test(keys) && !/[+]/.test(keys)) {
+      return { label: "App keymap", detail: "Application-local command; available only when that app/keymap mode is active" };
+    }
+    if (/up\/down|left\/right/i.test(keys)) {
+      return { label: "Pair", detail: "Shortcut family shorthand; split into individual shortcuts before direct mapping" };
+    }
+    return { label: "Missing", detail: action ? `No matching row found for ${action}` : "No matching row found in current layout CSV" };
+  }
+
+  function workflowLocationForRow(row) {
+    if (!row) return "Not mapped in current layout";
+    const layer = row.layer;
+    const profile = state.layerProfiles.get(String(layer));
+    const role = clean(row.dynamic_role) || clean(profile?.role) || "dynamic layer";
+    const app = clean(row.app);
+    const category = clean(row.category);
+    const context = app || category ? ` · ${[app, category].filter(Boolean).join(" / ")}` : "";
+    return `L${layer} x${row.x}, y${row.y} · ${role}${context}`;
+  }
+
+  function normalizeShortcutText(value) {
+    return clean(value)
+      .replace(/^Keyboard\s+/i, "")
+      .replace(/\s+/g, "")
+      .replace(/LeftControl|LControl|LCtrl|L Ctrl/gi, "Ctrl")
+      .replace(/LeftShift|LShift|L Shift/gi, "Shift")
+      .replace(/LeftAlt|LAlt|L Alt/gi, "Alt")
+      .replace(/LeftGUI|Left GUI|L GUI|GUI|Meta/gi, "Win")
+      .replace(/ReturnEnter|Return/gi, "Enter")
+      .replace(/Delete\s+Forward/gi, "Delete")
+      .replace(/Spacebar/gi, "Space")
+      .toUpperCase();
+  }
+
+  function shortcutCandidatesForRow(row) {
+    const candidates = new Set([
+      row.visual_label,
+      hostShortcutForRow(row),
+      usShortcutForRow(row),
+      comboDisplay(row.modifiers, clean(row.parameter).replace(/^Keyboard\s+/i, "")),
+      comboDisplay(row.modifiers, usGlyphForParam(row.parameter))
+    ].map(normalizeShortcutText).filter(Boolean));
+    return candidates;
+  }
+
+  function rowMatchesShortcut(row, keys, action = "") {
+    if (!row || /transparent|none/i.test(row.behavior)) return false;
+    const wanted = normalizeShortcutText(keys);
+    if (wanted && shortcutCandidatesForRow(row).has(wanted)) return true;
+    const actionWords = clean(action).toLowerCase().split(/\W+/).filter((part) => part.length > 2);
+    if (!actionWords.length) return false;
+    const haystack = `${row.visual_label} ${row.purpose} ${row.usage_notes}`.toLowerCase();
+    const hits = actionWords.filter((word) => haystack.includes(word)).length;
+    return hits >= Math.min(2, actionWords.length);
+  }
+
+  function allRows() {
+    return LAYERS.flatMap((layer) => state.rowsByLayer.get(layer) || []);
+  }
+
+  function rowForShortcutKeys(keys, action = "") {
+    const wanted = normalizeShortcutText(keys);
+    if (!wanted) return null;
+    const rows = allRows().filter((row) => !/transparent|none/i.test(row.behavior));
+    return rows.find((row) => shortcutCandidatesForRow(row).has(wanted) && rowMatchesShortcut(row, keys, action))
+      || rows.find((row) => shortcutCandidatesForRow(row).has(wanted))
+      || null;
+  }
+
+  function rowForShortcutAction(action = "") {
+    const words = clean(action).toLowerCase().split(/\W+/).filter((part) => part.length > 2);
+    if (!words.length) return null;
+    let best = null;
+    for (const row of allRows()) {
+      if (/transparent|none/i.test(row.behavior)) continue;
+      const haystack = `${row.visual_label} ${row.purpose} ${row.usage_notes}`.toLowerCase();
+      const score = words.filter((word) => haystack.includes(word)).length;
+      if (score > (best?.score || 0)) best = { row, score };
+    }
+    return best && best.score >= Math.min(2, words.length) ? best.row : null;
   }
 
   function renderWorkflow() {
@@ -1496,15 +1746,23 @@
     let html = "";
     for (const cat of (app.categories || [])) {
       const rows = cat.shortcuts.map((s) => {
-        const text = `${s.keys} ${s.action} ${s.charybdis || ""}`.toLowerCase();
+        const keys = displayKeysForShortcut(s);
+        const location = workflowLocationForRow(keys.row);
+        const text = `${s.keys} ${s.action} ${s.charybdis || ""} ${keys.display || ""} ${location}`.toLowerCase();
         const hidden = query && !text.includes(query);
-        const cls = hidden ? ' class="workflow-shortcut filtered-out"' : ' class="workflow-shortcut"';
+        const classes = ["workflow-shortcut"];
+        if (hidden) classes.push("filtered-out");
+        if (keys.missing) classes.push("missing");
+        const cls = ` class="${classes.join(" ")}"`;
         const actionEmoji = emojiForAction(s.action);
         const actionDisplay = actionEmoji ? `${actionEmoji} ${s.action}` : s.action;
-        const keys = displayKeysForShortcut(s);
-        const title = keys.differs ? ` title="${escapeHtml(`Norwegian Windows from Charybdis: ${keys.display} | App shortcut: ${keys.original}`)}"` : "";
+        const title = keys.differs
+          ? ` title="${escapeHtml(`Norwegian Windows from Charybdis: ${keys.display} | App shortcut: ${keys.original}`)}"`
+          : "";
+        const gapTitle = keys.missing && keys.gapDetail ? ` title="${escapeHtml(keys.gapDetail)}"` : "";
+        const missingBadge = keys.missing ? `<span class="workflow-missing"${gapTitle}>${escapeHtml(keys.gapLabel || "Missing")}</span>` : "";
         let row = `<div${cls}><span class="workflow-keys"${title}>${escapeHtml(keys.display)}</span><span class="workflow-action">${escapeHtml(actionDisplay)}</span>`;
-        if (s.charybdis) row += `<span class="workflow-charybdis">${escapeHtml(s.charybdis)}</span>`;
+        row += `<span class="workflow-charybdis">${missingBadge}${escapeHtml(location)}</span>`;
         row += "</div>";
         return { html: row, hidden };
       });
@@ -1563,7 +1821,7 @@
       loadJson("./data/charybdis_apps.json", { apps: [] }),
       loadJson("./data/windows_norwegian_host.json", null)
     ]);
-    state.rows = parseCsv(csvText);
+    state.rows = normalizeRows(parseCsv(csvText));
     state.layoutSpec = layoutSpec || {};
     state.hostKeyboard = hostKeyboard;
     state.apps = appsConfig.apps || [];
@@ -1574,6 +1832,7 @@
       els.transport.title = "Coach matches physical keys (event.code) for Norwegian Windows; firmware sends US HID scancodes.";
     }
     groupRows();
+    buildRailColorStrip();
     renderApps();
     render();
     setupPractice();
@@ -1879,11 +2138,6 @@
   const railColorStrip = document.getElementById("railColorStrip");
   const inspectorPanel = document.getElementById("inspectorPanel");
 
-  const LAYER_STRIP_COLORS = {
-    "0": "#4cc9b0", "1": "#3dd6c6", "2": "#b78cff", "3": "#6eb5ff",
-    "4": "#ff9f6e", "5": "#56d4e8", "7": "#a78bfa", "8": "#ffb347", "9": "#e8a44c"
-  };
-
   function buildRailColorStrip() {
     if (!railColorStrip) return;
     railColorStrip.innerHTML = "";
@@ -1891,10 +2145,10 @@
       const swatch = document.createElement("div");
       swatch.className = "rail-swatch";
       swatch.dataset.layer = layer;
-      const color = LAYER_STRIP_COLORS[layer] || "#4cc9b0";
+      const color = dynamicLayerMeta(layer).color || "#4cc9b0";
       swatch.style.background = color;
       swatch.style.setProperty("--swatch-color", color);
-      swatch.title = (LAYER_TAB_META[layer]?.title || `Layer ${layer}`);
+      swatch.title = dynamicLayerMeta(layer).title || `Layer ${layer}`;
       swatch.addEventListener("click", (e) => {
         e.stopPropagation();
         state.displayedLayer = layer;
@@ -2191,20 +2445,38 @@
     autoAdvance: document.getElementById("learnAutoAdvance"),
   };
 
-  const LAYER_ACCESS_INFO = {
-    "0": "⌨️ Base layer — no thumb hold needed",
-    "1": "🧭 Hold <strong>Nav</strong> (left thumb x3,y4)",
-    "2": "🖱️ Hold <strong>Mouse</strong> (left thumb x5,y5) or Mouse Lock (L3 x10,y2)",
-    "3": "🪟 Hold <strong>Window</strong> (right thumb x8,y4)",
-    "4": "🔧 Hold <strong>System</strong> (right thumb x7,y4)",
-    "5": "💻 Toggle <strong>Code</strong> (hold Nav → tap x0,y1)",
-    "7": "🎮 Lock <strong>Game</strong> (hold Window → tap x12,y2)",
-    "8": "⚡ Toggle <strong>Speed</strong> (hold Nav → tap x4,y2)",
-    "9": "📁 Toggle <strong>M-Files</strong> (hold System → tap x2,y3)",
-  };
-  const LAYER_FULL_NAMES = { "0": "⌨️ Base", "1": "🧭 Nav (Layer 1)", "2": "🖱️ Mouse (Layer 2)", "3": "🪟 Window (Layer 3)", "4": "🔧 System (Layer 4)", "5": "💻 Code/IDE (Layer 5)", "7": "🎮 Game (Layer 7)", "8": "⚡ Speed (Layer 8)", "9": "📁 M-Files (Layer 9)" };
-  const LAYER_COLORS = { "0": "#4cc9b0", "1": "#3dd6c6", "2": "#b78cff", "3": "#6eb5ff", "4": "#ff9f6e", "5": "#56d4e8", "7": "#a78bfa", "8": "#ffb347", "9": "#e8a44c" };
   const DANGEROUS_KEYS = new Set(["Alt+F4", "Ctrl+W", "Win+D", "Win+L", "Ctrl+Shift+Esc", "Alt+Tab", "Win+Tab"]);
+
+  function layerAccessRows(targetLayer) {
+    const target = String(targetLayer);
+    return allRows().filter((row) => {
+      if (!/momentary layer|toggle layer|to layer/i.test(row.behavior)) return false;
+      return layerParam(row) === target;
+    });
+  }
+
+  function accessVerb(row) {
+    if (/momentary layer/i.test(row.behavior)) return "Hold";
+    if (/toggle layer/i.test(row.behavior)) return "Toggle";
+    if (/to layer/i.test(row.behavior)) return "Switch";
+    return "Use";
+  }
+
+  function dynamicLayerName(layer) {
+    const meta = dynamicLayerMeta(layer);
+    return `${meta.glyph} ${meta.role || meta.title} (Layer ${layer})`;
+  }
+
+  function dynamicLayerAccessInfo(layer) {
+    const meta = dynamicLayerMeta(layer);
+    if (String(layer) === "0") return `${meta.glyph} Base layer - no layer access key needed`;
+    const access = layerAccessRows(layer).slice(0, 3).map((row) => {
+      const source = dynamicLayerMeta(row.layer);
+      return `${accessVerb(row)} <strong>${escapeHtml(clean(row.visual_label) || `x${row.x},y${row.y}`)}</strong> on L${row.layer} (${escapeHtml(source.role || source.title)} x${row.x},y${row.y})`;
+    });
+    if (access.length) return `${meta.glyph} ${escapeHtml(meta.role || meta.title)} access: ${access.join(" or ")}`;
+    return `${meta.glyph} ${escapeHtml(meta.role || meta.title)} layer detected, but no access key is described in the current CSV`;
+  }
 
   async function openLearnOverlay() {
     if (!learnEls.overlay) return;
@@ -2276,9 +2548,8 @@
     learnState.index = idx;
     const sc = learnState.shortcuts[idx];
     const layer = sc.row.layer;
-    const layerName = LAYER_FULL_NAMES[layer] || `Layer ${layer}`;
-    const layerColor = LAYER_COLORS[layer] || "#ccc";
-    const accessInfo = LAYER_ACCESS_INFO[layer] || `Activate Layer ${layer}`;
+    const layerName = dynamicLayerName(layer);
+    const accessInfo = dynamicLayerAccessInfo(layer);
 
     if (learnEls.access) learnEls.access.innerHTML = accessInfo;
 
