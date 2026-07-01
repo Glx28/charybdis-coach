@@ -47,13 +47,13 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 0,10,3,.,Key Press,Period and GreaterThan,,CRITICAL v1.9: Period must be on base layer for typing flow. Moves [ to Layer 1.,Sends Period.,canonical (frozen/critical)
 0,11,3,/,Key Press,ForwardSlash and QuestionMark,,Base typing key for the main work layout.,Sends ForwardSlash and QuestionMark.,canonical (frozen/critical)
 0,12,3,\,Key Press,Backslash and Pipe,,"International backslash/pipe (US HID). On Norwegian Windows this key is layout-dependent (often |); not English apostrophe — use Win+Space to US English for ' in contractions, or type ø/æ on their base positions.",Sends Backslash and Pipe scancode.,canonical (frozen/critical)
-0,3,4,Nav,coach_l1_hold,,,Hold Nav for layer 1 navigation/editing.,Coach beacon: momentary layer 1 + BLE hold signal (Ctrl+Alt+Shift+F13/F14).,canonical (frozen/critical)
+0,3,4,Layer,coach_l1_hold,,,"Generated layer access; target L?. Role is inferred from target contents, not from the layer number.",Target layer ?; role inferred from target contents.,canonical (frozen/critical)
 0,4,4,␣,Key Press,Spacebar,,"Thumb/control key for typing, layer access, mouse access, or Enter.",Sends Spacebar.,canonical (frozen/critical)
-0,5,4,Scroll,coach_l6_hold,,,Dynamic layer access: @access:L1->L6:hold:Scroll,Target layer 6,evolved
-0,7,4,System,coach_l4_hold,,,Hold System for layer 4 Bluetooth/output/helpers.,Coach beacon: momentary layer 4 + BLE hold signal (Ctrl+Alt+Shift+F19/F20).,canonical (frozen/critical)
-0,8,4,Window,coach_l3_hold,,,Hold Window for layer 3 window/app/desktop control.,Coach beacon: momentary layer 3 + BLE hold signal (Ctrl+Alt+Shift+F17/F18).,canonical (frozen/critical)
-0,4,5,DMS,coach_l9_toggle,,,Dynamic layer access: @access:L4->L9:toggle:DMS,Target layer 9,evolved
-0,5,5,Mouse,coach_l2_hold,,,Dynamic layer access: @access:L0->L2:hold:Mouse,Target layer 2,evolved
+0,5,4,Layer,coach_l6_hold,,,"Generated layer access; target L6. Role is inferred from target contents, not from the layer number.",Target layer 6; role inferred from target contents.,evolved
+0,7,4,Layer,coach_l4_hold,,,"Generated layer access; target L?. Role is inferred from target contents, not from the layer number.",Target layer ?; role inferred from target contents.,canonical (frozen/critical)
+0,8,4,Layer,coach_l3_hold,,,"Generated layer access; target L?. Role is inferred from target contents, not from the layer number.",Target layer ?; role inferred from target contents.,canonical (frozen/critical)
+0,4,5,Layer,coach_l9_toggle,,,"Generated layer access; target L9. Role is inferred from target contents, not from the layer number.",Target layer 9; role inferred from target contents.,evolved
+0,5,5,Layer,coach_l2_hold,,,"Generated layer access; target L2. Role is inferred from target contents, not from the layer number.",Target layer 2; role inferred from target contents.,evolved
 0,7,5,Ret,Key Press,Return Enter,,"Thumb/control key for typing, layer access, mouse access, or Enter.",Sends Return Enter.,canonical (frozen/critical)
 1,0,0,Dash and Underscore,Key Press,Dash and Underscore,,Raw Dash and Underscore completion key.,"App: Raw Keys, importance=3.0",evolved
 1,1,0,=,Key Press,Equals and Plus,,Start formula,"App: Microsoft Excel, importance=5.0",evolved
@@ -103,11 +103,11 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 1,10,3,transparent,Transparent,,,,,transparent
 1,11,3,transparent,Transparent,,,,,transparent
 1,12,3,transparent,Transparent,,,,,transparent
-1,3,4,Speed,coach_l8_hold,,,Dynamic layer access: @access:L2->L8:hold:Speed,Target layer 8,evolved
+1,3,4,Layer,coach_l8_hold,,,"Generated layer access; target L8. Role is inferred from target contents, not from the layer number.",Target layer 8; role inferred from target contents.,evolved
 1,4,4,Ctrl+2,Key Press,2 and At,L Ctrl,Chat,"App: Microsoft Teams, importance=10.0",evolved
 1,5,4,Alt+F,Key Press,F,L Alt,Settings menu,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
 1,7,4,coach_game_lock,coach_game_lock,,,Dynamic layer access: @access:L1->L7:toggle:coach_game_lock,Target layer 7,evolved
-1,8,4,Speed,coach_travel_toggle,,,Dynamic layer access: @access:L1->L8:toggle:Speed,Target layer 8,evolved
+1,8,4,Layer,coach_travel_toggle,,,"Generated layer access; target L8. Role is inferred from target contents, not from the layer number.",Target layer 8; role inferred from target contents.,evolved
 1,4,5,Ctrl+Page Up,Key Press,PageUp,L Ctrl,Previous sheet,"App: Microsoft Excel, importance=3.0",evolved
 1,5,5,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
 1,7,5,transparent,Transparent,,,,,transparent
@@ -143,7 +143,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 2,5,2,Ctrl+Shift+O,Key Press,O,L Ctrl+L Shift,Toggle camera,"App: Microsoft Teams, importance=6.0",evolved
 2,7,2,Ctrl+C,Key Press,C,L Ctrl,Copy,"App: Microsoft Teams, importance=10.0",evolved
 2,8,2,Ctrl+Shift+C,Key Press,C,L Ctrl+L Shift,Inspect element,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
-2,9,2,coach_travel_toggle,coach_travel_toggle,,,Dynamic layer access: @access:L2->L8:toggle:coach_travel_toggle,Target layer 8,evolved
+2,9,2,Layer,coach_travel_toggle,,,"Generated layer access; target L8. Role is inferred from target contents, not from the layer number.",Target layer 8; role inferred from target contents.,evolved
 2,10,2,transparent,Transparent,,,,,transparent
 2,11,2,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
 2,12,2,F9,Key Press,F9,,Toggle breakpoint,"App: Visual Studio Code, importance=5.4",evolved
@@ -162,7 +162,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 2,3,4,Win+E,Key Press,E,L GUI,File Explorer,"App: Windows 11, importance=6.0",evolved
 2,4,4,Alt+Tab,Key Press,Tab,L Alt,Switch apps,"App: Windows 11, importance=10.0",evolved
 2,5,4,Ctrl+Tab,Key Press,Tab,L Ctrl,Next tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
-2,7,4,Scroll,coach_l6_toggle,,,Dynamic layer access: @access:L2->L6:toggle:Scroll,Target layer 6,evolved
+2,7,4,Layer,coach_l6_toggle,,,"Generated layer access; target L6. Role is inferred from target contents, not from the layer number.",Target layer 6; role inferred from target contents.,evolved
 2,8,4,Ctrl+Left,Key Press,LeftArrow,L Ctrl,Jump to left edge of data,"App: Microsoft Excel, importance=5.0",evolved
 2,4,5,coach_base,coach_base,,,Dynamic layer access: @access:L2->L0:toggle:coach_base,Target layer 0,evolved
 2,5,5,Win+I,Key Press,I,L GUI,Settings,"App: Windows 11, importance=3.0",evolved
@@ -211,7 +211,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 3,5,3,Win+P,Key Press,P,L GUI,Project / display mode,"App: Windows 11, importance=1.0",evolved
 3,7,3,transparent,Transparent,,,,,transparent
 3,8,3,Ctrl+Y,Key Press,Y,L Ctrl,Redo,"App: Windows 11, importance=3.0",evolved
-3,9,3,Exit Travel,coach_travel_off,,,Dynamic layer access: @access:L8->L0:toggle:Exit_Travel,Target layer 0,evolved
+3,9,3,Layer,coach_travel_off,,,"Generated layer access; target L0. Role is inferred from target contents, not from the layer number.",Target layer 0; role inferred from target contents.,evolved
 3,10,3,Ctrl+R,Key Press,R,L Ctrl,Reply,"App: Microsoft Outlook, importance=7.0",evolved
 3,11,3,transparent,Transparent,,,,,transparent
 3,12,3,Ctrl+Shift+N,Key Press,N,L Ctrl+L Shift,Incognito/InPrivate window,"App: Browser (Chrome/Edge), importance=0.95",evolved
@@ -220,7 +220,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 3,5,4,Ctrl+V,Key Press,V,L Ctrl,Paste,"App: Microsoft Teams, importance=10.0",evolved
 3,7,4,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Find previous,"App: Browser (Chrome/Edge), importance=0.95",evolved
 3,8,4,F4,Key Press,F4,,Toggle absolute ref ($),"App: Microsoft Excel, importance=5.0",evolved
-3,4,5,Code,coach_l5_toggle,,,Dynamic layer access: @access:L1->L5:toggle:Code,Target layer 5,evolved
+3,4,5,Layer,coach_l5_toggle,,,"Generated layer access; target L5. Role is inferred from target contents, not from the layer number.",Target layer 5; role inferred from target contents.,evolved
 3,5,5,transparent,Transparent,,,,,transparent
 3,7,5,Ctrl+K,Key Press,K,L Ctrl,Insert link,"App: Microsoft Teams, importance=3.0",evolved
 4,0,0,transparent,Transparent,,,,,transparent
@@ -275,7 +275,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 4,4,4,Ctrl+T,Key Press,T,L Ctrl,New tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
 4,5,4,Ctrl+E,Key Press,E,L Ctrl,Search / command bar,"App: Microsoft Teams, importance=10.0",evolved
 4,7,4,Win+Ctrl+D,Key Press,D,L GUI+L Ctrl,New virtual desktop,"App: Windows 11, importance=3.0",evolved
-4,8,4,Scroll,coach_l6_hold,,,Dynamic layer access: @access:L2->L6:hold:Scroll,Target layer 6,evolved
+4,8,4,Layer,coach_l6_hold,,,"Generated layer access; target L6. Role is inferred from target contents, not from the layer number.",Target layer 6; role inferred from target contents.,evolved
 4,4,5,Ctrl+[,Key Press,Left Brace,L Ctrl,Outdent line,"App: Visual Studio Code, importance=2.7",evolved
 4,5,5,transparent,Transparent,,,,,transparent
 4,7,5,transparent,Transparent,,,,,transparent
@@ -313,7 +313,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 5,8,2,transparent,Transparent,,,,,transparent
 5,9,2,transparent,Transparent,,,,,transparent
 5,10,2,Alt+Shift+D,Key Press,D,L Alt+L Shift,Split pane (auto),"App: Windows Terminal / PowerShell, importance=2.4000000000000004",evolved
-5,11,2,coach_travel_toggle,coach_travel_toggle,,,Dynamic layer access: @access:L5->L8:toggle:coach_travel_toggle,Target layer 8,evolved
+5,11,2,Layer,coach_travel_toggle,,,"Generated layer access; target L8. Role is inferred from target contents, not from the layer number.",Target layer 8; role inferred from target contents.,evolved
 5,12,2,Ctrl+Shift+Q,Key Press,Q,L Ctrl+L Shift,New meeting,"App: Microsoft Outlook, importance=2.0999999999999996",evolved
 5,0,3,transparent,Transparent,,,,,transparent
 5,1,3,Ctrl+Shift+V,Key Press,V,L Ctrl+L Shift,Paste without formatting,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
@@ -386,7 +386,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 6,3,4,transparent,Transparent,,,,,transparent
 6,4,4,Ctrl+L,Key Press,L,L Ctrl,Focus address bar,"App: Browser (Chrome/Edge), importance=9.5",evolved
 6,5,4,Win+3,Key Press,3 and Hash,L GUI,Open/switch pinned app 3,"App: Windows 11, importance=6.0",evolved
-6,7,4,Excel,coach_l10_toggle,,,Dynamic layer access: @access:L4->L10:toggle:Excel,Target layer 10,evolved
+6,7,4,Layer,coach_l10_toggle,,,"Generated layer access; target L10. Role is inferred from target contents, not from the layer number.",Target layer 10; role inferred from target contents.,evolved
 6,8,4,Ctrl+Shift+Tab,Key Press,Tab,L Ctrl+L Shift,Previous tab,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
 6,4,5,transparent,Transparent,,,,,transparent
 6,5,5,transparent,Transparent,,,,,transparent
@@ -498,7 +498,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 8,3,4,Shift+Alt+Right,Key Press,RightArrow,L Shift+L Alt,Expand selection,"App: Visual Studio Code, importance=2.7",evolved
 8,4,4,Shift+Tab,Key Press,Tab,L Shift,Outdent,"App: Visual Studio Code, importance=5.4",evolved
 8,5,4,Alt+Click,Mouse Key Press,MB1,L Alt,Add cursor at position,"App: Visual Studio Code, importance=5.4",evolved
-8,7,4,coach_mouse_lock,coach_mouse_lock,,,Dynamic layer access: @access:L10->L2:toggle:coach_mouse_lock,Target layer 2,evolved
+8,7,4,Layer,coach_mouse_lock,,,"Generated layer access; target L2. Role is inferred from target contents, not from the layer number.",Target layer 2; role inferred from target contents.,evolved
 8,8,4,transparent,Transparent,,,,,transparent
 8,4,5,transparent,Transparent,,,,,transparent
 8,5,5,transparent,Transparent,,,,,transparent

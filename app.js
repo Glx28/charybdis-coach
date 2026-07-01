@@ -679,19 +679,25 @@
     const combined = `${label} ${param} ${behavior}`.toLowerCase();
 
     const coachMap = {
-      coach_l1_hold: { kind: "nav", primary: "Nav", badge: "🧭", secondary: "Hold → L1" },
-      coach_l3_hold: { kind: "window", primary: "Window", badge: "🪟", secondary: "Hold → L3" },
-      coach_l4_hold: { kind: "system-layer", primary: "System", badge: "🔧", secondary: "Hold → L4" },
       coach_game_lock: { kind: "game", primary: "Game", badge: "🎮", secondary: "Lock → L7" },
       coach_base: { kind: "home", primary: "Base", badge: "🏠", secondary: "Return L0" },
-      coach_travel_toggle: { kind: "speed", primary: "Speed", badge: "⚡", secondary: "Toggle L8" },
-      coach_travel_off: { kind: "speed-off", primary: "Prec", badge: "🎯", secondary: "Exit speed" },
+      coach_travel_toggle: { kind: "toggle", primary: "Layer", badge: "🔀", secondary: "Toggle configured layer" },
+      coach_travel_off: { kind: "toggle", primary: "Layer", badge: "🔀", secondary: "Exit configured toggle" },
       coach_recover_base: { kind: "home", primary: "Base", badge: "🏠", secondary: "Recover L0" },
-      coach_scroll_toggle: { kind: "scroll", primary: "Scroll", badge: "📜", secondary: "Toggle L6" },
-      coach_l8_hold: { kind: "speed-hold", primary: "Speed", badge: "⚡", secondary: "Hold L8" }
+      coach_scroll_toggle: { kind: "toggle", primary: "Layer", badge: "🔀", secondary: "Toggle configured layer" }
     };
+    const numberedCoachHold = behaviorLower.match(/^coach_l(\d+)_hold$/);
+    if (numberedCoachHold) {
+      const target = numberedCoachHold[1];
+      const meta = dynamicLayerMeta(target);
+      return {
+        kind: "momentary",
+        primary: clean(label) || `L${target}`,
+        badge: meta.glyph || "👆",
+        secondary: `Hold → L${target}${meta.role ? ` ${meta.role}` : ""}`.trim()
+      };
+    }
     const layerAccessBehaviors = {
-      coach_l2_hold: { kind: "momentary", target: "2", verb: "Hold" },
       coach_mouse_lock: { kind: "lock", target: "2", verb: "Lock" }
     };
     if (layerAccessBehaviors[behaviorLower]) {
@@ -735,14 +741,13 @@
     }
     if (/toggle layer/i.test(behavior)) {
       const layer = layerParam(row);
-      if (layer === "6") return { kind: "scroll", primary: "Scroll", badge: "📜", secondary: "Toggle L6" };
-      if (layer === "8") return { kind: "speed", primary: "Speed", badge: "⚡", secondary: "Toggle L8" };
-      return { kind: "toggle", primary: label || `T${layer}`, badge: "🔀", secondary: `Toggle L${layer}` };
+      const meta = dynamicLayerMeta(layer);
+      return { kind: "toggle", primary: label || meta.role || `T${layer}`, badge: meta.glyph || "🔀", secondary: `Toggle L${layer}` };
     }
     if (/momentary layer/i.test(behavior)) {
       const layer = layerParam(row);
-      if (layer === "8") return { kind: "speed-hold", primary: "Speed", badge: "⚡", secondary: "Hold L8" };
-      return { kind: "momentary", primary: label || `M${layer}`, badge: "👆", secondary: `Hold L${layer}` };
+      const meta = dynamicLayerMeta(layer);
+      return { kind: "momentary", primary: label || meta.role || `M${layer}`, badge: meta.glyph || "👆", secondary: `Hold L${layer}` };
     }
     if (/to layer/i.test(behavior)) {
       const layer = layerParam(row);
