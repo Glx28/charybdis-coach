@@ -884,7 +884,7 @@
     const tags = [];
     if (/base typing key|_base_|permanent l0/i.test(text)) tags.push("base");
     if (/mouse key press|\bmb[1-5]\b|click|mouse/i.test(text)) tags.push("mouse");
-    if (/scroll|layer::6|trackball scroll/i.test(text)) tags.push("scroll");
+    if (/scroll|trackball scroll/i.test(text)) tags.push("scroll");
     if (/leftarrow|rightarrow|uparrow|downarrow|pageup|pagedown|\bhome\b|\bend\b|navigation/i.test(text)) tags.push("nav");
     if (/win\+|window|desktop|taskbar|snap|system tray|notification/i.test(text)) tags.push("window");
     if (/bluetooth|output|reset|bootloader|studio|system|settings|device/i.test(text)) tags.push("system");
