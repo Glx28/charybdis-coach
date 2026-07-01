@@ -57,6 +57,8 @@
     hostKeyboard: null,
     displayedLayer: "0",
     liveLayer: "0",
+    pinnedLayer: null,
+    lastLiveKeySignature: "",
     selectedKey: null,
     query: "",
     focusImportant: false,
@@ -997,8 +999,7 @@
       button.title = tabMeta.title;
       button.innerHTML = `<strong class="layer-tab-num">${layer}</strong><span class="layer-tab-glyph">${escapeHtml(tabMeta.glyph)}</span><span class="layer-tab-role">${escapeHtml(shortLayerRole(tabMeta.role))}</span>`;
       button.addEventListener("click", () => {
-        state.displayedLayer = layer;
-        render();
+        pinDisplayedLayer(layer);
       });
       els.layerTabs.appendChild(button);
     }
@@ -1122,6 +1123,7 @@
     document.querySelectorAll(".layer-tab").forEach((tab) => {
       const layer = tab.dataset.layer;
       tab.classList.toggle("active", layer === state.displayedLayer);
+      tab.classList.toggle("pinned", layer === state.pinnedLayer);
       tab.classList.toggle("live", layer === state.liveLayer && layer !== state.displayedLayer);
     });
     document.querySelectorAll(".keycap.beacon-live-key, .keycap.beacon-source-key").forEach((el) => {
@@ -1287,6 +1289,37 @@
     return "0";
   }
 
+  function liveKeySignature(live) {
+    const key = live?.lastKey;
+    if (!key || key.x === "" || key.y === "") return "";
+    return [
+      key.layer ?? "",
+      key.x ?? "",
+      key.y ?? "",
+      key.label ?? "",
+      live.lastAction ?? ""
+    ].join(":");
+  }
+
+  function pinDisplayedLayer(layer) {
+    const nextLayer = String(layer);
+    state.displayedLayer = nextLayer;
+    state.pinnedLayer = nextLayer;
+    render();
+  }
+
+  function releasePinnedLayer() {
+    if (!state.pinnedLayer) return;
+    state.pinnedLayer = null;
+    if (state.liveLayer && state.displayedLayer !== state.liveLayer) {
+      state.displayedLayer = state.liveLayer;
+      render();
+      return;
+    }
+    updateRailStrip();
+    renderStatus();
+  }
+
   function pushEvent(live) {
     if (!live?.lastAction) return;
     const last = state.events[0];
@@ -1301,12 +1334,17 @@
     state.lastState = live;
     if (live) {
       const newLiveLayer = deriveLiveLayer(live);
+      const keySignature = liveKeySignature(live);
+      if (state.pinnedLayer && keySignature && state.lastLiveKeySignature && keySignature !== state.lastLiveKeySignature) {
+        state.pinnedLayer = null;
+      }
+      if (keySignature) state.lastLiveKeySignature = keySignature;
 
       const held = normalizeLayerList(live.heldLayers);
       const locked = live.lockedLayer ? String(live.lockedLayer) : "";
       const toggled = normalizeLayerList(live.toggledLayers);
       // Always show the layer the keyboard is actually on; lastKey highlights the thumb source key.
-      const preferredDisplay = newLiveLayer;
+      const preferredDisplay = state.pinnedLayer || newLiveLayer;
       const layerChanged = newLiveLayer !== state.liveLayer;
       const displayChanged = preferredDisplay !== state.displayedLayer;
 
@@ -2173,15 +2211,14 @@
       const swatch = document.createElement("div");
       swatch.className = "rail-swatch";
       swatch.dataset.layer = layer;
-      const color = dynamicLayerMeta(layer).color || "#4cc9b0";
+      const layerMeta = dynamicLayerMeta(layer);
+      const color = layerMeta.color || "#4cc9b0";
       swatch.style.background = color;
       swatch.style.setProperty("--swatch-color", color);
-      swatch.title = dynamicLayerMeta(layer).title || `Layer ${layer}`;
+      swatch.title = layerMeta.title || `Layer ${layer}`;
       swatch.addEventListener("click", (e) => {
         e.stopPropagation();
-        state.displayedLayer = layer;
-        render();
-        updateRailStrip();
+        pinDisplayedLayer(layer);
       });
       railColorStrip.appendChild(swatch);
     }
@@ -2192,6 +2229,8 @@
     if (!railColorStrip) return;
     railColorStrip.querySelectorAll(".rail-swatch").forEach((sw) => {
       sw.classList.toggle("active", sw.dataset.layer === state.displayedLayer);
+      sw.classList.toggle("pinned", sw.dataset.layer === state.pinnedLayer);
+      sw.classList.toggle("live", sw.dataset.layer === state.liveLayer && sw.dataset.layer !== state.displayedLayer);
     });
   }
 
@@ -2452,6 +2491,8 @@
         setTimeout(learnAdvance, 500);
       }
     }
+
+    releasePinnedLayer();
   });
 
   // ----- Learn overlay (fullscreen guided app training) -----

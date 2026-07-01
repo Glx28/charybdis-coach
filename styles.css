@@ -306,6 +306,31 @@ svg {
   display: flex;
 }
 
+.layer-rail.collapsed:hover,
+.layer-rail.collapsed:focus-within {
+  width: 220px;
+  min-width: 220px;
+  padding: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  cursor: default;
+}
+
+.layer-rail.collapsed:hover .rail-title,
+.layer-rail.collapsed:focus-within .rail-title {
+  display: block;
+}
+
+.layer-rail.collapsed:hover .layer-tabs,
+.layer-rail.collapsed:focus-within .layer-tabs {
+  display: grid;
+}
+
+.layer-rail.collapsed:hover .rail-color-strip,
+.layer-rail.collapsed:focus-within .rail-color-strip {
+  display: none;
+}
+
 .rail-color-strip {
   display: none;
   flex-direction: column;
@@ -334,6 +359,15 @@ svg {
   opacity: 1;
 }
 
+.rail-color-strip .rail-swatch.pinned {
+  opacity: 1;
+  box-shadow: inset 0 0 0 2px #fff, 0 0 12px 2px var(--swatch-color, #fff);
+}
+
+.rail-color-strip .rail-swatch.live {
+  opacity: 0.9;
+}
+
 .rail-title {
   color: var(--muted);
   font-size: 0.7rem;
@@ -359,6 +393,16 @@ svg {
   text-align: center;
 }
 
+.layer-rail.collapsed:hover .layer-tab,
+.layer-rail.collapsed:focus-within .layer-tab {
+  min-height: 44px;
+  display: grid;
+  grid-template-columns: 28px 52px 1fr;
+  align-items: center;
+  gap: 6px;
+  text-align: left;
+}
+
 .layer-tab-num {
   display: block;
   color: var(--muted);
@@ -378,6 +422,17 @@ svg {
 
 .layer-tab-role {
   display: none;
+}
+
+.layer-rail.collapsed:hover .layer-tab-role,
+.layer-rail.collapsed:focus-within .layer-tab-role {
+  display: block;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.15;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .layer-tab[data-layer="0"] .layer-tab-glyph { color: var(--accent); }
@@ -407,6 +462,11 @@ svg {
 
 .layer-tab.live {
   outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+.layer-tab.pinned {
+  outline: 2px solid var(--warn);
   outline-offset: 2px;
 }
 
@@ -878,6 +938,22 @@ svg {
   .layer-rail .rail-title,
   .layer-rail .layer-tabs {
     display: none;
+  }
+
+  .layer-rail.collapsed:hover,
+  .layer-rail.collapsed:focus-within {
+    width: 220px;
+    min-width: 220px;
+  }
+
+  .layer-rail.collapsed:hover .rail-title,
+  .layer-rail.collapsed:focus-within .rail-title {
+    display: block;
+  }
+
+  .layer-rail.collapsed:hover .layer-tabs,
+  .layer-rail.collapsed:focus-within .layer-tabs {
+    display: grid;
   }
 
   .inspector {
