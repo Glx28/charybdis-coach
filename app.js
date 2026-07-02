@@ -684,6 +684,9 @@
       coach_travel_toggle: { kind: "toggle", primary: "Layer", badge: "🔀", secondary: "Toggle configured layer" },
       coach_travel_off: { kind: "toggle", primary: "Layer", badge: "🔀", secondary: "Exit configured toggle" },
       coach_recover_base: { kind: "home", primary: "Base", badge: "🏠", secondary: "Recover L0" },
+      coach_ctrl_click: { kind: "mouse-btn", primary: "Ctrl+Click", badge: "👆", secondary: "Ctrl + MB1" },
+      coach_shift_click: { kind: "mouse-btn", primary: "Shift+Click", badge: "👆", secondary: "Shift + MB1" },
+      coach_alt_click: { kind: "mouse-btn", primary: "Alt+Click", badge: "👆", secondary: "Alt + MB1" },
       coach_scroll_toggle: { kind: "toggle", primary: "Layer", badge: "🔀", secondary: "Toggle configured layer" }
     };
     const numberedCoachHold = behaviorLower.match(/^coach_l(\d+)_hold$/);
