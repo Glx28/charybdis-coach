@@ -435,30 +435,13 @@ svg {
   white-space: nowrap;
 }
 
-.layer-tab[data-layer="0"] .layer-tab-glyph { color: var(--accent); }
-.layer-tab[data-layer="1"] .layer-tab-glyph { color: var(--nav); }
-.layer-tab[data-layer="2"] .layer-tab-glyph { color: var(--mouse); }
-.layer-tab[data-layer="3"] .layer-tab-glyph { color: var(--window); }
-.layer-tab[data-layer="4"] .layer-tab-glyph { color: var(--system); }
-.layer-tab[data-layer="5"] .layer-tab-glyph { color: var(--code); }
-.layer-tab[data-layer="7"] .layer-tab-glyph { color: var(--game); }
-.layer-tab[data-layer="8"] .layer-tab-glyph { color: var(--speed); }
-.layer-tab[data-layer="9"] .layer-tab-glyph { color: var(--dms); }
+.layer-tab .layer-tab-glyph { color: var(--layer-color, var(--accent)); }
 
 .layer-tab.active {
-  border-color: var(--accent);
+  border-color: var(--layer-color, var(--accent));
   background: #123128;
-  box-shadow: inset 3px 0 0 var(--accent);
+  box-shadow: inset 3px 0 0 var(--layer-color, var(--accent));
 }
-
-.layer-tab.active[data-layer="1"] { border-color: var(--nav); box-shadow: inset 3px 0 0 var(--nav); background: #0f2a28; }
-.layer-tab.active[data-layer="2"] { border-color: var(--mouse); box-shadow: inset 3px 0 0 var(--mouse); background: #1a1530; }
-.layer-tab.active[data-layer="3"] { border-color: var(--window); box-shadow: inset 3px 0 0 var(--window); background: #102033; }
-.layer-tab.active[data-layer="4"] { border-color: var(--system); box-shadow: inset 3px 0 0 var(--system); background: #2a1c14; }
-.layer-tab.active[data-layer="5"] { border-color: var(--code); box-shadow: inset 3px 0 0 var(--code); background: #0f2430; }
-.layer-tab.active[data-layer="7"] { border-color: var(--game); box-shadow: inset 3px 0 0 var(--game); background: #1e1633; }
-.layer-tab.active[data-layer="8"] { border-color: var(--speed); box-shadow: inset 3px 0 0 var(--speed); background: #2a2210; }
-.layer-tab.active[data-layer="9"] { border-color: var(--dms); box-shadow: inset 3px 0 0 var(--dms); background: #2a2014; }
 
 .layer-tab.live {
   outline: 2px solid var(--accent-2);

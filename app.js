@@ -684,6 +684,7 @@
       coach_travel_toggle: { kind: "toggle", primary: "Layer", badge: "🔀", secondary: "Toggle configured layer" },
       coach_travel_off: { kind: "toggle", primary: "Layer", badge: "🔀", secondary: "Exit configured toggle" },
       coach_recover_base: { kind: "home", primary: "Base", badge: "🏠", secondary: "Recover L0" },
+      coach_mouse_lock: { kind: "lock", primary: "Lock", badge: "🔒", secondary: "Firmware-defined target" },
       coach_ctrl_click: { kind: "mouse-btn", primary: "Ctrl+Click", badge: "👆", secondary: "Ctrl + MB1" },
       coach_shift_click: { kind: "mouse-btn", primary: "Shift+Click", badge: "👆", secondary: "Shift + MB1" },
       coach_alt_click: { kind: "mouse-btn", primary: "Alt+Click", badge: "👆", secondary: "Alt + MB1" },
@@ -698,19 +699,6 @@
         primary: clean(label) || `L${target}`,
         badge: meta.glyph || "👆",
         secondary: `Hold → L${target}${meta.role ? ` ${meta.role}` : ""}`.trim()
-      };
-    }
-    const layerAccessBehaviors = {
-      coach_mouse_lock: { kind: "lock", target: "2", verb: "Lock" }
-    };
-    if (layerAccessBehaviors[behaviorLower]) {
-      const info = layerAccessBehaviors[behaviorLower];
-      const meta = dynamicLayerMeta(info.target);
-      return {
-        kind: info.kind,
-        primary: clean(label) || `L${info.target}`,
-        badge: meta.glyph || "👆",
-        secondary: `${info.verb} → L${info.target} ${meta.role || meta.title || ""}`.trim()
       };
     }
     if (coachMap[behaviorLower]) return { ...coachMap[behaviorLower] };
@@ -1005,6 +993,7 @@
       button.dataset.layer = layer;
       const tabMeta = dynamicLayerMeta(layer);
       button.title = tabMeta.title;
+      button.style.setProperty("--layer-color", tabMeta.color || "#4cc9b0");
       button.innerHTML = `<strong class="layer-tab-num">${layer}</strong><span class="layer-tab-glyph">${escapeHtml(tabMeta.glyph)}</span><span class="layer-tab-role">${escapeHtml(shortLayerRole(tabMeta.role))}</span>`;
       button.addEventListener("click", () => {
         pinDisplayedLayer(layer);
