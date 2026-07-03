@@ -47,350 +47,350 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 0,10,3,.,Key Press,Period and GreaterThan,,,,canonical (frozen/critical)
 0,11,3,/,Key Press,ForwardSlash and QuestionMark,,,,canonical (frozen/critical)
 0,12,3,\,Key Press,Backslash and Pipe,,,,canonical (frozen/critical)
-0,3,4,Scroll_L9,coach_l9_hold,,,Dynamic layer access: @scroll:L9:hold,Target layer 9,evolved
+0,3,4,L8,coach_l8_toggle,,,Dynamic layer access: @access:L8:toggle,Target layer 8,evolved
 0,4,4,␣,Key Press,Spacebar,,,,canonical (frozen/critical)
-0,5,4,L2,coach_l2_hold,,,Dynamic layer access: @access:L2:hold,Target layer 2,evolved
-0,7,4,Scroll_L3,coach_l3_hold,,,Dynamic layer access: @scroll:L3:hold,Target layer 3,evolved
-0,8,4,L1,coach_l1_hold,,,Dynamic layer access: @access:L1:hold,Target layer 1,evolved
-0,4,5,Scroll_L5,coach_l5_hold,,,Dynamic layer access: @scroll:L5:hold,Target layer 5,evolved
+0,5,4,Scroll_L6,coach_l6_hold,,,Dynamic layer access: @scroll:L6:hold,Target layer 6,evolved
+0,7,4,L3,coach_l3_hold,,,Dynamic layer access: @access:L3:hold,Target layer 3,evolved
+0,8,4,L2,coach_l2_hold,,,Dynamic layer access: @access:L2:hold,Target layer 2,evolved
+0,4,5,L1,coach_l1_hold,,,Dynamic layer access: @access:L1:hold,Target layer 1,evolved
 0,5,5,Scroll_L4,coach_l4_hold,,,Dynamic layer access: @scroll:L4:hold,Target layer 4,evolved
 0,7,5,Ret,Key Press,Return Enter,,,,canonical (frozen/critical)
-1,0,0,Win+P,Key Press,P,L GUI,Project / display mode,"App: Windows 11, importance=1.0",evolved
+1,0,0,transparent,Transparent,,,,,transparent
 1,1,0,transparent,Transparent,,,,,transparent
-1,2,0,Alt+Tab,Key Press,Tab,L Alt,Switch apps,"App: Windows 11, importance=10.0",evolved
-1,3,0,Ctrl+Shift+Right,Key Press,RightArrow,L Ctrl+L Shift,Select to right edge,"App: Microsoft Excel, importance=3.0",evolved
-1,4,0,Page Down,Key Press,PageDown,,Next slide,"App: Microsoft PowerPoint, importance=1.2000000000000002",evolved
-1,5,0,transparent,Transparent,,,,,transparent
-1,7,0,Alt+Enter,Key Press,Return Enter,L Alt,Properties / metadata card,"App: M-Files Desktop Client, importance=8.5",evolved
-1,8,0,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+S',,transparent
-1,9,0,Shift+Alt+Right,Key Press,RightArrow,L Shift+L Alt,Expand selection,"App: Visual Studio Code, importance=2.7",evolved
-1,10,0,Ctrl+Z,Key Press,Z,L Ctrl,Undo,"App: Microsoft Teams, importance=6.0",evolved
-1,11,0,Ctrl+Shift+Esc,Key Press,Escape,L Ctrl+L Shift,Task Manager,"App: Windows 11, importance=3.0",evolved
-1,12,0,Shift+Delete,Key Press,Delete,L Shift,Permanent delete,"App: File Explorer, importance=0.45",evolved
-1,0,1,Shift+Space,Key Press,Spacebar,L Shift,Scroll up one screen,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-1,1,1,Ctrl++,Key Press,Equals and Plus,L Ctrl,Zoom in,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-1,2,1,MB1,Mouse Key Press,MB1,,Left click,"App: Mouse, importance=15.0",evolved
-1,3,1,Ctrl+Page Up,Key Press,PageUp,L Ctrl,Previous sheet,"App: Microsoft Excel, importance=3.0",evolved
-1,4,1,Win+V,Key Press,V,L GUI,Clipboard history,"App: Windows 11, importance=6.0",evolved
-1,5,1,Win+Left,Key Press,LeftArrow,L GUI,Snap window left,"App: Windows 11, importance=10.0",evolved
-1,7,1,"Ctrl+,",Key Press,Comma and LessThan,L Ctrl,Open settings,"App: Visual Studio Code, importance=2.7",evolved
-1,8,1,Shift+Alt+Down,Key Press,DownArrow,L Shift+L Alt,Copy line down,"App: Visual Studio Code, importance=5.4",evolved
-1,9,1,`,Key Press,Grave Accent and Tilde,,Raw Grave Accent and Tilde completion key.,"App: Raw Keys, importance=3.0",evolved
-1,10,1,Alt+Shift++,Key Press,Equals and Plus,L Alt+L Shift,Split pane vertical,"App: Windows Terminal / PowerShell, importance=1.2000000000000002",evolved
-1,11,1,],Key Press,Right Brace,,Raw Right Brace completion key.,"App: Raw Keys, importance=3.0",evolved
-1,12,1,transparent,Transparent,,,,,transparent
-1,0,2,Ctrl+Shift+Del,Key Press,Delete,L Ctrl+L Shift,Clear browsing data,"App: Browser (Chrome/Edge), importance=0.95",evolved
-1,1,2,Ctrl+F5,Key Press,F5,L Ctrl,Hard refresh (bypass cache),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-1,2,2,Ctrl+Shift+Tab,Key Press,Tab,L Ctrl+L Shift,Previous tab,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
-1,3,2,Ctrl+E,Key Press,E,L Ctrl,Search / command bar,"App: Microsoft Teams, importance=10.0",evolved
-1,4,2,Win+M,Key Press,M,L GUI,Minimize all windows,"App: Windows 11, importance=1.0",evolved
-1,5,2,Win+Shift+Right,Key Press,RightArrow,L GUI+L Shift,Move to right monitor,"App: Windows 11, importance=6.0",evolved
-1,7,2,Shift+F11,Key Press,F11,L Shift,Step out,"App: Visual Studio Code, importance=5.4",evolved
-1,8,2,Ctrl+Alt+Down,Key Press,DownArrow,L Ctrl+L Alt,Add cursor below,"App: Visual Studio Code, importance=5.4",evolved
-1,9,2,Ctrl+Shift+W,Key Press,W,L Ctrl+L Shift,Change workflow state,"App: M-Files Desktop Client, importance=5.1",evolved
-1,10,2,Scroll_L3,coach_l3_hold,,,Dynamic layer access: @scroll:L3:hold,Target layer 3,evolved
-1,11,2,Ctrl+Q,Key Press,Q,L Ctrl,Mark as read,"App: Microsoft Outlook, importance=4.199999999999999",evolved
-1,12,2,Win+4,Key Press,4 and Dollar,L GUI,Open/switch pinned app 4,"App: Windows 11, importance=3.0",evolved
-1,0,3,Alt+Home,Key Press,Home,L Alt,Open home page,"App: Browser (Chrome/Edge), importance=0.95",evolved
-1,1,3,Ctrl+P,Key Press,P,L Ctrl,Print,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-1,2,3,Ctrl+Shift+P,Key Press,P,L Ctrl+L Shift,Toggle chat in meeting,"App: Microsoft Teams, importance=3.0",evolved
-1,3,3,Ctrl+Shift+M,Key Press,M,L Ctrl+L Shift,Toggle mute,"App: Microsoft Teams, importance=10.0",evolved
-1,4,3,Ctrl+A,Key Press,A,L Ctrl,Select all,"App: Microsoft Teams, importance=3.0",evolved
-1,5,3,Win+P,Key Press,P,L GUI,Project / display mode,"App: Windows 11, importance=1.0",evolved
-1,7,3,L9,coach_l9_toggle,,,Dynamic layer access: @access:L9:toggle,Target layer 9,evolved
-1,8,3,L9,coach_l9_hold,,,Dynamic layer access: @access:L9:hold,Target layer 9,evolved
-1,9,3,F7,Key Press,F7,,Spell check,"App: Microsoft Word, importance=0.8999999999999999",evolved
-1,10,3,Ctrl+Shift+F6,Key Press,F6,L Ctrl+L Shift,Next section,"App: Microsoft Teams, importance=3.0",evolved
-1,11,3,Ctrl+S,Key Press,S,L Ctrl,Save page as,"App: Browser (Chrome/Edge), importance=0.95",evolved
-1,12,3,transparent,Transparent,,,,,transparent
-1,3,4,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+W',,transparent
-1,4,4,Win+1,Key Press,1 and Bang,L GUI,Open/switch pinned app 1,"App: Windows 11, importance=10.0",evolved
-1,5,4,Ctrl+7,Key Press,7 and Ampersand,L Ctrl,Switch to tab 7,"App: Browser (Chrome/Edge), importance=0.19",evolved
-1,7,4,L10,coach_l10_toggle,,,Dynamic layer access: @access:L10:toggle,Target layer 10,evolved
-1,8,4,Scroll_L6,coach_l6_hold,,,Dynamic layer access: @scroll:L6:hold,Target layer 6,evolved
-1,4,5,Alt+Shift+D,Key Press,D,L Alt+L Shift,Split pane (auto),"App: Windows Terminal / PowerShell, importance=2.4000000000000004",evolved
-1,5,5,Ctrl+Shift+!,Key Press,1 and Bang,L Ctrl+L Shift,Number format,"App: Microsoft Excel, importance=1.5",evolved
-1,7,5,L8,coach_l8_toggle,,,Dynamic layer access: @access:L8:toggle,Target layer 8,evolved
-2,0,0,Ctrl+Shift+R,Key Press,R,L Ctrl+L Shift,Start recording,"App: Microsoft Teams, importance=1.0",evolved
-2,1,0,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
-2,2,0,Alt+=,Key Press,Equals and Plus,L Alt,AutoSum,"App: Microsoft Excel, importance=3.0",evolved
-2,3,0,Ctrl+Space,Key Press,Spacebar,L Ctrl,Select entire column,"App: Microsoft Excel, importance=3.0",evolved
-2,4,0,Ctrl+Shift+9,Key Press,9 and Left Bracket,L Ctrl+L Shift,Unhide rows,"App: Microsoft Excel, importance=0.5",evolved
-2,5,0,Win+R,Key Press,R,L GUI,Run dialog,"App: Windows 11, importance=3.0",evolved
-2,7,0,transparent,Transparent,,,,,transparent
-2,8,0,Ctrl+Shift+1,Key Press,1 and Bang,L Ctrl+L Shift,Extra large icons,"App: File Explorer, importance=0.09000000000000001",evolved
-2,9,0,transparent,Transparent,,,,,transparent
-2,10,0,transparent,Transparent,,,,,transparent
-2,11,0,transparent,Transparent,,,,,transparent
-2,12,0,Ctrl+Shift+Home,Key Press,Home,L Ctrl+L Shift,Select to cell A1,"App: Microsoft Excel, importance=1.5",evolved
-2,0,1,Ctrl+Shift+!,Key Press,1 and Bang,L Ctrl+L Shift,Number format,"App: Microsoft Excel, importance=1.5",evolved
-2,1,1,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Find previous,"App: Browser (Chrome/Edge), importance=0.95",evolved
-2,2,1,Ctrl+Down,Key Press,DownArrow,L Ctrl,Jump to bottom edge of data,"App: Microsoft Excel, importance=3.0",evolved
-2,3,1,Ctrl+Shift+Home,Key Press,Home,L Ctrl+L Shift,Select to cell A1,"App: Microsoft Excel, importance=1.5",evolved
-2,4,1,Win+1,Key Press,1 and Bang,L GUI,Open/switch pinned app 1,"App: Windows 11, importance=10.0",evolved
-2,5,1,Win+Shift+S,Key Press,S,L GUI+L Shift,Screenshot (Snip),"App: Windows 11, importance=6.0",evolved
-2,7,1,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+F',,transparent
-2,8,1,Alt+Shift+Down,Key Press,DownArrow,L Alt+L Shift,Next unread,"App: Discord, importance=0.6000000000000001",evolved
-2,9,1,Ctrl+Shift+%,Key Press,5 and Percent,L Ctrl+L Shift,Percent format,"App: Microsoft Excel, importance=1.5",evolved
-2,10,1,Ctrl+F6,Key Press,F6,L Ctrl,Previous section,"App: Microsoft Teams, importance=1.0",evolved
-2,11,1,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
-2,12,1,Win+5,Key Press,5 and Percent,L GUI,Open/switch pinned app 5,"App: Windows 11, importance=3.0",evolved
+1,2,0,transparent,Transparent,,,,,transparent
+1,3,0,Ctrl+Shift+%,Key Press,5 and Percent,L Ctrl+L Shift,Percent format,"App: Microsoft Excel, importance=1.5",evolved
+1,4,0,Ctrl+Shift+B,Key Press,B,L Ctrl+L Shift,Toggle background blur,"App: Microsoft Teams, importance=3.0",evolved
+1,5,0,Ctrl+Shift+>,Key Press,Period and GreaterThan,L Ctrl+L Shift,Increase font size,"App: Microsoft Word, importance=0.8999999999999999",evolved
+1,7,0,Page Down,Key Press,PageDown,,Next slide,"App: Microsoft PowerPoint, importance=1.2000000000000002",evolved
+1,8,0,Win+Down,Key Press,DownArrow,L GUI,Minimize / restore,"App: Windows 11, importance=6.0",evolved
+1,9,0,Win+D,Key Press,D,L GUI,Show/hide desktop,"App: Windows 11, importance=6.0",evolved
+1,10,0,Win+L,Key Press,L,L GUI,Lock PC,"App: Windows 11, importance=3.0",evolved
+1,11,0,Alt+Shift+-,Key Press,Dash and Underscore,L Alt+L Shift,Split pane horizontal,"App: Windows Terminal / PowerShell, importance=1.2000000000000002",evolved
+1,12,0,Ctrl+Shift+F6,Key Press,F6,L Ctrl+L Shift,Next section,"App: Microsoft Teams, importance=3.0",evolved
+1,0,1,transparent,Transparent,,,,,transparent
+1,1,1,transparent,Transparent,,,,,transparent
+1,2,1,Shift+Delete,Key Press,Delete,L Shift,Permanent delete,"App: File Explorer, importance=0.45",evolved
+1,3,1,Ctrl+Shift+C,Key Press,C,L Ctrl+L Shift,Inspect element,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+1,4,1,Alt+P,Key Press,P,L Alt,Preview pane,"App: File Explorer, importance=0.45",evolved
+1,5,1,Ctrl+Shift+Up,Key Press,UpArrow,L Ctrl+L Shift,Select to top edge,"App: Microsoft Excel, importance=3.0",evolved
+1,7,1,Alt+Shift+Up,Key Press,UpArrow,L Alt+L Shift,Previous unread,"App: Discord, importance=0.6000000000000001",evolved
+1,8,1,Alt+Right,Key Press,RightArrow,L Alt,Go forward,"App: Microsoft Teams, importance=3.0",evolved
+1,9,1,Win+5,Key Press,5 and Percent,L GUI,Open/switch pinned app 5,"App: Windows 11, importance=3.0",evolved
+1,10,1,Win+Shift+Right,Key Press,RightArrow,L GUI+L Shift,Move to right monitor,"App: Windows 11, importance=6.0",evolved
+1,11,1,Ctrl+Shift+Esc,Key Press,Escape,L Ctrl+L Shift,Task Manager,"App: Windows 11, importance=3.0",evolved
+1,12,1,Win+Up,Key Press,UpArrow,L GUI,Maximize window,"App: Windows 11, importance=6.0",evolved
+1,0,2,Ctrl+Shift+~,Key Press,Grave Accent and Tilde,L Ctrl+L Shift,General format,"App: Microsoft Excel, importance=0.5",evolved
+1,1,2,Scroll_L2,coach_l2_hold,,,Dynamic layer access: @scroll:L2:hold,Target layer 2,evolved
+1,2,2,Ctrl+Shift+S,Key Press,S,L Ctrl+L Shift,Attach file,"App: Microsoft Teams, importance=3.0",evolved
+1,3,2,Ctrl+D,Key Press,D,L Ctrl,Bookmark page,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+1,4,2,Ctrl+0,Key Press,0 and Right Bracket,L Ctrl,Reset zoom,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+1,5,2,Ctrl+Shift+Down,Key Press,DownArrow,L Ctrl+L Shift,Select to bottom edge,"App: Microsoft Excel, importance=3.0",evolved
+1,7,2,Ctrl+1,Key Press,1 and Bang,L Ctrl,Activity,"App: Microsoft Teams, importance=6.0",evolved
+1,8,2,Ctrl+Enter,Key Press,Return Enter,L Ctrl,Send (expanded mode),"App: Microsoft Teams, importance=10.0",evolved
+1,9,2,Ctrl+V,Key Press,V,L Ctrl,Paste,"App: Microsoft Teams, importance=10.0",evolved
+1,10,2,Shift+F8,Key Press,F8,L Shift,Go to previous problem,"App: Visual Studio Code, importance=0.9",evolved
+1,11,2,Ctrl+W,Key Press,W,L Ctrl,Close tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+1,12,2,transparent,Transparent,,,,,transparent
+1,0,3,transparent,Transparent,,,,,transparent
+1,1,3,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+F',,transparent
+1,2,3,Ctrl+T,Key Press,T,L Ctrl,New tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+1,3,3,Ctrl+Shift+F5,Key Press,F5,L Ctrl+L Shift,Restart debugging,"App: Visual Studio Code, importance=2.7",evolved
+1,4,3,Shift+Alt+Up,Key Press,UpArrow,L Shift+L Alt,Copy line up,"App: Visual Studio Code, importance=2.7",evolved
+1,5,3,F8,Key Press,F8,,Go to next problem,"App: Visual Studio Code, importance=2.7",evolved
+1,7,3,L6,coach_l6_toggle,,,Dynamic layer access: @access:L6:toggle,Target layer 6,evolved
+1,8,3,Shift+Enter,Key Press,Return Enter,L Shift,New line in message,"App: Microsoft Teams, importance=6.0",evolved
+1,9,3,Ctrl+C,Key Press,C,L Ctrl,Copy,"App: Microsoft Teams, importance=10.0",evolved
+1,10,3,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
+1,11,3,F3,Key Press,F3,,Find next (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+1,12,3,L9,coach_l9_toggle,,,Dynamic layer access: @access:L9:toggle,Target layer 9,evolved
+1,3,4,Ctrl+Shift+End,Key Press,End,L Ctrl+L Shift,Select to last used cell,"App: Microsoft Excel, importance=1.5",evolved
+1,4,4,transparent,Transparent,,,,,transparent
+1,5,4,Win+K,Key Press,K,L GUI,Connect / Cast,"App: Windows 11, importance=0.2",evolved
+1,7,4,Scroll_L9,coach_l9_hold,,,Dynamic layer access: @scroll:L9:hold,Target layer 9,evolved
+1,8,4,Ctrl+Shift+M,Key Press,M,L Ctrl+L Shift,Toggle mute,"App: Microsoft Teams, importance=10.0",evolved
+1,4,5,transparent,Transparent,,,,,transparent
+1,5,5,Ctrl+U,Key Press,U,L Ctrl,Underline,"App: Microsoft Teams, importance=1.0",evolved
+1,7,5,transparent,Transparent,,,,,transparent
+2,0,0,F12,Key Press,F12,,Open DevTools,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+2,1,0,transparent,Transparent,,,,,transparent
+2,2,0,transparent,Transparent,,,,,transparent
+2,3,0,transparent,Transparent,,,,,transparent
+2,4,0,transparent,Transparent,,,,,transparent
+2,5,0,Ctrl+A,Key Press,A,L Ctrl,Select all,"App: Microsoft Teams, importance=3.0",evolved
+2,7,0,Ctrl+Shift+9,Key Press,9 and Left Bracket,L Ctrl+L Shift,Unhide rows,"App: Microsoft Excel, importance=0.5",evolved
+2,8,0,transparent,Transparent,,,,,transparent
+2,9,0,Shift+Alt+A,Key Press,A,L Shift+L Alt,Toggle block comment,"App: Visual Studio Code, importance=2.7",evolved
+2,10,0,Alt+F4,Key Press,F4,L Alt,Close window,"App: Windows 11, importance=6.0",evolved
+2,11,0,Ctrl+Shift+U,Key Press,U,L Ctrl+L Shift,Mark as unread,"App: Microsoft Teams, importance=3.0",evolved
+2,12,0,Ctrl+Y,Key Press,Y,L Ctrl,Redo,"App: Windows 11, importance=3.0",evolved
+2,0,1,Ctrl+Shift+I,Key Press,I,L Ctrl+L Shift,Open DevTools (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+2,1,1,"Ctrl+,",Key Press,Comma and LessThan,L Ctrl,Open settings,"App: Visual Studio Code, importance=2.7",evolved
+2,2,1,Ctrl+Shift+R,Key Press,R,L Ctrl+L Shift,Start recording,"App: Microsoft Teams, importance=1.0",evolved
+2,3,1,transparent,Transparent,,,,,transparent
+2,4,1,Shift+Space,Key Press,Spacebar,L Shift,Scroll up one screen,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+2,5,1,transparent,Transparent,,,,,transparent
+2,7,1,Shift+F8,Key Press,F8,L Shift,Go to previous problem,"App: Visual Studio Code, importance=0.9",evolved
+2,8,1,Win+M,Key Press,M,L GUI,Minimize all windows,"App: Windows 11, importance=1.0",evolved
+2,9,1,Win+S,Key Press,S,L GUI,Search,"App: Windows 11, importance=10.0",evolved
+2,10,1,Win+H,Key Press,H,L GUI,Voice typing,"App: Windows 11, importance=6.0",evolved
+2,11,1,Ctrl+S,Key Press,S,L Ctrl,Save page as,"App: Browser (Chrome/Edge), importance=0.95",evolved
+2,12,1,F7,Key Press,F7,,Spell check,"App: Microsoft Word, importance=0.8999999999999999",evolved
 2,0,2,transparent,Transparent,,,,,transparent
-2,1,2,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
-2,2,2,Ctrl+-,Key Press,Dash and Underscore,L Ctrl,Zoom out,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-2,3,2,Ctrl+Shift+X,Key Press,X,L Ctrl+L Shift,Expand compose box,"App: Microsoft Teams, importance=3.0",evolved
-2,4,2,Ctrl+Shift+Esc,Key Press,Escape,L Ctrl+L Shift,Task Manager,"App: Windows 11, importance=3.0",evolved
-2,5,2,Win+Down,Key Press,DownArrow,L GUI,Minimize / restore,"App: Windows 11, importance=6.0",evolved
-2,7,2,Ctrl+Alt+Up,Key Press,UpArrow,L Ctrl+L Alt,Add cursor above,"App: Visual Studio Code, importance=5.4",evolved
-2,8,2,Ctrl+Shift+F5,Key Press,F5,L Ctrl+L Shift,Restart debugging,"App: Visual Studio Code, importance=2.7",evolved
-2,9,2,Win+2,Key Press,2 and At,L GUI,Open/switch pinned app 2,"App: Windows 11, importance=6.0",evolved
-2,10,2,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+S',,transparent
-2,11,2,Ctrl+[,Key Press,Left Brace,L Ctrl,Outdent line,"App: Visual Studio Code, importance=2.7",evolved
-2,12,2,Shift+Alt+Right,Key Press,RightArrow,L Shift+L Alt,Expand selection,"App: Visual Studio Code, importance=2.7",evolved
-2,0,3,Ctrl+K,Key Press,K,L Ctrl,Insert link,"App: Microsoft Teams, importance=3.0",evolved
-2,1,3,Ctrl+0,Key Press,0 and Right Bracket,L Ctrl,Reset zoom,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-2,2,3,Ctrl+Shift+D,Key Press,D,L Ctrl+L Shift,Decline call,"App: Microsoft Teams, importance=3.0",evolved
-2,3,3,Ctrl+N,Key Press,N,L Ctrl,New chat,"App: Microsoft Teams, importance=6.0",evolved
-2,4,3,Ctrl+Shift+F,Key Press,F,L Ctrl+L Shift,Format text,"App: Microsoft Teams, importance=3.0",evolved
+2,1,2,F3,Key Press,F3,,Find next (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+2,2,2,F12,Key Press,F12,,Open DevTools,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+2,3,2,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+F',,transparent
+2,4,2,Alt+=,Key Press,Equals and Plus,L Alt,AutoSum,"App: Microsoft Excel, importance=3.0",evolved
+2,5,2,transparent,Transparent,,,,,transparent
+2,7,2,transparent,Transparent,,,,,transparent
+2,8,2,Alt+F12,Key Press,F12,L Alt,Peek definition,"App: Visual Studio Code, importance=5.4",evolved
+2,9,2,L5,coach_l5_hold,,,Dynamic layer access: @access:L5:hold,Target layer 5,evolved
+2,10,2,Shift+Alt+Left,Key Press,LeftArrow,L Shift+L Alt,Shrink selection,"App: Visual Studio Code, importance=2.7",evolved
+2,11,2,transparent,Transparent,,,,,transparent
+2,12,2,Alt+Tab,Key Press,Tab,L Alt,Switch apps,"App: Windows 11, importance=10.0",evolved
+2,0,3,transparent,Transparent,,,,,transparent
+2,1,3,Ctrl+9,Key Press,9 and Left Bracket,L Ctrl,Last tab,"App: Browser (Chrome/Edge), importance=0.95",evolved
+2,2,3,Alt+=,Key Press,Equals and Plus,L Alt,AutoSum,"App: Microsoft Excel, importance=3.0",evolved
+2,3,3,Ctrl+Shift+L,Key Press,L,L Ctrl+L Shift,Toggle sidebar,"App: Microsoft Teams, importance=3.0",evolved
+2,4,3,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+W',,transparent
 2,5,3,transparent,Transparent,,,,,transparent
-2,7,3,L4,coach_l4_toggle,,,Dynamic layer access: @access:L4:toggle,Target layer 4,evolved
-2,8,3,L10,coach_l10_hold,,,Dynamic layer access: @access:L10:hold,Target layer 10,evolved
-2,9,3,transparent,Transparent,,,,,transparent
-2,10,3,Shift+Space,Key Press,Spacebar,L Shift,Scroll up one screen,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-2,11,3,Ctrl+/,Key Press,ForwardSlash and QuestionMark,L Ctrl,Show keyboard shortcuts,"App: Microsoft Teams, importance=0.2",evolved
-2,12,3,Alt+Shift+-,Key Press,Dash and Underscore,L Alt+L Shift,Split pane horizontal,"App: Windows Terminal / PowerShell, importance=1.2000000000000002",evolved
-2,3,4,Alt+Tab,Key Press,Tab,L Alt,Switch apps,"App: Windows 11, importance=10.0",evolved
-2,4,4,Shift+F8,Key Press,F8,L Shift,Go to previous problem,"App: Visual Studio Code, importance=0.9",evolved
-2,5,4,Alt+F,Key Press,F,L Alt,Settings menu,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-2,7,4,Ctrl+Shift+;,Key Press,SemiColon and Colon,L Ctrl+L Shift,Insert current time,"App: Microsoft Excel, importance=0.5",evolved
-2,8,4,Scroll_L8,coach_l8_hold,,,Dynamic layer access: @scroll:L8:hold,Target layer 8,evolved
-2,4,5,Ctrl+Up,Key Press,UpArrow,L Ctrl,Jump to top edge of data,"App: Microsoft Excel, importance=3.0",evolved
-2,5,5,F1,Key Press,F1,,Help,"App: Browser (Chrome/Edge), importance=0.19",evolved
-2,7,5,Win+Ctrl+Left,Key Press,LeftArrow,L GUI+L Ctrl,Switch desktop left,"App: Windows 11, importance=3.0",evolved
-3,0,0,transparent,Transparent,,,,,transparent
-3,1,0,transparent,Transparent,,,,,transparent
-3,2,0,transparent,Transparent,,,,,transparent
-3,3,0,F4,Key Press,F4,,Toggle absolute ref ($),"App: Microsoft Excel, importance=5.0",evolved
-3,4,0,Win+Ctrl+F4,Key Press,F4,L GUI+L Ctrl,Close current desktop,"App: Windows 11, importance=1.0",evolved
-3,5,0,Alt+Shift+Down,Key Press,DownArrow,L Alt+L Shift,Next unread,"App: Discord, importance=0.6000000000000001",evolved
-3,7,0,Shift+Click,coach_shift_click,,,Select range,"App: File Explorer, importance=2.7",evolved
-3,8,0,transparent,Transparent,,,,,transparent
-3,9,0,transparent,Transparent,,,,,transparent
-3,10,0,transparent,Transparent,,,,,transparent
-3,11,0,transparent,Transparent,,,,,transparent
-3,12,0,transparent,Transparent,,,,,transparent
+2,7,3,L7,coach_l7_toggle,,,Dynamic layer access: @access:L7:toggle,Target layer 7,evolved
+2,8,3,Ctrl+Shift+U,Key Press,U,L Ctrl+L Shift,Mark as unread,"App: Microsoft Teams, importance=3.0",evolved
+2,9,3,Ctrl+W,Key Press,W,L Ctrl,Close tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+2,10,3,Ctrl+X,Key Press,X,L Ctrl,Cut,"App: Windows 11, importance=6.0",evolved
+2,11,3,Ctrl+A,Key Press,A,L Ctrl,Select all,"App: Microsoft Teams, importance=3.0",evolved
+2,12,3,Ctrl+J,Key Press,J,L Ctrl,Downloads,"App: Browser (Chrome/Edge), importance=0.95",evolved
+2,3,4,Shift+Tab,Key Press,Tab,L Shift,Outdent,"App: Visual Studio Code, importance=5.4",evolved
+2,4,4,transparent,Transparent,,,,,transparent
+2,5,4,Shift+Alt+Left,Key Press,LeftArrow,L Shift+L Alt,Shrink selection,"App: Visual Studio Code, importance=2.7",evolved
+2,7,4,Scroll_L8,coach_l8_hold,,,Dynamic layer access: @scroll:L8:hold,Target layer 8,evolved
+2,8,4,L9,coach_l9_hold,,,Dynamic layer access: @access:L9:hold,Target layer 9,evolved
+2,4,5,Win+Right,Key Press,RightArrow,L GUI,Snap window right,"App: Windows 11, importance=10.0",evolved
+2,5,5,transparent,Transparent,,,,,transparent
+2,7,5,L10,coach_l10_toggle,,,Dynamic layer access: @access:L10:toggle,Target layer 10,evolved
+3,0,0,transparent,Transparent,,,skipped: non-exportable key 'Win+Pause',,transparent
+3,1,0,Scroll_L1,coach_l1_hold,,,Dynamic layer access: @scroll:L1:hold,Target layer 1,evolved
+3,2,0,`,Key Press,Grave Accent and Tilde,,Raw Grave Accent and Tilde completion key.,"App: Raw Keys, importance=3.0",evolved
+3,3,0,-,Key Press,Dash and Underscore,,Raw Dash and Underscore completion key.,"App: Raw Keys, importance=3.0",evolved
+3,4,0,=,Key Press,Equals and Plus,,Start formula,"App: Microsoft Excel, importance=5.0",evolved
+3,5,0,Alt+Down,Key Press,DownArrow,L Alt,Move line down,"App: Visual Studio Code, importance=5.4",evolved
+3,7,0,Alt+Home,Key Press,Home,L Alt,Open home page,"App: Browser (Chrome/Edge), importance=0.95",evolved
+3,8,0,Ctrl+Shift+F6,Key Press,F6,L Ctrl+L Shift,Next section,"App: Microsoft Teams, importance=3.0",evolved
+3,9,0,Ctrl+Space,Key Press,Spacebar,L Ctrl,Select entire column,"App: Microsoft Excel, importance=3.0",evolved
+3,10,0,Win+V,Key Press,V,L GUI,Clipboard history,"App: Windows 11, importance=6.0",evolved
+3,11,0,Win+A,Key Press,A,L GUI,Quick settings / Action center,"App: Windows 11, importance=1.0",evolved
+3,12,0,Ctrl+Shift+<,Key Press,Comma and LessThan,L Ctrl+L Shift,Decrease font size,"App: Microsoft Word, importance=0.8999999999999999",evolved
 3,0,1,transparent,Transparent,,,,,transparent
 3,1,1,transparent,Transparent,,,,,transparent
-3,2,1,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Find previous,"App: Browser (Chrome/Edge), importance=0.95",evolved
-3,3,1,Ctrl+Page Down,Key Press,PageDown,L Ctrl,Next sheet,"App: Microsoft Excel, importance=3.0",evolved
-3,4,1,Win+Tab,Key Press,Tab,L GUI,Task View,"App: Windows 11, importance=6.0",evolved
-3,5,1,Win+D,Key Press,D,L GUI,Show/hide desktop,"App: Windows 11, importance=6.0",evolved
-3,7,1,Alt+Up,Key Press,UpArrow,L Alt,Move line up,"App: Visual Studio Code, importance=5.4",evolved
-3,8,1,Ctrl+Shift+\,Key Press,Backslash and Pipe,L Ctrl+L Shift,Jump to matching bracket,"App: Visual Studio Code, importance=2.7",evolved
-3,9,1,transparent,Transparent,,,,,transparent
-3,10,1,Ctrl+Shift+U,Key Press,U,L Ctrl+L Shift,Mark as unread,"App: Microsoft Teams, importance=3.0",evolved
-3,11,1,transparent,Transparent,,,,,transparent
-3,12,1,transparent,Transparent,,,skipped: non-exportable key 'Win+Pause',,transparent
-3,0,2,Ctrl+D,Key Press,D,L Ctrl,Bookmark page,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-3,1,2,Ctrl+Tab,Key Press,Tab,L Ctrl,Next tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
-3,2,2,Alt+F,Key Press,F,L Alt,Settings menu,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-3,3,2,Alt+Click,coach_alt_click,,,Add cursor at position,"App: Visual Studio Code, importance=5.4",evolved
-3,4,2,Win+Ctrl+D,Key Press,D,L GUI+L Ctrl,New virtual desktop,"App: Windows 11, importance=3.0",evolved
-3,5,2,Win+E,Key Press,E,L GUI,File Explorer,"App: Windows 11, importance=6.0",evolved
-3,7,2,Ctrl+Shift+`,Key Press,Grave Accent and Tilde,L Ctrl+L Shift,New terminal,"App: Visual Studio Code, importance=5.4",evolved
-3,8,2,Shift+F8,Key Press,F8,L Shift,Go to previous problem,"App: Visual Studio Code, importance=0.9",evolved
-3,9,2,transparent,Transparent,,,,,transparent
-3,10,2,Win+K,Key Press,K,L GUI,Connect / Cast,"App: Windows 11, importance=0.2",evolved
-3,11,2,Ctrl+Shift+>,Key Press,Period and GreaterThan,L Ctrl+L Shift,Increase font size,"App: Microsoft Word, importance=0.8999999999999999",evolved
+3,2,1,],Key Press,Right Brace,,Raw Right Brace completion key.,"App: Raw Keys, importance=3.0",evolved
+3,3,1,Ctrl+Shift+1,Key Press,1 and Bang,L Ctrl+L Shift,Extra large icons,"App: File Explorer, importance=0.09000000000000001",evolved
+3,4,1,transparent,Transparent,,,,,transparent
+3,5,1,Page Up,Key Press,PageUp,,Previous slide,"App: Microsoft PowerPoint, importance=1.2000000000000002",evolved
+3,7,1,F5,Key Press,F5,,Refresh page,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+3,8,1,Ctrl+F6,Key Press,F6,L Ctrl,Previous section,"App: Microsoft Teams, importance=1.0",evolved
+3,9,1,Win+Right,Key Press,RightArrow,L GUI,Snap window right,"App: Windows 11, importance=10.0",evolved
+3,10,1,Alt+Tab,Key Press,Tab,L Alt,Switch apps,"App: Windows 11, importance=10.0",evolved
+3,11,1,Win+E,Key Press,E,L GUI,File Explorer,"App: Windows 11, importance=6.0",evolved
+3,12,1,Win+Left,Key Press,LeftArrow,L GUI,Snap window left,"App: Windows 11, importance=10.0",evolved
+3,0,2,transparent,Transparent,,,,,transparent
+3,1,2,Ctrl+Shift+\,Key Press,Backslash and Pipe,L Ctrl+L Shift,Jump to matching bracket,"App: Visual Studio Code, importance=2.7",evolved
+3,2,2,Ctrl+Tab,Key Press,Tab,L Ctrl,Next tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+3,3,2,Ctrl+W,Key Press,W,L Ctrl,Close tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
+3,4,2,transparent,Transparent,,,,,transparent
+3,5,2,Ctrl+[,Key Press,Left Brace,L Ctrl,Outdent line,"App: Visual Studio Code, importance=2.7",evolved
+3,7,2,Ctrl+Shift+X,Key Press,X,L Ctrl+L Shift,Expand compose box,"App: Microsoft Teams, importance=3.0",evolved
+3,8,2,Ctrl+E,Key Press,E,L Ctrl,Search / command bar,"App: Microsoft Teams, importance=10.0",evolved
+3,9,2,Ctrl+K,Key Press,K,L Ctrl,Insert link,"App: Microsoft Teams, importance=3.0",evolved
+3,10,2,Win+4,Key Press,4 and Dollar,L GUI,Open/switch pinned app 4,"App: Windows 11, importance=3.0",evolved
+3,11,2,Ctrl+Z,Key Press,Z,L Ctrl,Undo,"App: Microsoft Teams, importance=6.0",evolved
 3,12,2,transparent,Transparent,,,,,transparent
-3,0,3,Alt+Shift+Up,Key Press,UpArrow,L Alt+L Shift,Previous unread,"App: Discord, importance=0.6000000000000001",evolved
+3,0,3,transparent,Transparent,,,,,transparent
 3,1,3,transparent,Transparent,,,,,transparent
-3,2,3,Ctrl+Shift+L,Key Press,L,L Ctrl+L Shift,Toggle sidebar,"App: Microsoft Teams, importance=3.0",evolved
-3,3,3,Ctrl+F,Key Press,F,L Ctrl,Find in conversation,"App: Microsoft Teams, importance=6.0",evolved
-3,4,3,Ctrl+F6,Key Press,F6,L Ctrl,Previous section,"App: Microsoft Teams, importance=1.0",evolved
-3,5,3,Win+K,Key Press,K,L GUI,Connect / Cast,"App: Windows 11, importance=0.2",evolved
-3,7,3,L3,coach_l3_toggle,,,Dynamic layer access: @access:L3:toggle,Target layer 3,evolved
-3,8,3,L7,coach_l7_hold,,,Dynamic layer access: @access:L7:hold,Target layer 7,evolved
-3,9,3,transparent,Transparent,,,,,transparent
-3,10,3,Ctrl+Shift+;,Key Press,SemiColon and Colon,L Ctrl+L Shift,Insert current time,"App: Microsoft Excel, importance=0.5",evolved
-3,11,3,Win+4,Key Press,4 and Dollar,L GUI,Open/switch pinned app 4,"App: Windows 11, importance=3.0",evolved
-3,12,3,Win+I,Key Press,I,L GUI,Settings,"App: Windows 11, importance=3.0",evolved
-3,3,4,Ctrl+],Key Press,Right Brace,L Ctrl,Indent line,"App: Visual Studio Code, importance=2.7",evolved
-3,4,4,Ctrl+Q,Key Press,Q,L Ctrl,Mark as read,"App: Microsoft Outlook, importance=4.199999999999999",evolved
-3,5,4,Ctrl+Shift+6,Key Press,6 and Caret,L Ctrl+L Shift,Toggle details pane,"App: File Explorer, importance=0.45",evolved
-3,7,4,Ctrl+8,Key Press,8 and Star,L Ctrl,Switch to tab 8,"App: Browser (Chrome/Edge), importance=0.19",evolved
-3,8,4,L5,coach_l5_hold,,,Dynamic layer access: @access:L5:hold,Target layer 5,evolved
-3,4,5,Win+5,Key Press,5 and Percent,L GUI,Open/switch pinned app 5,"App: Windows 11, importance=3.0",evolved
-3,5,5,Ctrl+Left,Key Press,LeftArrow,L Ctrl,Jump to left edge of data,"App: Microsoft Excel, importance=5.0",evolved
-3,7,5,Ctrl+Shift+1,Key Press,1 and Bang,L Ctrl+L Shift,Extra large icons,"App: File Explorer, importance=0.09000000000000001",evolved
-4,0,0,transparent,Transparent,,,,,transparent
-4,1,0,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+S',,transparent
-4,2,0,Ctrl+Shift+~,Key Press,Grave Accent and Tilde,L Ctrl+L Shift,General format,"App: Microsoft Excel, importance=0.5",evolved
-4,3,0,Ctrl+;,Key Press,SemiColon and Colon,L Ctrl,Insert current date,"App: Microsoft Excel, importance=1.5",evolved
-4,4,0,Ctrl+Shift+Up,Key Press,UpArrow,L Ctrl+L Shift,Select to top edge,"App: Microsoft Excel, importance=3.0",evolved
-4,5,0,Shift+Click,coach_shift_click,,,Select range,"App: File Explorer, importance=2.7",evolved
-4,7,0,transparent,Transparent,,,,,transparent
-4,8,0,Alt+D,Key Press,D,L Alt,Focus address bar (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-4,9,0,Win+T,Key Press,T,L GUI,Cycle taskbar apps,"App: Windows 11, importance=1.0",evolved
-4,10,0,Ctrl+T,Key Press,T,L Ctrl,New tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
-4,11,0,transparent,Transparent,,,,,transparent
-4,12,0,transparent,Transparent,,,,,transparent
-4,0,1,transparent,Transparent,,,,,transparent
-4,1,1,Alt+Shift+D,Key Press,D,L Alt+L Shift,Split pane (auto),"App: Windows Terminal / PowerShell, importance=2.4000000000000004",evolved
-4,2,1,Alt+D,Key Press,D,L Alt,Focus address bar (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-4,3,1,=,Key Press,Equals and Plus,,Start formula,"App: Microsoft Excel, importance=5.0",evolved
-4,4,1,F2,Key Press,F2,,Rename,"App: Windows 11, importance=6.0",evolved
-4,5,1,Win+Right,Key Press,RightArrow,L GUI,Snap window right,"App: Windows 11, importance=10.0",evolved
-4,7,1,Shift+Alt+Left,Key Press,LeftArrow,L Shift+L Alt,Shrink selection,"App: Visual Studio Code, importance=2.7",evolved
-4,8,1,Shift+Alt+A,Key Press,A,L Shift+L Alt,Toggle block comment,"App: Visual Studio Code, importance=2.7",evolved
-4,9,1,Ctrl+End,Key Press,End,L Ctrl,Go to last used cell,"App: Microsoft Excel, importance=3.0",evolved
-4,10,1,transparent,Transparent,,,,,transparent
-4,11,1,transparent,Transparent,,,,,transparent
-4,12,1,transparent,Transparent,,,,,transparent
-4,0,2,transparent,Transparent,,,,,transparent
-4,1,2,Ctrl+W,Key Press,W,L Ctrl,Close tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
-4,2,2,Alt+Right,Key Press,RightArrow,L Alt,Go forward,"App: Microsoft Teams, importance=3.0",evolved
-4,3,2,Ctrl+C,Key Press,C,L Ctrl,Copy,"App: Microsoft Teams, importance=10.0",evolved
-4,4,2,Ctrl+Shift+K,Key Press,K,L Ctrl+L Shift,Raise/lower hand,"App: Microsoft Teams, importance=3.0",evolved
-4,5,2,Win+Space,Key Press,Spacebar,L GUI,Switch input language,"App: Windows 11, importance=6.0",evolved
-4,7,2,Shift+Alt+Down,Key Press,DownArrow,L Shift+L Alt,Copy line down,"App: Visual Studio Code, importance=5.4",evolved
-4,8,2,Shift+F5,Key Press,F5,L Shift,Stop debugging,"App: Visual Studio Code, importance=2.7",evolved
-4,9,2,Ctrl+6,Key Press,6 and Caret,L Ctrl,Files,"App: Microsoft Teams, importance=3.0",evolved
-4,10,2,MB2,Mouse Key Press,MB2,,Right click,"App: Mouse, importance=9.0",evolved
-4,11,2,transparent,Transparent,,,,,transparent
-4,12,2,Win+I,Key Press,I,L GUI,Settings,"App: Windows 11, importance=3.0",evolved
-4,0,3,Ctrl+Shift+N,Key Press,N,L Ctrl+L Shift,Incognito/InPrivate window,"App: Browser (Chrome/Edge), importance=0.95",evolved
-4,1,3,Ctrl+Shift+J,Key Press,J,L Ctrl+L Shift,Open Console,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-4,2,3,Ctrl+Shift+U,Key Press,U,L Ctrl+L Shift,Mark as unread,"App: Microsoft Teams, importance=3.0",evolved
-4,3,3,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
-4,4,3,Ctrl+V,Key Press,V,L Ctrl,Paste,"App: Microsoft Teams, importance=10.0",evolved
-4,5,3,F11,Key Press,F11,,Toggle fullscreen,"App: Browser (Chrome/Edge), importance=0.95",evolved
-4,7,3,L5,coach_l5_toggle,,,Dynamic layer access: @access:L5:toggle,Target layer 5,evolved
-4,8,3,L3,coach_l3_hold,,,Dynamic layer access: @access:L3:hold,Target layer 3,evolved
-4,9,3,transparent,Transparent,,,,,transparent
-4,10,3,Shift+Space,Key Press,Spacebar,L Shift,Scroll up one screen,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-4,11,3,transparent,Transparent,,,,,transparent
-4,12,3,transparent,Transparent,,,,,transparent
-4,3,4,transparent,Transparent,,,,,transparent
-4,4,4,Shift+Enter,Key Press,Return Enter,L Shift,New line in message,"App: Microsoft Teams, importance=6.0",evolved
-4,5,4,Ctrl+Shift+Q,Key Press,Q,L Ctrl+L Shift,New meeting,"App: Microsoft Outlook, importance=2.0999999999999996",evolved
-4,7,4,F9,Key Press,F9,,Toggle breakpoint,"App: Visual Studio Code, importance=5.4",evolved
-4,8,4,Scroll_L3,coach_l3_hold,,,Dynamic layer access: @scroll:L3:hold,Target layer 3,evolved
+3,2,3,\,Key Press,Backslash and Pipe,,Raw Backslash and Pipe completion key.,"App: Raw Keys, importance=3.0",evolved
+3,3,3,F10,Key Press,F10,,Step over,"App: Visual Studio Code, importance=5.4",evolved
+3,4,3,Alt+Up,Key Press,UpArrow,L Alt,Move line up,"App: Visual Studio Code, importance=5.4",evolved
+3,5,3,F4,Key Press,F4,,Toggle absolute ref ($),"App: Microsoft Excel, importance=5.0",evolved
+3,7,3,L2,coach_l2_toggle,,,Dynamic layer access: @access:L2:toggle,Target layer 2,evolved
+3,8,3,Ctrl+Shift+B,Key Press,B,L Ctrl+L Shift,Toggle background blur,"App: Microsoft Teams, importance=3.0",evolved
+3,9,3,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
+3,10,3,Win+P,Key Press,P,L GUI,Project / display mode,"App: Windows 11, importance=1.0",evolved
+3,11,3,Ctrl+Shift+L,Key Press,L,L Ctrl+L Shift,Toggle sidebar,"App: Microsoft Teams, importance=3.0",evolved
+3,12,3,Alt+Shift+D,Key Press,D,L Alt+L Shift,Split pane (auto),"App: Windows Terminal / PowerShell, importance=2.4000000000000004",evolved
+3,3,4,Ctrl+Shift+G,Key Press,G,L Ctrl+L Shift,Find previous,"App: Browser (Chrome/Edge), importance=0.95",evolved
+3,4,4,Ctrl+`,Key Press,Grave Accent and Tilde,L Ctrl,Toggle terminal,"App: Visual Studio Code, importance=9.0",evolved
+3,5,4,transparent,Transparent,,,,,transparent
+3,7,4,L7,coach_l7_hold,,,Dynamic layer access: @access:L7:hold,Target layer 7,evolved
+3,8,4,Scroll_L1,coach_l1_hold,,,Dynamic layer access: @scroll:L1:hold,Target layer 1,evolved
+3,4,5,transparent,Transparent,,,,,transparent
+3,5,5,Ctrl+Shift+P,Key Press,P,L Ctrl+L Shift,Toggle chat in meeting,"App: Microsoft Teams, importance=3.0",evolved
+3,7,5,Ctrl+Shift+Left,Key Press,LeftArrow,L Ctrl+L Shift,Select to left edge,"App: Microsoft Excel, importance=3.0",evolved
+4,0,0,Ctrl+Shift+2,Key Press,2 and At,L Ctrl+L Shift,Large icons,"App: File Explorer, importance=0.09000000000000001",evolved
+4,1,0,transparent,Transparent,,,,,transparent
+4,2,0,transparent,Transparent,,,,,transparent
+4,3,0,transparent,Transparent,,,,,transparent
+4,4,0,transparent,Transparent,,,,,transparent
+4,5,0,Ctrl+Right,Key Press,RightArrow,L Ctrl,Jump to right edge of data,"App: Microsoft Excel, importance=5.0",evolved
+4,7,0,Win+Shift+Left,Key Press,LeftArrow,L GUI+L Shift,Move to left monitor,"App: Windows 11, importance=6.0",evolved
+4,8,0,L1,coach_l1_toggle,,,Dynamic layer access: @access:L1:toggle,Target layer 1,evolved
+4,9,0,Ctrl+Up,Key Press,UpArrow,L Ctrl,Jump to top edge of data,"App: Microsoft Excel, importance=3.0",evolved
+4,10,0,Win+Tab,Key Press,Tab,L GUI,Task View,"App: Windows 11, importance=6.0",evolved
+4,11,0,Win+.,Key Press,Period and GreaterThan,L GUI,Emoji picker,"App: Windows 11, importance=3.0",evolved
+4,12,0,L8,coach_l8_toggle,,,Dynamic layer access: @access:L8:toggle,Target layer 8,evolved
+4,0,1,Ctrl+Shift+W,Key Press,W,L Ctrl+L Shift,Change workflow state,"App: M-Files Desktop Client, importance=5.1",evolved
+4,1,1,transparent,Transparent,,,,,transparent
+4,2,1,Ctrl+Q,Key Press,Q,L Ctrl,Mark as read,"App: Microsoft Outlook, importance=4.199999999999999",evolved
+4,3,1,transparent,Transparent,,,,,transparent
+4,4,1,transparent,Transparent,,,,,transparent
+4,5,1,Ctrl+Shift+<,Key Press,Comma and LessThan,L Ctrl+L Shift,Decrease font size,"App: Microsoft Word, importance=0.8999999999999999",evolved
+4,7,1,Ctrl+Down,Key Press,DownArrow,L Ctrl,Jump to bottom edge of data,"App: Microsoft Excel, importance=3.0",evolved
+4,8,1,MB1,Mouse Key Press,MB1,,Left click,"App: Mouse, importance=15.0",evolved
+4,9,1,Win+T,Key Press,T,L GUI,Cycle taskbar apps,"App: Windows 11, importance=1.0",evolved
+4,10,1,MB2,Mouse Key Press,MB2,,Right click,"App: Mouse, importance=9.0",evolved
+4,11,1,MB3,Mouse Key Press,MB3,,Middle click,"App: Mouse, importance=6.0",evolved
+4,12,1,Win+Ctrl+Right,Key Press,RightArrow,L GUI+L Ctrl,Switch desktop right,"App: Windows 11, importance=3.0",evolved
+4,0,2,Ctrl+8,Key Press,8 and Star,L Ctrl,Switch to tab 8,"App: Browser (Chrome/Edge), importance=0.19",evolved
+4,1,2,Ctrl++,Key Press,Equals and Plus,L Ctrl,Zoom in,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+4,2,2,Ctrl+L,Key Press,L,L Ctrl,Focus address bar,"App: Browser (Chrome/Edge), importance=9.5",evolved
+4,3,2,Ctrl+Shift++,Key Press,Equals and Plus,L Ctrl+L Shift,Insert cells/rows/columns,"App: Microsoft Excel, importance=3.0",evolved
+4,4,2,Ctrl+Shift+Right,Key Press,RightArrow,L Ctrl+L Shift,Select to right edge,"App: Microsoft Excel, importance=3.0",evolved
+4,5,2,Ctrl+4,Key Press,4 and Dollar,L Ctrl,Calendar,"App: Microsoft Teams, importance=6.0",evolved
+4,7,2,transparent,Transparent,,,,,transparent
+4,8,2,Ctrl+Left,Key Press,LeftArrow,L Ctrl,Jump to left edge of data,"App: Microsoft Excel, importance=5.0",evolved
+4,9,2,Ctrl+Shift+M,Key Press,M,L Ctrl+L Shift,Toggle mute,"App: Microsoft Teams, importance=10.0",evolved
+4,10,2,Win+X,Key Press,X,L GUI,Power User menu,"App: Windows 11, importance=3.0",evolved
+4,11,2,MB4,Mouse Key Press,MB4,,Back button,"App: Mouse, importance=4.5",evolved
+4,12,2,transparent,Transparent,,,,,transparent
+4,0,3,Ctrl+Shift+Home,Key Press,Home,L Ctrl+L Shift,Select to cell A1,"App: Microsoft Excel, importance=1.5",evolved
+4,1,3,Ctrl+F5,Key Press,F5,L Ctrl,Hard refresh (bypass cache),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+4,2,3,Ctrl+-,Key Press,Dash and Underscore,L Ctrl,Zoom out,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+4,3,3,Ctrl+H,Key Press,H,L Ctrl,History,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+4,4,3,F11,Key Press,F11,,Toggle fullscreen,"App: Browser (Chrome/Edge), importance=0.95",evolved
+4,5,3,Alt+F,Key Press,F,L Alt,Settings menu,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+4,7,3,Scroll_L6,coach_l6_hold,,,Dynamic layer access: @scroll:L6:hold,Target layer 6,evolved
+4,8,3,Ctrl+3,Key Press,3 and Hash,L Ctrl,Teams/channels,"App: Microsoft Teams, importance=6.0",evolved
+4,9,3,MB5,Mouse Key Press,MB5,,Forward button,"App: Mouse, importance=3.0",evolved
+4,10,3,Ctrl+Shift+A,Key Press,A,L Ctrl+L Shift,Accept call,"App: Microsoft Teams, importance=6.0",evolved
+4,11,3,Win+Ctrl+F4,Key Press,F4,L GUI+L Ctrl,Close current desktop,"App: Windows 11, importance=1.0",evolved
+4,12,3,Ctrl+Alt+Up,Key Press,UpArrow,L Ctrl+L Alt,Add cursor above,"App: Visual Studio Code, importance=5.4",evolved
+4,3,4,Alt+Click,coach_alt_click,,,Add cursor at position,"App: Visual Studio Code, importance=5.4",evolved
+4,4,4,transparent,Transparent,,,,,transparent
+4,5,4,Shift+F11,Key Press,F11,L Shift,Step out,"App: Visual Studio Code, importance=5.4",evolved
+4,7,4,L0,coach_base,,,Dynamic layer access: @access:L0:return,Target layer 0,evolved
+4,8,4,transparent,Transparent,,,,,transparent
 4,4,5,transparent,Transparent,,,,,transparent
 4,5,5,transparent,Transparent,,,,,transparent
-4,7,5,Ctrl+Shift+6,Key Press,6 and Caret,L Ctrl+L Shift,Toggle details pane,"App: File Explorer, importance=0.45",evolved
-5,0,0,transparent,Transparent,,,,,transparent
-5,1,0,transparent,Transparent,,,,,transparent
-5,2,0,Ctrl+Click,coach_ctrl_click,,,Select non-adjacent cells,"App: Microsoft Excel, importance=1.5",evolved
-5,3,0,Ctrl+Shift+Down,Key Press,DownArrow,L Ctrl+L Shift,Select to bottom edge,"App: Microsoft Excel, importance=3.0",evolved
-5,4,0,Shift+Delete,Key Press,Delete,L Shift,Permanent delete,"App: File Explorer, importance=0.45",evolved
-5,5,0,Win+Home,Key Press,Home,L GUI,Minimize all except active,"App: Windows 11, importance=0.2",evolved
-5,7,0,transparent,Transparent,,,,,transparent
-5,8,0,Ctrl+Shift+2,Key Press,2 and At,L Ctrl+L Shift,Large icons,"App: File Explorer, importance=0.09000000000000001",evolved
-5,9,0,transparent,Transparent,,,,,transparent
-5,10,0,transparent,Transparent,,,,,transparent
-5,11,0,transparent,Transparent,,,,,transparent
-5,12,0,Ctrl+Shift+N,Key Press,N,L Ctrl+L Shift,Incognito/InPrivate window,"App: Browser (Chrome/Edge), importance=0.95",evolved
-5,0,1,Ctrl+\,Key Press,Backslash and Pipe,L Ctrl,Split editor,"App: Visual Studio Code, importance=2.7",evolved
-5,1,1,Ctrl+9,Key Press,9 and Left Bracket,L Ctrl,Last tab,"App: Browser (Chrome/Edge), importance=0.95",evolved
-5,2,1,Ctrl+End,Key Press,End,L Ctrl,Go to last used cell,"App: Microsoft Excel, importance=3.0",evolved
-5,3,1,Ctrl+Right,Key Press,RightArrow,L Ctrl,Jump to right edge of data,"App: Microsoft Excel, importance=5.0",evolved
-5,4,1,Ctrl+X,Key Press,X,L Ctrl,Cut,"App: Windows 11, importance=6.0",evolved
-5,5,1,Win+H,Key Press,H,L GUI,Voice typing,"App: Windows 11, importance=6.0",evolved
-5,7,1,Alt+F12,Key Press,F12,L Alt,Peek definition,"App: Visual Studio Code, importance=5.4",evolved
-5,8,1,F9,Key Press,F9,,Toggle breakpoint,"App: Visual Studio Code, importance=5.4",evolved
-5,9,1,Win+A,Key Press,A,L GUI,Quick settings / Action center,"App: Windows 11, importance=1.0",evolved
-5,10,1,Alt+Shift+Up,Key Press,UpArrow,L Alt+L Shift,Previous unread,"App: Discord, importance=0.6000000000000001",evolved
-5,11,1,transparent,Transparent,,,,,transparent
-5,12,1,Win+T,Key Press,T,L GUI,Cycle taskbar apps,"App: Windows 11, importance=1.0",evolved
-5,0,2,Win+Ctrl+Left,Key Press,LeftArrow,L GUI+L Ctrl,Switch desktop left,"App: Windows 11, importance=3.0",evolved
-5,1,2,Ctrl+L,Key Press,L,L Ctrl,Focus address bar,"App: Browser (Chrome/Edge), importance=9.5",evolved
-5,2,2,Alt+Left,Key Press,LeftArrow,L Alt,Go back,"App: Microsoft Teams, importance=6.0",evolved
-5,3,2,Ctrl+2,Key Press,2 and At,L Ctrl,Chat,"App: Microsoft Teams, importance=10.0",evolved
-5,4,2,Win+I,Key Press,I,L GUI,Settings,"App: Windows 11, importance=3.0",evolved
-5,5,2,Win+3,Key Press,3 and Hash,L GUI,Open/switch pinned app 3,"App: Windows 11, importance=6.0",evolved
-5,7,2,F10,Key Press,F10,,Step over,"App: Visual Studio Code, importance=5.4",evolved
-5,8,2,F9,Key Press,F9,,Toggle breakpoint,"App: Visual Studio Code, importance=5.4",evolved
+4,7,5,Ctrl+Alt+Down,Key Press,DownArrow,L Ctrl+L Alt,Add cursor below,"App: Visual Studio Code, importance=5.4",evolved
+5,0,0,F1,Key Press,F1,,Help,"App: Browser (Chrome/Edge), importance=0.19",evolved
+5,1,0,Ctrl+Click,coach_ctrl_click,,,Select non-adjacent cells,"App: Microsoft Excel, importance=1.5",evolved
+5,2,0,Ctrl+;,Key Press,SemiColon and Colon,L Ctrl,Insert current date,"App: Microsoft Excel, importance=1.5",evolved
+5,3,0,Ctrl+Shift+J,Key Press,J,L Ctrl+L Shift,Open Console,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+5,4,0,transparent,Transparent,,,,,transparent
+5,5,0,Ctrl+End,Key Press,End,L Ctrl,Go to last used cell,"App: Microsoft Excel, importance=3.0",evolved
+5,7,0,Ctrl+Shift+F,Key Press,F,L Ctrl+L Shift,Format text,"App: Microsoft Teams, importance=3.0",evolved
+5,8,0,transparent,Transparent,,,,,transparent
+5,9,0,Win+R,Key Press,R,L GUI,Run dialog,"App: Windows 11, importance=3.0",evolved
+5,10,0,Win+;,Key Press,SemiColon and Colon,L GUI,Emoji picker,"App: Windows 11, importance=3.0",evolved
+5,11,0,Win+Ctrl+Left,Key Press,LeftArrow,L GUI+L Ctrl,Switch desktop left,"App: Windows 11, importance=3.0",evolved
+5,12,0,transparent,Transparent,,,,,transparent
+5,0,1,transparent,Transparent,,,,,transparent
+5,1,1,transparent,Transparent,,,,,transparent
+5,2,1,transparent,Transparent,,,,,transparent
+5,3,1,Shift+F5,Key Press,F5,L Shift,Stop debugging,"App: Visual Studio Code, importance=2.7",evolved
+5,4,1,transparent,Transparent,,,,,transparent
+5,5,1,transparent,Transparent,,,,,transparent
+5,7,1,transparent,Transparent,,,,,transparent
+5,8,1,transparent,Transparent,,,,,transparent
+5,9,1,Ctrl+2,Key Press,2 and At,L Ctrl,Chat,"App: Microsoft Teams, importance=10.0",evolved
+5,10,1,Win+2,Key Press,2 and At,L GUI,Open/switch pinned app 2,"App: Windows 11, importance=6.0",evolved
+5,11,1,Win+C,Key Press,C,L GUI,Open Copilot,"App: Windows 11, importance=6.0",evolved
+5,12,1,Ctrl+Shift+P,Key Press,P,L Ctrl+L Shift,Toggle chat in meeting,"App: Microsoft Teams, importance=3.0",evolved
+5,0,2,transparent,Transparent,,,,,transparent
+5,1,2,transparent,Transparent,,,,,transparent
+5,2,2,Ctrl+Shift+Tab,Key Press,Tab,L Ctrl+L Shift,Previous tab,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+5,3,2,Ctrl+Shift+$,Key Press,4 and Dollar,L Ctrl+L Shift,Currency format,"App: Microsoft Excel, importance=1.5",evolved
+5,4,2,F9,Key Press,F9,,Toggle breakpoint,"App: Visual Studio Code, importance=5.4",evolved
+5,5,2,transparent,Transparent,,,,,transparent
+5,7,2,L10,coach_l10_hold,,,Dynamic layer access: @access:L10:hold,Target layer 10,evolved
+5,8,2,Alt+Shift+Down,Key Press,DownArrow,L Alt+L Shift,Next unread,"App: Discord, importance=0.6000000000000001",evolved
 5,9,2,transparent,Transparent,,,,,transparent
-5,10,2,Ctrl+Y,Key Press,Y,L Ctrl,Redo,"App: Windows 11, importance=3.0",evolved
+5,10,2,Win+Home,Key Press,Home,L GUI,Minimize all except active,"App: Windows 11, importance=0.2",evolved
 5,11,2,transparent,Transparent,,,,,transparent
-5,12,2,Ctrl+Shift+1,Key Press,1 and Bang,L Ctrl+L Shift,Extra large icons,"App: File Explorer, importance=0.09000000000000001",evolved
-5,0,3,Ctrl+J,Key Press,J,L Ctrl,Downloads,"App: Browser (Chrome/Edge), importance=0.95",evolved
-5,1,3,Ctrl+Shift+N,Key Press,N,L Ctrl+L Shift,Incognito/InPrivate window,"App: Browser (Chrome/Edge), importance=0.95",evolved
-5,2,3,Ctrl+Shift+F6,Key Press,F6,L Ctrl+L Shift,Next section,"App: Microsoft Teams, importance=3.0",evolved
-5,3,3,Ctrl+Shift+O,Key Press,O,L Ctrl+L Shift,Toggle camera,"App: Microsoft Teams, importance=6.0",evolved
-5,4,3,Ctrl+5,Key Press,5 and Percent,L Ctrl,Calls,"App: Microsoft Teams, importance=3.0",evolved
-5,5,3,Win+T,Key Press,T,L GUI,Cycle taskbar apps,"App: Windows 11, importance=1.0",evolved
-5,7,3,L7,coach_l7_toggle,,,Dynamic layer access: @access:L7:toggle,Target layer 7,evolved
-5,8,3,L8,coach_l8_hold,,,Dynamic layer access: @access:L8:hold,Target layer 8,evolved
-5,9,3,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
+5,12,2,transparent,Transparent,,,,,transparent
+5,0,3,transparent,Transparent,,,,,transparent
+5,1,3,transparent,Transparent,,,,,transparent
+5,2,3,Alt+Enter,Key Press,Return Enter,L Alt,Properties / metadata card,"App: M-Files Desktop Client, importance=8.5",evolved
+5,3,3,transparent,Transparent,,,,,transparent
+5,4,3,Ctrl+Alt+Up,Key Press,UpArrow,L Ctrl+L Alt,Add cursor above,"App: Visual Studio Code, importance=5.4",evolved
+5,5,3,transparent,Transparent,,,,,transparent
+5,7,3,L4,coach_l4_hold,,,Dynamic layer access: @access:L4:hold,Target layer 4,evolved
+5,8,3,transparent,Transparent,,,,,transparent
+5,9,3,Ctrl+Page Up,Key Press,PageUp,L Ctrl,Previous sheet,"App: Microsoft Excel, importance=3.0",evolved
 5,10,3,transparent,Transparent,,,,,transparent
-5,11,3,transparent,Transparent,,,,,transparent
-5,12,3,Ctrl+Shift+6,Key Press,6 and Caret,L Ctrl+L Shift,Toggle details pane,"App: File Explorer, importance=0.45",evolved
-5,3,4,Win+X,Key Press,X,L GUI,Power User menu,"App: Windows 11, importance=3.0",evolved
-5,4,4,Shift+Space,Key Press,Spacebar,L Shift,Scroll up one screen,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+5,11,3,Ctrl+Shift+Q,Key Press,Q,L Ctrl+L Shift,New meeting,"App: Microsoft Outlook, importance=2.0999999999999996",evolved
+5,12,3,transparent,Transparent,,,,,transparent
+5,3,4,Win+1,Key Press,1 and Bang,L GUI,Open/switch pinned app 1,"App: Windows 11, importance=10.0",evolved
+5,4,4,transparent,Transparent,,,,,transparent
 5,5,4,transparent,Transparent,,,,,transparent
-5,7,4,transparent,Transparent,,,,,transparent
-5,8,4,Scroll_L4,coach_l4_hold,,,Dynamic layer access: @scroll:L4:hold,Target layer 4,evolved
-5,4,5,Page Up,Key Press,PageUp,,Previous slide,"App: Microsoft PowerPoint, importance=1.2000000000000002",evolved
-5,5,5,Ctrl+7,Key Press,7 and Ampersand,L Ctrl,Switch to tab 7,"App: Browser (Chrome/Edge), importance=0.19",evolved
-5,7,5,Shift+Alt+Right,Key Press,RightArrow,L Shift+L Alt,Expand selection,"App: Visual Studio Code, importance=2.7",evolved
-6,0,0,transparent,Transparent,,,,,transparent
+5,7,4,L6,coach_l6_hold,,,Dynamic layer access: @access:L6:hold,Target layer 6,evolved
+5,8,4,transparent,Transparent,,,,,transparent
+5,4,5,transparent,Transparent,,,,,transparent
+5,5,5,Ctrl+Shift+Enter,Key Press,Return Enter,L Ctrl+L Shift,Insert line above,"App: Visual Studio Code, importance=2.7",evolved
+5,7,5,L8,coach_l8_toggle,,,Dynamic layer access: @access:L8:toggle,Target layer 8,evolved
+6,0,0,Ctrl+Shift+W,Key Press,W,L Ctrl+L Shift,Change workflow state,"App: M-Files Desktop Client, importance=5.1",evolved
 6,1,0,transparent,Transparent,,,,,transparent
 6,2,0,transparent,Transparent,,,,,transparent
 6,3,0,transparent,Transparent,,,,,transparent
-6,4,0,transparent,Transparent,,,,,transparent
+6,4,0,Shift+F3,Key Press,F3,L Shift,Find previous,"App: Visual Studio Code, importance=2.7",evolved
 6,5,0,transparent,Transparent,,,,,transparent
 6,7,0,transparent,Transparent,,,,,transparent
 6,8,0,transparent,Transparent,,,,,transparent
-6,9,0,transparent,Transparent,,,,,transparent
-6,10,0,transparent,Transparent,,,,,transparent
-6,11,0,transparent,Transparent,,,,,transparent
-6,12,0,transparent,Transparent,,,,,transparent
-6,0,1,transparent,Transparent,,,,,transparent
-6,1,1,Ctrl+S,Key Press,S,L Ctrl,Save page as,"App: Browser (Chrome/Edge), importance=0.95",evolved
-6,2,1,Alt+Shift+Down,Key Press,DownArrow,L Alt+L Shift,Next unread,"App: Discord, importance=0.6000000000000001",evolved
-6,3,1,Ctrl+Shift+Left,Key Press,LeftArrow,L Ctrl+L Shift,Select to left edge,"App: Microsoft Excel, importance=3.0",evolved
-6,4,1,Win+Shift+Left,Key Press,LeftArrow,L GUI+L Shift,Move to left monitor,"App: Windows 11, importance=6.0",evolved
-6,5,1,Win+4,Key Press,4 and Dollar,L GUI,Open/switch pinned app 4,"App: Windows 11, importance=3.0",evolved
-6,7,1,Ctrl+\,Key Press,Backslash and Pipe,L Ctrl,Split editor,"App: Visual Studio Code, importance=2.7",evolved
+6,9,0,Win+Ctrl+F4,Key Press,F4,L GUI+L Ctrl,Close current desktop,"App: Windows 11, importance=1.0",evolved
+6,10,0,Win+S,Key Press,S,L GUI,Search,"App: Windows 11, importance=10.0",evolved
+6,11,0,Win+Shift+Left,Key Press,LeftArrow,L GUI+L Shift,Move to left monitor,"App: Windows 11, importance=6.0",evolved
+6,12,0,Alt+Shift++,Key Press,Equals and Plus,L Alt+L Shift,Split pane vertical,"App: Windows Terminal / PowerShell, importance=1.2000000000000002",evolved
+6,0,1,L1,coach_l1_toggle,,,Dynamic layer access: @access:L1:toggle,Target layer 1,evolved
+6,1,1,transparent,Transparent,,,,,transparent
+6,2,1,L8,coach_l8_hold,,,Dynamic layer access: @access:L8:hold,Target layer 8,evolved
+6,3,1,transparent,Transparent,,,,,transparent
+6,4,1,Ctrl+Shift+6,Key Press,6 and Caret,L Ctrl+L Shift,Toggle details pane,"App: File Explorer, importance=0.45",evolved
+6,5,1,Ctrl+Shift+N,Key Press,N,L Ctrl+L Shift,Incognito/InPrivate window,"App: Browser (Chrome/Edge), importance=0.95",evolved
+6,7,1,transparent,Transparent,,,,,transparent
 6,8,1,transparent,Transparent,,,,,transparent
 6,9,1,transparent,Transparent,,,,,transparent
 6,10,1,transparent,Transparent,,,,,transparent
 6,11,1,transparent,Transparent,,,,,transparent
 6,12,1,transparent,Transparent,,,,,transparent
-6,0,2,F1,Key Press,F1,,Help,"App: Browser (Chrome/Edge), importance=0.19",evolved
-6,1,2,Ctrl+Shift+T,Key Press,T,L Ctrl+L Shift,Reopen closed tab,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
-6,2,2,F12,Key Press,F12,,Open DevTools,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
-6,3,2,Ctrl+1,Key Press,1 and Bang,L Ctrl,Activity,"App: Microsoft Teams, importance=6.0",evolved
-6,4,2,Win+L,Key Press,L,L GUI,Lock PC,"App: Windows 11, importance=3.0",evolved
-6,5,2,Win+X,Key Press,X,L GUI,Power User menu,"App: Windows 11, importance=3.0",evolved
-6,7,2,Alt+Down,Key Press,DownArrow,L Alt,Move line down,"App: Visual Studio Code, importance=5.4",evolved
-6,8,2,transparent,Transparent,,,,,transparent
-6,9,2,transparent,Transparent,,,,,transparent
-6,10,2,transparent,Transparent,,,,,transparent
+6,0,2,Shift+Alt+Right,Key Press,RightArrow,L Shift+L Alt,Expand selection,"App: Visual Studio Code, importance=2.7",evolved
+6,1,2,transparent,Transparent,,,,,transparent
+6,2,2,transparent,Transparent,,,,,transparent
+6,3,2,Ctrl+Shift+T,Key Press,T,L Ctrl+L Shift,Reopen closed tab,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+6,4,2,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+S',,transparent
+6,5,2,transparent,Transparent,,,,,transparent
+6,7,2,Ctrl+Shift+S,Key Press,S,L Ctrl+L Shift,Attach file,"App: Microsoft Teams, importance=3.0",evolved
+6,8,2,Win+B,Key Press,B,L GUI,Focus system tray,"App: Windows 11, importance=1.0",evolved
+6,9,2,Ctrl+I,Key Press,I,L Ctrl,Italic,"App: Microsoft Teams, importance=3.0",evolved
+6,10,2,Win+P,Key Press,P,L GUI,Project / display mode,"App: Windows 11, importance=1.0",evolved
 6,11,2,transparent,Transparent,,,,,transparent
 6,12,2,transparent,Transparent,,,,,transparent
-6,0,3,transparent,Transparent,,,,,transparent
-6,1,3,Ctrl+7,Key Press,7 and Ampersand,L Ctrl,Switch to tab 7,"App: Browser (Chrome/Edge), importance=0.19",evolved
-6,2,3,Ctrl+Shift+R,Key Press,R,L Ctrl+L Shift,Start recording,"App: Microsoft Teams, importance=1.0",evolved
-6,3,3,Ctrl+I,Key Press,I,L Ctrl,Italic,"App: Microsoft Teams, importance=3.0",evolved
-6,4,3,Ctrl+Shift+B,Key Press,B,L Ctrl+L Shift,Toggle background blur,"App: Microsoft Teams, importance=3.0",evolved
+6,0,3,Ctrl+P,Key Press,P,L Ctrl,Print,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+6,1,3,transparent,Transparent,,,,,transparent
+6,2,3,transparent,Transparent,,,,,transparent
+6,3,3,Ctrl+Page Down,Key Press,PageDown,L Ctrl,Next sheet,"App: Microsoft Excel, importance=3.0",evolved
+6,4,3,Ctrl+],Key Press,Right Brace,L Ctrl,Indent line,"App: Visual Studio Code, importance=2.7",evolved
 6,5,3,transparent,Transparent,,,,,transparent
-6,7,3,L2,coach_l2_toggle,,,Dynamic layer access: @access:L2:toggle,Target layer 2,evolved
-6,8,3,L4,coach_l4_hold,,,Dynamic layer access: @access:L4:hold,Target layer 4,evolved
-6,9,3,transparent,Transparent,,,,,transparent
+6,7,3,L1,coach_l1_hold,,,Dynamic layer access: @access:L1:hold,Target layer 1,evolved
+6,8,3,Scroll_L3,coach_l3_hold,,,Dynamic layer access: @scroll:L3:hold,Target layer 3,evolved
+6,9,3,Ctrl+Shift+F,Key Press,F,L Ctrl+L Shift,Format text,"App: Microsoft Teams, importance=3.0",evolved
 6,10,3,transparent,Transparent,,,,,transparent
-6,11,3,transparent,Transparent,,,,,transparent
+6,11,3,Alt+D,Key Press,D,L Alt,Focus address bar (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
 6,12,3,transparent,Transparent,,,,,transparent
-6,3,4,Ctrl+`,Key Press,Grave Accent and Tilde,L Ctrl,Toggle terminal,"App: Visual Studio Code, importance=9.0",evolved
+6,3,4,Ctrl+Shift+`,Key Press,Grave Accent and Tilde,L Ctrl+L Shift,New terminal,"App: Visual Studio Code, importance=5.4",evolved
 6,4,4,transparent,Transparent,,,,,transparent
-6,5,4,Ctrl+Shift+2,Key Press,2 and At,L Ctrl+L Shift,Large icons,"App: File Explorer, importance=0.09000000000000001",evolved
-6,7,4,transparent,Transparent,,,,,transparent
-6,8,4,Scroll_L5,coach_l5_hold,,,Dynamic layer access: @scroll:L5:hold,Target layer 5,evolved
-6,4,5,transparent,Transparent,,,,,transparent
+6,5,4,Shift+Space,Key Press,Spacebar,L Shift,Scroll up one screen,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+6,7,4,L5,coach_l5_hold,,,Dynamic layer access: @access:L5:hold,Target layer 5,evolved
+6,8,4,transparent,Transparent,,,,,transparent
+6,4,5,Shift+Alt+Down,Key Press,DownArrow,L Shift+L Alt,Copy line down,"App: Visual Studio Code, importance=5.4",evolved
 6,5,5,transparent,Transparent,,,,,transparent
-6,7,5,transparent,Transparent,,,,,transparent
+6,7,5,L9,coach_l9_toggle,,,Dynamic layer access: @access:L9:toggle,Target layer 9,evolved
 7,0,0,transparent,Transparent,,,,,canonical (frozen/critical)
 7,1,0,transparent,Transparent,,,,,canonical (frozen/critical)
 7,2,0,transparent,Transparent,,,,,canonical (frozen/critical)
@@ -448,170 +448,170 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 7,5,5,Right Click,Mouse Key Press,MB2,,,,canonical (frozen/critical)
 7,7,5,Ret,Key Press,Return Enter,,,,canonical (frozen/critical)
 8,0,0,transparent,Transparent,,,,,transparent
-8,1,0,transparent,Transparent,,,,,transparent
-8,2,0,Ctrl+Shift+;,Key Press,SemiColon and Colon,L Ctrl+L Shift,Insert current time,"App: Microsoft Excel, importance=0.5",evolved
-8,3,0,Ctrl+Shift++,Key Press,Equals and Plus,L Ctrl+L Shift,Insert cells/rows/columns,"App: Microsoft Excel, importance=3.0",evolved
+8,1,0,Ctrl+Shift+O,Key Press,O,L Ctrl+L Shift,Toggle camera,"App: Microsoft Teams, importance=6.0",evolved
+8,2,0,transparent,Transparent,,,,,transparent
+8,3,0,transparent,Transparent,,,,,transparent
 8,4,0,transparent,Transparent,,,,,transparent
 8,5,0,transparent,Transparent,,,,,transparent
-8,7,0,transparent,Transparent,,,,,transparent
-8,8,0,transparent,Transparent,,,,,transparent
-8,9,0,transparent,Transparent,,,,,transparent
-8,10,0,Ctrl+8,Key Press,8 and Star,L Ctrl,Switch to tab 8,"App: Browser (Chrome/Edge), importance=0.19",evolved
+8,7,0,Ctrl+Q,Key Press,Q,L Ctrl,Mark as read,"App: Microsoft Outlook, importance=4.199999999999999",evolved
+8,8,0,Ctrl+/,Key Press,ForwardSlash and QuestionMark,L Ctrl,Show keyboard shortcuts,"App: Microsoft Teams, importance=0.2",evolved
+8,9,0,Ctrl+6,Key Press,6 and Caret,L Ctrl,Files,"App: Microsoft Teams, importance=3.0",evolved
+8,10,0,Win+Shift+S,Key Press,S,L GUI+L Shift,Screenshot (Snip),"App: Windows 11, importance=6.0",evolved
 8,11,0,transparent,Transparent,,,,,transparent
 8,12,0,transparent,Transparent,,,,,transparent
 8,0,1,transparent,Transparent,,,,,transparent
-8,1,1,transparent,Transparent,,,,,transparent
-8,2,1,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+S',,transparent
-8,3,1,Ctrl+Shift+$,Key Press,4 and Dollar,L Ctrl+L Shift,Currency format,"App: Microsoft Excel, importance=1.5",evolved
-8,4,1,Win+5,Key Press,5 and Percent,L GUI,Open/switch pinned app 5,"App: Windows 11, importance=3.0",evolved
-8,5,1,Win+.,Key Press,Period and GreaterThan,L GUI,Emoji picker,"App: Windows 11, importance=3.0",evolved
-8,7,1,Ctrl+],Key Press,Right Brace,L Ctrl,Indent line,"App: Visual Studio Code, importance=2.7",evolved
-8,8,1,transparent,Transparent,,,,,transparent
-8,9,1,transparent,Transparent,,,,,transparent
-8,10,1,transparent,Transparent,,,,,transparent
-8,11,1,transparent,Transparent,,,,,transparent
+8,1,1,Ctrl+Shift+Del,Key Press,Delete,L Ctrl+L Shift,Clear browsing data,"App: Browser (Chrome/Edge), importance=0.95",evolved
+8,2,1,transparent,Transparent,,,,,transparent
+8,3,1,transparent,Transparent,,,,,transparent
+8,4,1,transparent,Transparent,,,,,transparent
+8,5,1,transparent,Transparent,,,,,transparent
+8,7,1,transparent,Transparent,,,,,transparent
+8,8,1,Ctrl+End,Key Press,End,L Ctrl,Go to last used cell,"App: Microsoft Excel, importance=3.0",evolved
+8,9,1,Ctrl+Shift+H,Key Press,H,L Ctrl+L Shift,Hang up / end call,"App: Microsoft Teams, importance=6.0",evolved
+8,10,1,Win+Space,Key Press,Spacebar,L GUI,Switch input language,"App: Windows 11, importance=6.0",evolved
+8,11,1,Ctrl+J,Key Press,J,L Ctrl,Downloads,"App: Browser (Chrome/Edge), importance=0.95",evolved
 8,12,1,transparent,Transparent,,,,,transparent
 8,0,2,transparent,Transparent,,,,,transparent
-8,1,2,Ctrl+Shift+V,Key Press,V,L Ctrl+L Shift,Paste without formatting,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
-8,2,2,F3,Key Press,F3,,Find next (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-8,3,2,Ctrl+3,Key Press,3 and Hash,L Ctrl,Teams/channels,"App: Microsoft Teams, importance=6.0",evolved
-8,4,2,Win+;,Key Press,SemiColon and Colon,L GUI,Emoji picker,"App: Windows 11, importance=3.0",evolved
-8,5,2,Alt+Shift,Key Press,Shift,L Alt,Switch keyboard layout (alt),"App: Windows 11, importance=3.0",evolved
-8,7,2,Ctrl+Shift+Enter,Key Press,Return Enter,L Ctrl+L Shift,Insert line above,"App: Visual Studio Code, importance=2.7",evolved
-8,8,2,transparent,Transparent,,,,,transparent
-8,9,2,Ctrl+R,Key Press,R,L Ctrl,Reply,"App: Microsoft Outlook, importance=7.0",evolved
-8,10,2,transparent,Transparent,,,,,transparent
+8,1,2,transparent,Transparent,,,,,transparent
+8,2,2,transparent,Transparent,,,,,transparent
+8,3,2,Ctrl+Shift+Tab,Key Press,Tab,L Ctrl+L Shift,Previous tab,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+8,4,2,Shift+Alt+Right,Key Press,RightArrow,L Shift+L Alt,Expand selection,"App: Visual Studio Code, importance=2.7",evolved
+8,5,2,transparent,Transparent,,,,,transparent
+8,7,2,transparent,Transparent,,,,,transparent
+8,8,2,Ctrl+4,Key Press,4 and Dollar,L Ctrl,Calendar,"App: Microsoft Teams, importance=6.0",evolved
+8,9,2,transparent,Transparent,,,,,transparent
+8,10,2,Ctrl+Z,Key Press,Z,L Ctrl,Undo,"App: Microsoft Teams, importance=6.0",evolved
 8,11,2,transparent,Transparent,,,,,transparent
 8,12,2,transparent,Transparent,,,,,transparent
 8,0,3,transparent,Transparent,,,,,transparent
-8,1,3,Ctrl+8,Key Press,8 and Star,L Ctrl,Switch to tab 8,"App: Browser (Chrome/Edge), importance=0.19",evolved
-8,2,3,Ctrl+U,Key Press,U,L Ctrl,Underline,"App: Microsoft Teams, importance=1.0",evolved
-8,3,3,Ctrl+Shift+A,Key Press,A,L Ctrl+L Shift,Accept call,"App: Microsoft Teams, importance=6.0",evolved
-8,4,3,Ctrl+Shift+E,Key Press,E,L Ctrl+L Shift,Toggle screen share,"App: Microsoft Teams, importance=6.0",evolved
-8,5,3,Ctrl+T,Key Press,T,L Ctrl,New tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
-8,7,3,L0,coach_base,,,Dynamic layer access: @access:L0:return,Target layer 0,evolved
-8,8,3,Scroll_L1,coach_l1_hold,,,Dynamic layer access: @scroll:L1:hold,Target layer 1,evolved
-8,9,3,transparent,Transparent,,,,,transparent
+8,1,3,Ctrl+Shift+C,Key Press,C,L Ctrl+L Shift,Inspect element,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+8,2,3,transparent,Transparent,,,,,transparent
+8,3,3,transparent,Transparent,,,,,transparent
+8,4,3,Ctrl+Alt+Down,Key Press,DownArrow,L Ctrl+L Alt,Add cursor below,"App: Visual Studio Code, importance=5.4",evolved
+8,5,3,Alt+Down,Key Press,DownArrow,L Alt,Move line down,"App: Visual Studio Code, importance=5.4",evolved
+8,7,3,Scroll_L4,coach_l4_hold,,,Dynamic layer access: @scroll:L4:hold,Target layer 4,evolved
+8,8,3,Ctrl+.,Key Press,Period and GreaterThan,L Ctrl,Show commands,"App: Microsoft Teams, importance=3.0",evolved
+8,9,3,Ctrl+B,Key Press,B,L Ctrl,Bold,"App: Microsoft Teams, importance=6.0",evolved
 8,10,3,transparent,Transparent,,,,,transparent
-8,11,3,Alt+P,Key Press,P,L Alt,Preview pane,"App: File Explorer, importance=0.45",evolved
+8,11,3,Ctrl+Shift+Q,Key Press,Q,L Ctrl+L Shift,New meeting,"App: Microsoft Outlook, importance=2.0999999999999996",evolved
 8,12,3,transparent,Transparent,,,,,transparent
 8,3,4,transparent,Transparent,,,,,transparent
-8,4,4,transparent,Transparent,,,,,transparent
-8,5,4,transparent,Transparent,,,,,transparent
-8,7,4,transparent,Transparent,,,,,transparent
-8,8,4,Scroll_L10,coach_l10_hold,,,Dynamic layer access: @scroll:L10:hold,Target layer 10,evolved
+8,4,4,Ctrl+Home,Key Press,Home,L Ctrl,Go to cell A1,"App: Microsoft Excel, importance=3.0",evolved
+8,5,4,Shift+Alt+A,Key Press,A,L Shift+L Alt,Toggle block comment,"App: Visual Studio Code, importance=2.7",evolved
+8,7,4,L5,coach_l5_toggle,,,Dynamic layer access: @access:L5:toggle,Target layer 5,evolved
+8,8,4,transparent,Transparent,,,,,transparent
 8,4,5,transparent,Transparent,,,,,transparent
 8,5,5,transparent,Transparent,,,,,transparent
-8,7,5,transparent,Transparent,,,,,transparent
-9,0,0,Ctrl+/,Key Press,ForwardSlash and QuestionMark,L Ctrl,Show keyboard shortcuts,"App: Microsoft Teams, importance=0.2",evolved
-9,1,0,Ctrl+Shift+1,Key Press,1 and Bang,L Ctrl+L Shift,Extra large icons,"App: File Explorer, importance=0.09000000000000001",evolved
-9,2,0,Alt+P,Key Press,P,L Alt,Preview pane,"App: File Explorer, importance=0.45",evolved
-9,3,0,Ctrl+Shift+End,Key Press,End,L Ctrl+L Shift,Select to last used cell,"App: Microsoft Excel, importance=1.5",evolved
-9,4,0,Ctrl+Shift+%,Key Press,5 and Percent,L Ctrl+L Shift,Percent format,"App: Microsoft Excel, importance=1.5",evolved
-9,5,0,Win+B,Key Press,B,L GUI,Focus system tray,"App: Windows 11, importance=1.0",evolved
-9,7,0,Ctrl+[,Key Press,Left Brace,L Ctrl,Outdent line,"App: Visual Studio Code, importance=2.7",evolved
-9,8,0,MB2,Mouse Key Press,MB2,,Right click,"App: Mouse, importance=9.0",evolved
-9,9,0,MB5,Mouse Key Press,MB5,,Forward button,"App: Mouse, importance=3.0",evolved
-9,10,0,F7,Key Press,F7,,Spell check,"App: Microsoft Word, importance=0.8999999999999999",evolved
+8,7,5,Scroll_L5,coach_l5_hold,,,Dynamic layer access: @scroll:L5:hold,Target layer 5,evolved
+9,0,0,Ctrl+O,Key Press,O,L Ctrl,Open file,"App: Visual Studio Code, importance=2.7",evolved
+9,1,0,transparent,Transparent,,,,,transparent
+9,2,0,transparent,Transparent,,,,,transparent
+9,3,0,transparent,Transparent,,,,,transparent
+9,4,0,transparent,Transparent,,,,,transparent
+9,5,0,transparent,Transparent,,,,,transparent
+9,7,0,transparent,Transparent,,,,,transparent
+9,8,0,transparent,Transparent,,,,,transparent
+9,9,0,transparent,Transparent,,,,,transparent
+9,10,0,Win+I,Key Press,I,L GUI,Settings,"App: Windows 11, importance=3.0",evolved
 9,11,0,transparent,Transparent,,,,,transparent
-9,12,0,Page Up,Key Press,PageUp,,Previous slide,"App: Microsoft PowerPoint, importance=1.2000000000000002",evolved
+9,12,0,transparent,Transparent,,,,,transparent
 9,0,1,transparent,Transparent,,,,,transparent
-9,1,1,Ctrl+Shift+I,Key Press,I,L Ctrl+L Shift,Open DevTools (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-9,2,1,Page Up,Key Press,PageUp,,Previous slide,"App: Microsoft PowerPoint, importance=1.2000000000000002",evolved
-9,3,1,Shift+F3,Key Press,F3,L Shift,Find previous,"App: Visual Studio Code, importance=2.7",evolved
-9,4,1,Alt+F4,Key Press,F4,L Alt,Close window,"App: Windows 11, importance=6.0",evolved
-9,5,1,Win+2,Key Press,2 and At,L GUI,Open/switch pinned app 2,"App: Windows 11, importance=6.0",evolved
-9,7,1,Ctrl+O,Key Press,O,L Ctrl,Open file,"App: Visual Studio Code, importance=2.7",evolved
-9,8,1,Shift+Alt+Up,Key Press,UpArrow,L Shift+L Alt,Copy line up,"App: Visual Studio Code, importance=2.7",evolved
-9,9,1,transparent,Transparent,,,,,transparent
-9,10,1,MB3,Mouse Key Press,MB3,,Middle click,"App: Mouse, importance=6.0",evolved
-9,11,1,MB4,Mouse Key Press,MB4,,Back button,"App: Mouse, importance=4.5",evolved
-9,12,1,-,Key Press,Dash and Underscore,,Raw Dash and Underscore completion key.,"App: Raw Keys, importance=3.0",evolved
+9,1,1,transparent,Transparent,,,,,transparent
+9,2,1,transparent,Transparent,,,,,transparent
+9,3,1,Ctrl+Shift+;,Key Press,SemiColon and Colon,L Ctrl+L Shift,Insert current time,"App: Microsoft Excel, importance=0.5",evolved
+9,4,1,transparent,Transparent,,,,,transparent
+9,5,1,transparent,Transparent,,,,,transparent
+9,7,1,transparent,Transparent,,,,,transparent
+9,8,1,Alt+D,Key Press,D,L Alt,Focus address bar (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+9,9,1,Win+Ctrl+D,Key Press,D,L GUI+L Ctrl,New virtual desktop,"App: Windows 11, importance=3.0",evolved
+9,10,1,Alt+Shift,Key Press,Shift,L Alt,Switch keyboard layout (alt),"App: Windows 11, importance=3.0",evolved
+9,11,1,transparent,Transparent,,,,,transparent
+9,12,1,transparent,Transparent,,,,,transparent
 9,0,2,transparent,Transparent,,,,,transparent
-9,1,2,Ctrl+Shift+C,Key Press,C,L Ctrl+L Shift,Inspect element,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
-9,2,2,MB2,Mouse Key Press,MB2,,Right click,"App: Mouse, importance=9.0",evolved
-9,3,2,Ctrl+4,Key Press,4 and Dollar,L Ctrl,Calendar,"App: Microsoft Teams, importance=6.0",evolved
-9,4,2,Win+Ctrl+Left,Key Press,LeftArrow,L GUI+L Ctrl,Switch desktop left,"App: Windows 11, importance=3.0",evolved
-9,5,2,Win+C,Key Press,C,L GUI,Open Copilot,"App: Windows 11, importance=6.0",evolved
-9,7,2,Ctrl+Shift+Z,Key Press,Z,L Ctrl+L Shift,Redo,"App: Visual Studio Code, importance=5.4",evolved
-9,8,2,Shift+Alt+Right,Key Press,RightArrow,L Shift+L Alt,Expand selection,"App: Visual Studio Code, importance=2.7",evolved
-9,9,2,Ctrl+M,Key Press,M,L Ctrl,Add to favorites,"App: M-Files Desktop Client, importance=2.55",evolved
-9,10,2,\,Key Press,Backslash and Pipe,,Raw Backslash and Pipe completion key.,"App: Raw Keys, importance=3.0",evolved
-9,11,2,Ctrl+Y,Key Press,Y,L Ctrl,Redo,"App: Windows 11, importance=3.0",evolved
-9,12,2,-,Key Press,Dash and Underscore,,Raw Dash and Underscore completion key.,"App: Raw Keys, importance=3.0",evolved
+9,1,2,transparent,Transparent,,,,,transparent
+9,2,2,transparent,Transparent,,,,,transparent
+9,3,2,transparent,Transparent,,,,,transparent
+9,4,2,transparent,Transparent,,,,,transparent
+9,5,2,F7,Key Press,F7,,Spell check,"App: Microsoft Word, importance=0.8999999999999999",evolved
+9,7,2,Ctrl+Up,Key Press,UpArrow,L Ctrl,Jump to top edge of data,"App: Microsoft Excel, importance=3.0",evolved
+9,8,2,Alt+Left,Key Press,LeftArrow,L Alt,Go back,"App: Microsoft Teams, importance=6.0",evolved
+9,9,2,Ctrl+5,Key Press,5 and Percent,L Ctrl,Calls,"App: Microsoft Teams, importance=3.0",evolved
+9,10,2,Win+3,Key Press,3 and Hash,L GUI,Open/switch pinned app 3,"App: Windows 11, importance=6.0",evolved
+9,11,2,transparent,Transparent,,,,,transparent
+9,12,2,transparent,Transparent,,,,,transparent
 9,0,3,transparent,Transparent,,,,,transparent
-9,1,3,Ctrl+H,Key Press,H,L Ctrl,History,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-9,2,3,Ctrl+Shift+S,Key Press,S,L Ctrl+L Shift,Attach file,"App: Microsoft Teams, importance=3.0",evolved
-9,3,3,Ctrl+Enter,Key Press,Return Enter,L Ctrl,Send (expanded mode),"App: Microsoft Teams, importance=10.0",evolved
-9,4,3,Ctrl+K,Key Press,K,L Ctrl,Insert link,"App: Microsoft Teams, importance=3.0",evolved
-9,5,3,Win+T,Key Press,T,L GUI,Cycle taskbar apps,"App: Windows 11, importance=1.0",evolved
-9,7,3,L8,coach_l8_toggle,,,Dynamic layer access: @access:L8:toggle,Target layer 8,evolved
-9,8,3,Scroll_L2,coach_l2_hold,,,Dynamic layer access: @scroll:L2:hold,Target layer 2,evolved
-9,9,3,Scroll_L9,coach_l9_hold,,,Dynamic layer access: @scroll:L9:hold,Target layer 9,evolved
-9,10,3,Ctrl+Home,Key Press,Home,L Ctrl,Go to cell A1,"App: Microsoft Excel, importance=3.0",evolved
+9,1,3,Ctrl+Shift+V,Key Press,V,L Ctrl+L Shift,Paste without formatting,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
+9,2,3,transparent,Transparent,,,,,transparent
+9,3,3,transparent,Transparent,,,,,transparent
+9,4,3,transparent,Transparent,,,,,transparent
+9,5,3,transparent,Transparent,,,,,transparent
+9,7,3,L4,coach_l4_toggle,,,Dynamic layer access: @access:L4:toggle,Target layer 4,evolved
+9,8,3,transparent,Transparent,,,,,transparent
+9,9,3,transparent,Transparent,,,,,transparent
+9,10,3,transparent,Transparent,,,,,transparent
 9,11,3,transparent,Transparent,,,,,transparent
 9,12,3,transparent,Transparent,,,,,transparent
 9,3,4,transparent,Transparent,,,,,transparent
-9,4,4,Ctrl+.,Key Press,Period and GreaterThan,L Ctrl,Show commands,"App: Microsoft Teams, importance=3.0",evolved
-9,5,4,transparent,Transparent,,,,,transparent
-9,7,4,L6,coach_l6_toggle,,,Dynamic layer access: @access:L6:toggle,Target layer 6,evolved
-9,8,4,L2,coach_l2_hold,,,Dynamic layer access: @access:L2:hold,Target layer 2,evolved
+9,4,4,Ctrl+Shift+Z,Key Press,Z,L Ctrl+L Shift,Redo,"App: Visual Studio Code, importance=5.4",evolved
+9,5,4,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
+9,7,4,L1,coach_l1_toggle,,,Dynamic layer access: @access:L1:toggle,Target layer 1,evolved
+9,8,4,L8,coach_l8_hold,,,Dynamic layer access: @access:L8:hold,Target layer 8,evolved
 9,4,5,transparent,Transparent,,,,,transparent
 9,5,5,transparent,Transparent,,,,,transparent
-9,7,5,transparent,Transparent,,,,,transparent
+9,7,5,Ctrl+\,Key Press,Backslash and Pipe,L Ctrl,Split editor,"App: Visual Studio Code, importance=2.7",evolved
 10,0,0,transparent,Transparent,,,,,transparent
 10,1,0,transparent,Transparent,,,,,transparent
-10,2,0,Shift+Click,coach_shift_click,,,Select range,"App: File Explorer, importance=2.7",evolved
-10,3,0,Ctrl+Home,Key Press,Home,L Ctrl,Go to cell A1,"App: Microsoft Excel, importance=3.0",evolved
+10,2,0,transparent,Transparent,,,,,transparent
+10,3,0,transparent,Transparent,,,,,transparent
 10,4,0,transparent,Transparent,,,,,transparent
-10,5,0,Ctrl+Shift+!,Key Press,1 and Bang,L Ctrl+L Shift,Number format,"App: Microsoft Excel, importance=1.5",evolved
+10,5,0,transparent,Transparent,,,,,transparent
 10,7,0,transparent,Transparent,,,,,transparent
 10,8,0,transparent,Transparent,,,,,transparent
-10,9,0,transparent,Transparent,,,,,transparent
-10,10,0,transparent,Transparent,,,,,transparent
-10,11,0,transparent,Transparent,,,,,transparent
+10,9,0,Ctrl+Shift+R,Key Press,R,L Ctrl+L Shift,Start recording,"App: Microsoft Teams, importance=1.0",evolved
+10,10,0,Win+1,Key Press,1 and Bang,L GUI,Open/switch pinned app 1,"App: Windows 11, importance=10.0",evolved
+10,11,0,F2,Key Press,F2,,Rename,"App: Windows 11, importance=6.0",evolved
 10,12,0,transparent,Transparent,,,,,transparent
 10,0,1,transparent,Transparent,,,,,transparent
-10,1,1,Alt+Shift+Up,Key Press,UpArrow,L Alt+L Shift,Previous unread,"App: Discord, importance=0.6000000000000001",evolved
-10,2,1,Ctrl+Up,Key Press,UpArrow,L Ctrl,Jump to top edge of data,"App: Microsoft Excel, importance=3.0",evolved
-10,3,1,Win+A,Key Press,A,L GUI,Quick settings / Action center,"App: Windows 11, importance=1.0",evolved
-10,4,1,Win+Up,Key Press,UpArrow,L GUI,Maximize window,"App: Windows 11, importance=6.0",evolved
-10,5,1,Win+S,Key Press,S,L GUI,Search,"App: Windows 11, importance=10.0",evolved
-10,7,1,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+W',,transparent
+10,1,1,transparent,Transparent,,,,,transparent
+10,2,1,transparent,Transparent,,,,,transparent
+10,3,1,transparent,Transparent,,,,,transparent
+10,4,1,transparent,Transparent,,,,,transparent
+10,5,1,Ctrl+Home,Key Press,Home,L Ctrl,Go to cell A1,"App: Microsoft Excel, importance=3.0",evolved
+10,7,1,transparent,Transparent,,,,,transparent
 10,8,1,transparent,Transparent,,,,,transparent
-10,9,1,transparent,Transparent,,,,,transparent
-10,10,1,-,Key Press,Dash and Underscore,,Raw Dash and Underscore completion key.,"App: Raw Keys, importance=3.0",evolved
-10,11,1,MB5,Mouse Key Press,MB5,,Forward button,"App: Mouse, importance=3.0",evolved
+10,9,1,Ctrl+Shift+P,Key Press,P,L Ctrl+L Shift,Toggle chat in meeting,"App: Microsoft Teams, importance=3.0",evolved
+10,10,1,Ctrl+Shift+K,Key Press,K,L Ctrl+L Shift,Raise/lower hand,"App: Microsoft Teams, importance=3.0",evolved
+10,11,1,Win+Down,Key Press,DownArrow,L GUI,Minimize / restore,"App: Windows 11, importance=6.0",evolved
 10,12,1,transparent,Transparent,,,,,transparent
 10,0,2,transparent,Transparent,,,,,transparent
-10,1,2,Shift+Space,Key Press,Spacebar,L Shift,Scroll up one screen,"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-10,2,2,Ctrl+.,Key Press,Period and GreaterThan,L Ctrl,Show commands,"App: Microsoft Teams, importance=3.0",evolved
-10,3,2,Ctrl+B,Key Press,B,L Ctrl,Bold,"App: Microsoft Teams, importance=6.0",evolved
-10,4,2,Ctrl+Y,Key Press,Y,L Ctrl,Redo,"App: Windows 11, importance=3.0",evolved
-10,5,2,Win+Ctrl+Right,Key Press,RightArrow,L GUI+L Ctrl,Switch desktop right,"App: Windows 11, importance=3.0",evolved
-10,7,2,Shift+Tab,Key Press,Tab,L Shift,Outdent,"App: Visual Studio Code, importance=5.4",evolved
-10,8,2,F8,Key Press,F8,,Go to next problem,"App: Visual Studio Code, importance=2.7",evolved
-10,9,2,transparent,Transparent,,,,,transparent
-10,10,2,transparent,Transparent,,,,,transparent
-10,11,2,transparent,Transparent,,,,,transparent
+10,1,2,transparent,Transparent,,,,,transparent
+10,2,2,transparent,Transparent,,,,,transparent
+10,3,2,Ctrl+Shift+I,Key Press,I,L Ctrl+L Shift,Open DevTools (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
+10,4,2,Ctrl+J,Key Press,J,L Ctrl,Downloads,"App: Browser (Chrome/Edge), importance=0.95",evolved
+10,5,2,transparent,Transparent,,,,,transparent
+10,7,2,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
+10,8,2,Ctrl+N,Key Press,N,L Ctrl,New chat,"App: Microsoft Teams, importance=6.0",evolved
+10,9,2,Ctrl+F,Key Press,F,L Ctrl,Find in conversation,"App: Microsoft Teams, importance=6.0",evolved
+10,10,2,Ctrl+R,Key Press,R,L Ctrl,Reply,"App: Microsoft Outlook, importance=7.0",evolved
+10,11,2,Ctrl+Shift+$,Key Press,4 and Dollar,L Ctrl+L Shift,Currency format,"App: Microsoft Excel, importance=1.5",evolved
 10,12,2,transparent,Transparent,,,,,transparent
 10,0,3,transparent,Transparent,,,,,transparent
-10,1,3,Alt+Home,Key Press,Home,L Alt,Open home page,"App: Browser (Chrome/Edge), importance=0.95",evolved
-10,2,3,Ctrl+/,Key Press,ForwardSlash and QuestionMark,L Ctrl,Show keyboard shortcuts,"App: Microsoft Teams, importance=0.2",evolved
-10,3,3,Ctrl+6,Key Press,6 and Caret,L Ctrl,Files,"App: Microsoft Teams, importance=3.0",evolved
-10,4,3,Ctrl+G,Key Press,G,L Ctrl,Go to...,"App: Microsoft Teams, importance=3.0",evolved
-10,5,3,Win+N,Key Press,N,L GUI,Notification center,"App: Windows 11, importance=1.0",evolved
-10,7,3,L1,coach_l1_toggle,,,Dynamic layer access: @access:L1:toggle,Target layer 1,evolved
-10,8,3,L6,coach_l6_hold,,,Dynamic layer access: @access:L6:hold,Target layer 6,evolved
-10,9,3,transparent,Transparent,,,,,transparent
-10,10,3,Ctrl+Shift+6,Key Press,6 and Caret,L Ctrl+L Shift,Toggle details pane,"App: File Explorer, importance=0.45",evolved
+10,1,3,transparent,Transparent,,,,,transparent
+10,2,3,transparent,Transparent,,,,,transparent
+10,3,3,transparent,Transparent,,,,,transparent
+10,4,3,transparent,Transparent,,,,,transparent
+10,5,3,transparent,Transparent,,,,,transparent
+10,7,3,L10,coach_l10_hold,,,Dynamic layer access: @access:L10:hold,Target layer 10,evolved
+10,8,3,Scroll_L10,coach_l10_hold,,,Dynamic layer access: @scroll:L10:hold,Target layer 10,evolved
+10,9,3,Ctrl+Shift+O,Key Press,O,L Ctrl+L Shift,Toggle camera,"App: Microsoft Teams, importance=6.0",evolved
+10,10,3,Ctrl+Shift+D,Key Press,D,L Ctrl+L Shift,Decline call,"App: Microsoft Teams, importance=3.0",evolved
 10,11,3,transparent,Transparent,,,,,transparent
 10,12,3,transparent,Transparent,,,,,transparent
 10,3,4,transparent,Transparent,,,,,transparent
-10,4,4,transparent,Transparent,,,,,transparent
-10,5,4,transparent,Transparent,,,skipped: non-exportable key 'Win+Pause',,transparent
-10,7,4,transparent,Transparent,,,,,transparent
+10,4,4,"Ctrl+,",Key Press,Comma and LessThan,L Ctrl,Open settings,"App: Visual Studio Code, importance=2.7",evolved
+10,5,4,transparent,Transparent,,,,,transparent
+10,7,4,Scroll_L2,coach_l2_hold,,,Dynamic layer access: @scroll:L2:hold,Target layer 2,evolved
 10,8,4,transparent,Transparent,,,,,transparent
 10,4,5,transparent,Transparent,,,,,transparent
 10,5,5,transparent,Transparent,,,,,transparent
-10,7,5,transparent,Transparent,,,,,transparent
+10,7,5,L3,coach_l3_toggle,,,Dynamic layer access: @access:L3:toggle,Target layer 3,evolved
