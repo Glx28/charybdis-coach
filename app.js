@@ -893,7 +893,30 @@
       .slice(0, max);
   }
 
-  function classifyLayerProfile(layer, rows) {
+  function isGenericPlatformApp(name) {
+    return /^windows\s*11$/i.test(clean(name));
+  }
+
+  function preferredWorkflowEntries(appCounts, total, options = {}, max = 3) {
+    const entries = dominantEntries(appCounts, Math.max(max + 4, appCounts.size));
+    const nonGeneric = entries.filter(([name]) => !isGenericPlatformApp(name));
+    const generic = entries.filter(([name]) => isGenericPlatformApp(name));
+    if (!generic.length) return entries.slice(0, max);
+
+    const [genericName, genericCount] = generic[0];
+    const topNonGenericCount = nonGeneric[0]?.[1] || 0;
+    const genericRatio = genericCount / Math.max(1, total);
+    const genericIsClearlyPrimary = options.allowGenericPrimary
+      && genericRatio >= 0.28
+      && genericCount >= Math.max(2, topNonGenericCount * 1.35);
+
+    if (genericIsClearlyPrimary) {
+      return [[genericName, genericCount], ...nonGeneric].slice(0, max);
+    }
+    return [...nonGeneric, ...generic].slice(0, max);
+  }
+
+  function classifyLayerProfile(layer, rows, options = {}) {
     const activeRows = rows.filter((row) => !/transparent|none/i.test(row.behavior));
     const tagCounts = new Map();
     const appCounts = new Map();
@@ -918,7 +941,7 @@
     else if (score("nav") > 0.2) kind = "nav";
     else if (appCounts.size > 0) kind = "app";
 
-    const topApps = dominantEntries(appCounts, 3);
+    const topApps = preferredWorkflowEntries(appCounts, total, options, 3);
     const topCats = dominantEntries(categoryCounts, 3);
     const meta = LAYER_KIND_META[kind] || LAYER_KIND_META.utility;
     const appText = topApps.map(([name]) => name).join(" / ");
@@ -967,14 +990,40 @@
       state.rowsByLayer.get(row.layer).push(row);
     }
     LAYERS = [...state.rowsByLayer.keys()].sort(numberSort);
+    const windowsPrimaryLayer = detectGenericPrimaryLayer("Windows 11");
     for (const layer of LAYERS) {
-      const profile = classifyLayerProfile(layer, state.rowsByLayer.get(layer) || []);
+      const profile = classifyLayerProfile(layer, state.rowsByLayer.get(layer) || [], {
+        allowGenericPrimary: layer === windowsPrimaryLayer
+      });
       state.layerProfiles.set(layer, profile);
       for (const row of state.rowsByLayer.get(layer) || []) {
         row.dynamic_role = profile.role;
         row.layer_kind = profile.kind;
       }
     }
+  }
+
+  function detectGenericPrimaryLayer(appName) {
+    let best = { layer: "", count: 0, ratio: 0, margin: 0 };
+    for (const layer of LAYERS) {
+      if (layer === "0" || layer === "7") continue;
+      const activeRows = (state.rowsByLayer.get(layer) || []).filter((row) => !/transparent|none/i.test(row.behavior));
+      const appCounts = new Map();
+      for (const row of activeRows) {
+        const app = rowApp(row);
+        if (app) appCounts.set(app, (appCounts.get(app) || 0) + 1);
+      }
+      const count = appCounts.get(appName) || 0;
+      const competing = [...appCounts.entries()]
+        .filter(([name]) => name !== appName)
+        .reduce((max, [, value]) => Math.max(max, value), 0);
+      const ratio = count / Math.max(1, activeRows.length);
+      const margin = count - competing;
+      if (count > best.count || (count === best.count && ratio > best.ratio)) {
+        best = { layer, count, ratio, margin };
+      }
+    }
+    return best.count >= 8 && best.ratio >= 0.28 && best.margin >= 4 ? best.layer : "";
   }
 
   function layerRole(layer) {
