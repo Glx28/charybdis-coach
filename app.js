@@ -1008,6 +1008,7 @@
     let kind = "utility";
     if (layer === "0") kind = "base";
     else if (options.allowGenericPrimary) kind = "windows";
+    else if (options.isMousePrimary) kind = "mouse";
     else if (score("game") > 0.18 || (layer === "7" && score("nav") > 0.2)) kind = "game";
     else if (score("mouse") > 0.16) kind = "mouse";
     else if (score("scroll") > 0.16) kind = "scroll";
@@ -1074,9 +1075,11 @@
     }
     LAYERS = [...state.rowsByLayer.keys()].sort(numberSort);
     const windowsPrimaryLayer = detectGenericPrimaryLayer("Windows 11");
+    const mousePrimaryLayer = detectDominantTagLayer("mouse");
     for (const layer of LAYERS) {
       const profile = classifyLayerProfile(layer, state.rowsByLayer.get(layer) || [], {
-        allowGenericPrimary: layer === windowsPrimaryLayer
+        allowGenericPrimary: layer === windowsPrimaryLayer,
+        isMousePrimary: layer === mousePrimaryLayer
       });
       state.layerProfiles.set(layer, profile);
       for (const row of state.rowsByLayer.get(layer) || []) {
@@ -1107,6 +1110,25 @@
       if (count > best.count || (count === best.count && ratio > best.ratio)) {
         best = { layer, count, ratio };
       }
+    }
+    return best.count > 0 ? best.layer : "";
+  }
+
+  // The keyboard has a dedicated dynamic mouse layer (held via a thumb key), but
+  // which layer index hosts it varies per evolved genome - only 5 physical mouse
+  // buttons exist, so no layer ever reaches the 16% mouse-tag density threshold
+  // used for other kinds. Instead, find whichever layer concentrates the most
+  // mouse-button shortcuts and designate that one "Mouse" outright.
+  function detectDominantTagLayer(tag) {
+    let best = { layer: "", count: 0 };
+    for (const layer of LAYERS) {
+      if (layer === "0" || layer === "7") continue;
+      const activeRows = (state.rowsByLayer.get(layer) || []).filter((row) => !/transparent|none/i.test(row.behavior));
+      let count = 0;
+      for (const row of activeRows) {
+        if (inferRowTags(row).includes(tag)) count += 1;
+      }
+      if (count > best.count) best = { layer, count };
     }
     return best.count > 0 ? best.layer : "";
   }
