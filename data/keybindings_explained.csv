@@ -298,7 +298,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 5,4,1,Ctrl+Shift+N,Key Press,N,L Ctrl+L Shift,Incognito/InPrivate window,"App: Browser (Chrome/Edge), importance=0.95",evolved
 5,5,1,Ctrl+Shift+Right,Key Press,RightArrow,L Ctrl+L Shift,Select to right edge,"App: Microsoft Excel, importance=3.0",evolved
 5,7,1,F4,Key Press,F4,,Toggle absolute ref ($),"App: Microsoft Excel, importance=5.0",evolved
-5,8,1,Ctrl+Shift+;,Key Press,SemiColon and Colon,L Ctrl+L Shift,Insert current time,"App: Microsoft Excel, importance=0.5",evolved
+5,8,1,Ctrl+Shift+1,Key Press,1 and Bang,L Ctrl+L Shift,Extra large icons,"App: File Explorer, importance=0.09000000000000001",evolved
 5,9,1,Ctrl+Shift+2,Key Press,2 and At,L Ctrl+L Shift,Large icons,"App: File Explorer, importance=0.09000000000000001",evolved
 5,10,1,Win+Shift+S,Key Press,S,L GUI+L Shift,Screenshot (Snip),"App: Windows 11, importance=6.0",evolved
 5,11,1,Win+E,Key Press,E,L GUI,File Explorer,"App: Windows 11, importance=6.0",evolved
@@ -484,7 +484,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 8,11,2,Win+K,Key Press,K,L GUI,Connect / Cast,"App: Windows 11, importance=0.2",evolved
 8,12,2,Win+A,Key Press,A,L GUI,Quick settings / Action center,"App: Windows 11, importance=1.0",evolved
 8,0,3,Ctrl+6,Key Press,6 and Caret,L Ctrl,Files,"App: Microsoft Teams, importance=3.0",evolved
-8,1,3,Ctrl+Shift+1,Key Press,1 and Bang,L Ctrl+L Shift,Extra large icons,"App: File Explorer, importance=0.09000000000000001",evolved
+8,1,3,Ctrl+Shift+;,Key Press,SemiColon and Colon,L Ctrl+L Shift,Insert current time,"App: Microsoft Excel, importance=0.5",evolved
 8,2,3,transparent,Transparent,,,skipped: non-exportable key 'Win+Pause',,transparent
 8,3,3,Ctrl+7,Key Press,7 and Ampersand,L Ctrl,Switch to tab 7,"App: Browser (Chrome/Edge), importance=0.19",evolved
 8,4,3,Shift+F5,Key Press,F5,L Shift,Stop debugging,"App: Visual Studio Code, importance=2.7",evolved
@@ -501,7 +501,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 8,7,4,L4,coach_l4_hold,,,Dynamic layer access: @access:L4:hold,Target layer 4,evolved
 8,8,4,L3,coach_l3_hold,,,Dynamic layer access: @access:L3:hold,Target layer 3,evolved
 8,4,5,"Ctrl+,",Key Press,Comma and LessThan,L Ctrl,Open settings,"App: Visual Studio Code, importance=2.7",evolved
-8,5,5,Ctrl+Shift+$,Key Press,4 and Dollar,L Ctrl+L Shift,Currency format,"App: Microsoft Excel, importance=1.5",evolved
+8,5,5,transparent,Transparent,,,skipped: multi-stroke chord 'Ctrl+K Ctrl+S',,transparent
 8,7,5,L10,coach_l10_toggle,,,Dynamic layer access: @access:L10:toggle,Target layer 10,evolved
 9,0,0,L0,coach_base,,,Dynamic layer access: @access:L0:return,Target layer 0,evolved
 9,1,0,Ctrl+Shift+>,Key Press,Period and GreaterThan,L Ctrl+L Shift,Increase font size,"App: Microsoft Word, importance=0.8999999999999999",evolved
@@ -564,7 +564,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 10,2,0,Ctrl+J,Key Press,J,L Ctrl,Downloads,"App: Browser (Chrome/Edge), importance=0.95",evolved
 10,3,0,Ctrl+J,Key Press,J,L Ctrl,Downloads,"App: Browser (Chrome/Edge), importance=0.95",evolved
 10,4,0,Ctrl+Shift+>,Key Press,Period and GreaterThan,L Ctrl+L Shift,Increase font size,"App: Microsoft Word, importance=0.8999999999999999",evolved
-10,5,0,Ctrl+Shift+Home,Key Press,Home,L Ctrl+L Shift,Select to cell A1,"App: Microsoft Excel, importance=1.5",evolved
+10,5,0,Ctrl+Shift+;,Key Press,SemiColon and Colon,L Ctrl+L Shift,Insert current time,"App: Microsoft Excel, importance=0.5",evolved
 10,7,0,Ctrl+Shift+%,Key Press,5 and Percent,L Ctrl+L Shift,Percent format,"App: Microsoft Excel, importance=1.5",evolved
 10,8,0,Ctrl+Shift+9,Key Press,9 and Left Bracket,L Ctrl+L Shift,Unhide rows,"App: Microsoft Excel, importance=0.5",evolved
 10,9,0,transparent,Transparent,,,skipped: non-exportable key 'Win+Pause',,transparent
@@ -576,7 +576,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 10,2,1,Alt+P,Key Press,P,L Alt,Preview pane,"App: File Explorer, importance=0.45",evolved
 10,3,1,Ctrl+7,Key Press,7 and Ampersand,L Ctrl,Switch to tab 7,"App: Browser (Chrome/Edge), importance=0.19",evolved
 10,4,1,F3,Key Press,F3,,Find next (alt),"App: Browser (Chrome/Edge), importance=2.8499999999999996",evolved
-10,5,1,Ctrl+Shift+;,Key Press,SemiColon and Colon,L Ctrl+L Shift,Insert current time,"App: Microsoft Excel, importance=0.5",evolved
+10,5,1,Ctrl+Shift+Home,Key Press,Home,L Ctrl+L Shift,Select to cell A1,"App: Microsoft Excel, importance=1.5",evolved
 10,7,1,Ctrl+Up,Key Press,UpArrow,L Ctrl,Jump to top edge of data,"App: Microsoft Excel, importance=3.0",evolved
 10,8,1,Ctrl+/,Key Press,ForwardSlash and QuestionMark,L Ctrl,Show keyboard shortcuts,"App: Microsoft Teams, importance=0.2",evolved
 10,9,1,Ctrl+U,Key Press,U,L Ctrl,Underline,"App: Microsoft Teams, importance=1.0",evolved
@@ -601,8 +601,8 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 10,3,3,Ctrl+J,Key Press,J,L Ctrl,Downloads,"App: Browser (Chrome/Edge), importance=0.95",evolved
 10,4,3,Shift+F3,Key Press,F3,L Shift,Find previous,"App: Visual Studio Code, importance=2.7",evolved
 10,5,3,Alt+Home,Key Press,Home,L Alt,Open home page,"App: Browser (Chrome/Edge), importance=0.95",evolved
-10,7,3,F7,Key Press,F7,,Spell check,"App: Microsoft Word, importance=0.8999999999999999",evolved
-10,8,3,Scroll_L9,coach_l9_hold,,,Dynamic layer access: @scroll:L9:hold,Target layer 9,evolved
+10,7,3,Scroll_L9,coach_l9_hold,,,Dynamic layer access: @scroll:L9:hold,Target layer 9,evolved
+10,8,3,F7,Key Press,F7,,Spell check,"App: Microsoft Word, importance=0.8999999999999999",evolved
 10,9,3,Ctrl+Shift+K,Key Press,K,L Ctrl+L Shift,Raise/lower hand,"App: Microsoft Teams, importance=3.0",evolved
 10,10,3,MB4,Mouse Key Press,MB4,,Back button,"App: Mouse, importance=7.0",evolved
 10,11,3,MB3,Mouse Key Press,MB3,,Middle click,"App: Mouse, importance=10.0",evolved
