@@ -73,14 +73,101 @@
     mouse: { glyph: "🖱️ Mou", title: "Mouse / pointer", color: "#b78cff" },
     scroll: { glyph: "📜 Scr", title: "Scroll / trackball scroll", color: "#c9e265" },
     nav: { glyph: "🧭 Nav", title: "Navigation", color: "#3dd6c6" },
-    window: { glyph: "🪟 Win", title: "Windows / app control", color: "#6eb5ff" },
+    window: { glyph: "🗔 Mgmt", title: "Window management", color: "#8aa9c9" },
     system: { glyph: "🔧 Sys", title: "System / device", color: "#ff9f6e" },
     code: { glyph: "💻 Dev", title: "Developer workflow", color: "#56d4e8" },
     app: { glyph: "📋 App", title: "App workflow", color: "#68a5ff" },
     game: { glyph: "🎮 Game", title: "Game / fallback", color: "#a78bfa" },
     travel: { glyph: "⚡ Spd", title: "Travel / speed", color: "#ffb347" },
+    windows: { glyph: "🪟 Win11", title: "Windows 11", color: "#5b9bd5" },
     utility: { glyph: "🔀 Mix", title: "Mixed utility", color: "#4cc9b0" }
   };
+
+  // Per-app identity: when a layer's shortcuts are dominated by one specific app
+  // (not the generic OS), it gets that app's own icon/color instead of the
+  // generic "app" fallback so every app-dominated layer looks visually distinct.
+  const APP_KIND_META = {
+    "windows 11": { glyph: "🪟 Win11", title: "Windows 11", color: "#5b9bd5" },
+    "microsoft teams": { glyph: "👥 Teams", title: "Teams", color: "#5b5fc7" },
+    "browser (chrome/edge)": { glyph: "🌐 Web", title: "Browser", color: "#4fc3f7" },
+    "chrome": { glyph: "🌐 Chr", title: "Chrome", color: "#4fc3f7" },
+    "edge": { glyph: "🌐 Edge", title: "Edge", color: "#3ac9a0" },
+    "firefox": { glyph: "🦊 FF", title: "Firefox", color: "#ff9d3d" },
+    "visual studio code": { glyph: "💻 VSC", title: "VS Code", color: "#2f9fd0" },
+    "visual studio": { glyph: "💻 VS", title: "Visual Studio", color: "#6d3fc9" },
+    "microsoft excel": { glyph: "📊 XL", title: "Excel", color: "#21a366" },
+    "mouse": { glyph: "🖱️ Mou", title: "Mouse / pointer", color: "#b78cff" },
+    "file explorer": { glyph: "📁 Exp", title: "File Explorer", color: "#ffca6b" },
+    "microsoft word": { glyph: "📝 Word", title: "Word", color: "#5b8fd6" },
+    "m-files desktop client": { glyph: "🗄️ M-F", title: "M-Files", color: "#b08968" },
+    "windows terminal / powershell": { glyph: "⌥ Term", title: "Terminal", color: "#c9c9c9" },
+    "windows terminal": { glyph: "⌥ Term", title: "Terminal", color: "#c9c9c9" },
+    "powershell": { glyph: "⌥ PS", title: "PowerShell", color: "#7dcfe0" },
+    "microsoft powerpoint": { glyph: "📽️ PPT", title: "PowerPoint", color: "#e07a4e" },
+    "microsoft outlook": { glyph: "📧 Out", title: "Outlook", color: "#4d94d9" },
+    "microsoft onenote": { glyph: "📓 One", title: "OneNote", color: "#9b4fd6" },
+    "discord": { glyph: "🎮 Disc", title: "Discord", color: "#8b90f5" },
+    "slack": { glyph: "💬 Slk", title: "Slack", color: "#e0568c" },
+    "zoom": { glyph: "🎥 Zoom", title: "Zoom", color: "#3a8fd9" },
+    "skype": { glyph: "📞 Sky", title: "Skype", color: "#3fc4e8" },
+    "whatsapp": { glyph: "💬 WA", title: "WhatsApp", color: "#4fd97a" },
+    "telegram": { glyph: "✈️ Tg", title: "Telegram", color: "#4fb8e8" },
+    "spotify": { glyph: "🎵 Spot", title: "Spotify", color: "#3fd97a" },
+    "figma": { glyph: "🎨 Fig", title: "Figma", color: "#e0637a" },
+    "notion": { glyph: "🗒️ Not", title: "Notion", color: "#c9c9c9" },
+    "obsidian": { glyph: "🔮 Obs", title: "Obsidian", color: "#9f6fe8" },
+    "adobe photoshop": { glyph: "🖼️ Ps", title: "Photoshop", color: "#3fc4e8" },
+    "adobe illustrator": { glyph: "✏️ Ai", title: "Illustrator", color: "#f2a13d" },
+    "adobe premiere pro": { glyph: "🎬 Pr", title: "Premiere", color: "#9f6fe8" },
+    "adobe after effects": { glyph: "🎞️ Ae", title: "After Effects", color: "#b083e8" },
+    "adobe acrobat": { glyph: "📕 Acro", title: "Acrobat", color: "#e0563d" },
+    "github desktop": { glyph: "🐙 Git", title: "GitHub", color: "#8a8f98" },
+    "docker": { glyph: "🐳 Dock", title: "Docker", color: "#3fa9e0" },
+    "postman": { glyph: "📮 Post", title: "Postman", color: "#f2703d" },
+    "intellij idea": { glyph: "💡 IJ", title: "IntelliJ", color: "#f24fa1" },
+    "sublime text": { glyph: "📄 Subl", title: "Sublime", color: "#f2a13d" },
+    "notepad++": { glyph: "📝 Np++", title: "Notepad++", color: "#3fd97a" },
+    "steam": { glyph: "🎮 Steam", title: "Steam", color: "#5b6b8a" },
+    "blender": { glyph: "🧊 Blnd", title: "Blender", color: "#e0813d" },
+    "unity": { glyph: "🎮 Unity", title: "Unity", color: "#8a8f98" },
+    "unreal engine": { glyph: "🎮 UE", title: "Unreal", color: "#3d3d3d" },
+    "autocad": { glyph: "📐 CAD", title: "AutoCAD", color: "#e0563d" },
+    "solidworks": { glyph: "⚙️ SW", title: "SolidWorks", color: "#e0973d" }
+  };
+
+  // Deterministic fallback for apps not in APP_KIND_META, so a brand new app
+  // that starts dominating a layer in a future run still gets its own stable,
+  // distinct icon/color instead of collapsing into one generic bucket.
+  const FALLBACK_HUES = [4, 24, 44, 100, 140, 165, 190, 210, 230, 260, 285, 320, 345];
+  function hashString(text) {
+    let hash = 0;
+    for (let i = 0; i < text.length; i += 1) {
+      hash = (hash * 31 + text.charCodeAt(i)) >>> 0;
+    }
+    return hash;
+  }
+  function appInitials(name) {
+    const words = clean(name).split(/[\s/&-]+/).filter(Boolean);
+    if (!words.length) return "?";
+    if (words.length === 1) return words[0].slice(0, 3);
+    return words.slice(0, 3).map((w) => w[0]).join("").toUpperCase();
+  }
+  function fallbackAppMeta(name) {
+    const hash = hashString(name.toLowerCase());
+    const hue = FALLBACK_HUES[hash % FALLBACK_HUES.length];
+    const sat = 62 + (hash % 15);
+    const light = 52 + ((hash >> 4) % 10);
+    return {
+      glyph: `🔷 ${appInitials(name)}`,
+      title: name,
+      color: `hsl(${hue}, ${sat}%, ${light}%)`
+    };
+  }
+  function appMetaFor(name) {
+    if (!name) return null;
+    const key = name.toLowerCase();
+    return APP_KIND_META[key] || fallbackAppMeta(name);
+  }
 
   function clean(text) {
     return String(text || "").replace(/\s+/g, " ").trim();
@@ -897,25 +984,6 @@
     return /^windows\s*11$/i.test(clean(name));
   }
 
-  function preferredWorkflowEntries(appCounts, total, options = {}, max = 3) {
-    const entries = dominantEntries(appCounts, Math.max(max + 4, appCounts.size));
-    const nonGeneric = entries.filter(([name]) => !isGenericPlatformApp(name));
-    const generic = entries.filter(([name]) => isGenericPlatformApp(name));
-    if (!generic.length) return entries.slice(0, max);
-
-    const [genericName, genericCount] = generic[0];
-    const topNonGenericCount = nonGeneric[0]?.[1] || 0;
-    const genericRatio = genericCount / Math.max(1, total);
-    const genericIsClearlyPrimary = options.allowGenericPrimary
-      && genericRatio >= 0.28
-      && genericCount >= Math.max(2, topNonGenericCount * 1.35);
-
-    if (genericIsClearlyPrimary) {
-      return [[genericName, genericCount], ...nonGeneric].slice(0, max);
-    }
-    return [...nonGeneric, ...generic].slice(0, max);
-  }
-
   function classifyLayerProfile(layer, rows, options = {}) {
     const activeRows = rows.filter((row) => !/transparent|none/i.test(row.behavior));
     const tagCounts = new Map();
@@ -925,28 +993,43 @@
       for (const tag of inferRowTags(row)) tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
       const app = rowApp(row);
       const category = rowCategory(row);
-      if (app) appCounts.set(app, (appCounts.get(app) || 0) + 1);
+      // Windows 11 is the generic OS fallback app tag. It gets counted only on the
+      // one layer confirmed to be truly Windows-dominated (allowGenericPrimary);
+      // everywhere else it's excluded so the real dominant app shows through
+      // instead of every layer converging on a generic "Windows" identity.
+      const isGeneric = isGenericPlatformApp(app);
+      if (app && (!isGeneric || options.allowGenericPrimary)) {
+        appCounts.set(app, (appCounts.get(app) || 0) + 1);
+      }
       if (category) categoryCounts.set(category, (categoryCounts.get(category) || 0) + 1);
     }
     const total = Math.max(1, activeRows.length);
     const score = (tag) => (tagCounts.get(tag) || 0) / total;
     let kind = "utility";
-    if (score("base") > 0.45 && layer === "0") kind = "base";
+    if (layer === "0") kind = "base";
+    else if (options.allowGenericPrimary) kind = "windows";
     else if (score("game") > 0.18 || (layer === "7" && score("nav") > 0.2)) kind = "game";
     else if (score("mouse") > 0.16) kind = "mouse";
     else if (score("scroll") > 0.16) kind = "scroll";
+    // App identity outranks the generic tag-based buckets below: a layer's shortcuts
+    // are usually spread across several apps' own Win+/Ctrl+ combos, so letting
+    // "window"/"system"/"nav" win here is what caused every layer to look the same
+    // generic "Windows" shade. Whichever real app has the most shortcuts on this
+    // layer should decide its color/icon instead.
+    else if (appCounts.size > 0) kind = "app";
     else if (score("code") > 0.2) kind = "code";
     else if (score("window") > 0.18) kind = "window";
     else if (score("system") > 0.16) kind = "system";
     else if (score("nav") > 0.2) kind = "nav";
-    else if (appCounts.size > 0) kind = "app";
 
-    const topApps = preferredWorkflowEntries(appCounts, total, options, 3);
+    const topApps = dominantEntries(appCounts, 3);
     const topCats = dominantEntries(categoryCounts, 3);
-    const meta = LAYER_KIND_META[kind] || LAYER_KIND_META.utility;
+    const topAppName = topApps[0]?.[0];
+    const appMeta = kind === "app" ? appMetaFor(topAppName) : null;
+    const meta = appMeta || LAYER_KIND_META[kind] || LAYER_KIND_META.utility;
     const appText = topApps.map(([name]) => name).join(" / ");
     const catText = topCats.map(([name]) => name).join(" / ");
-    const role = appText || catText || meta.title;
+    const role = layer === "0" ? "Base typing" : (appText || catText || meta.title);
     return {
       layer,
       kind,
@@ -1003,8 +1086,14 @@
     }
   }
 
+  // Finds the single layer where the generic app (e.g. "Windows 11") is most
+  // concentrated, and designates only that one layer as its "true" home. Every
+  // other layer has this app filtered out of its identity entirely (see
+  // classifyLayerProfile), so a generic OS app can never dominate more than
+  // one layer's color/icon/label even in a blended layout where it's spread
+  // fairly evenly (~15-25%) across most layers.
   function detectGenericPrimaryLayer(appName) {
-    let best = { layer: "", count: 0, ratio: 0, margin: 0 };
+    let best = { layer: "", count: 0, ratio: 0 };
     for (const layer of LAYERS) {
       if (layer === "0" || layer === "7") continue;
       const activeRows = (state.rowsByLayer.get(layer) || []).filter((row) => !/transparent|none/i.test(row.behavior));
@@ -1014,16 +1103,12 @@
         if (app) appCounts.set(app, (appCounts.get(app) || 0) + 1);
       }
       const count = appCounts.get(appName) || 0;
-      const competing = [...appCounts.entries()]
-        .filter(([name]) => name !== appName)
-        .reduce((max, [, value]) => Math.max(max, value), 0);
       const ratio = count / Math.max(1, activeRows.length);
-      const margin = count - competing;
       if (count > best.count || (count === best.count && ratio > best.ratio)) {
-        best = { layer, count, ratio, margin };
+        best = { layer, count, ratio };
       }
     }
-    return best.count >= 8 && best.ratio >= 0.28 && best.margin >= 4 ? best.layer : "";
+    return best.count > 0 ? best.layer : "";
   }
 
   function layerRole(layer) {
