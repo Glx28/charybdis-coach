@@ -20,13 +20,13 @@
         </div>
       </div>
       <div class="status-strip" aria-live="polite">
-        <div class="status-pill layer-status"><span>Layer</span><strong id="activeLayer">0</strong></div>
-        <div class="status-pill"><span>App</span><strong id="activeApp">Unknown</strong></div>
-        <div class="status-pill"><span>Last</span><strong id="lastAction">Starting</strong></div>
-        <div class="status-pill transport"><span>Transport</span><strong id="transport">USB</strong></div>
+        <div class="status-pill layer-status"><span data-icon="layer">Layer</span><strong id="activeLayer">0</strong></div>
+        <div class="status-pill"><span data-icon="app">App</span><strong id="activeApp">Unknown</strong></div>
+        <div class="status-pill"><span data-icon="last">Last</span><strong id="lastAction">Starting</strong></div>
+        <div class="status-pill transport"><span data-icon="transport">Transport</span><strong id="transport">USB</strong></div>
       </div>
       <div class="topbar-actions">
-        <button class="learn-button" id="learnButton" type="button" title="Learn app shortcuts">Learn</button>
+        <button class="learn-button" id="learnButton" type="button" title="Learn app shortcuts" data-icon="learn">Learn</button>
         <button class="icon-button" id="keyDebugToggle" type="button" title="Toggle key input debug overlay">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 3v5l4 2"/></svg>
         </button>
@@ -46,7 +46,7 @@
 
     <main class="workspace">
       <aside class="layer-rail collapsed" id="layerRail" aria-label="Layers">
-        <div class="rail-title" id="railTitle">Layers</div>
+        <div class="rail-title" id="railTitle" data-icon="layers">Layers</div>
         <div id="layerTabs" class="layer-tabs"></div>
         <div class="rail-color-strip" id="railColorStrip"></div>
       </aside>
@@ -55,11 +55,11 @@
         <div class="stage-toolbar">
           <label class="search-box">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
-            <input id="searchInput" type="search" autocomplete="off" placeholder="Search keys, actions, apps">
+            <input id="searchInput" type="search" autocomplete="off" placeholder="Search keys, actions, apps" data-icon="search">
           </label>
           <div class="view-toggles" role="group" aria-label="View mode">
-            <button id="focusImportantButton" type="button">Focus</button>
-            <button id="showAllButton" type="button" class="active">All</button>
+            <button id="focusImportantButton" type="button" data-icon="focus">Focus</button>
+            <button id="showAllButton" type="button" class="active" data-icon="all">All</button>
           </div>
         </div>
 
@@ -77,63 +77,63 @@
             </div>
           </div>
           <dl class="detail-list">
-            <div><dt>Behavior</dt><dd id="selectedBehavior">-</dd></div>
-            <div><dt>Output</dt><dd id="selectedOutput">-</dd></div>
+            <div><dt data-icon="behavior">Behavior</dt><dd id="selectedBehavior">-</dd></div>
+            <div><dt data-icon="output">Output</dt><dd id="selectedOutput">-</dd></div>
             <div><dt>⇧ Modifiers</dt><dd id="selectedModifiers">-</dd></div>
-            <div><dt>Purpose</dt><dd id="selectedPurpose">-</dd></div>
-            <div><dt>Notes</dt><dd id="selectedNotes">-</dd></div>
+            <div><dt data-icon="purpose">Purpose</dt><dd id="selectedPurpose">-</dd></div>
+            <div><dt data-icon="notes">Notes</dt><dd id="selectedNotes">-</dd></div>
           </dl>
         </section>
 
         <section class="panel practice-panel">
-          <h2>Practice</h2>
+          <h2 data-icon="practice">Practice</h2>
           <div class="practice-mode-select">
             <select id="practiceAppSelect" class="practice-app-select">
               <option value="">Layer mode (current layer)</option>
             </select>
           </div>
           <div class="practice-controls" role="group" aria-label="Practice modes">
-            <button id="drillButton" type="button">Drill (type)</button>
-            <button id="quizButton" type="button">Quiz (find)</button>
-            <button id="guidedButton" type="button">Guided tour</button>
-            <button id="practiceStopButton" type="button">Stop</button>
+            <button id="drillButton" type="button" data-icon="drill">Drill (type)</button>
+            <button id="quizButton" type="button" data-icon="quiz">Quiz (find)</button>
+            <button id="guidedButton" type="button" data-icon="guided">Guided tour</button>
+            <button id="practiceStopButton" type="button" data-icon="stop">Stop</button>
           </div>
           <p id="practicePrompt" class="practice-prompt">Pick a mode. Drill = type the prompted key. Quiz = click the key for the prompted action. Guided = step through this layer. Select an app above to practice its shortcuts across all layers.</p>
           <div class="practice-stats">
-            <span>Score <strong id="practiceScore">0 / 0</strong></span>
-            <span>Mastery <strong id="practiceMastery">0%</strong></span>
+            <span data-icon="score">Score <strong id="practiceScore">0 / 0</strong></span>
+            <span data-icon="mastery">Mastery <strong id="practiceMastery">0%</strong></span>
             <button id="practiceResetButton" type="button" class="link-button">Reset</button>
           </div>
         </section>
 
         <section class="panel now-panel">
-          <h2>Now</h2>
+          <h2 data-icon="now">Now</h2>
           <div class="now-grid">
-            <div><span>Held</span><strong id="heldLayers">-</strong></div>
-            <div><span>Locked</span><strong id="lockedLayer">-</strong></div>
-            <div><span>Toggled</span><strong id="toggledLayers">-</strong></div>
-            <div><span>State age</span><strong id="stateAge">-</strong></div>
+            <div><span data-icon="held">Held</span><strong id="heldLayers">-</strong></div>
+            <div><span data-icon="locked">Locked</span><strong id="lockedLayer">-</strong></div>
+            <div><span data-icon="toggled">Toggled</span><strong id="toggledLayers">-</strong></div>
+            <div><span data-icon="age">State age</span><strong id="stateAge">-</strong></div>
           </div>
         </section>
 
         <section class="panel events-panel">
-          <h2>Timeline</h2>
+          <h2 data-icon="timeline">Timeline</h2>
           <ol id="eventList" class="event-list"></ol>
         </section>
 
         <section class="panel workflow-panel" id="workflowPanel">
           <div class="workflow-header">
-            <h2>Workflow Guide</h2>
+            <h2 data-icon="workflow">Workflow Guide</h2>
             <select id="workflowAppSelect" class="workflow-select">
               <option value="">Select an app...</option>
             </select>
           </div>
-          <input id="workflowSearch" type="search" autocomplete="off" placeholder="Filter shortcuts..." class="workflow-search-input">
+          <input id="workflowSearch" type="search" autocomplete="off" placeholder="Filter shortcuts..." class="workflow-search-input" data-icon="search">
           <div id="workflowContent" class="workflow-content"></div>
         </section>
 
         <section class="panel apps-panel">
-          <h2>Launcher Apps</h2>
+          <h2 data-icon="launcher">Launcher Apps</h2>
           <div id="appList" class="app-list"></div>
         </section>
       </aside>
@@ -148,13 +148,13 @@
 
   <div id="learnOverlay" class="learn-overlay learn-overlay--hidden" role="dialog" aria-label="Learn shortcuts">
     <div class="learn-topbar">
-      <button id="learnCloseButton" type="button" class="learn-close-btn" title="Close">Close</button>
+      <button id="learnCloseButton" type="button" class="learn-close-btn" title="Close" data-icon="close">Close</button>
       <div id="learnProgress" class="learn-progress"></div>
       <label class="learn-auto-toggle"><input type="checkbox" id="learnAutoAdvance" checked> Auto-advance</label>
     </div>
 
     <div id="learnPickerView" class="learn-picker">
-      <h2>Learn App Shortcuts</h2>
+      <h2 data-icon="learn">Learn App Shortcuts</h2>
       <p class="learn-picker-hint">Choose an app to start a guided tour of its keyboard shortcuts</p>
       <div id="learnAppGrid" class="learn-app-grid"></div>
     </div>
@@ -166,9 +166,9 @@
         <div id="learnWarning" class="learn-warning learn-warning--hidden"></div>
       </div>
       <div class="learn-nav">
-        <button id="learnPrevButton" type="button">Previous</button>
-        <button id="learnBackToApps" type="button">Back to Apps</button>
-        <button id="learnNextButton" type="button">Next</button>
+        <button id="learnPrevButton" type="button" data-icon="prev">Previous</button>
+        <button id="learnBackToApps" type="button" data-icon="backApps">Back to Apps</button>
+        <button id="learnNextButton" type="button" data-icon="next">Next</button>
       </div>
       <div id="learnKeyboardArea" class="learn-keyboard-area"></div>
     </div>

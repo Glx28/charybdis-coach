@@ -65,8 +65,100 @@
     lastState: null,
     events: [],
     practice: { mode: null, target: null, guidedList: [], guidedIndex: 0, attempts: 0, correct: 0 },
-    progress: {}
+    progress: {},
+    uiIcons: false
   };
+
+  const UI_ICON_CODEPOINTS = {
+    layer: [0x1F5C2, 0xFE0F],
+    app: [0x1F4F1],
+    last: [0x26A1],
+    transport: [0x1F4E1],
+    learn: [0x1F4D6],
+    layers: [0x1F5C2, 0xFE0F],
+    search: [0x1F50D],
+    focus: [0x1F526],
+    all: [0x1F4CB],
+    behavior: [0x2699, 0xFE0F],
+    output: [0x1F4E4],
+    purpose: [0x1F3AF],
+    notes: [0x1F4DD],
+    practice: [0x1F3AF],
+    drill: [0x2328, 0xFE0F],
+    quiz: [0x1F9E9],
+    guided: [0x1F5FA, 0xFE0F],
+    stop: [0x23F9, 0xFE0F],
+    score: [0x1F3C6],
+    mastery: [0x1F4C8],
+    now: [0x1F4E1],
+    held: [0x1F446],
+    locked: [0x1F512],
+    toggled: [0x1F500],
+    age: [0x23F1, 0xFE0F],
+    timeline: [0x23F1, 0xFE0F],
+    workflow: [0x1F4CB],
+    launcher: [0x1F680],
+    close: [0x274C],
+    prev: [0x2B05, 0xFE0F],
+    backApps: [0x1F4F1],
+    next: [0x27A1, 0xFE0F]
+  };
+
+  function iconText(key) {
+    const codepoints = UI_ICON_CODEPOINTS[key];
+    return codepoints ? String.fromCodePoint(...codepoints) : "";
+  }
+
+  function supportsUiIcons() {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return false;
+    ctx.font = '32px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif';
+    const replacementWidth = ctx.measureText(String.fromCharCode(0xfffd)).width;
+    const tests = ["learn", "app", "last", "layers"].map(iconText);
+    return tests.every((test) => {
+      const width = ctx.measureText(test).width;
+      return Number.isFinite(width) && width > 0 && Math.abs(width - replacementWidth) > 1;
+    });
+  }
+
+  function baseLabelForIconElement(el) {
+    if (el.dataset.iconBase) return el.dataset.iconBase;
+    if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
+      el.dataset.iconBase = el.getAttribute("placeholder") || "";
+    } else if (el.children.length) {
+      const textNode = Array.from(el.childNodes).find((node) => node.nodeType === Node.TEXT_NODE && node.nodeValue.trim());
+      el.dataset.iconBase = textNode ? textNode.nodeValue.trim() : el.textContent.trim();
+    } else {
+      el.dataset.iconBase = el.textContent || "";
+    }
+    return el.dataset.iconBase;
+  }
+
+  function applyUiIcons() {
+    const canShowIcons = supportsUiIcons();
+    state.uiIcons = canShowIcons;
+    document.documentElement.classList.toggle("ui-icons-enabled", canShowIcons);
+    document.querySelectorAll("[data-icon]").forEach((el) => {
+      const base = baseLabelForIconElement(el);
+      const icon = canShowIcons ? iconText(el.dataset.icon) : "";
+      const value = icon ? `${icon} ${base}` : base;
+      if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
+        el.setAttribute("placeholder", value);
+      } else if (el.children.length) {
+        const textNode = Array.from(el.childNodes).find((node) => node.nodeType === Node.TEXT_NODE && node.nodeValue.trim());
+        if (textNode) textNode.nodeValue = `${value} `;
+      } else {
+        el.textContent = value;
+      }
+    });
+  }
+
+  function displayGlyph(glyph) {
+    if (state.uiIcons) return glyph;
+    const parts = clean(glyph).split(/\s+/).filter(Boolean);
+    return parts.length ? parts[parts.length - 1] : "";
+  }
 
   const LAYER_KIND_META = {
     base: { glyph: "⌨️ Aa", title: "Base typing", color: "#4cc9b0" },
@@ -158,7 +250,7 @@
     const sat = 62 + (hash % 15);
     const light = 52 + ((hash >> 4) % 10);
     return {
-      glyph: `🔷 ${appInitials(name)}`,
+      glyph: `${String.fromCodePoint(0x1F537)} ${appInitials(name)}`,
       title: name,
       color: `hsl(${hue}, ${sat}%, ${light}%)`
     };
@@ -1164,9 +1256,16 @@
 
   function dynamicLayerMeta(layer) {
     const profile = state.layerProfiles.get(String(layer));
-    if (!profile) return { ...LAYER_KIND_META.utility, role: layerRole(layer), title: layerRole(layer) };
+    if (!profile) {
+      return {
+        ...LAYER_KIND_META.utility,
+        glyph: displayGlyph(LAYER_KIND_META.utility.glyph),
+        role: layerRole(layer),
+        title: layerRole(layer)
+      };
+    }
     return {
-      glyph: profile.glyph,
+      glyph: displayGlyph(profile.glyph),
       title: `Layer ${layer}: ${profile.title}`,
       role: profile.role || profile.title,
       color: profile.color
@@ -2855,6 +2954,8 @@
 
   document.addEventListener("keydown", logKeyEvent);
   document.addEventListener("keyup", logKeyEvent);
+
+  applyUiIcons();
 
   init().catch((error) => {
     els.keyboardMap.innerHTML = `<div class="panel selected-panel"><h2>Coach failed to load</h2><p>${escapeHtml(error.message)}</p></div>`;
