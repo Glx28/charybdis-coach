@@ -1097,39 +1097,55 @@
     }
     const total = Math.max(1, activeRows.length);
     const score = (tag) => (tagCounts.get(tag) || 0) / total;
+    const distinctive = options.distinctive;
     let kind = "utility";
-    if (layer === "0") kind = "base";
-    else if (options.allowGenericPrimary) kind = "windows";
-    else if (options.isMousePrimary) kind = "mouse";
-    else if (score("game") > 0.18 || (layer === "7" && score("nav") > 0.2)) kind = "game";
-    else if (score("mouse") > 0.16) kind = "mouse";
-    else if (score("scroll") > 0.16) kind = "scroll";
-    // App identity outranks the generic tag-based buckets below: a layer's shortcuts
-    // are usually spread across several apps' own Win+/Ctrl+ combos, so letting
-    // "window"/"system"/"nav" win here is what caused every layer to look the same
-    // generic "Windows" shade. Whichever real app has the most shortcuts on this
-    // layer should decide its color/icon instead.
-    else if (appCounts.size > 0) kind = "app";
-    else if (score("code") > 0.2) kind = "code";
-    else if (score("window") > 0.18) kind = "window";
-    else if (score("system") > 0.16) kind = "system";
-    else if (score("nav") > 0.2) kind = "nav";
+    let role = "";
+    let appMeta = null;
+    if (layer === "0") {
+      kind = "base";
+    } else if (options.allowGenericPrimary) {
+      kind = "windows";
+    } else if (options.isMousePrimary) {
+      kind = "mouse";
+    } else if (distinctive) {
+      // Driven by computeDistinctiveLayerLabels' TF-IDF-style ranking rather than
+      // raw popularity, and already deduped against every other layer's pick.
+      if (distinctive.kind === "app") {
+        kind = "app";
+        role = distinctive.name;
+        appMeta = appMetaFor(distinctive.name);
+      } else {
+        kind = distinctive.name;
+        role = LAYER_KIND_META[kind]?.title || distinctive.name;
+      }
+    } else {
+      // Fallback path for layers with no distinctive candidate (e.g. frozen L7,
+      // which is excluded from the cross-layer distinctiveness pass entirely).
+      if (score("game") > 0.18 || (layer === "7" && score("nav") > 0.2)) kind = "game";
+      else if (score("mouse") > 0.16) kind = "mouse";
+      else if (score("scroll") > 0.16) kind = "scroll";
+      else if (appCounts.size > 0) kind = "app";
+      else if (score("code") > 0.2) kind = "code";
+      else if (score("window") > 0.18) kind = "window";
+      else if (score("system") > 0.16) kind = "system";
+      else if (score("nav") > 0.2) kind = "nav";
+    }
 
     const topApps = dominantEntries(appCounts, 3);
     const topCats = dominantEntries(categoryCounts, 3);
-    const topAppName = topApps[0]?.[0];
-    const appMeta = kind === "app" ? appMetaFor(topAppName) : null;
+    if (!role && kind === "app") role = topApps[0]?.[0] || "";
+    if (!appMeta && kind === "app") appMeta = appMetaFor(role);
     const meta = appMeta || LAYER_KIND_META[kind] || LAYER_KIND_META.utility;
     const appText = topApps.map(([name]) => name).join(" / ");
     const catText = topCats.map(([name]) => name).join(" / ");
-    const role = layer === "0" ? "Base typing" : (appText || catText || meta.title);
+    const finalRole = layer === "0" ? "Base typing" : (role || appText || catText || meta.title);
     return {
       layer,
       kind,
       glyph: meta.glyph,
       color: meta.color,
-      title: `${meta.title}${role && role !== meta.title ? ` · ${role}` : ""}`,
-      role,
+      title: `${meta.title}${finalRole && finalRole !== meta.title ? ` · ${finalRole}` : ""}`,
+      role: finalRole,
       activeCount: activeRows.length,
       totalCount: rows.length,
       topApps,
@@ -1167,11 +1183,13 @@
     }
     LAYERS = [...state.rowsByLayer.keys()].sort(numberSort);
     const windowsPrimaryLayer = detectGenericPrimaryLayer("Windows 11");
-    const mousePrimaryLayer = detectDominantTagLayer("mouse");
+    const mousePrimaryLayer = detectDominantTagLayer();
+    const distinctiveLabels = computeDistinctiveLayerLabels({ windowsPrimaryLayer, mousePrimaryLayer });
     for (const layer of LAYERS) {
       const profile = classifyLayerProfile(layer, state.rowsByLayer.get(layer) || [], {
         allowGenericPrimary: layer === windowsPrimaryLayer,
-        isMousePrimary: layer === mousePrimaryLayer
+        isMousePrimary: layer === mousePrimaryLayer,
+        distinctive: distinctiveLabels.get(layer)
       });
       state.layerProfiles.set(layer, profile);
       for (const row of state.rowsByLayer.get(layer) || []) {
@@ -1179,6 +1197,100 @@
         row.layer_kind = profile.kind;
       }
     }
+  }
+
+  // Labels layers by distinctiveness instead of raw popularity. Most
+  // shortcut-heavy apps (Windows Terminal, File Explorer, ...) get duplicated
+  // across nearly every layer by the optimizer, so picking "top app by count"
+  // makes almost every layer converge on the same one or two identities (the
+  // exact "2-3 layers all called Browser" problem). This applies a TF-IDF-style
+  // score instead: count on this layer * idf(how many layers this app/tag shows
+  // up on at all). An app/tag that is common across layers scores low
+  // everywhere; one concentrated on a few layers scores high there - no
+  // hardcoded app/category list required, it falls out of the actual
+  // distribution in the current CSV. Candidates are then greedily assigned,
+  // most-distinctive-layer-first, so a label is claimed by one layer only;
+  // it's only shared by a second layer when every one of that layer's
+  // candidates is already claimed (i.e. there really is no distinguishing
+  // signal left to separate them).
+  function computeDistinctiveLayerLabels({ windowsPrimaryLayer, mousePrimaryLayer }) {
+    const themedLayers = LAYERS.filter((layer) => layer !== "0" && layer !== "7");
+    const totalLayers = Math.max(1, themedLayers.length);
+
+    const appCountsByLayer = new Map();
+    const tagCountsByLayer = new Map();
+    const appDocFreq = new Map();
+    const tagDocFreq = new Map();
+
+    for (const layer of themedLayers) {
+      const activeRows = (state.rowsByLayer.get(layer) || []).filter((row) => !/transparent|none/i.test(row.behavior));
+      const appCounts = new Map();
+      const tagCounts = new Map();
+      for (const row of activeRows) {
+        const app = rowApp(row);
+        if (app && !(isGenericPlatformApp(app) && layer !== windowsPrimaryLayer)) {
+          appCounts.set(app, (appCounts.get(app) || 0) + 1);
+        }
+        for (const tag of inferRowTags(row)) {
+          if (tag === "base" || tag === "access") continue;
+          tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+        }
+      }
+      appCountsByLayer.set(layer, appCounts);
+      tagCountsByLayer.set(layer, tagCounts);
+      for (const app of appCounts.keys()) appDocFreq.set(app, (appDocFreq.get(app) || 0) + 1);
+      for (const tag of tagCounts.keys()) tagDocFreq.set(tag, (tagDocFreq.get(tag) || 0) + 1);
+    }
+
+    const idf = (docFreq) => Math.log((totalLayers + 1) / (docFreq + 1)) + 1;
+
+    const candidatesByLayer = new Map();
+    for (const layer of themedLayers) {
+      const candidates = [];
+      for (const [app, count] of appCountsByLayer.get(layer) || []) {
+        candidates.push({ kind: "app", name: app, score: count * idf(appDocFreq.get(app) || 0) });
+      }
+      for (const [tag, count] of tagCountsByLayer.get(layer) || []) {
+        candidates.push({ kind: "tag", name: tag, score: count * idf(tagDocFreq.get(tag) || 0) });
+      }
+      candidates.sort((a, b) => b.score - a.score);
+      candidatesByLayer.set(layer, candidates);
+    }
+
+    const result = new Map();
+    const usedLabels = new Map();
+    const claim = (name) => usedLabels.set(name, (usedLabels.get(name) || 0) + 1);
+
+    // Forced identities (dedicated mouse layer, generic-Windows-primary layer)
+    // are settled first so no other layer can steal their label.
+    if (mousePrimaryLayer) {
+      result.set(mousePrimaryLayer, { kind: "tag", name: "mouse", score: Infinity });
+      claim("mouse");
+    }
+    if (windowsPrimaryLayer && windowsPrimaryLayer !== mousePrimaryLayer) {
+      result.set(windowsPrimaryLayer, { kind: "app", name: "Windows 11", score: Infinity });
+      claim("Windows 11");
+    }
+
+    const remaining = themedLayers.filter((layer) => !result.has(layer));
+    // Most-peaked (most confident) layers claim their top pick first so
+    // ambiguous layers are the ones forced to fall back to a runner-up.
+    remaining.sort((a, b) => (candidatesByLayer.get(b)[0]?.score || 0) - (candidatesByLayer.get(a)[0]?.score || 0));
+
+    for (const layer of remaining) {
+      const candidates = candidatesByLayer.get(layer);
+      let chosen = candidates.find((c) => !usedLabels.has(c.name));
+      // No unclaimed candidate: this layer truly has nothing left to
+      // distinguish it from another, so allow sharing a label - but cap it
+      // at two layers, never more.
+      if (!chosen) chosen = candidates.find((c) => (usedLabels.get(c.name) || 0) < 2);
+      if (!chosen) chosen = candidates[0];
+      if (chosen) {
+        result.set(layer, chosen);
+        claim(chosen.name);
+      }
+    }
+    return result;
   }
 
   // Finds the single layer where the generic app (e.g. "Windows 11") is most
@@ -1206,23 +1318,44 @@
     return best.count > 0 ? best.layer : "";
   }
 
+  // Mirrors evolution/__init__.py's pos.hand == "right" using the same X_RIGHT
+  // physical-grid column set the keyboard renderer already uses.
+  function isRightHandX(x) {
+    return X_RIGHT.includes(Number(x));
+  }
+
+  const MOUSE_BUTTON_IDS = ["1", "2", "3", "4", "5"];
+
+  function rowMouseButton(row) {
+    if (!/^mouse key press$/i.test(row.behavior)) return null;
+    const match = /^mb([1-5])$/i.exec(clean(row.parameter));
+    return match ? match[1] : null;
+  }
+
   // The keyboard has a dedicated dynamic mouse layer (held via a thumb key), but
-  // which layer index hosts it varies per evolved genome - only 5 physical mouse
-  // buttons exist, so no layer ever reaches the 16% mouse-tag density threshold
-  // used for other kinds. Instead, find whichever layer concentrates the most
-  // mouse-button shortcuts and designate that one "Mouse" outright.
-  function detectDominantTagLayer(tag) {
-    let best = { layer: "", count: 0 };
+  // which layer index hosts it varies per evolved genome. A layer only qualifies
+  // as "the" mouse layer if it has ALL FIVE mouse buttons (MB1-5) and every one
+  // of them sits on the right hand (x>=7) - matching the optimizer's own
+  // dynamic-mouse-layer acceptance rule. This is a completeness/placement check,
+  // not a "most mouse buttons" popularity contest: a layer with 4 right-hand
+  // buttons plus 1 stray does not qualify, and neither does a layer with 5
+  // buttons if any of them landed on the left hand.
+  function detectDominantTagLayer() {
     for (const layer of LAYERS) {
       if (layer === "0" || layer === "7") continue;
       const activeRows = (state.rowsByLayer.get(layer) || []).filter((row) => !/transparent|none/i.test(row.behavior));
-      let count = 0;
+      const buttonsFound = new Map();
+      let allRight = true;
       for (const row of activeRows) {
-        if (inferRowTags(row).includes(tag)) count += 1;
+        const btn = rowMouseButton(row);
+        if (!btn) continue;
+        buttonsFound.set(btn, row);
+        if (!isRightHandX(row.x)) allRight = false;
       }
-      if (count > best.count) best = { layer, count };
+      const hasAllButtons = MOUSE_BUTTON_IDS.every((id) => buttonsFound.has(id));
+      if (hasAllButtons && allRight) return layer;
     }
-    return best.count > 0 ? best.layer : "";
+    return "";
   }
 
   function layerRole(layer) {
