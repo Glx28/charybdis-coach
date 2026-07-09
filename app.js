@@ -67,7 +67,9 @@
     events: [],
     practice: { mode: null, target: null, guidedList: [], guidedIndex: 0, attempts: 0, correct: 0 },
     progress: {},
-    uiIcons: false
+    uiIcons: false,
+    inspectorAutoExpanded: false,
+    lastSeenActionKey: null
   };
 
   const UI_ICON_CODEPOINTS = {
@@ -1739,6 +1741,14 @@
     const live = await loadJson(stateUrl, null);
     state.lastState = live;
     if (live) {
+      const actionKey = live.lastActionAt ? `${live.lastAction}@${live.lastActionAt}` : (live.lastAction || null);
+      if (actionKey !== null) {
+        if (state.lastSeenActionKey !== null && actionKey !== state.lastSeenActionKey) {
+          collapseInspectorOnPhysicalAction();
+        }
+        state.lastSeenActionKey = actionKey;
+      }
+
       const newLiveLayer = deriveLiveLayer(live);
       const keySignature = liveKeySignature(live);
       if (state.pinnedLayer && keySignature && state.lastLiveKeySignature && keySignature !== state.lastLiveKeySignature) {
@@ -2563,6 +2573,7 @@
 
   function onUserSelectKey(row) {
     selectKey(row);
+    expandInspectorForSelection();
     if (state.practice.mode === "quiz") checkQuizAnswer(row);
     else if (state.practice.mode === "guided") guidedShow();
   }
@@ -2646,6 +2657,29 @@
 
   function toggleInspector() {
     inspectorPanel.classList.toggle("collapsed");
+    state.inspectorAutoExpanded = false;
+  }
+
+  // Clicking a keycap with the mouse opens the inspector to show that
+  // shortcut's detail. Only click-driven opens are tracked here (via
+  // inspectorAutoExpanded) so a manual open via the collapse arrow is left
+  // alone by the physical-key auto-hide below.
+  function expandInspectorForSelection() {
+    if (!inspectorPanel) return;
+    inspectorPanel.classList.remove("collapsed");
+    state.inspectorAutoExpanded = true;
+  }
+
+  // Physical mouse-button/scroll presses on the keyboard never reach here:
+  // the AHK helper only calls TouchAction() (which changes lastAction) for
+  // layer/access/helper-key events, not for MB1-5 or scroll (those are logged
+  // separately for usage stats but never touch lastAction). So any genuinely
+  // new lastAction observed here is, by construction, some other physical key
+  // press - exactly the case that should close a click-opened inspector.
+  function collapseInspectorOnPhysicalAction() {
+    if (!inspectorPanel || !state.inspectorAutoExpanded) return;
+    inspectorPanel.classList.add("collapsed");
+    state.inspectorAutoExpanded = false;
   }
 
   if (railTitle) railTitle.addEventListener("click", toggleRail);
