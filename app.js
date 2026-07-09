@@ -4,6 +4,7 @@
   const X_RIGHT = [7, 8, 9, 10, 11, 12];
   const MAX_EVENTS = 12;
   const BEACON_STALE_MS = 12000;
+  const LAST_ACTION_STALE_MS = 4000;
 
   const els = {
     activeLayer: document.getElementById("activeLayer"),
@@ -1625,12 +1626,32 @@
     if (els.beaconBannerDetail) els.beaconBannerDetail.textContent = status.detail;
   }
 
+  // updatedAt only proves the state file heartbeat is fresh, not that lastAction
+  // is current - the writer (AHK/Python) can hold the same lastAction text
+  // indefinitely across many heartbeats after the key/layer event that caused it
+  // is long over. lastActionAt is that action's own timestamp; once it's older
+  // than the TTL and no layer is actually held/locked/toggled right now, the
+  // action is stale and the UI should say so instead of showing an old event
+  // as if it just happened.
+  function resolveLastActionText(liveObj) {
+    const text = clean(liveObj.lastAction);
+    if (!text) return "Ready";
+    const layerActive = Boolean(liveObj.lockedLayer)
+      || normalizeLayerList(liveObj.heldLayers).length > 0
+      || normalizeLayerList(liveObj.toggledLayers).length > 0;
+    if (layerActive) return text;
+    const actionAt = liveObj.lastActionAt ? Date.parse(liveObj.lastActionAt) : NaN;
+    if (Number.isNaN(actionAt)) return text;
+    const ageMs = Date.now() - actionAt;
+    return ageMs > LAST_ACTION_STALE_MS ? "Idle" : text;
+  }
+
   function renderNow() {
     const live = state.lastState;
     const beacon = beaconStatus(live);
     const liveObj = live || {};
     els.activeApp.textContent = clean(liveObj.activeApp) || "Unknown";
-    els.lastAction.textContent = clean(liveObj.lastAction) || "Ready";
+    els.lastAction.textContent = resolveLastActionText(liveObj);
     const ageSec = liveObj.updatedAt
       ? Math.max(0, Math.round((Date.now() - Date.parse(liveObj.updatedAt)) / 1000))
       : null;
