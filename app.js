@@ -5,6 +5,7 @@
   const MAX_EVENTS = 12;
   const BEACON_STALE_MS = 12000;
   const LAST_ACTION_STALE_MS = 4000;
+  const MISSED_READ_TOLERANCE = 2;
 
   const els = {
     activeLayer: document.getElementById("activeLayer"),
@@ -69,7 +70,8 @@
     progress: {},
     uiIcons: false,
     inspectorAutoExpanded: false,
-    lastSeenActionKey: null
+    lastSeenActionKey: null,
+    missedReadCount: 0
   };
 
   const UI_ICON_CODEPOINTS = {
@@ -1517,8 +1519,9 @@
     document.querySelectorAll(".keycap.beacon-live-key, .keycap.beacon-source-key").forEach((el) => {
       el.classList.remove("beacon-live-key", "beacon-source-key");
     });
-    const liveKey = state.lastState?.lastKey;
-    if (liveKey?.layer && liveKey.x !== "" && liveKey.y !== "") {
+    const liveObj = state.lastState;
+    const liveKey = liveObj?.lastKey;
+    if (liveKey?.layer && liveKey.x !== "" && liveKey.y !== "" && !isActionStale(liveObj)) {
       const selector = `[data-key-id="${CSS.escape(`${liveKey.layer}:${liveKey.x}:${liveKey.y}`)}"]`;
       const keyEl = document.querySelector(selector);
       if (keyEl) {
@@ -1635,17 +1638,33 @@
   // than the TTL and no layer is actually held/locked/toggled right now, the
   // action is stale and the UI should say so instead of showing an old event
   // as if it just happened.
-  function resolveLastActionText(liveObj) {
-    const text = clean(liveObj.lastAction);
-    if (!text) return "Ready";
+  // Shared by the "Last" pill text and the lastKey keycap highlight so both
+  // agree on when an event is too old to still be "current" - a layer must be
+  // actually held/locked/toggled right now, or the action's own timestamp
+  // (lastActionAt, not the ever-advancing heartbeat updatedAt) must be recent.
+  function isActionStale(liveObj) {
     const layerActive = Boolean(liveObj.lockedLayer)
       || normalizeLayerList(liveObj.heldLayers).length > 0
       || normalizeLayerList(liveObj.toggledLayers).length > 0;
-    if (layerActive) return text;
+    if (layerActive) return false;
     const actionAt = liveObj.lastActionAt ? Date.parse(liveObj.lastActionAt) : NaN;
-    if (Number.isNaN(actionAt)) return text;
-    const ageMs = Date.now() - actionAt;
-    return ageMs > LAST_ACTION_STALE_MS ? "Idle" : text;
+    if (Number.isNaN(actionAt)) return false;
+    return Date.now() - actionAt > LAST_ACTION_STALE_MS;
+  }
+
+  function resolveLastActionText(liveObj) {
+    const text = clean(liveObj.lastAction);
+    if (!text) return "Ready";
+    return isActionStale(liveObj) ? "Idle" : text;
+  }
+
+  // A snapshot read during a writer's file-replace window, or from a writer
+  // that isn't atomic, can come back parsed-but-empty (every field ""). That
+  // is not a real "beacon is dead" event - treat it the same as a failed
+  // fetch so a stray blank read can't flip the UI to idle/dead for one tick.
+  function isBlankSnapshot(obj) {
+    if (!obj) return true;
+    return !clean(obj.updatedAt) && !clean(obj.activeLayer) && !clean(obj.lastAction);
   }
 
   function renderNow() {
@@ -1738,7 +1757,21 @@
 
   async function pollState() {
     const stateUrl = window.CHARYBDIS_STATE_URL || "../charybdis-tools/runtime/charybdis_state.json";
-    const live = await loadJson(stateUrl, null);
+    const fetched = await loadJson(stateUrl, null);
+    // A single failed fetch or blank read (mid-write on a non-atomic writer)
+    // is expected noise, not proof the beacon died - keep showing the last
+    // good snapshot until MISSED_READ_TOLERANCE consecutive bad reads happen,
+    // so the UI doesn't flash "beacon not detected" for one bad tick.
+    if (isBlankSnapshot(fetched)) {
+      state.missedReadCount += 1;
+      if (state.missedReadCount <= MISSED_READ_TOLERANCE && state.lastState) {
+        renderNow();
+        return;
+      }
+    } else {
+      state.missedReadCount = 0;
+    }
+    const live = isBlankSnapshot(fetched) ? null : fetched;
     state.lastState = live;
     if (live) {
       const actionKey = live.lastActionAt ? `${live.lastAction}@${live.lastActionAt}` : (live.lastAction || null);
@@ -2668,6 +2701,13 @@
     if (!inspectorPanel) return;
     inspectorPanel.classList.remove("collapsed");
     state.inspectorAutoExpanded = true;
+    // Baseline the "seen" action to whatever is current right now, so a stale
+    // lastAction/lastActionAt pair already sitting in state can't be mistaken
+    // for a fresh physical action on the very next poll after opening.
+    const live = state.lastState;
+    if (live) {
+      state.lastSeenActionKey = live.lastActionAt ? `${live.lastAction}@${live.lastActionAt}` : (live.lastAction || null);
+    }
   }
 
   // Physical mouse-button/scroll presses on the keyboard never reach here:
