@@ -521,6 +521,15 @@ svg {
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  /* Without this, the single implicit row sizes to CONTENT (auto), not to
+     available height. When the inspector panel expands and narrows this
+     column, long key labels (key-primary has overflow-wrap: anywhere) wrap
+     onto a second line, growing every keycap's natural height - and with no
+     forced row height, that growth propagates straight up through .hand and
+     into this row, making the whole keyboard visibly taller instead of
+     clipping/scrolling within a stable box. minmax(0, 1fr) pins this row to
+     the box's actual available height regardless of label wrapping. */
+  grid-template-rows: minmax(0, 1fr);
   gap: 20px;
   align-content: stretch;
   justify-content: center;
@@ -544,6 +553,7 @@ svg {
   position: relative;
   min-width: 0;
   min-height: 0;
+  overflow: hidden;
   padding: 4px 5px 3px;
   border: 2px solid var(--line);
   background: var(--surface-2);

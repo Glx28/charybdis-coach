@@ -41,6 +41,7 @@
     selectedModifiers: document.getElementById("selectedModifiers"),
     selectedPurpose: document.getElementById("selectedPurpose"),
     selectedNotes: document.getElementById("selectedNotes"),
+    selectedCurrentApp: document.getElementById("selectedCurrentApp"),
     heldLayers: document.getElementById("heldLayers"),
     lockedLayer: document.getElementById("lockedLayer"),
     toggledLayers: document.getElementById("toggledLayers"),
@@ -68,6 +69,7 @@
     apps: [],
     layoutSpec: {},
     hostKeyboard: null,
+    appShortcutReference: null,
     displayedLayer: "0",
     liveLayer: "0",
     pinnedLayer: null,
@@ -1482,6 +1484,54 @@
     return hand;
   }
 
+  // Matches the AHK helper's ActiveAppLabel() format ("<exe> - <window title>")
+  // against app_shortcut_reference.json's per-app exeNames list, to find which
+  // known app (if any) is currently in the foreground.
+  function appNameForActiveApp(activeAppRaw) {
+    const raw = clean(activeAppRaw).toLowerCase();
+    if (!raw) return null;
+    const exePart = raw.split(" - ")[0].trim();
+    const apps = state.appShortcutReference?.apps || {};
+    for (const [appName, appData] of Object.entries(apps)) {
+      const exeNames = appData.exeNames || [];
+      if (exeNames.some((exe) => exePart === String(exe).toLowerCase())) {
+        return appName;
+      }
+    }
+    return null;
+  }
+
+  // Looks up what this key's own literal combo (visual_label) does in the
+  // CURRENTLY foregrounded app - independent of which app this physical
+  // position was originally optimized/placed for.
+  function currentAppShortcutMeaning(row) {
+    const appName = appNameForActiveApp(state.lastState?.activeApp);
+    if (!appName) return { appName: null, text: null };
+    const appData = state.appShortcutReference?.apps?.[appName];
+    const label = clean(row.visual_label);
+    const text = appData?.shortcuts?.[label] || null;
+    return { appName, text };
+  }
+
+  function renderCurrentAppMeaning(row) {
+    if (!els.selectedCurrentApp) return;
+    if (!row) {
+      els.selectedCurrentApp.textContent = "-";
+      return;
+    }
+    const { appName, text } = currentAppShortcutMeaning(row);
+    if (!appName) {
+      els.selectedCurrentApp.textContent = "No foreground app detected yet.";
+      return;
+    }
+    if (text) {
+      els.selectedCurrentApp.textContent = `In ${appName} (your current app): ${text}`;
+    } else {
+      const label = clean(row.visual_label) || "this key";
+      els.selectedCurrentApp.textContent = `No ${appName} reference for ${label} - see Purpose/Notes below for its optimized meaning.`;
+    }
+  }
+
   function selectKey(row) {
     state.selectedKey = row;
     const visual = visualFor(row);
@@ -1494,6 +1544,7 @@
     els.selectedModifiers.textContent = clean(row.modifiers) || "-";
     els.selectedPurpose.textContent = clean(row.purpose) || "-";
     els.selectedNotes.textContent = clean(row.usage_notes) || "-";
+    renderCurrentAppMeaning(row);
     document.querySelectorAll(".keycap.selected").forEach((el) => el.classList.remove("selected"));
     document.querySelector(`[data-key-id="${CSS.escape(keyId(row))}"]`)?.classList.add("selected");
   }
@@ -1720,6 +1771,9 @@
       els.transport.classList.toggle("beacon-live", beacon.alive);
     }
     renderBeaconBanner(live);
+    // Keep the "current app" line live if the foreground app changes while a
+    // key stays selected, without needing a re-click.
+    if (state.selectedKey) renderCurrentAppMeaning(state.selectedKey);
   }
 
   function formatList(value) {
@@ -2361,16 +2415,18 @@
   }
 
   async function init() {
-    const [csvText, layoutSpec, appsConfig, hostKeyboard] = await Promise.all([
+    const [csvText, layoutSpec, appsConfig, hostKeyboard, appShortcutReference] = await Promise.all([
       loadText("./data/keybindings_explained.csv"),
       loadJson("./data/layout_spec.json", {}),
       loadJson("./data/charybdis_apps.json", { apps: [] }),
-      loadJson("./data/windows_norwegian_host.json", null)
+      loadJson("./data/windows_norwegian_host.json", null),
+      loadJson("./data/app_shortcut_reference.json", { apps: {} })
     ]);
     state.rows = normalizeRows(parseCsv(csvText));
     state.layoutSpec = layoutSpec || {};
     state.hostKeyboard = hostKeyboard;
     state.apps = appsConfig.apps || [];
+    state.appShortcutReference = appShortcutReference || { apps: {} };
     const device = clean(state.layoutSpec.device) || "Charybdis";
     const host = clean(state.layoutSpec.host_keyboard?.primary) || clean(hostKeyboard?.name) || "";
     els.deviceLabel.textContent = host ? `${device} · ${host}` : device;
