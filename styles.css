@@ -63,7 +63,12 @@ svg {
 .app-shell {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  /* minmax(0, 1fr) - not bare 1fr - caps this row at the space actually left
+     after the two header rows. With bare 1fr, a tall inspector panel's
+     content can inflate this track past the viewport (grid "blowout"),
+     growing .workspace and everything inside it, including the keyboard's
+     own row heights, instead of just scrolling inside .inspector. */
+  grid-template-rows: auto auto minmax(0, 1fr);
 }
 
 .topbar {
@@ -264,7 +269,7 @@ svg {
   min-height: 0;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  grid-template-rows: 1fr;
+  grid-template-rows: minmax(0, 1fr);
   gap: 0;
   padding: 0;
   overflow: hidden;

@@ -6,6 +6,17 @@
   const BEACON_STALE_MS = 12000;
   const LAST_ACTION_STALE_MS = 4000;
   const MISSED_READ_TOLERANCE = 2;
+  // Transport/heartbeat placeholders a writer can hold indefinitely before (or
+  // between) real events - never a genuine physical action, so a flip to/from
+  // one of these should never collapse the inspector.
+  const NON_INPUT_ACTION_TEXTS = new Set([
+    "Beacon listener ready",
+    "USB Connected",
+    "USB Monitor Active",
+    "Waiting for USB connection",
+    "Monitor stopped",
+    "USB Disconnected",
+  ]);
 
   const els = {
     activeLayer: document.getElementById("activeLayer"),
@@ -1658,6 +1669,22 @@
     return isActionStale(liveObj) ? "Idle" : text;
   }
 
+  // AHK and the Python listener both rewrite charybdis_state.json on their own
+  // heartbeat, each holding their own last-known (possibly long-stale)
+  // lastAction/lastActionAt. When both processes are alive, the file's
+  // lastAction/lastActionAt pair can alternate between two different stale
+  // snapshots forever with no real key press involved - the pair "changes"
+  // every poll but neither value is current. A genuine physical action always
+  // has a fresh lastActionAt (written the moment it happened); stale
+  // writer-flip noise does not. So only treat an actionKey change as a real
+  // event if its timestamp is actually recent.
+  function isFreshActionTimestamp(lastActionAt) {
+    if (!lastActionAt) return false;
+    const parsed = Date.parse(lastActionAt);
+    if (Number.isNaN(parsed)) return false;
+    return Date.now() - parsed <= LAST_ACTION_STALE_MS;
+  }
+
   // A snapshot read during a writer's file-replace window, or from a writer
   // that isn't atomic, can come back parsed-but-empty (every field ""). That
   // is not a real "beacon is dead" event - treat it the same as a failed
@@ -1776,7 +1803,11 @@
     if (live) {
       const actionKey = live.lastActionAt ? `${live.lastAction}@${live.lastActionAt}` : (live.lastAction || null);
       if (actionKey !== null) {
-        if (state.lastSeenActionKey !== null && actionKey !== state.lastSeenActionKey) {
+        const isRealNewAction = state.lastSeenActionKey !== null
+          && actionKey !== state.lastSeenActionKey
+          && !NON_INPUT_ACTION_TEXTS.has(clean(live.lastAction))
+          && isFreshActionTimestamp(live.lastActionAt);
+        if (isRealNewAction) {
           collapseInspectorOnPhysicalAction();
         }
         state.lastSeenActionKey = actionKey;
