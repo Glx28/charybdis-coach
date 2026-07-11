@@ -89,6 +89,17 @@
       "notes": "Windows File Explorer."
     },
     {
+      "id": "discord",
+      "aliases": ["discord"],
+      "launch": "discord.exe",
+      "window_match": {
+        "exe": "Discord.exe",
+        "title": "Discord"
+      },
+      "new_instance": "discord.exe",
+      "notes": "Discord voice/text chat. Already has a CSV app-tag and coach/workflows/discord.json - was just missing from this launcher list."
+    },
+    {
       "id": "proton-pass",
       "aliases": ["proton", "proton pass", "pass"],
       "launch": "msedge.exe",
