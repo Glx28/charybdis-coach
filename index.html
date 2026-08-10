@@ -54,10 +54,13 @@
 
       <section class="coach-stage" aria-label="Keyboard coach">
         <div class="stage-toolbar">
-          <label class="search-box">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
-            <input id="searchInput" type="search" autocomplete="off" placeholder="Search keys, actions, apps" data-icon="search">
-          </label>
+          <div class="search-wrap">
+            <label class="search-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
+              <input id="searchInput" type="search" autocomplete="off" placeholder="Search all layers — try 'windows search', 'powertoys', 'copy'  ( / )" data-icon="search">
+            </label>
+            <div id="searchResults" class="search-results" hidden></div>
+          </div>
           <div class="view-toggles" role="group" aria-label="View mode">
             <button id="focusImportantButton" type="button" data-icon="focus">Focus</button>
             <button id="showAllButton" type="button" class="active" data-icon="all">All</button>

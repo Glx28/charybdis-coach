@@ -1451,3 +1451,140 @@ svg {
   border-color: var(--danger) !important;
   box-shadow: 0 0 0 2px var(--danger), 0 0 18px rgba(255, 107, 107, 0.5);
 }
+
+/* ----- Cross-layer search results ----- */
+.search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.search-results {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 60;
+  max-height: min(60vh, 520px);
+  overflow-y: auto;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-2);
+  box-shadow: var(--shadow);
+}
+
+.search-hint,
+.search-empty {
+  padding: 8px 10px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.search-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 8px 8px;
+}
+
+.search-chip {
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--soft);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.search-chip:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.search-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-result:hover {
+  background: var(--surface-3);
+}
+
+.search-result--info {
+  cursor: default;
+}
+
+.search-result--info:hover {
+  background: transparent;
+}
+
+.search-result-icon {
+  flex: 0 0 2rem;
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+.search-result-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  flex: 1;
+}
+
+.search-result-title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-result-sub {
+  color: var(--muted);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-result-footer {
+  color: var(--accent);
+  font-size: 0.78rem;
+}
+
+.search-result-footer--unmapped {
+  color: var(--warn);
+}
+
+.search-result-badge {
+  flex: 0 0 auto;
+  max-width: 40%;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--badge-color, var(--line));
+  color: var(--badge-color, var(--muted));
+  font-size: 0.72rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes searchFlash {
+  0%, 60% { box-shadow: 0 0 0 3px var(--accent), 0 0 22px var(--accent); }
+  100% { box-shadow: none; }
+}
+
+.keycap.search-flash {
+  animation: searchFlash 1.3s ease-out;
+}

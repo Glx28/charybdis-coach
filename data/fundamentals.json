@@ -1,0 +1,180 @@
+{
+  "description": "Curated fundamental OS/editing functions for coach search. Each entry resolves at runtime against the live layout CSV: if the combo is mapped, the result links to that key on whatever layer the optimizer placed it; otherwise the result shows as 'not mapped' with the raw host combo. Aliases make entries findable by the words users actually type.",
+  "fundamentals": [
+    {
+      "name": "Windows Search",
+      "icon": "🔍",
+      "combo": "Win+S",
+      "aliases": ["windows search", "search windows", "find app", "find file", "start search", "search start menu"],
+      "explanation": "Opens Windows Search: find apps, files, settings and web results from one box."
+    },
+    {
+      "name": "PowerToys Run",
+      "icon": "🪄",
+      "combo": "Alt+Space",
+      "aliases": ["powertoys", "powertoys run", "launcher", "quick launcher", "spotlight", "alfred", "run launcher", "app launcher"],
+      "explanation": "PowerToys Run launcher: launch apps, find files, calculate, search the web. Requires PowerToys running in the background."
+    },
+    {
+      "name": "PowerToys Command Palette",
+      "icon": "🪄",
+      "combo": "Win+Alt+Space",
+      "aliases": ["command palette", "command pallet", "cmdpal", "powertoys command palette", "powertoys palette", "palette"],
+      "explanation": "PowerToys Command Palette (CmdPal): the newer extensible launcher for commands, apps, files and window management. Requires a recent PowerToys version."
+    },
+    {
+      "name": "Task View / virtual desktops",
+      "icon": "🗂️",
+      "combo": "Win+Tab",
+      "aliases": ["task view", "virtual desktops", "desktops", "timeline", "all windows"],
+      "explanation": "Shows all open windows and virtual desktops; create and switch desktops here."
+    },
+    {
+      "name": "Task Manager",
+      "icon": "🛠️",
+      "combo": "Ctrl+Shift+Esc",
+      "aliases": ["task manager", "kill app", "taskmgr", "processes", "force quit"],
+      "explanation": "Opens Task Manager directly: inspect and end processes, check performance, manage startup apps."
+    },
+    {
+      "name": "Lock PC",
+      "icon": "🔒",
+      "combo": "Win+L",
+      "aliases": ["lock", "lock pc", "lock computer", "lock screen"],
+      "explanation": "Locks the workstation immediately."
+    },
+    {
+      "name": "Clipboard history",
+      "icon": "📋",
+      "combo": "Win+V",
+      "aliases": ["clipboard", "clipboard history", "paste history", "clip history"],
+      "explanation": "Opens clipboard history (must be enabled once in Settings). Paste older copies, pin items."
+    },
+    {
+      "name": "Screenshot (Snipping Tool)",
+      "icon": "✂️",
+      "combo": "Win+Shift+S",
+      "aliases": ["screenshot", "snip", "snipping tool", "screen capture", "capture screen"],
+      "explanation": "Screen snip overlay: capture a region, window or full screen to the clipboard."
+    },
+    {
+      "name": "Emoji picker",
+      "icon": "😀",
+      "combo": "Win+.",
+      "aliases": ["emoji", "emoji picker", "emojis", "symbols", "kaomoji"],
+      "explanation": "Emoji/symbol/GIF picker that types into the focused field."
+    },
+    {
+      "name": "Switch apps",
+      "icon": "🔀",
+      "combo": "Alt+Tab",
+      "aliases": ["alt tab", "switch apps", "switch window", "app switcher", "cycle windows"],
+      "explanation": "Cycle through open windows. Hold Alt, tap Tab, release to switch."
+    },
+    {
+      "name": "Close window",
+      "icon": "❌",
+      "combo": "Alt+F4",
+      "aliases": ["close window", "close app", "quit app", "alt f4"],
+      "explanation": "Closes the focused window; on the desktop it opens the shutdown dialog."
+    },
+    {
+      "name": "Show desktop",
+      "icon": "🖥️",
+      "combo": "Win+D",
+      "aliases": ["show desktop", "desktop", "minimize all", "hide windows"],
+      "explanation": "Toggles all windows minimized to reveal the desktop."
+    },
+    {
+      "name": "Windows Settings",
+      "icon": "⚙️",
+      "combo": "Win+I",
+      "aliases": ["settings", "windows settings", "control panel", "system settings"],
+      "explanation": "Opens the Windows Settings app."
+    },
+    {
+      "name": "File Explorer",
+      "icon": "📁",
+      "combo": "Win+E",
+      "aliases": ["explorer", "file explorer", "files", "open folder", "file manager"],
+      "explanation": "Opens a new File Explorer window."
+    },
+    {
+      "name": "Run dialog",
+      "icon": "🏃",
+      "combo": "Win+R",
+      "aliases": ["run", "run dialog", "run command", "win+r"],
+      "explanation": "The classic Run box: type a program name, path or shell command."
+    },
+    {
+      "name": "Snap window left",
+      "icon": "◀️",
+      "combo": "Win+Left",
+      "aliases": ["snap left", "snap window", "tile left", "split screen", "window snap"],
+      "explanation": "Snaps the window to the left half; Windows then offers what fills the right."
+    },
+    {
+      "name": "Snap window right",
+      "icon": "▶️",
+      "combo": "Win+Right",
+      "aliases": ["snap right", "tile right", "window snap right"],
+      "explanation": "Snaps the window to the right half of the screen."
+    },
+    {
+      "name": "Copy",
+      "icon": "📄",
+      "combo": "Ctrl+C",
+      "aliases": ["copy", "duplicate to clipboard"],
+      "explanation": "Copies the selection to the clipboard."
+    },
+    {
+      "name": "Paste",
+      "icon": "📥",
+      "combo": "Ctrl+V",
+      "aliases": ["paste", "insert clipboard"],
+      "explanation": "Pastes the clipboard contents. See also: Clipboard history (Win+V)."
+    },
+    {
+      "name": "Cut",
+      "icon": "✂️",
+      "combo": "Ctrl+X",
+      "aliases": ["cut", "move to clipboard"],
+      "explanation": "Cuts the selection to the clipboard."
+    },
+    {
+      "name": "Undo",
+      "icon": "↩️",
+      "combo": "Ctrl+Z",
+      "aliases": ["undo", "revert"],
+      "explanation": "Undoes the last action in the current app."
+    },
+    {
+      "name": "Redo",
+      "icon": "↪️",
+      "combo": "Ctrl+Y",
+      "aliases": ["redo", "repeat action"],
+      "explanation": "Redoes what was just undone."
+    },
+    {
+      "name": "Select all",
+      "icon": "🔲",
+      "combo": "Ctrl+A",
+      "aliases": ["select all", "select everything", "highlight all"],
+      "explanation": "Selects everything in the current document, list or field."
+    },
+    {
+      "name": "Find",
+      "icon": "🔎",
+      "combo": "Ctrl+F",
+      "aliases": ["find", "find in page", "search in page", "search document"],
+      "explanation": "Find-as-you-type inside the current app/page/document."
+    },
+    {
+      "name": "New virtual desktop",
+      "icon": "🪟",
+      "combo": "Win+Ctrl+D",
+      "aliases": ["new desktop", "new virtual desktop", "add desktop"],
+      "explanation": "Creates a new virtual desktop and switches to it. Switch with Win+Ctrl+Left/Right."
+    }
+  ]
+}

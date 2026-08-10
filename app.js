@@ -30,6 +30,7 @@
     layerTabs: document.getElementById("layerTabs"),
     keyboardMap: document.getElementById("keyboardMap"),
     searchInput: document.getElementById("searchInput"),
+    searchResults: document.getElementById("searchResults"),
     focusImportantButton: document.getElementById("focusImportantButton"),
     showAllButton: document.getElementById("showAllButton"),
     fullscreenButton: document.getElementById("fullscreenButton"),
@@ -76,6 +77,8 @@
     lastLiveKeySignature: "",
     selectedKey: null,
     query: "",
+    fundamentals: [],
+    searchIndex: [],
     focusImportant: false,
     lastState: null,
     events: [],
@@ -1569,6 +1572,257 @@
     });
   }
 
+  // ----- Cross-layer global search -----
+  // The main search box answers "how do I do X?" across ALL layers, not just
+  // the displayed one. It indexes four sources: layout keys (every layer),
+  // the curated fundamentals list, the per-app shortcut reference, and the
+  // workflow guides. Reference entries link back to the physical key when the
+  // combo exists in the current layout, or show the raw host combo when not.
+  const SEARCH_MAX_RESULTS = 18;
+
+  const SEARCH_CHIPS = ["windows search", "command palette", "powertoys", "screenshot", "copy", "task manager"];
+
+  const COMBO_MOD_ALIASES = { win: "win", gui: "win", meta: "win", super: "win", ctrl: "ctrl", control: "ctrl", alt: "alt", shift: "shift" };
+  const COMBO_KEY_ALIASES = {
+    spacebar: "space", escape: "esc", return: "enter",
+    leftarrow: "left", rightarrow: "right", uparrow: "up", downarrow: "down",
+    period: ".", comma: ",", minus: "-", equal: "=", semicolon: ";",
+    grave: "`", apostrophe: "'", leftbracket: "[", rightbracket: "]"
+  };
+
+  function comboSignature(combo) {
+    const mods = [];
+    let key = "";
+    for (const raw of clean(combo).toLowerCase().split("+")) {
+      const token = raw.trim();
+      if (!token) continue;
+      if (COMBO_MOD_ALIASES[token]) { mods.push(COMBO_MOD_ALIASES[token]); continue; }
+      key = COMBO_KEY_ALIASES[token] || token;
+    }
+    mods.sort();
+    return `${mods.join("+")}|${key}`;
+  }
+
+  function resolveComboInLayout(combo) {
+    const signature = comboSignature(combo);
+    if (signature === "|") return null;
+    for (const rows of state.rowsByLayer.values()) {
+      for (const row of rows) {
+        if (/transparent|none/i.test(row.behavior)) continue;
+        if (comboSignature(row.visual_label) === signature) return row;
+      }
+    }
+    return null;
+  }
+
+  function buildSearchIndex() {
+    const index = [];
+    for (const [layer, rows] of state.rowsByLayer) {
+      for (const row of rows) {
+        if (/transparent|none/i.test(row.behavior)) continue;
+        index.push({ type: "key", row, layer: String(layer), search: rowSearchText(row) });
+      }
+    }
+    for (const [appName, appData] of Object.entries(state.appShortcutReference?.apps || {})) {
+      for (const [combo, description] of Object.entries(appData?.shortcuts || {})) {
+        index.push({
+          type: "shortcut", app: appName, combo, description,
+          search: `${combo} ${description} ${appName}`.toLowerCase()
+        });
+      }
+    }
+    for (const [appId, data] of workflowState.apps) {
+      for (const category of data?.categories || []) {
+        for (const shortcut of category.shortcuts || []) {
+          index.push({
+            type: "workflow", app: clean(data?.name) || appId, category: clean(category.name),
+            combo: shortcut.keys, description: shortcut.action,
+            search: `${shortcut.keys} ${shortcut.action} ${category.name} ${data?.name}`.toLowerCase()
+          });
+        }
+      }
+    }
+    for (const item of state.fundamentals) {
+      index.push({
+        type: "fundamental", item,
+        search: `${item.name} ${(item.aliases || []).join(" ")} ${item.combo} ${item.explanation}`.toLowerCase()
+      });
+    }
+    state.searchIndex = index;
+  }
+
+  function searchTokens(query) {
+    return clean(query).toLowerCase().split(/[^a-z0-9.+æøå]+/u).filter((token) => token.length >= 2 || token === ".");
+  }
+
+  function scoreSearchEntry(entry, tokens, query) {
+    if (!tokens.every((token) => entry.search.includes(token))) return 0;
+    let score = tokens.length;
+    if (query.length >= 3 && entry.search.includes(query)) score += 2;
+    const title = entry.type === "key"
+      ? `${clean(entry.row.visual_label)} ${clean(entry.row.purpose)}`.toLowerCase()
+      : (entry.type === "fundamental" ? entry.item.name : clean(entry.description)).toLowerCase();
+    if (title === query) score += 6;
+    else if (title.startsWith(query)) score += 3;
+    return score;
+  }
+
+  const SEARCH_TYPE_PRIORITY = { key: 0, fundamental: 1, shortcut: 2, workflow: 3 };
+
+  function collectSearchResults(query) {
+    const tokens = searchTokens(query);
+    if (!tokens.length) return [];
+    const matched = state.searchIndex
+      .map((entry) => ({ entry, score: scoreSearchEntry(entry, tokens, query) }))
+      .filter((hit) => hit.score > 0);
+    matched.sort((a, b) => b.score - a.score
+      || SEARCH_TYPE_PRIORITY[a.entry.type] - SEARCH_TYPE_PRIORITY[b.entry.type]
+      || Number(a.entry.layer ?? 99) - Number(b.entry.layer ?? 99));
+    // Reference entries (fundamentals/shortcuts/workflows) often repeat the same
+    // combo across apps; keep the first by priority so Win+S appears once.
+    const seenCombos = new Set();
+    const results = [];
+    for (const { entry } of matched) {
+      if (entry.type !== "key") {
+        const signature = comboSignature(entry.type === "fundamental" ? entry.item.combo : entry.combo);
+        if (signature !== "|") {
+          if (seenCombos.has(signature)) continue;
+          seenCombos.add(signature);
+        }
+      }
+      results.push(entry);
+      if (results.length >= SEARCH_MAX_RESULTS) break;
+    }
+    return results;
+  }
+
+  function jumpToSearchResult(row) {
+    pinDisplayedLayer(String(row.layer));
+    selectKey(row);
+    const el = document.querySelector(`[data-key-id="${CSS.escape(keyId(row))}"]`);
+    if (!el) return;
+    el.classList.add("search-flash");
+    el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    setTimeout(() => el.classList.remove("search-flash"), 1400);
+  }
+
+  function searchResultRow({ icon, title, subtitle, footer, badgeText, badgeColor, target, unmapped }) {
+    const item = document.createElement("button");
+    item.type = "button";
+    item.className = "search-result" + (unmapped ? " search-result--unmapped" : "") + (target ? "" : " search-result--info");
+    const iconEl = document.createElement("span");
+    iconEl.className = "search-result-icon";
+    iconEl.textContent = icon || "\u2022";
+    const body = document.createElement("span");
+    body.className = "search-result-body";
+    const titleEl = document.createElement("span");
+    titleEl.className = "search-result-title";
+    titleEl.textContent = title;
+    body.appendChild(titleEl);
+    if (subtitle) {
+      const subEl = document.createElement("span");
+      subEl.className = "search-result-sub";
+      subEl.textContent = subtitle;
+      body.appendChild(subEl);
+    }
+    if (footer) {
+      const footEl = document.createElement("span");
+      footEl.className = "search-result-footer" + (unmapped ? " search-result-footer--unmapped" : "");
+      footEl.textContent = footer;
+      body.appendChild(footEl);
+    }
+    const badge = document.createElement("span");
+    badge.className = "search-result-badge";
+    badge.textContent = badgeText || "";
+    if (badgeColor) badge.style.setProperty("--badge-color", badgeColor);
+    item.appendChild(iconEl);
+    item.appendChild(body);
+    item.appendChild(badge);
+    if (target) item.addEventListener("click", () => jumpToSearchResult(target));
+    return item;
+  }
+
+  function renderSearchResults() {
+    const container = els.searchResults;
+    if (!container) return;
+    container.innerHTML = "";
+    const query = clean(state.query).toLowerCase();
+
+    if (!query) {
+      const hint = document.createElement("div");
+      hint.className = "search-hint";
+      hint.textContent = "Searches every layer plus Windows/app references. Try:";
+      container.appendChild(hint);
+      const chipRow = document.createElement("div");
+      chipRow.className = "search-chips";
+      for (const chipText of SEARCH_CHIPS) {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "search-chip";
+        chip.textContent = chipText;
+        chip.addEventListener("click", () => {
+          els.searchInput.value = chipText;
+          state.query = chipText;
+          applyFilters();
+          renderSearchResults();
+          els.searchInput.focus();
+        });
+        chipRow.appendChild(chip);
+      }
+      container.appendChild(chipRow);
+      container.hidden = false;
+      return;
+    }
+
+    const results = collectSearchResults(query);
+    if (!results.length) {
+      const empty = document.createElement("div");
+      empty.className = "search-empty";
+      empty.textContent = "No matches on any layer or reference. Try a synonym - e.g. 'launcher', 'find', 'snap', 'lock'.";
+      container.appendChild(empty);
+      container.hidden = false;
+      return;
+    }
+
+    for (const entry of results) {
+      if (entry.type === "key") {
+        const row = entry.row;
+        const visual = visualFor(row);
+        const meta = dynamicLayerMeta(entry.layer);
+        container.appendChild(searchResultRow({
+          icon: visual.badge || visual.primary.slice(0, 3),
+          title: clean(row.visual_label) || visual.primary,
+          subtitle: clean(row.purpose) || behaviorCaption(row),
+          badgeText: `L${entry.layer} \u00b7 ${meta.title || ""}`.trim(),
+          badgeColor: meta.color,
+          target: row
+        }));
+        continue;
+      }
+      const isFundamental = entry.type === "fundamental";
+      const combo = isFundamental ? entry.item.combo : entry.combo;
+      const target = combo ? resolveComboInLayout(combo) : null;
+      const targetMeta = target ? dynamicLayerMeta(String(target.layer)) : null;
+      container.appendChild(searchResultRow({
+        icon: isFundamental ? entry.item.icon : "\u2328",
+        title: isFundamental ? entry.item.name : (combo ? `${combo} - ${entry.description}` : entry.description),
+        subtitle: isFundamental ? entry.item.explanation : (entry.category ? `${entry.app} \u00b7 ${entry.category}` : entry.app),
+        footer: !combo ? "" : (target
+          ? `On your layout: L${target.layer} \u00b7 ${targetMeta?.title || ""} - click to jump`
+          : `Not on your layout - press ${combo}`),
+        badgeText: isFundamental ? "Basic" : entry.app,
+        badgeColor: targetMeta?.color,
+        target,
+        unmapped: Boolean(combo) && !target
+      }));
+    }
+    container.hidden = false;
+  }
+
+  function hideSearchResults() {
+    if (els.searchResults) els.searchResults.hidden = true;
+  }
+
   function renderStatus() {
     els.activeLayer.textContent = state.liveLayer || state.displayedLayer || "0";
     try { updateRailStrip(); } catch {}
@@ -2378,7 +2632,7 @@
     els.workflowContent.innerHTML = html || '<div class="workflow-empty">No shortcuts match your filter.</div>';
   }
 
-  function setupWorkflow() {
+  async function setupWorkflow() {
     if (els.workflowAppSelect) {
       els.workflowAppSelect.addEventListener("change", (e) => {
         loadWorkflowApp(e.target.value);
@@ -2396,7 +2650,7 @@
       els.workflowAppSelect.value = saved;
       loadWorkflowApp(saved);
     }
-    populatePracticeAppSelect();
+    await populatePracticeAppSelect();
   }
 
   async function populatePracticeAppSelect() {
@@ -2415,18 +2669,20 @@
   }
 
   async function init() {
-    const [csvText, layoutSpec, appsConfig, hostKeyboard, appShortcutReference] = await Promise.all([
+    const [csvText, layoutSpec, appsConfig, hostKeyboard, appShortcutReference, fundamentalsConfig] = await Promise.all([
       loadText("./data/keybindings_explained.csv"),
       loadJson("./data/layout_spec.json", {}),
       loadJson("./data/charybdis_apps.json", { apps: [] }),
       loadJson("./data/windows_norwegian_host.json", null),
-      loadJson("./data/app_shortcut_reference.json", { apps: {} })
+      loadJson("./data/app_shortcut_reference.json", { apps: {} }),
+      loadJson("./data/fundamentals.json", { fundamentals: [] })
     ]);
     state.rows = normalizeRows(parseCsv(csvText));
     state.layoutSpec = layoutSpec || {};
     state.hostKeyboard = hostKeyboard;
     state.apps = appsConfig.apps || [];
     state.appShortcutReference = appShortcutReference || { apps: {} };
+    state.fundamentals = fundamentalsConfig?.fundamentals || [];
     const device = clean(state.layoutSpec.device) || "Charybdis";
     const host = clean(state.layoutSpec.host_keyboard?.primary) || clean(hostKeyboard?.name) || "";
     els.deviceLabel.textContent = host ? `${device} · ${host}` : device;
@@ -2439,7 +2695,8 @@
     render();
     setupPractice();
     await loadWorkflowIndex();
-    setupWorkflow();
+    await setupWorkflow();
+    buildSearchIndex();
     await pollState();
     setInterval(pollState, 150);
     setInterval(renderNow, 1000);
@@ -2719,6 +2976,36 @@
   els.searchInput.addEventListener("input", (event) => {
     state.query = event.target.value || "";
     applyFilters();
+    renderSearchResults();
+  });
+
+  els.searchInput.addEventListener("focus", () => renderSearchResults());
+
+  els.searchInput.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    els.searchInput.value = "";
+    state.query = "";
+    applyFilters();
+    hideSearchResults();
+    els.searchInput.blur();
+    event.stopPropagation();
+  });
+
+  // "/" focuses search from anywhere (not while typing, drilling, or in the learn tour).
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "/" || event.ctrlKey || event.altKey || event.metaKey) return;
+    const target = event.target;
+    if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.tagName === "SELECT" || target.isContentEditable)) return;
+    if (state.practice.mode === "drill" || learnState.active) return;
+    event.preventDefault();
+    els.searchInput.focus();
+    els.searchInput.select();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!els.searchResults || els.searchResults.hidden) return;
+    if (event.target.closest && event.target.closest(".search-wrap")) return;
+    hideSearchResults();
   });
 
   els.focusImportantButton.addEventListener("click", () => {
