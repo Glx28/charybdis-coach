@@ -600,7 +600,11 @@ svg {
 }
 
 .keycap.filtered-out {
-  display: none;
+  /* Dim instead of display:none - removing the element lets grid tracks
+     collapse, which made the whole keyboard area shrink/vanish while typing
+     in search. Opacity keeps the 6x6 geometry stable and shows context. */
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 .keycap.transparent {
