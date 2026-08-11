@@ -1126,8 +1126,11 @@
       kind = "base";
     } else if (options.allowGenericPrimary) {
       kind = "windows";
+      // Lead with the primary function, not the top-apps-by-count list.
+      role = LAYER_KIND_META.windows.title;
     } else if (options.isMousePrimary) {
       kind = "mouse";
+      role = LAYER_KIND_META.mouse.title;
     } else if (distinctive) {
       // Driven by computeDistinctiveLayerLabels' TF-IDF-style ranking rather than
       // raw popularity, and already deduped against every other layer's pick.
@@ -2989,6 +2992,18 @@
     hideSearchResults();
     els.searchInput.blur();
     event.stopPropagation();
+  });
+
+  // Esc exits search from anywhere. Clicking a result row or the page moves
+  // focus off the input, where the input-level Esc handler above cannot fire.
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    if (event.target === els.searchInput) return; // handled above
+    if (!state.query && (!els.searchResults || els.searchResults.hidden)) return;
+    els.searchInput.value = "";
+    state.query = "";
+    applyFilters();
+    hideSearchResults();
   });
 
   // "/" focuses search from anywhere (not while typing, drilling, or in the learn tour).
