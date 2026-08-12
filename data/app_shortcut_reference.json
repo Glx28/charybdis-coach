@@ -93,6 +93,46 @@
         "Ctrl+Shift+U": "View source"
       }
     },
+    "Claude Code CLI": {
+      "exeNames": [],
+      "shortcuts": {
+        "Escape": "Interrupt Claude / close a dialog",
+        "Ctrl+C": "Interrupt running op; 2nd press exits",
+        "Ctrl+D": "Exit Claude Code session (EOF)",
+        "Shift+Tab": "Cycle permission modes (auto-accept/plan/bypass)",
+        "Ctrl+O": "Toggle transcript / verbose tool-use view",
+        "Ctrl+R": "Reverse search prompt/command history",
+        "Ctrl+L": "Redraw / clear terminal screen",
+        "Ctrl+B": "Background running Bash command/agent",
+        "Shift+Enter": "Insert newline in multi-line input",
+        "/": "Open slash command / skill menu",
+        "!": "Enter shell mode, run command directly (+1 other app-specific meanings)",
+        "@": "Trigger file path autocomplete/mention (+1 other app-specific meanings)",
+        "Enter": "Submit prompt",
+        "Up": "Previous prompt",
+        "Down": "Next prompt",
+        "Tab": "Autocomplete / accept suggestion"
+      }
+    },
+    "Codex CLI": {
+      "exeNames": [],
+      "shortcuts": {
+        "Escape": "Interrupt active task",
+        "Ctrl+C": "Cancel current turn / close session",
+        "Ctrl+R": "Search prompt history",
+        "Ctrl+O": "Copy latest completed output",
+        "Tab": "Queue follow-up prompt while Codex is working",
+        "@": "Search and add files to prompt",
+        "!": "Run local shell command (line prefix)",
+        "/": "Open slash command menu (/model, /status, /review, ...)",
+        "Ctrl+D": "Exit session",
+        "Ctrl+L": "Clear terminal screen",
+        "Enter": "Submit prompt",
+        "Shift+Enter": "Insert newline",
+        "Up": "Previous prompt",
+        "Down": "Next prompt"
+      }
+    },
     "Discord": {
       "exeNames": [],
       "shortcuts": {
@@ -210,6 +250,28 @@
         "Alt+P": "Preview pane",
         "Ctrl+Shift+1": "Extra large icons",
         "Ctrl+Shift+2": "Large icons"
+      }
+    },
+    "Kimi CLI": {
+      "exeNames": [],
+      "shortcuts": {
+        "Ctrl+X": "Switch between agent mode and shell command mode",
+        "Shift+Tab": "Toggle plan mode",
+        "Ctrl+E": "Expand plan/prompt view fullscreen",
+        "Ctrl+S": "Inject message directly into running turn",
+        "Ctrl+V": "Paste text/image/video from clipboard",
+        "Ctrl+C": "Cancel current operation / exit",
+        "Ctrl+D": "Exit session",
+        "Ctrl+L": "Clear terminal screen",
+        "Ctrl+R": "Reverse search history",
+        "Enter": "Submit prompt",
+        "Shift+Enter": "Insert newline",
+        "Up": "Previous prompt",
+        "Down": "Next prompt",
+        "Tab": "Autocomplete",
+        "/": "Slash command menu",
+        "@": "Mention file or context",
+        "!": "Run shell command inline"
       }
     },
     "M-Files Desktop Client": {
