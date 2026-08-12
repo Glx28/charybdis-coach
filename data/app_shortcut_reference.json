@@ -90,7 +90,9 @@
         "Ctrl+7": "Switch to tab 7",
         "Ctrl+8": "Switch to tab 8",
         "F1": "Help",
-        "Ctrl+Shift+U": "View source"
+        "Ctrl+Shift+U": "View source",
+        "Ctrl+K": "Focus address bar search",
+        "Ctrl+R": "Reload"
       }
     },
     "Claude Code CLI": {
@@ -151,7 +153,10 @@
         "Ctrl+B": "Bold",
         "Ctrl+I": "Italic",
         "Ctrl+Shift+D": "Toggle deafen",
-        "Ctrl+Shift+X": "Strikethrough"
+        "Ctrl+Shift+X": "Strikethrough",
+        "Ctrl+R": "Reply to message",
+        "Ctrl+F": "Search in channel",
+        "Ctrl+U": "Toggle member list"
       }
     },
     "Microsoft Excel": {
@@ -599,7 +604,8 @@
         "Ctrl+K Ctrl+W": "Close all editors",
         "Shift+F8": "Go to previous problem",
         "Ctrl+Shift+X": "Extensions panel",
-        "Ctrl+K Ctrl+S": "Keyboard shortcuts"
+        "Ctrl+K Ctrl+S": "Keyboard shortcuts",
+        "Ctrl+Shift+T": "Reopen closed tab"
       }
     },
     "Windows 11": {
