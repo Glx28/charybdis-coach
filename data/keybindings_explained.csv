@@ -246,7 +246,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 4,9,1,Win+V,Key Press,V,L GUI,Clipboard history,"App: Windows 11, importance=6.0",evolved
 4,10,1,Shift+Tab,Key Press,Tab,L Shift,Cycle permission modes (auto-accept/plan/bypass),"App: Claude Code CLI, importance=9.0",evolved
 4,11,1,transparent,Transparent,,,,,transparent
-4,12,1,Ctrl+Alt+2,Key Press,2 and At,L Ctrl+L Alt,Type @ symbol,"App: Windows 11, importance=10.0",evolved
+4,12,1,AltGr+2,Key Press,2 and At,R Alt,Type @ symbol,"App: Windows 11, importance=10.0",evolved
 4,0,2,Ctrl+Shift+Esc,Key Press,Escape,L Ctrl+L Shift,Task Manager,"App: Windows 11, importance=3.0",evolved
 4,1,2,Ctrl+Shift+P,Key Press,P,L Ctrl+L Shift,InPrivate window,"App: Browser (Chrome/Edge), importance=0.95",evolved
 4,2,2,L9,coach_l9_hold,,,Dynamic layer access: @access:L9:hold,Target layer 9,evolved
