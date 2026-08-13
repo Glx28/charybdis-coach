@@ -1641,8 +1641,10 @@
         let target = null;
         let kind = "to";
         const holdMatch = behavior.match(/^coach_l(\d+)_hold$/);
+        const scrollHoldMatch = behavior.match(/^coach_l(\d+)_scroll_hold$/);
         const toggleMatch = behavior.match(/^coach_l(\d+)_toggle$/);
         if (holdMatch) { target = holdMatch[1]; kind = "hold"; }
+        else if (scrollHoldMatch) { target = scrollHoldMatch[1]; kind = "hold"; }
         else if (toggleMatch) { target = toggleMatch[1]; kind = "toggle"; }
         else if (/^(coach_base|coach_recover_base)$/.test(behavior)) { target = "0"; }
         else if (/^(momentary layer|to layer|toggle layer)$/.test(behavior)) {
@@ -1684,13 +1686,19 @@
 
   function formatAccessPath(path, targetRow) {
     if (!path || !path.length) {
-      return `On L0, press x${targetRow.x} y${targetRow.y}`;
+      return `L0 x${targetRow.x} y${targetRow.y}`;
     }
-    const steps = path.map((step) => {
-      const action = step.kind === "toggle" ? "toggle" : "hold";
-      return `${action} x${step.x} y${step.y} → L${step.target}`;
-    });
-    return `From L0: ${steps.join(", ")}, then press x${targetRow.x} y${targetRow.y}`;
+    const segments = [`L0 x${path[0].x} y${path[0].y}`];
+    for (let i = 0; i < path.length; i += 1) {
+      const step = path[i];
+      if (i === path.length - 1) {
+        segments.push(`L${step.target} x${targetRow.x} y${targetRow.y}`);
+      } else {
+        const next = path[i + 1];
+        segments.push(`L${step.target} x${next.x} y${next.y}`);
+      }
+    }
+    return segments.join(" → ");
   }
 
   function buildSearchIndex() {
@@ -1890,7 +1898,7 @@
         title: isFundamental ? entry.item.name : (combo ? `${combo} - ${entry.description}` : entry.description),
         subtitle: isFundamental ? entry.item.explanation : (entry.category ? `${entry.app} \u00b7 ${entry.category}` : entry.app),
         footer: !combo ? "" : (target
-          ? `${formatAccessPath(shortestAccessPath(target.layer), target)} - click to jump`
+          ? formatAccessPath(shortestAccessPath(target.layer), target)
           : `Not on your layout - press ${combo}`),
         badgeText: isFundamental ? "Basic" : entry.app,
         badgeColor: targetMeta?.color,
