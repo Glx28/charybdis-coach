@@ -2,7 +2,10 @@
   "apps": {
     "_comment": "Per-app keyboard shortcut reference, independent of the optimized layout. Generated from charybdis-optimizer-v2/data/shortcuts_source/.",
     "Browser (Chrome/Edge)": {
-      "exeNames": [],
+      "exeNames": [
+        "chrome.exe",
+        "msedge.exe"
+      ],
       "shortcuts": {
         "Ctrl+T": "New tab",
         "Ctrl+W": "Close tab",
@@ -96,7 +99,9 @@
       }
     },
     "Claude Code CLI": {
-      "exeNames": [],
+      "exeNames": [
+        "claude.exe"
+      ],
       "shortcuts": {
         "Escape": "Interrupt Claude / close a dialog",
         "Ctrl+C": "Interrupt running op; 2nd press exits",
@@ -117,7 +122,9 @@
       }
     },
     "Codex CLI": {
-      "exeNames": [],
+      "exeNames": [
+        "codex.exe"
+      ],
       "shortcuts": {
         "Escape": "Interrupt active task",
         "Ctrl+C": "Cancel current turn / close session",
@@ -136,7 +143,9 @@
       }
     },
     "Discord": {
-      "exeNames": [],
+      "exeNames": [
+        "discord.exe"
+      ],
       "shortcuts": {
         "Enter": "Send message",
         "Ctrl+Shift+M": "Toggle mute",
@@ -160,7 +169,9 @@
       }
     },
     "Microsoft Excel": {
-      "exeNames": [],
+      "exeNames": [
+        "excel.exe"
+      ],
       "shortcuts": {
         "Ctrl+Left": "Jump to left edge of data",
         "Ctrl+Right": "Jump to right edge of data",
@@ -223,7 +234,9 @@
       }
     },
     "File Explorer": {
-      "exeNames": [],
+      "exeNames": [
+        "explorer.exe"
+      ],
       "shortcuts": {
         "Alt+Left": "Back",
         "Enter": "Open selected item",
@@ -258,7 +271,9 @@
       }
     },
     "Kimi CLI": {
-      "exeNames": [],
+      "exeNames": [
+        "kimi.exe"
+      ],
       "shortcuts": {
         "Ctrl+X": "Switch between agent mode and shell command mode",
         "Shift+Tab": "Toggle plan mode",
@@ -360,7 +375,9 @@
       }
     },
     "Microsoft Outlook": {
-      "exeNames": [],
+      "exeNames": [
+        "outlook.exe"
+      ],
       "shortcuts": {
         "Ctrl+E": "Search",
         "Ctrl+N": "New mail",
@@ -395,7 +412,9 @@
       }
     },
     "Microsoft PowerPoint": {
-      "exeNames": [],
+      "exeNames": [
+        "powerpnt.exe"
+      ],
       "shortcuts": {
         "N": "Next slide (in show)",
         "Ctrl+S": "Save",
@@ -448,7 +467,9 @@
       }
     },
     "Microsoft Teams": {
-      "exeNames": [],
+      "exeNames": [
+        "teams.exe"
+      ],
       "shortcuts": {
         "Ctrl+2": "Chat",
         "Ctrl+E": "Search / command bar",
@@ -497,7 +518,12 @@
       }
     },
     "Windows Terminal / PowerShell": {
-      "exeNames": [],
+      "exeNames": [
+        "windowsterminal.exe",
+        "wt.exe",
+        "powershell.exe",
+        "pwsh.exe"
+      ],
       "shortcuts": {
         "Ctrl+C": "Copy / Cancel",
         "Ctrl+V": "Paste",
@@ -528,7 +554,10 @@
       }
     },
     "Visual Studio Code": {
-      "exeNames": [],
+      "exeNames": [
+        "code.exe",
+        "code - insiders.exe"
+      ],
       "shortcuts": {
         "Ctrl+Shift+P": "Command palette",
         "Ctrl+P": "Quick open file",
@@ -609,7 +638,12 @@
       }
     },
     "Windows 11": {
-      "exeNames": [],
+      "exeNames": [
+        "explorer.exe",
+        "searchhost.exe",
+        "startmenuexperiencehost.exe",
+        "shellexperiencehost.exe"
+      ],
       "shortcuts": {
         "Alt+Tab": "Switch apps",
         "Win+Left": "Snap window left",
@@ -666,7 +700,9 @@
       }
     },
     "Microsoft Word": {
-      "exeNames": [],
+      "exeNames": [
+        "winword.exe"
+      ],
       "shortcuts": {
         "Ctrl+B": "Bold",
         "Ctrl+C": "Copy",
