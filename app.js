@@ -415,7 +415,11 @@
 
   function hostGlyphFromEntry(entry, modifiers = "") {
     if (!entry) return "";
-    if (hasModifier(modifiers, /^AltGr$/i) && entry.altgr) return entry.altgr;
+    // Windows treats Ctrl+Alt as AltGr for character output, so use the AltGr
+    // glyph whenever both Ctrl and Alt modifiers are present.
+    const hasAltGr = hasModifier(modifiers, /^AltGr$/i)
+      || (hasModifier(modifiers, /^Ctrl$/i) && hasModifier(modifiers, /^Alt$/i));
+    if (hasAltGr && entry.altgr) return entry.altgr;
     if (hasModifier(modifiers, /^Shift$/i) && entry.shift) return entry.shift;
     return entry.normal || "";
   }
