@@ -1644,7 +1644,7 @@
         const scrollHoldMatch = behavior.match(/^coach_l(\d+)_scroll_hold$/);
         const toggleMatch = behavior.match(/^coach_l(\d+)_toggle$/);
         if (holdMatch) { target = holdMatch[1]; kind = "hold"; }
-        else if (scrollHoldMatch) { target = scrollHoldMatch[1]; kind = "hold"; }
+        else if (scrollHoldMatch) { target = scrollHoldMatch[1]; kind = "scroll_hold"; }
         else if (toggleMatch) { target = toggleMatch[1]; kind = "toggle"; }
         else if (/^(coach_base|coach_recover_base)$/.test(behavior)) { target = "0"; }
         else if (/^(momentary layer|to layer|toggle layer)$/.test(behavior)) {
@@ -1663,42 +1663,87 @@
     return edges;
   }
 
-  function shortestAccessPath(targetLayer) {
+  function shortestAccessPaths(targetLayer, options = {}) {
     targetLayer = String(targetLayer);
-    if (targetLayer === "0") return [];
+    if (targetLayer === "0") return { paths: [[]], distance: 0, total: 1 };
+
+    const maxResults = options.maxResults || 4;
     const edges = buildLayerAccessGraph();
-    const queue = [[{ target: "0" }]];
-    const visited = new Set(["0"]);
+
+    // BFS to compute shortest distance (number of layer transitions) from L0.
+    const dist = new Map([["0", 0]]);
+    const queue = ["0"];
     while (queue.length) {
-      const path = queue.shift();
-      const current = path[path.length - 1].target;
+      const current = queue.shift();
+      const currentDist = dist.get(current);
       for (const edge of edges.get(current) || []) {
-        const nextTarget = edge.target;
-        if (visited.has(nextTarget)) continue;
-        const nextPath = path.concat(edge);
-        if (nextTarget === targetLayer) return nextPath.slice(1);
-        visited.add(nextTarget);
-        queue.push(nextPath);
+        if (!dist.has(edge.target)) {
+          dist.set(edge.target, currentDist + 1);
+          queue.push(edge.target);
+        }
       }
     }
-    return null;
+
+    const targetDist = dist.get(targetLayer);
+    if (targetDist === undefined) return null;
+
+    // DFS constrained to shortest-distance edges to collect every equally-short path.
+    const paths = [];
+    function collect(current, path) {
+      if (path.length > targetDist) return;
+      if (current === targetLayer && path.length === targetDist) {
+        paths.push(path.slice());
+        return;
+      }
+      for (const edge of edges.get(current) || []) {
+        const currentDist = dist.has(current) ? dist.get(current) : Infinity;
+        const nextDist = dist.has(edge.target) ? dist.get(edge.target) : Infinity;
+        if (nextDist === currentDist + 1) {
+          path.push(edge);
+          collect(edge.target, path);
+          path.pop();
+        }
+      }
+    }
+    collect("0", []);
+
+    // Prefer transient access (hold/scroll/to) over toggles; then deterministic order.
+    paths.sort((a, b) => {
+      const togglesA = a.filter((e) => e.kind === "toggle").length;
+      const togglesB = b.filter((e) => e.kind === "toggle").length;
+      if (togglesA !== togglesB) return togglesA - togglesB;
+      const scrollA = a.filter((e) => e.kind === "scroll_hold").length;
+      const scrollB = b.filter((e) => e.kind === "scroll_hold").length;
+      if (scrollA !== scrollB) return scrollA - scrollB;
+      const keyA = a.map((e) => `${e.x},${e.y}`).join(";");
+      const keyB = b.map((e) => `${e.x},${e.y}`).join(";");
+      return keyA.localeCompare(keyB);
+    });
+
+    return { paths: paths.slice(0, maxResults), distance: targetDist, total: paths.length };
   }
 
-  function formatAccessPath(path, targetRow) {
-    if (!path || !path.length) {
-      return `L0 x${targetRow.x} y${targetRow.y}`;
-    }
-    const segments = [`L0 x${path[0].x} y${path[0].y}`];
-    for (let i = 0; i < path.length; i += 1) {
-      const step = path[i];
-      if (i === path.length - 1) {
-        segments.push(`L${step.target} x${targetRow.x} y${targetRow.y}`);
-      } else {
-        const next = path[i + 1];
-        segments.push(`L${step.target} x${next.x} y${next.y}`);
+  function formatAccessPath(result, targetRow) {
+    if (!result || !result.paths.length) return "";
+    const lines = result.paths.map((path) => {
+      if (!path.length) return `L0 x${targetRow.x} y${targetRow.y}`;
+      const segments = [`L0 x${path[0].x} y${path[0].y}`];
+      for (let i = 0; i < path.length; i += 1) {
+        const step = path[i];
+        if (i === path.length - 1) {
+          segments.push(`L${step.target} x${targetRow.x} y${targetRow.y}`);
+        } else {
+          const next = path[i + 1];
+          segments.push(`L${step.target} x${next.x} y${next.y}`);
+        }
       }
-    }
-    return segments.join(" → ");
+      const hasToggle = path.some((step) => step.kind === "toggle");
+      return segments.join(" → ") + (hasToggle ? " (toggle)" : "");
+    });
+    const more = result.total > result.paths.length
+      ? `+${result.total - result.paths.length} more path(s)`
+      : "";
+    return lines.join("\n") + (more ? "\n" + more : "");
   }
 
   function buildSearchIndex() {
@@ -1882,7 +1927,7 @@
           icon: visual.badge || visual.primary.slice(0, 3),
           title: clean(row.visual_label) || visual.primary,
           subtitle: clean(row.purpose) || behaviorCaption(row),
-          footer: formatAccessPath(shortestAccessPath(entry.layer), row),
+          footer: formatAccessPath(shortestAccessPaths(entry.layer), row),
           badgeText: `L${entry.layer} \u00b7 ${meta.title || ""}`.trim(),
           badgeColor: meta.color,
           target: row
@@ -1898,7 +1943,7 @@
         title: isFundamental ? entry.item.name : (combo ? `${combo} - ${entry.description}` : entry.description),
         subtitle: isFundamental ? entry.item.explanation : (entry.category ? `${entry.app} \u00b7 ${entry.category}` : entry.app),
         footer: !combo ? "" : (target
-          ? formatAccessPath(shortestAccessPath(target.layer), target)
+          ? formatAccessPath(shortestAccessPaths(target.layer), target)
           : `Not on your layout - press ${combo}`),
         badgeText: isFundamental ? "Basic" : entry.app,
         badgeColor: targetMeta?.color,
