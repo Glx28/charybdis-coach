@@ -1031,6 +1031,10 @@
     return clean(lower.visual_label) || clean(lower.parameter) || clean(lower.behavior);
   }
 
+  function searchablePurpose(purpose) {
+    return clean(purpose).replace(/@access:|@scroll:/gi, "");
+  }
+
   function rowSearchText(row) {
     return [
       row.layer,
@@ -1043,8 +1047,9 @@
       row.behavior,
       row.parameter,
       row.modifiers,
-      row.purpose,
-      row.usage_notes
+      searchablePurpose(row.purpose),
+      row.usage_notes,
+      outputDisplayForRow(row)
     ].map(clean).join(" ").toLowerCase();
   }
 
@@ -1618,6 +1623,72 @@
     return null;
   }
 
+  // ----- Layer access paths from L0 -----
+  // Build a directed graph of layer transitions discovered from the layout rows.
+  // Edges are keyed by source layer; each edge records the physical key that
+  // performs the transition. BFS from layer 0 yields the shortest sequence of
+  // layer-access presses to reach any target layer.
+  function buildLayerAccessGraph() {
+    const edges = new Map();
+    for (const [layer, rows] of state.rowsByLayer) {
+      for (const row of rows) {
+        const behavior = clean(row.behavior).toLowerCase();
+        const param = clean(row.parameter).toLowerCase();
+        let target = null;
+        let kind = "to";
+        const holdMatch = behavior.match(/^coach_l(\d+)_hold$/);
+        const toggleMatch = behavior.match(/^coach_l(\d+)_toggle$/);
+        if (holdMatch) { target = holdMatch[1]; kind = "hold"; }
+        else if (toggleMatch) { target = toggleMatch[1]; kind = "toggle"; }
+        else if (/^(coach_base|coach_recover_base)$/.test(behavior)) { target = "0"; }
+        else if (/^(momentary layer|to layer|toggle layer)$/.test(behavior)) {
+          const m = param.match(/\d+/);
+          if (m) {
+            target = m[0];
+            kind = behavior.includes("momentary") ? "hold" : (behavior.includes("toggle") ? "toggle" : "to");
+          }
+        }
+        if (target == null) continue;
+        const from = String(layer);
+        if (!edges.has(from)) edges.set(from, []);
+        edges.get(from).push({ target: String(target), row, kind, x: row.x, y: row.y });
+      }
+    }
+    return edges;
+  }
+
+  function shortestAccessPath(targetLayer) {
+    targetLayer = String(targetLayer);
+    if (targetLayer === "0") return [];
+    const edges = buildLayerAccessGraph();
+    const queue = [[{ target: "0" }]];
+    const visited = new Set(["0"]);
+    while (queue.length) {
+      const path = queue.shift();
+      const current = path[path.length - 1].target;
+      for (const edge of edges.get(current) || []) {
+        const nextTarget = edge.target;
+        if (visited.has(nextTarget)) continue;
+        const nextPath = path.concat(edge);
+        if (nextTarget === targetLayer) return nextPath.slice(1);
+        visited.add(nextTarget);
+        queue.push(nextPath);
+      }
+    }
+    return null;
+  }
+
+  function formatAccessPath(path, targetRow) {
+    if (!path || !path.length) {
+      return `On L0, press x${targetRow.x} y${targetRow.y}`;
+    }
+    const steps = path.map((step) => {
+      const action = step.kind === "toggle" ? "toggle" : "hold";
+      return `${action} x${step.x} y${step.y} → L${step.target}`;
+    });
+    return `From L0: ${steps.join(", ")}, then press x${targetRow.x} y${targetRow.y}`;
+  }
+
   function buildSearchIndex() {
     const index = [];
     for (const [layer, rows] of state.rowsByLayer) {
@@ -1655,7 +1726,10 @@
   }
 
   function searchTokens(query) {
-    return clean(query).toLowerCase().split(/[^a-z0-9.+æøå]+/u).filter((token) => token.length >= 2 || token === ".");
+    const q = clean(query).toLowerCase();
+    // Single-symbol queries (e.g. "@", "#", "$") are valid searches for output glyphs.
+    if (/^[^a-z0-9\s]$/u.test(q)) return [q];
+    return q.split(/[^a-z0-9.+æøå]+/u).filter((token) => token.length >= 2 || token === ".");
   }
 
   function scoreSearchEntry(entry, tokens, query) {
@@ -1796,6 +1870,7 @@
           icon: visual.badge || visual.primary.slice(0, 3),
           title: clean(row.visual_label) || visual.primary,
           subtitle: clean(row.purpose) || behaviorCaption(row),
+          footer: formatAccessPath(shortestAccessPath(entry.layer), row),
           badgeText: `L${entry.layer} \u00b7 ${meta.title || ""}`.trim(),
           badgeColor: meta.color,
           target: row
@@ -1811,7 +1886,7 @@
         title: isFundamental ? entry.item.name : (combo ? `${combo} - ${entry.description}` : entry.description),
         subtitle: isFundamental ? entry.item.explanation : (entry.category ? `${entry.app} \u00b7 ${entry.category}` : entry.app),
         footer: !combo ? "" : (target
-          ? `On your layout: L${target.layer} \u00b7 ${targetMeta?.title || ""} - click to jump`
+          ? `${formatAccessPath(shortestAccessPath(target.layer), target)} - click to jump`
           : `Not on your layout - press ${combo}`),
         badgeText: isFundamental ? "Basic" : entry.app,
         badgeColor: targetMeta?.color,
