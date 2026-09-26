@@ -592,7 +592,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 10,7,2,transparent,Transparent,,,,,transparent
 10,8,2,MB1,Mouse Key Press,MB1,,Left click,"App: Mouse, importance=40.0",evolved
 10,9,2,MB2,Mouse Key Press,MB2,,Right click,"App: Mouse, importance=16.0",evolved
-10,10,2,Scroll_L10,coach_l10_scroll_hold,,,Dynamic layer access: @scroll:L10:hold,Target layer 10,evolved
+10,10,2,Scroll_L10,coach_current_scroll_hold,,,Dynamic layer access: @scroll:L10:hold,Target layer 10,evolved
 10,11,2,MB3,Mouse Key Press,MB3,,Middle click,"App: Mouse, importance=10.0",evolved
 10,12,2,Shift+Alt+Down,Key Press,DownArrow,L Shift+L Alt,Copy line down,"App: Visual Studio Code, importance=5.4",evolved
 10,0,3,transparent,Transparent,,,,,transparent
