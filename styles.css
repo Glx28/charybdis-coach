@@ -61,7 +61,9 @@ svg {
 }
 
 .app-shell {
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
   display: grid;
   /* minmax(0, 1fr) - not bare 1fr - caps this row at the space actually left
      after the two header rows. With bare 1fr, a tall inspector panel's
@@ -1018,6 +1020,14 @@ svg {
   }
 }
 
+@media (max-height: 850px) {
+  .topbar { padding-top: 8px; padding-bottom: 8px; gap: 8px; }
+  .status-pill { padding: 5px 8px; }
+  .beacon-banner { margin-bottom: 5px; padding: 6px 10px; }
+  .keyboard-map { padding: 6px; gap: 12px; }
+  .hand { gap: 4px; }
+}
+
 /* ----- Practice / learning panel ----- */
 .practice-mode-select {
   margin-bottom: 8px;
@@ -1476,6 +1486,22 @@ svg {
   border-radius: 10px;
   background: var(--surface-2);
   box-shadow: var(--shadow);
+}
+
+.search-results:not([hidden]) {
+  position: static;
+  width: 100%;
+  max-height: min(30vh, 250px);
+  margin-top: 6px;
+}
+
+.stage-toolbar:has(.search-results:not([hidden])) { align-items: flex-start; }
+
+.keycap.search-hit {
+  opacity: 1;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(76, 201, 176, 0.35);
+  z-index: 1;
 }
 
 .search-hint,

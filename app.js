@@ -1015,7 +1015,12 @@
   }
 
   function visualFor(row) {
-    return classifyKey(row);
+    const visual = classifyKey(row);
+    if (/key press/i.test(clean(row.behavior))) {
+      const glyph = hostGlyphFromEntry(hostOutputEntryForParam(row.parameter), row.modifiers);
+      if (/^[^\p{L}\p{N}\s]$/u.test(glyph)) visual.primary = glyph;
+    }
+    return visual;
   }
 
   function lowerBindingFor(row) {
@@ -1577,10 +1582,24 @@
 
   function applyFilters() {
     const query = state.query.toLowerCase();
+    const searchHitIds = new Set();
+    if (query) {
+      document.querySelectorAll(".search-result[data-target-key-id]").forEach((item) => {
+        searchHitIds.add(item.dataset.targetKeyId);
+      });
+      for (const entry of collectSearchResults(query)) {
+        const row = entry.type === "key"
+          ? entry.row
+          : resolveComboInLayout(entry.type === "fundamental" ? entry.item.combo : entry.combo);
+        if (row) searchHitIds.add(keyId(row));
+      }
+    }
     document.querySelectorAll(".keycap").forEach((el) => {
-      const matchesSearch = !query || el.dataset.search.includes(query);
+      const matchesSearch = !query || el.dataset.search.includes(query) || searchHitIds.has(el.dataset.keyId);
       const matchesFocus = !state.focusImportant || el.dataset.important === "true";
-      el.classList.toggle("filtered-out", !(matchesSearch && matchesFocus));
+      const isSearchHit = query && searchHitIds.has(el.dataset.keyId);
+      el.classList.toggle("search-hit", Boolean(isSearchHit));
+      el.classList.toggle("filtered-out", !(matchesSearch && (matchesFocus || isSearchHit)));
     });
   }
 
@@ -1873,6 +1892,7 @@
     item.appendChild(body);
     item.appendChild(badge);
     if (target) item.addEventListener("click", () => jumpToSearchResult(target));
+    if (target) item.dataset.targetKeyId = keyId(target);
     return item;
   }
 
@@ -3110,8 +3130,8 @@
   }
   els.searchInput.addEventListener("input", (event) => {
     state.query = event.target.value || "";
-    applyFilters();
     renderSearchResults();
+    applyFilters();
   });
 
   els.searchInput.addEventListener("focus", () => renderSearchResults());
@@ -3322,6 +3342,7 @@
     const hostAliases = state.hostKeyboard?.zmk_parameter_aliases || {};
     const aliases = {
       SemiColon: ["SemiColon", "SemiColon and Colon"],
+      "Dash and Underscore": ["Dash and Underscore", "Minus"],
       "Left Apos and Double": ["Left Apos and Double", "Apostrophe", "Keyboard Apostrophe"],
       "Left Brace": ["Left Brace", "Left Bracket"],
       "Right Bracket": ["Right Bracket", "Right Brace"],
