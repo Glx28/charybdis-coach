@@ -49,7 +49,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 0,12,3,\,Key Press,Backslash and Pipe,,,,canonical (frozen/critical)
 0,3,4,Scroll_L9,coach_l9_scroll_hold,,,Dynamic layer access: @scroll:L9:hold,Target layer 9,evolved
 0,4,4,␣,Key Press,Spacebar,,,,canonical (frozen/critical)
-0,5,4,L6,coach_l6_hold,,,Dynamic layer access: @access:L6:hold,Target layer 6,evolved
+0,5,4,L1,coach_l1_hold,,,Dynamic layer access: @access:L1:hold,Target layer 1,evolved
 0,7,4,L2,coach_l2_hold,,,Dynamic layer access: @access:L2:hold,Target layer 2,evolved
 0,8,4,L10,coach_l10_hold,,,Dynamic layer access: @access:L10:hold,Target layer 10,evolved
 0,4,5,L5,coach_l5_hold,,,Dynamic layer access: @access:L5:hold,Target layer 5,evolved
@@ -218,7 +218,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 3,3,4,L5,coach_l5_toggle,,,Dynamic layer access: @access:L5:toggle,Target layer 5,evolved
 3,4,4,transparent,Transparent,,,,,transparent
 3,5,4,transparent,Transparent,,,,,transparent
-3,7,4,L4,coach_l4_hold,,,Dynamic layer access: @access:L4:hold,Target layer 4,evolved
+3,7,4,L6,coach_l6_hold,,,Dynamic layer access: @access:L6:hold,Target layer 6,evolved
 3,8,4,L7,coach_l7_hold,,,Dynamic layer access: @access:L7:hold,Target layer 7,evolved
 3,4,5,L2,coach_l2_toggle,,,Dynamic layer access: @access:L2:toggle,Target layer 2,evolved
 3,5,5,L0,coach_base,,,Dynamic layer access: @access:L0:return,Target layer 0,evolved
@@ -386,7 +386,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 6,3,4,L2,coach_l2_toggle,,,Dynamic layer access: @access:L2:toggle,Target layer 2,evolved
 6,4,4,Ctrl+Shift+F5,Key Press,F5,L Ctrl+L Shift,Send notification,"App: M-Files Desktop Client, importance=0.85",evolved
 6,5,4,L0,coach_base,,,Dynamic layer access: @access:L0:return,Target layer 0,evolved
-6,7,4,L1,coach_l1_hold,,,Dynamic layer access: @access:L1:hold,Target layer 1,evolved
+6,7,4,L4,coach_l4_hold,,,Dynamic layer access: @access:L4:hold,Target layer 4,evolved
 6,8,4,L7,coach_l7_hold,,,Dynamic layer access: @access:L7:hold,Target layer 7,evolved
 6,4,5,L4,coach_l4_toggle,,,Dynamic layer access: @access:L4:toggle,Target layer 4,evolved
 6,5,5,L6,coach_l6_toggle,,,Dynamic layer access: @access:L6:toggle,Target layer 6,evolved
