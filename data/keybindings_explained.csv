@@ -49,7 +49,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 0,12,3,\,Key Press,Backslash and Pipe,,,,canonical (frozen/critical)
 0,3,4,Scroll_L9,coach_l9_scroll_hold,,,Dynamic layer access: @scroll:L9:hold,Target layer 9,evolved
 0,4,4,␣,Key Press,Spacebar,,,,canonical (frozen/critical)
-0,5,4,RightAlt,Key Press,RightAlt,,Hold AltGr for Norwegian third-level characters.,"App: Modifier Keys, importance=12.0",evolved
+0,5,4,L6,coach_l6_hold,,,Dynamic layer access: @access:L6:hold,Target layer 6,evolved
 0,7,4,L2,coach_l2_hold,,,Dynamic layer access: @access:L2:hold,Target layer 2,evolved
 0,8,4,L10,coach_l10_hold,,,Dynamic layer access: @access:L10:hold,Target layer 10,evolved
 0,4,5,L5,coach_l5_hold,,,Dynamic layer access: @access:L5:hold,Target layer 5,evolved
@@ -608,7 +608,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 10,11,3,Alt+Tab,Key Press,Tab,L Alt,Switch apps,"App: Windows 11, importance=10.0",evolved
 10,12,3,Win+A,Key Press,A,L GUI,Quick settings / Action center,"App: Windows 11, importance=1.0",evolved
 10,3,4,Scroll_L5,coach_l5_scroll_hold,,,Dynamic layer access: @scroll:L5:hold,Target layer 5,evolved
-10,4,4,L6,coach_l6_hold,,,Dynamic layer access: @access:L6:hold,Target layer 6,evolved
+10,4,4,RightAlt,Key Press,RightAlt,,Hold AltGr for Norwegian third-level characters.,"App: Modifier Keys, importance=12.0",evolved
 10,5,4,L7,coach_l7_hold,,,Dynamic layer access: @access:L7:hold,Target layer 7,evolved
 10,7,4,L10,coach_l10_toggle,,,Dynamic layer access: @access:L10:toggle,Target layer 10,evolved
 10,8,4,Shift+Delete,Key Press,Delete,L Shift,Permanent delete,"App: File Explorer, importance=0.45",evolved
