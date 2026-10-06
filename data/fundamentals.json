@@ -10,14 +10,14 @@
     },
     {
       "name": "PowerToys Run",
-      "icon": "🪄",
+      "icon": "🚀",
       "combo": "Alt+Space",
       "aliases": ["powertoys", "powertoys run", "launcher", "quick launcher", "spotlight", "alfred", "run launcher", "app launcher"],
       "explanation": "PowerToys Run launcher: launch apps, find files, calculate, search the web. Requires PowerToys running in the background."
     },
     {
       "name": "PowerToys Command Palette",
-      "icon": "🪄",
+      "icon": "⌘",
       "combo": "Win+Alt+Space",
       "aliases": ["command palette", "command pallet", "cmdpal", "powertoys command palette", "powertoys palette", "palette"],
       "explanation": "PowerToys Command Palette (CmdPal): the newer extensible launcher for commands, apps, files and window management. Requires a recent PowerToys version."
@@ -52,7 +52,7 @@
     },
     {
       "name": "Screenshot (Snipping Tool)",
-      "icon": "✂️",
+      "icon": "📸",
       "combo": "Win+Shift+S",
       "aliases": ["screenshot", "snip", "snipping tool", "screen capture", "capture screen"],
       "explanation": "Screen snip overlay: capture a region, window or full screen to the clipboard."

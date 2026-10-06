@@ -26,6 +26,7 @@
     beaconBanner: document.getElementById("beaconBanner"),
     beaconBannerTitle: document.getElementById("beaconBannerTitle"),
     beaconBannerDetail: document.getElementById("beaconBannerDetail"),
+    beaconBannerClose: document.getElementById("beaconBannerClose"),
     deviceLabel: document.getElementById("deviceLabel"),
     layerTabs: document.getElementById("layerTabs"),
     keyboardMap: document.getElementById("keyboardMap"),
@@ -86,6 +87,7 @@
     progress: {},
     uiIcons: false,
     inspectorAutoExpanded: false,
+    beaconBannerDismissed: false,
     lastSeenActionKey: null,
     missedReadCount: 0
   };
@@ -491,7 +493,7 @@
 
   const SINGLE_LETTER_ACTION_MAP = [
     [/^c$/i, /^l ctrl$/i, { emoji: "📄", action: "Copy" }],
-    [/^v$/i, /^l ctrl$/i, { emoji: "📥", action: "Paste" }],
+    [/^v$/i, /^l ctrl$/i, { emoji: "📋", action: "Paste" }],
     [/^v$/i, /gui/i, { emoji: "🗂️", action: "ClipHist" }],
     [/^x$/i, /^l ctrl$/i, { emoji: "✂️", action: "Cut" }],
     [/^z$/i, /^l ctrl$/i, { emoji: "↩️", action: "Undo" }],
@@ -500,11 +502,11 @@
     [/^s$/i, /gui.*shift|shift.*gui/i, { emoji: "📸", action: "Snip" }],
     [/^s$/i, /gui/i, { emoji: "🔍", action: "Search" }],
     [/^a$/i, /^l ctrl$/i, { emoji: "🔲", action: "Sel All" }],
-    [/^a$/i, /gui/i, { emoji: "⚙️", action: "QSett" }],
+    [/^a$/i, /gui/i, { emoji: "🔧", action: "QSett" }],
     [/^f$/i, /^l ctrl$/i, { emoji: "🔎", action: "Find" }],
     [/^h$/i, /^l ctrl$/i, { emoji: "🔁", action: "Replace" }],
     [/^h$/i, /gui/i, { emoji: "🎙️", action: "Voice" }],
-    [/^d$/i, /gui.*ctrl|ctrl.*gui/i, { emoji: "🆕", action: "NewDesk" }],
+    [/^d$/i, /gui.*ctrl|ctrl.*gui/i, { emoji: "🪟", action: "NewDesk" }],
     [/^d$/i, /^l gui$/i, { emoji: "🏠", action: "Desktop" }],
     [/^d$/i, /^l ctrl$/i, { emoji: "🔂", action: "Dupl" }],
     [/^e$/i, /gui/i, { emoji: "📁", action: "Explorer" }],
@@ -516,7 +518,7 @@
     [/^r$/i, /gui/i, { emoji: "▶️", action: "Run" }],
     [/^r$/i, /^l ctrl$/i, { emoji: "🔃", action: "Refresh" }],
     [/^l$/i, /gui/i, { emoji: "🔒", action: "Lock" }],
-    [/^l$/i, /^l ctrl$/i, { emoji: "📍", action: "AddrBar" }],
+    [/^l$/i, /^l ctrl$/i, { emoji: "🌐", action: "AddrBar" }],
     [/^i$/i, /gui/i, { emoji: "⚙️", action: "Settings" }],
     [/^i$/i, /^l ctrl$/i, { emoji: "ℹ️", action: "Info" }],
     [/^t$/i, /gui/i, { emoji: "🧲", action: "Taskbar" }],
@@ -546,7 +548,7 @@
 
   const KEYCAP_EMOJI_RULES = [
     [/^copy$/i, null, "📄"],
-    [/^paste$/i, null, "📥"],
+    [/^paste$/i, null, "📋"],
     [/^cut$/i, null, "✂️"],
     [/^undo$/i, null, "↩️"],
     [/^redo$/i, null, "↪️"],
@@ -565,12 +567,12 @@
     [/^zoom in$/i, null, "🔭"],
     [/^zoom out$/i, null, "🔬"],
     [/^alt\+tab$/i, null, "🔀"],
-    [/^cmdpal$/i, null, "🪄"],
+    [/^cmdpal$/i, null, "⌘"],
     [/^run$/i, null, "▶️"],
     [/^print$/i, null, "🖨️"],
     [/^mute$/i, null, "🔇"],
     [/^camera$/i, null, "📷"],
-    [/^screen$/i, null, "📡"],
+    [/^screen$/i, null, "🖥️"],
     [/^share$/i, null, "📡"],
     [/^reply$/i, null, "↩️"],
     [/^forward$/i, null, "➡️"],
@@ -626,9 +628,9 @@
     [/^blur$/i, null, "🌫️"],
     [/^fill$/i, null, "⬇️"],
     [/^autosum$/i, null, "🧮"],
-    [/^formula$/i, null, "🧮"],
+    [/^formula$/i, null, "ƒx"],
     [/^navigate$/i, null, "🧭"],
-    [/^home$/i, null, "🏠"],
+    [/^home$/i, null, "↖️"],
     [/^end$/i, null, "🔚"],
     [/^pgup$|^pg up$|^page.?up$/i, null, "⏫"],
     [/^pgdn$|^pg dn$|^page.?dn$|^page.?down$/i, null, "⏬"],
@@ -665,7 +667,7 @@
     [/^insln$/i, null, "➕"],
     [/^open$/i, null, "📂"],
     [/^peek$/i, null, "👁️"],
-    [/^goln$/i, null, "📍"],
+    [/^goln$/i, null, "🔢"],
     [/^brkt$/i, null, "🔗"],
     [/^sett$/i, null, "⚙️"],
     [/^delln$/i, null, "🗑️"],
@@ -675,20 +677,20 @@
     [/^outdn$/i, null, "⬅️"],
     [/^toggle$/i, null, "🔀"],
     [/^copy$/i, null, "📄"],
-    [/^paste$/i, null, "📥"],
+    [/^paste$/i, null, "📋"],
     [/^undo$/i, null, "↩️"],
     [/^redo$/i, null, "↪️"],
     [/^snip$/i, null, "📸"],
     [/^zoom in$/i, null, "🔭"],
     [/^zoom out$/i, null, "🔬"],
     [/^close win$/i, null, "💥"],
-    [/^minall$/i, null, "⏬"],
-    [/^cliph$/i, null, "🗂️"],
+    [/^minall$/i, null, "🧺"],
+    [/^cliph$/i, null, "📋"],
     [/^lang$/i, null, "🌐"],
     [/^tskmg$/i, null, "📊"],
     [/^tskcy$/i, null, "🧲"],
     [/^systr$/i, null, "🔽"],
-    [/^qsett$/i, null, "⚙️"],
+    [/^qsett$/i, null, "🔧"],
     [/^acces$/i, null, "♿"],
     [/^explorer$/i, null, "📁"],
     [/^dms$/i, null, "🏛️"],
@@ -763,6 +765,7 @@
     if (/select all/i.test(combined)) return "🔲";
     if (/screenshot|snip/i.test(combined)) return "📸";
     if (/task view/i.test(combined)) return "🪟";
+    if (/new.*virtual/i.test(combined)) return "🆕";
     if (/desktop/i.test(combined)) return "🏠";
     if (/next tab/i.test(combined)) return "⏭️";
     if (/prev.*tab/i.test(combined)) return "⏮️";
@@ -771,8 +774,9 @@
     if (/zoom.*out/i.test(combined)) return "🔬";
     if (/zoom/i.test(combined)) return "🔭";
     if (/switch.*app|alt.*tab/i.test(combined)) return "🔀";
-    if (/command.*palette|powertoys/i.test(combined)) return "🪄";
-    if (/delete.*line/i.test(combined)) return "🗑️";
+    if (/command.*palette|cmdpal/i.test(combined)) return "⌘";
+    if (/powertoys run|launcher/i.test(combined)) return "🚀";
+    if (/delete.*line/i.test(combined)) return "🧹";
     if (/delete|word del/i.test(combined)) return "🗑️";
     if (/rename/i.test(combined)) return "✏️";
     if (/clipboard/i.test(combined)) return "🗂️";
@@ -784,15 +788,15 @@
     if (/voice/i.test(combined)) return "🎙️";
     if (/copilot/i.test(combined)) return "🤖";
     if (/lock.*pc/i.test(combined)) return "🔒";
+    if (/quick.*settings/i.test(combined)) return "🔧";
     if (/settings/i.test(combined)) return "⚙️";
     if (/notification/i.test(combined)) return "🔔";
-    if (/minimize.*all/i.test(combined)) return "⏬";
+    if (/minimize.*all/i.test(combined)) return "🧺";
     if (/minimize/i.test(combined)) return "⏬";
     if (/maximize/i.test(combined)) return "⏫";
     if (/snap/i.test(combined)) return "🧲";
     if (/move.*monitor/i.test(combined)) return "🖥️";
-    if (/new.*virtual/i.test(combined)) return "🆕";
-    if (/switch.*desktop/i.test(combined)) return "🔀";
+    if (/switch.*desktop/i.test(combined)) return "🔄";
     if (/file.*explorer/i.test(combined)) return "📁";
     if (/run.*dialog/i.test(combined)) return "▶️";
     if (/power.*user/i.test(combined)) return "⚡";
@@ -805,15 +809,15 @@
     if (/toggle.*comment/i.test(combined)) return "💬";
     if (/comment/i.test(combined)) return "💬";
     if (/link|hyperlink/i.test(combined)) return "🔗";
-    if (/reply/i.test(combined)) return "↩️";
+    if (/reply/i.test(combined)) return "💬";
     if (/forward/i.test(combined)) return "➡️";
     if (/attach/i.test(combined)) return "📎";
     if (/send/i.test(combined)) return "📨";
     if (/word.*move|word.*jump/i.test(combined)) return "⏩";
     if (/navigat/i.test(combined)) return "🧭";
     if (/page.*break/i.test(combined)) return "📃";
-    if (/new.*tab/i.test(combined)) return "➕";
-    if (/new.*window/i.test(combined)) return "🪟";
+    if (/new.*tab/i.test(combined)) return "📑";
+    if (/new.*window/i.test(combined)) return "🗔";
     if (/new.*chat/i.test(combined)) return "🗨️";
     if (/new.*file|new.*doc|new.*page/i.test(combined)) return "🆕";
     if (/bookmark/i.test(combined)) return "⭐";
@@ -835,7 +839,7 @@
     if (/explorer.*panel/i.test(combined)) return "🗂️";
     if (/word.*wrap/i.test(combined)) return "🔄";
     if (/move.*line/i.test(combined)) return "↕️";
-    if (/copy.*line/i.test(combined)) return "🔂";
+    if (/copy.*line/i.test(combined)) return "📑";
     if (/insert.*line/i.test(combined)) return "➕";
     if (/split.*editor/i.test(combined)) return "↔️";
     if (/quick.*open/i.test(combined)) return "⚡";
@@ -844,7 +848,8 @@
     if (/jump.*bracket/i.test(combined)) return "🔗";
     if (/toggle.*terminal/i.test(combined)) return "⬛";
     if (/address.*bar/i.test(combined)) return "📍";
-    if (/select.*line|select all/i.test(combined)) return "🔲";
+    if (/select.*line/i.test(combined)) return "🧾";
+    if (/select all/i.test(combined)) return "🔲";
     if (/duplicate/i.test(combined)) return "🔂";
     if (/object.*info/i.test(combined)) return "ℹ️";
     if (/raise.*hand/i.test(combined)) return "✋";
@@ -852,7 +857,6 @@
     if (/accept.*call/i.test(combined)) return "🟢";
     if (/system.*tray|focus.*tray/i.test(combined)) return "🔽";
     if (/accessibility/i.test(combined)) return "♿";
-    if (/quick.*settings/i.test(combined)) return "⚙️";
     if (/input.*language/i.test(combined)) return "🌐";
     if (/cycle.*taskbar/i.test(combined)) return "🧲";
     if (/window.*menu/i.test(combined)) return "☰";
@@ -889,9 +893,9 @@
       coach_travel_off: { kind: "toggle", primary: "Layer", badge: "🔀", secondary: "Exit configured toggle" },
       coach_recover_base: { kind: "home", primary: "Base", badge: "🏠", secondary: "Recover L0" },
       coach_mouse_lock: { kind: "lock", primary: "Lock", badge: "🔒", secondary: "Firmware-defined target" },
-      coach_ctrl_click: { kind: "mouse-btn", primary: "Ctrl+Click", badge: "👆", secondary: "Ctrl + MB1" },
-      coach_shift_click: { kind: "mouse-btn", primary: "Shift+Click", badge: "👆", secondary: "Shift + MB1" },
-      coach_alt_click: { kind: "mouse-btn", primary: "Alt+Click", badge: "👆", secondary: "Alt + MB1" },
+      coach_ctrl_click: { kind: "mouse-btn", primary: "Ctrl+Click", badge: "⌃", secondary: "Ctrl + MB1" },
+      coach_shift_click: { kind: "mouse-btn", primary: "Shift+Click", badge: "⇧", secondary: "Shift + MB1" },
+      coach_alt_click: { kind: "mouse-btn", primary: "Alt+Click", badge: "⎇", secondary: "Alt + MB1" },
       coach_scroll_toggle: { kind: "toggle", primary: "Layer", badge: "🔀", secondary: "Toggle configured layer" }
     };
     const numberedCoachHold = behaviorLower.match(/^coach_l(\d+)_hold$/);
@@ -923,16 +927,26 @@
       };
     }
     if (/mouse key press/i.test(behavior)) {
-      const btn = label.replace(/mouse key press/i, "").trim() || param.replace(/select:/i, "") || "Btn";
+      // ZMK's parameter is the canonical physical button. Labels such as
+      // "Click" and "MB1" can differ across layers while meaning the same MB1.
+      const parameterButton = param.replace(/^select:/i, "").trim().toUpperCase();
+      const labelButton = label.replace(/mouse key press/i, "").trim();
+      const btn = /^MB[1-5]$/.test(parameterButton) ? parameterButton : (labelButton || parameterButton || "Btn");
       const mbEmojis = { MB1: "👆", MB2: "🤞", MB3: "🖖", MB4: "👈", MB5: "👉" };
-      const mbEmoji = mbEmojis[btn.toUpperCase()] || "🖱️";
-      return { kind: "mouse-btn", primary: btn, badge: mbEmoji, secondary: shortHint(param, 14) };
+      const mbEmoji = mbEmojis[parameterButton] || mbEmojis[btn.toUpperCase()] || "🖱️";
+      return { kind: "mouse-btn", primary: labelButton || btn, badge: mbEmoji, secondary: shortHint(param, 14) };
     }
     if (/bluetooth/i.test(behavior)) {
       return { kind: "bluetooth", primary: label || "BT", badge: "📶", secondary: shortHint(param, 16) };
     }
     if (/output/i.test(behavior)) {
       return { kind: "output", primary: label || "Out", badge: "🔌", secondary: shortHint(param, 16) };
+    }
+    if (/^launcher_powertoys$/i.test(behavior)) {
+      return { kind: "launcher", primary: label || "PowerToys Run", badge: "🚀", secondary: "Open launcher" };
+    }
+    if (/^launcher_win_search$/i.test(behavior)) {
+      return { kind: "launcher", primary: label || "Windows Search", badge: "🔍", secondary: "Open Windows Search" };
     }
     if (/toggle layer/i.test(behavior)) {
       const layer = layerParam(row);
@@ -2022,7 +2036,7 @@
   }
 
   function beaconStatus(live) {
-    const restartHint = "Run scripts\\windows\\start_charybdis_coach.ps1 or restart_beacon_listener.ps1.";
+    const restartHint = "Start Charybdis Coach from its Windows launcher to restore layer sync.";
     if (!live) {
       return {
         level: "error",
@@ -2052,7 +2066,7 @@
         : "warn";
       const title = explicitDead ? "Beacon listener stopped" : "Beacon not responding";
       let detail = `Layer thumb sync is offline`;
-      if (ageSec != null) detail += ` (${ageSec}s since last signal)`;
+      if (ageSec != null) detail += ` (${formatBeaconAge(ageSec)} since last signal)`;
       if (source) detail += `. Last source: ${source}`;
       if (!hasBeaconMeta) detail += ". State file has no beacon heartbeat — listener may be dead or an old build.";
       detail += `. ${restartHint}`;
@@ -2063,7 +2077,7 @@
         ageSec,
         title,
         detail,
-        transportLabel: ageSec != null ? `No beacon (${ageSec}s)` : "No beacon",
+        transportLabel: ageSec != null ? `No beacon (${formatBeaconAge(ageSec)})` : "No beacon",
         source
       };
     }
@@ -2091,7 +2105,8 @@
   function renderBeaconBanner(live) {
     if (!els.beaconBanner) return;
     const status = beaconStatus(live);
-    const show = status.stale;
+    if (!status.stale) state.beaconBannerDismissed = false;
+    const show = status.stale && !state.beaconBannerDismissed;
     els.beaconBanner.hidden = !show;
     els.beaconBanner.classList.toggle("beacon-banner--hidden", !show);
     els.beaconBanner.classList.remove("beacon-banner--ok", "beacon-banner--warn", "beacon-banner--error");
@@ -2101,6 +2116,18 @@
     if (els.beaconBannerTitle) els.beaconBannerTitle.textContent = status.title;
     if (els.beaconBannerDetail) els.beaconBannerDetail.textContent = status.detail;
   }
+
+  function formatBeaconAge(seconds) {
+    if (seconds >= 86400) return `${Math.floor(seconds / 86400)}d`;
+    if (seconds >= 3600) return `${Math.floor(seconds / 3600)}h ${Math.floor((seconds % 3600) / 60)}m`;
+    if (seconds >= 60) return `${Math.floor(seconds / 60)}m ${seconds % 60}s`;
+    return `${seconds}s`;
+  }
+
+  els.beaconBannerClose?.addEventListener("click", () => {
+    state.beaconBannerDismissed = true;
+    renderBeaconBanner(null);
+  });
 
   // updatedAt only proves the state file heartbeat is fresh, not that lastAction
   // is current - the writer (AHK/Python) can hold the same lastAction text
@@ -2196,6 +2223,12 @@
   }
 
   function deriveLiveLayer(live) {
+    // State writers publish activeLayer as the resolved physical state. Prefer
+    // it over independently combining held/toggled lists, which may lag a base
+    // return while release beacons are still being processed.
+    if (live && live.activeLayer !== undefined && live.activeLayer !== null && String(live.activeLayer) !== "") {
+      return String(live.activeLayer);
+    }
     // Dynamic priority: explicit lock, active hold, latest toggle, then base.
     if (!live) return state.liveLayer;
     const toggled = normalizeLayerList(live.toggledLayers);

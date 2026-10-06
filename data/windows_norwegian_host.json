@@ -1,7 +1,12 @@
 {
   "name": "Windows Norwegian (nb-NO)",
   "firmware_model": "ZMK sends US HID scancodes. Windows Norwegian layout maps them to NO glyphs. Only ø/æ/å use coach labels on base; all other keys keep US/international scancodes.",
-  "coach_match_order": ["event.code", "norwegian_event.key", "visual_label", "us_event.key"],
+  "coach_match_order": [
+    "event.code",
+    "norwegian_event.key",
+    "visual_label",
+    "us_event.key"
+  ],
   "programming_on_norwegian_windows": {
     "summary": "HID scancodes are layout-independent; Windows Norwegian maps several US programming keys to Norwegian letters and different punctuation.",
     "scancode_to_norwegian_glyph": {
@@ -23,83 +28,366 @@
       "ForwardSlash and QuestionMark": "- / _ (not /)",
       "Backslash and Pipe": "' / * (not \\)",
       "Equal and Plus": "\\ / ` dead key (not =)",
-      "Minus": "+ / ?"
+      "Minus": "+ / ?",
+      "Non-US Backslash and Pipe": "< / > / |"
     },
-    "english_punctuation_options": [
-      "Win+Space or F16 (L4) to switch Windows to US English while coding",
-      "Layer 1 bracket keys still highlight correctly in the coach via event.code; output follows Norwegian mapping unless layout is English"
+    "norwegian_punctuation_access": [
+      "Keep Windows set to Norwegian (nb-NO).",
+      "The HID usage Keyboard Non-US Backslash and Pipe outputs < unshifted, > with Shift, and | through AltGr on the Norwegian layout.",
+      "The optimizer keeps this raw key grouped with the other Norwegian non-L0 raw keys."
     ]
   },
   "norwegian_base_exceptions": [
-    { "x": 11, "y": 2, "label": "ø", "zmk_parameter": "SemiColon and Colon", "event_code": "Semicolon" },
-    { "x": 12, "y": 2, "label": "æ", "zmk_parameter": "Left Apos and Double", "event_code": "Quote" },
-    { "x": 12, "y": 1, "label": "å", "zmk_parameter": "Left Brace", "event_code": "BracketLeft" }
+    {
+      "x": 11,
+      "y": 2,
+      "label": "ø",
+      "zmk_parameter": "SemiColon and Colon",
+      "event_code": "Semicolon"
+    },
+    {
+      "x": 12,
+      "y": 2,
+      "label": "æ",
+      "zmk_parameter": "Left Apos and Double",
+      "event_code": "Quote"
+    },
+    {
+      "x": 12,
+      "y": 1,
+      "label": "å",
+      "zmk_parameter": "Left Brace",
+      "event_code": "BracketLeft"
+    }
   ],
   "zmk_parameter_aliases": {
-    "SemiColon": ["SemiColon", "SemiColon and Colon"],
-    "Left Apos and Double": ["Left Apos and Double", "Apostrophe", "Keyboard Apostrophe"],
-    "Left Brace": ["Left Brace", "Left Bracket"],
-    "Right Bracket": ["Right Bracket", "Right Brace"],
-    "Backslash and Pipe": ["Backslash and Pipe", "Backslash"],
-    "Comma and LessThan": ["Comma and LessThan", "Comma"],
-    "ForwardSlash and QuestionMark": ["ForwardSlash and QuestionMark", "ForwardSlash"],
-    "Period": ["Period", "Period and GreaterThan"],
-    "Spacebar": ["Spacebar", "Space"],
-    "Return": ["Return", "Return Enter", "Enter"],
-    "Grave": ["Grave", "Grave Accent and Tilde"],
-    "Equal": ["Equal", "Equal and Plus"],
-    "1": ["1", "1 and Bang"],
-    "2": ["2", "2 and At"],
-    "3": ["3", "3 and Hash"],
-    "4": ["4", "4 and Dollar"],
-    "5": ["5", "5 and Percent"],
-    "6": ["6", "6 and Caret"],
-    "7": ["7", "7 and Ampersand"],
-    "8": ["8", "8 and Star"],
-    "9": ["9", "9 and Left Bracket"],
-    "0": ["0", "0 and Right Bracket"]
+    "SemiColon": [
+      "SemiColon",
+      "SemiColon and Colon"
+    ],
+    "Left Apos and Double": [
+      "Left Apos and Double",
+      "Apostrophe",
+      "Keyboard Apostrophe"
+    ],
+    "Left Brace": [
+      "Left Brace",
+      "Left Bracket"
+    ],
+    "Right Bracket": [
+      "Right Bracket",
+      "Right Brace"
+    ],
+    "Backslash and Pipe": [
+      "Backslash and Pipe",
+      "Backslash"
+    ],
+    "Comma and LessThan": [
+      "Comma and LessThan",
+      "Comma"
+    ],
+    "ForwardSlash and QuestionMark": [
+      "ForwardSlash and QuestionMark",
+      "ForwardSlash"
+    ],
+    "Period": [
+      "Period",
+      "Period and GreaterThan"
+    ],
+    "Spacebar": [
+      "Spacebar",
+      "Space"
+    ],
+    "Return": [
+      "Return",
+      "Return Enter",
+      "Enter"
+    ],
+    "Grave": [
+      "Grave",
+      "Grave Accent and Tilde"
+    ],
+    "Equal": [
+      "Equal",
+      "Equal and Plus"
+    ],
+    "1": [
+      "1",
+      "1 and Bang"
+    ],
+    "2": [
+      "2",
+      "2 and At"
+    ],
+    "3": [
+      "3",
+      "3 and Hash"
+    ],
+    "4": [
+      "4",
+      "4 and Dollar"
+    ],
+    "5": [
+      "5",
+      "5 and Percent"
+    ],
+    "6": [
+      "6",
+      "6 and Caret"
+    ],
+    "7": [
+      "7",
+      "7 and Ampersand"
+    ],
+    "8": [
+      "8",
+      "8 and Star"
+    ],
+    "9": [
+      "9",
+      "9 and Left Bracket"
+    ],
+    "0": [
+      "0",
+      "0 and Right Bracket"
+    ],
+    "Non-US Backslash and Pipe": [
+      "Non-US Backslash and Pipe",
+      "IntlBackslash",
+      "Keyboard Non-US Backslash and Pipe"
+    ]
   },
   "zmk_to_host_output": {
-    "1": { "normal": "1", "shift": "!", "us": "1" },
-    "1 and Bang": { "normal": "1", "shift": "!", "us": "1" },
-    "2": { "normal": "2", "shift": "\"", "altgr": "@", "us": "2" },
-    "2 and At": { "normal": "2", "shift": "\"", "altgr": "@", "us": "2" },
-    "3": { "normal": "3", "shift": "#", "altgr": "£", "us": "3" },
-    "3 and Hash": { "normal": "3", "shift": "#", "altgr": "£", "us": "3" },
-    "4": { "normal": "4", "shift": "¤", "altgr": "$", "us": "4" },
-    "4 and Dollar": { "normal": "4", "shift": "¤", "altgr": "$", "us": "4" },
-    "5": { "normal": "5", "shift": "%", "altgr": "€", "us": "5" },
-    "5 and Percent": { "normal": "5", "shift": "%", "altgr": "€", "us": "5" },
-    "6": { "normal": "6", "shift": "&", "us": "6" },
-    "6 and Caret": { "normal": "6", "shift": "&", "us": "6" },
-    "7": { "normal": "7", "shift": "/", "altgr": "{", "us": "7" },
-    "7 and Ampersand": { "normal": "7", "shift": "/", "altgr": "{", "us": "7" },
-    "8": { "normal": "8", "shift": "(", "altgr": "[", "us": "8" },
-    "8 and Star": { "normal": "8", "shift": "(", "altgr": "[", "us": "8" },
-    "9": { "normal": "9", "shift": ")", "altgr": "]", "us": "9" },
-    "9 and Left Bracket": { "normal": "9", "shift": ")", "altgr": "]", "us": "9" },
-    "0": { "normal": "0", "shift": "=", "altgr": "}", "us": "0" },
-    "0 and Right Bracket": { "normal": "0", "shift": "=", "altgr": "}", "us": "0" },
-    "SemiColon": { "normal": "ø", "shift": "Ø", "us": ";" },
-    "SemiColon and Colon": { "normal": "ø", "shift": "Ø", "us": ";" },
-    "Left Apos and Double": { "normal": "æ", "shift": "Æ", "us": "'" },
-    "Left Brace": { "normal": "å", "shift": "Å", "us": "[" },
-    "Left Bracket": { "normal": "å", "shift": "Å", "us": "[" },
-    "Right Bracket": { "normal": "¨", "shift": "^", "altgr": "~", "dead": true, "us": "]" },
-    "Right Brace": { "normal": "¨", "shift": "^", "altgr": "~", "dead": true, "us": "]" },
-    "Backslash and Pipe": { "normal": "'", "shift": "*", "us": "\\" },
-    "Backslash": { "normal": "'", "shift": "*", "us": "\\" },
-    "ForwardSlash and QuestionMark": { "normal": "-", "shift": "_", "us": "/" },
-    "ForwardSlash": { "normal": "-", "shift": "_", "us": "/" },
-    "Minus": { "normal": "+", "shift": "?", "us": "-" },
-    "Equal": { "normal": "\\", "shift": "`", "altgr": "´", "dead": true, "us": "=" },
-    "Equal and Plus": { "normal": "\\", "shift": "`", "altgr": "´", "dead": true, "us": "=" },
-    "Comma": { "normal": ",", "shift": ";", "us": "," },
-    "Comma and LessThan": { "normal": ",", "shift": ";", "us": "," },
-    "Period": { "normal": ".", "shift": ":", "us": "." },
-    "Period and GreaterThan": { "normal": ".", "shift": ":", "us": "." },
-    "Grave": { "normal": "|", "shift": "§", "us": "`" },
-    "Grave Accent and Tilde": { "normal": "|", "shift": "§", "us": "`" }
+    "1": {
+      "normal": "1",
+      "shift": "!",
+      "us": "1"
+    },
+    "1 and Bang": {
+      "normal": "1",
+      "shift": "!",
+      "us": "1"
+    },
+    "2": {
+      "normal": "2",
+      "shift": "\"",
+      "altgr": "@",
+      "us": "2"
+    },
+    "2 and At": {
+      "normal": "2",
+      "shift": "\"",
+      "altgr": "@",
+      "us": "2"
+    },
+    "3": {
+      "normal": "3",
+      "shift": "#",
+      "altgr": "£",
+      "us": "3"
+    },
+    "3 and Hash": {
+      "normal": "3",
+      "shift": "#",
+      "altgr": "£",
+      "us": "3"
+    },
+    "4": {
+      "normal": "4",
+      "shift": "¤",
+      "altgr": "$",
+      "us": "4"
+    },
+    "4 and Dollar": {
+      "normal": "4",
+      "shift": "¤",
+      "altgr": "$",
+      "us": "4"
+    },
+    "5": {
+      "normal": "5",
+      "shift": "%",
+      "altgr": "€",
+      "us": "5"
+    },
+    "5 and Percent": {
+      "normal": "5",
+      "shift": "%",
+      "altgr": "€",
+      "us": "5"
+    },
+    "6": {
+      "normal": "6",
+      "shift": "&",
+      "us": "6"
+    },
+    "6 and Caret": {
+      "normal": "6",
+      "shift": "&",
+      "us": "6"
+    },
+    "7": {
+      "normal": "7",
+      "shift": "/",
+      "altgr": "{",
+      "us": "7"
+    },
+    "7 and Ampersand": {
+      "normal": "7",
+      "shift": "/",
+      "altgr": "{",
+      "us": "7"
+    },
+    "8": {
+      "normal": "8",
+      "shift": "(",
+      "altgr": "[",
+      "us": "8"
+    },
+    "8 and Star": {
+      "normal": "8",
+      "shift": "(",
+      "altgr": "[",
+      "us": "8"
+    },
+    "9": {
+      "normal": "9",
+      "shift": ")",
+      "altgr": "]",
+      "us": "9"
+    },
+    "9 and Left Bracket": {
+      "normal": "9",
+      "shift": ")",
+      "altgr": "]",
+      "us": "9"
+    },
+    "0": {
+      "normal": "0",
+      "shift": "=",
+      "altgr": "}",
+      "us": "0"
+    },
+    "0 and Right Bracket": {
+      "normal": "0",
+      "shift": "=",
+      "altgr": "}",
+      "us": "0"
+    },
+    "SemiColon": {
+      "normal": "ø",
+      "shift": "Ø",
+      "us": ";"
+    },
+    "SemiColon and Colon": {
+      "normal": "ø",
+      "shift": "Ø",
+      "us": ";"
+    },
+    "Left Apos and Double": {
+      "normal": "æ",
+      "shift": "Æ",
+      "us": "'"
+    },
+    "Left Brace": {
+      "normal": "å",
+      "shift": "Å",
+      "us": "["
+    },
+    "Left Bracket": {
+      "normal": "å",
+      "shift": "Å",
+      "us": "["
+    },
+    "Right Bracket": {
+      "normal": "¨",
+      "shift": "^",
+      "altgr": "~",
+      "dead": true,
+      "us": "]"
+    },
+    "Right Brace": {
+      "normal": "¨",
+      "shift": "^",
+      "altgr": "~",
+      "dead": true,
+      "us": "]"
+    },
+    "Backslash and Pipe": {
+      "normal": "'",
+      "shift": "*",
+      "us": "\\"
+    },
+    "Backslash": {
+      "normal": "'",
+      "shift": "*",
+      "us": "\\"
+    },
+    "ForwardSlash and QuestionMark": {
+      "normal": "-",
+      "shift": "_",
+      "us": "/"
+    },
+    "ForwardSlash": {
+      "normal": "-",
+      "shift": "_",
+      "us": "/"
+    },
+    "Minus": {
+      "normal": "+",
+      "shift": "?",
+      "us": "-"
+    },
+    "Equal": {
+      "normal": "\\",
+      "shift": "`",
+      "altgr": "´",
+      "dead": true,
+      "us": "="
+    },
+    "Equal and Plus": {
+      "normal": "\\",
+      "shift": "`",
+      "altgr": "´",
+      "dead": true,
+      "us": "="
+    },
+    "Comma": {
+      "normal": ",",
+      "shift": ";",
+      "us": ","
+    },
+    "Comma and LessThan": {
+      "normal": ",",
+      "shift": ";",
+      "us": ","
+    },
+    "Period": {
+      "normal": ".",
+      "shift": ":",
+      "us": "."
+    },
+    "Period and GreaterThan": {
+      "normal": ".",
+      "shift": ":",
+      "us": "."
+    },
+    "Grave": {
+      "normal": "|",
+      "shift": "§",
+      "us": "`"
+    },
+    "Grave Accent and Tilde": {
+      "normal": "|",
+      "shift": "§",
+      "us": "`"
+    },
+    "Non-US Backslash and Pipe": {
+      "normal": "<",
+      "shift": ">",
+      "altgr": "|",
+      "us": "\\"
+    }
   },
   "event_key_to_zmk": {
     "ø": "SemiColon",
@@ -108,14 +396,24 @@
     "Æ": "Left Apos and Double",
     "å": "Left Brace",
     "Å": "Left Brace",
-    "^": "Right Bracket",
-    "¨": "Right Bracket",
-    "+": "Minus",
-    "?": "ForwardSlash",
-    "|": "Backslash and Pipe",
-    "<": "Comma and LessThan",
-    ">": "Period",
-    " ": "Spacebar"
+    "^": "Right Brace",
+    "¨": "Right Brace",
+    "+": "Dash and Underscore",
+    "?": "ForwardSlash and QuestionMark",
+    "|": "Grave Accent and Tilde",
+    "<": "Non-US Backslash and Pipe",
+    ">": "Non-US Backslash and Pipe",
+    " ": "Spacebar",
+    "\\": "Equals and Plus",
+    "'": "Backslash and Pipe",
+    "\"": "2 and At",
+    "{": "7 and Ampersand",
+    "[": "8 and Star",
+    "]": "9 and Left Bracket",
+    "}": "0 and Right Bracket",
+    "€": "5 and Percent",
+    "£": "3 and Hash",
+    "$": "4 and Dollar"
   },
   "event_code_to_zmk": {
     "Escape": "Escape",
@@ -162,7 +460,7 @@
     "BracketLeft": "Left Brace",
     "BracketRight": "Right Bracket",
     "Backslash": "Backslash and Pipe",
-    "IntlBackslash": "Backslash and Pipe",
+    "IntlBackslash": "Non-US Backslash and Pipe",
     "Comma": "Comma and LessThan",
     "Period": "Period",
     "Slash": "ForwardSlash and QuestionMark",
