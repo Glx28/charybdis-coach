@@ -909,6 +909,11 @@
         secondary: `Hold → L${target}${meta.role ? ` ${meta.role}` : ""}`.trim()
       };
     }
+    const numberedCoachLock = behaviorLower.match(/^coach_l(\d+)_lock$/);
+    if (numberedCoachLock) {
+      const target = numberedCoachLock[1];
+      return { kind: "lock", primary: `L${target}`, badge: "🔒", secondary: `Lock L${target} on` };
+    }
     if (coachMap[behaviorLower]) return { ...coachMap[behaviorLower] };
 
     if (/reset|bootloader/i.test(behavior) || /reset|bootloader/i.test(label)) {
@@ -1676,9 +1681,10 @@
         const holdMatch = behavior.match(/^coach_l(\d+)_hold$/);
         const scrollHoldMatch = behavior.match(/^coach_l(\d+)_scroll_hold$/);
         const toggleMatch = behavior.match(/^coach_l(\d+)_toggle$/);
+        const lockMatch = behavior.match(/^coach_l(\d+)_lock$/);
         if (holdMatch) { target = holdMatch[1]; kind = "hold"; }
         else if (scrollHoldMatch) { target = scrollHoldMatch[1]; kind = "scroll_hold"; }
-        else if (toggleMatch) { target = toggleMatch[1]; kind = "toggle"; }
+        else if (toggleMatch || lockMatch) { target = (toggleMatch || lockMatch)[1]; kind = "toggle"; }
         else if (/^(coach_base|coach_recover_base)$/.test(behavior)) { target = "0"; }
         else if (/^(momentary layer|to layer|toggle layer)$/.test(behavior)) {
           const m = param.match(/\d+/);
@@ -3574,7 +3580,7 @@
   function layerAccessRows(targetLayer) {
     const target = String(targetLayer);
     return allRows().filter((row) => {
-      if (!/momentary layer|toggle layer|to layer/i.test(row.behavior)) return false;
+      if (!/momentary layer|toggle layer|to layer|coach_l\d+_lock/i.test(row.behavior)) return false;
       return layerParam(row) === target;
     });
   }
@@ -3582,6 +3588,7 @@
   function accessVerb(row) {
     if (/momentary layer/i.test(row.behavior)) return "Hold";
     if (/toggle layer/i.test(row.behavior)) return "Toggle";
+    if (/coach_l\d+_lock/i.test(row.behavior)) return "Lock on";
     if (/to layer/i.test(row.behavior)) return "Switch";
     return "Use";
   }

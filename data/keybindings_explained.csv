@@ -102,7 +102,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 1,9,3,Alt+Shift+D,Key Press,D,L Alt+L Shift,Split pane (auto),"App: Windows Terminal / PowerShell, importance=2.4000000000000004",evolved
 1,10,3,L3,coach_l3_toggle,,,Dynamic layer access: @access:L3:toggle,Target layer 3,evolved
 1,11,3,Ctrl+Shift+Del,Key Press,Delete,L Ctrl+L Shift,Clear browsing data,"App: Browser (Chrome/Edge), importance=0.95",evolved
-1,12,3,L1,coach_l1_toggle,,,Dynamic layer access: @access:L1:toggle,Target layer 1,evolved
+1,12,3,L1,coach_l1_lock,,,Dynamic layer access: @access:L1:toggle,Target layer 1,evolved
 1,3,4,L0,coach_base,,,Dynamic layer access: @access:L0:return,Target layer 0,evolved
 1,4,4,L3,coach_l3_hold,,,Dynamic layer access: @access:L3:hold,Target layer 3,evolved
 1,5,4,L2,coach_l2_toggle,,,Dynamic layer access: @access:L2:toggle,Target layer 2,evolved
@@ -158,7 +158,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 2,9,3,Shift+Delete,Key Press,Delete,L Shift,Permanent delete,"App: File Explorer, importance=0.45",evolved
 2,10,3,RightArrow,Key Press,RightArrow,,Right arrow,"App: Mouse, importance=8.0",evolved
 2,11,3,DownArrow,Key Press,DownArrow,,Down arrow,"App: Mouse, importance=8.0",evolved
-2,12,3,L2,coach_l2_toggle,,,Dynamic layer access: @access:L2:toggle,Target layer 2,evolved
+2,12,3,L2,coach_l2_lock,,,Dynamic layer access: @access:L2:toggle,Target layer 2,evolved
 2,3,4,L7,coach_l7_hold,,,Dynamic layer access: @access:L7:hold,Target layer 7,evolved
 2,4,4,F10,Key Press,F10,,Step over,"App: Visual Studio Code, importance=5.4",evolved
 2,5,4,Scroll_L10,coach_l10_scroll_hold,,,Dynamic layer access: @scroll:L10:hold,Target layer 10,evolved
@@ -198,7 +198,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 3,4,2,transparent,Transparent,,,,,transparent
 3,5,2,transparent,Transparent,,,,,transparent
 3,7,2,Alt+Home,Key Press,Home,L Alt,Open home page,"App: Browser (Chrome/Edge), importance=0.95",evolved
-3,8,2,L3,coach_l3_toggle,,,Dynamic layer access: @access:L3:toggle,Target layer 3,evolved
+3,8,2,L3,coach_l3_lock,,,Dynamic layer access: @access:L3:toggle,Target layer 3,evolved
 3,9,2,transparent,Transparent,,,,,transparent
 3,10,2,transparent,Transparent,,,,,transparent
 3,11,2,L7,coach_l7_toggle,,,Dynamic layer access: @access:L7:toggle,Target layer 7,evolved
@@ -268,7 +268,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 4,7,3,Ctrl+7,Key Press,7 and Ampersand,L Ctrl,Switch to tab 7,"App: Browser (Chrome/Edge), importance=0.19",evolved
 4,8,3,Ctrl+8,Key Press,8 and Star,L Ctrl,Switch to tab 8,"App: Browser (Chrome/Edge), importance=0.19",evolved
 4,9,3,Ctrl+9,Key Press,9 and Left Bracket,L Ctrl,Last tab,"App: Browser (Chrome/Edge), importance=0.95",evolved
-4,10,3,L4,coach_l4_toggle,,,Dynamic layer access: @access:L4:toggle,Target layer 4,evolved
+4,10,3,L4,coach_l4_lock,,,Dynamic layer access: @access:L4:toggle,Target layer 4,evolved
 4,11,3,Ctrl+Shift+Enter,Key Press,Return Enter,L Ctrl+L Shift,Array formula (legacy),"App: Microsoft Excel, importance=0.5",evolved
 4,12,3,Ctrl+Shift+~,Key Press,Grave Accent and Tilde,L Ctrl+L Shift,General format,"App: Microsoft Excel, importance=0.5",evolved
 4,3,4,Alt+P,Key Press,P,L Alt,Preview pane,"App: File Explorer, importance=0.45",evolved
@@ -333,7 +333,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 5,7,4,L7,coach_l7_hold,,,Dynamic layer access: @access:L7:hold,Target layer 7,evolved
 5,8,4,Ctrl+A,Key Press,A,L Ctrl,Select all,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
 5,4,5,Shift+Enter,Key Press,Return Enter,L Shift,Insert newline in multi-line input,"App: Claude Code CLI, importance=7.0",evolved
-5,5,5,L5,coach_l5_toggle,,,Dynamic layer access: @access:L5:toggle,Target layer 5,evolved
+5,5,5,L5,coach_l5_lock,,,Dynamic layer access: @access:L5:toggle,Target layer 5,evolved
 5,7,5,L0,coach_base,,,Dynamic layer access: @access:L0:return,Target layer 0,evolved
 6,0,0,transparent,Transparent,,,,,transparent
 6,1,0,transparent,Transparent,,,,,transparent
@@ -389,7 +389,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 6,7,4,L8,coach_l8_hold,,,Dynamic layer access: @access:L8:hold,Target layer 8,evolved
 6,8,4,L7,coach_l7_hold,,,Dynamic layer access: @access:L7:hold,Target layer 7,evolved
 6,4,5,L7,coach_l7_toggle,,,Dynamic layer access: @access:L7:toggle,Target layer 7,evolved
-6,5,5,L6,coach_l6_toggle,,,Dynamic layer access: @access:L6:toggle,Target layer 6,evolved
+6,5,5,L6,coach_l6_lock,,,Dynamic layer access: @access:L6:toggle,Target layer 6,evolved
 6,7,5,Scroll_L4,coach_l4_scroll_hold,,,Dynamic layer access: @scroll:L4:hold,Target layer 4,evolved
 7,0,0,BT 0,Bluetooth,BT_SEL 0,,,,canonical (frozen/critical)
 7,1,0,BT 1,Bluetooth,BT_SEL 1,,,,canonical (frozen/critical)
@@ -443,7 +443,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 7,4,4,␣,Key Press,Spacebar,,,,canonical (frozen/critical)
 7,5,4,Exit Base,coach_base,,,,,canonical (frozen/critical)
 7,7,4,Exit Base,coach_base,,,,,canonical (frozen/critical)
-7,8,4,Exit Base,coach_base,,,,,canonical (frozen/critical)
+7,8,4,Toggle L7,coach_l7_lock,,,,,canonical (frozen/critical)
 7,4,5,Click,Mouse Key Press,MB1,,,,canonical (frozen/critical)
 7,5,5,Right Click,Mouse Key Press,MB2,,,,canonical (frozen/critical)
 7,7,5,Ret,Key Press,Return Enter,,,,canonical (frozen/critical)
@@ -476,7 +476,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 8,2,2,transparent,Transparent,,,,,transparent
 8,3,2,transparent,Transparent,,,,,transparent
 8,4,2,transparent,Transparent,,,,,transparent
-8,5,2,L8,coach_l8_toggle,,,Dynamic layer access: @access:L8:toggle,Target layer 8,evolved
+8,5,2,L8,coach_l8_lock,,,Dynamic layer access: @access:L8:toggle,Target layer 8,evolved
 8,7,2,transparent,Transparent,,,,,transparent
 8,8,2,transparent,Transparent,,,,,transparent
 8,9,2,Shift+Delete,Key Press,Delete,L Shift,Permanent delete,"App: File Explorer, importance=0.45",evolved
@@ -539,7 +539,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 9,10,2,Win+Ctrl+Left,Key Press,LeftArrow,L GUI+L Ctrl,Switch desktop left,"App: Windows 11, importance=3.0",evolved
 9,11,2,Win+Ctrl+Right,Key Press,RightArrow,L GUI+L Ctrl,Switch desktop right,"App: Windows 11, importance=3.0",evolved
 9,12,2,Win+S,launcher_win_search,,,Windows Search,"App: Windows 11, importance=10.0",evolved
-9,0,3,L9,coach_l9_toggle,,,Dynamic layer access: @access:L9:toggle,Target layer 9,evolved
+9,0,3,L9,coach_l9_lock,,,Dynamic layer access: @access:L9:toggle,Target layer 9,evolved
 9,1,3,Ctrl+Shift+Home,Key Press,Home,L Ctrl+L Shift,Select to cell A1,"App: Microsoft Excel, importance=1.5",evolved
 9,2,3,Ctrl+Shift+End,Key Press,End,L Ctrl+L Shift,Select to last used cell,"App: Microsoft Excel, importance=1.5",evolved
 9,3,3,Ctrl+Shift+Esc,Key Press,Escape,L Ctrl+L Shift,Task Manager,"App: Windows 11, importance=3.0",evolved
@@ -569,7 +569,7 @@ layer,x,y,visual_label,behavior,parameter,modifiers,purpose,usage_notes,source
 10,8,0,Ctrl+T,Key Press,T,L Ctrl,New tab,"App: Browser (Chrome/Edge), importance=9.5",evolved
 10,9,0,Ctrl+Shift+T,Key Press,T,L Ctrl+L Shift,Reopen closed tab,"App: Browser (Chrome/Edge), importance=5.699999999999999",evolved
 10,10,0,Win+Shift+D,Key Press,D,L GUI+L Shift,Mouse Highlighter,"App: PowerToys, importance=5.0",evolved
-10,11,0,L10,coach_l10_toggle,,,Dynamic layer access: @access:L10:toggle,Target layer 10,evolved
+10,11,0,L10,coach_l10_lock,,,Dynamic layer access: @access:L10:toggle,Target layer 10,evolved
 10,12,0,F2,Key Press,F2,,Edit cell,"App: Microsoft Excel, importance=5.0",evolved
 10,0,1,Ctrl+B,Key Press,B,L Ctrl,Background running Bash command/agent,"App: Claude Code CLI, importance=4.0",evolved
 10,1,1,Ctrl+O,Key Press,O,L Ctrl,Toggle transcript / verbose tool-use view,"App: Claude Code CLI, importance=6.0",evolved
