@@ -592,8 +592,8 @@ svg {
   z-index: 1;
   top: 3px;
   right: 3px;
-  width: clamp(22px, 1.8vw, 28px);
-  height: clamp(22px, 1.8vw, 28px);
+  width: clamp(26px, 2.1vw, 34px);
+  height: clamp(26px, 2.1vw, 34px);
   object-fit: contain;
   border-radius: 4px;
   padding: 1px;
