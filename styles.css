@@ -592,8 +592,8 @@ svg {
   z-index: 1;
   top: 3px;
   right: 3px;
-  width: clamp(18px, 1.45vw, 22px);
-  height: clamp(18px, 1.45vw, 22px);
+  width: clamp(22px, 1.8vw, 28px);
+  height: clamp(22px, 1.8vw, 28px);
   object-fit: contain;
   border-radius: 4px;
   padding: 1px;
@@ -608,6 +608,14 @@ svg {
   object-fit: contain;
   border-radius: 5px;
   pointer-events: none;
+}
+
+.key-function-icon-fluent {
+  filter: brightness(0) invert(0.92);
+}
+
+.key-function-icon-flipped {
+  transform: scaleX(-1);
 }
 
 .keycap:hover,

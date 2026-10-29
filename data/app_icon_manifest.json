@@ -6,185 +6,209 @@
       "name": "Microsoft Edge"
     },
     "by_shortcut": {
-      "alt+enter": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 2
-      },
-      "alt+shift+right": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
-      },
-      "alt+shift+tab": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 2
-      },
-      "alt+tab": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 26
-      },
-      "alt+up": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
-      },
-      "backspace": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
-      },
-      "ctrl+a": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 11
-      },
-      "ctrl+backspace": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 12
-      },
       "ctrl+c": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 93
-      },
-      "ctrl+d": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
-      },
-      "ctrl+f": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 19
-      },
-      "ctrl+h": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
-      },
-      "ctrl+j": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 2
-      },
-      "ctrl+l": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
-      },
-      "ctrl+shift+n": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
-      },
-      "ctrl+shift+r": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
-      },
-      "ctrl+shift+t": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
-      },
-      "ctrl+shift+tab": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 26
-      },
-      "ctrl+t": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
-      },
-      "ctrl+tab": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
+        "name": "Microsoft Edge"
       },
       "ctrl+v": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 47
+        "name": "Microsoft Edge"
+      },
+      "ctrl+enter": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
       },
       "ctrl+w": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 76
+        "name": "Microsoft Edge"
+      },
+      "ctrl+a": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
       },
       "ctrl+x": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
+        "name": "Microsoft Edge"
       },
-      "ctrl+z": {
+      "backspace": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
+        "name": "Microsoft Edge"
       },
-      "f2": {
+      "enter": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
-      },
-      "shift+backspace": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 5
-      },
-      "shift+enter": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 5
-      },
-      "shift+tab": {
-        "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 2
+        "name": "Microsoft Edge"
       },
       "space": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
+        "name": "Microsoft Edge"
       },
-      "win+e": {
+      "ctrl+backspace": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
+        "name": "Microsoft Edge"
       },
-      "win+shift+left": {
+      "tab": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
+        "name": "Microsoft Edge"
       },
-      "win+shift+right": {
+      "left": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
+        "name": "Microsoft Edge"
       },
-      "win+shift+s": {
+      "alt+tab": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 2
+        "name": "Microsoft Edge"
       },
-      "win+shift+t": {
+      "down": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
+        "name": "Microsoft Edge"
       },
-      "win+tab": {
+      "up": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
+        "name": "Microsoft Edge"
       },
-      "win+v": {
+      "right": {
         "src": "./assets/app-icons/edge.ico",
-        "name": "Microsoft Edge",
-        "shortcut_uses": 1
+        "name": "Microsoft Edge"
+      },
+      "ctrl+l": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "shift+tab": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+t": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+f": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+e": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+9": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+z": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "win+space": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+shift+n": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+shift+b": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "shift+enter": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+f5": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "f5": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+u": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "alt+enter": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+r": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+shift+m": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "alt+left": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+shift+v": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+q": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+1": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+shift+e": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "win+shift+d": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "alt+j": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "shift+f8": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "shift+backspace": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "win+right": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+'": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+shift+escape": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+shift+tab": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+tab": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+s": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+shift+t": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+shift+j": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
+      },
+      "ctrl+\\": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge"
       }
     },
     "usage_source": {
@@ -305,257 +329,102 @@
       "name": "Modifier key"
     }
   },
-  "shortcut_app_usage": {
-    "-": {
-      "windows terminal / powershell": 1
-    },
-    "alt+enter": {
-      "browser (chrome/edge)": 2,
-      "microsoft teams": 1
-    },
-    "alt+shift+right": {
-      "browser (chrome/edge)": 1
-    },
-    "alt+shift+tab": {
-      "m-files desktop client": 1,
-      "file explorer": 41,
-      "windows terminal / powershell": 2,
-      "browser (chrome/edge)": 2,
-      "microsoft teams": 1,
-      "visual studio code": 1,
-      "microsoft outlook": 1
-    },
-    "alt+space": {
-      "windows terminal / powershell": 1
-    },
-    "alt+tab": {
-      "browser (chrome/edge)": 26,
-      "file explorer": 70,
-      "microsoft word": 3,
-      "m-files desktop client": 15,
-      "microsoft teams": 37,
-      "microsoft outlook": 7,
-      "windows terminal / powershell": 19,
-      "claude code cli": 1,
-      "visual studio code": 3,
-      "microsoft excel": 3
-    },
-    "alt+up": {
-      "browser (chrome/edge)": 1
-    },
-    "backspace": {
-      "browser (chrome/edge)": 1,
-      "m-files desktop client": 1,
-      "windows terminal / powershell": 20,
-      "claude code cli": 1,
-      "powertoys": 2
-    },
-    "ctrl+0": {
-      "microsoft teams": 1
-    },
-    "ctrl+5": {
-      "windows terminal / powershell": 1
-    },
-    "ctrl+a": {
-      "microsoft teams": 3,
-      "browser (chrome/edge)": 11,
-      "visual studio code": 8,
-      "file explorer": 1,
-      "m-files desktop client": 2
-    },
-    "ctrl+backspace": {
-      "m-files desktop client": 1,
-      "microsoft teams": 16,
-      "browser (chrome/edge)": 12,
-      "powertoys": 2,
-      "windows terminal / powershell": 1,
-      "file explorer": 5
-    },
-    "ctrl+c": {
-      "m-files desktop client": 52,
-      "browser (chrome/edge)": 93,
-      "windows terminal / powershell": 12,
-      "file explorer": 11,
-      "microsoft teams": 31,
-      "microsoft outlook": 1,
-      "microsoft excel": 7,
-      "visual studio code": 6
-    },
-    "ctrl+d": {
-      "browser (chrome/edge)": 1,
-      "visual studio code": 1
-    },
-    "ctrl+f": {
-      "claude code cli": 1,
-      "browser (chrome/edge)": 19,
-      "microsoft outlook": 1,
-      "m-files desktop client": 2
-    },
-    "ctrl+h": {
-      "browser (chrome/edge)": 1
-    },
-    "ctrl+j": {
-      "browser (chrome/edge)": 1,
-      "m-files desktop client": 2,
-      "file explorer": 2
-    },
-    "ctrl+l": {
-      "file explorer": 1,
-      "browser (chrome/edge)": 1
-    },
-    "ctrl+left": {
-      "windows terminal / powershell": 3,
-      "microsoft teams": 4
-    },
-    "ctrl+n": {
-      "visual studio code": 6
-    },
-    "ctrl+q": {
-      "visual studio code": 1,
-      "m-files desktop client": 1
-    },
-    "ctrl+right": {
-      "windows terminal / powershell": 2,
-      "microsoft teams": 2
-    },
-    "ctrl+s": {
-      "microsoft word": 2,
-      "visual studio code": 14
-    },
-    "ctrl+shift+n": {
-      "browser (chrome/edge)": 1,
-      "visual studio code": 1
-    },
-    "ctrl+shift+p": {
-      "visual studio code": 1
-    },
-    "ctrl+shift+r": {
-      "browser (chrome/edge)": 1
-    },
-    "ctrl+shift+s": {
-      "visual studio code": 2
-    },
-    "ctrl+shift+t": {
-      "browser (chrome/edge)": 1
-    },
-    "ctrl+shift+tab": {
-      "browser (chrome/edge)": 26
-    },
-    "ctrl+t": {
-      "browser (chrome/edge)": 1
-    },
-    "ctrl+tab": {
-      "windows terminal / powershell": 1,
-      "browser (chrome/edge)": 1
-    },
-    "ctrl+v": {
-      "browser (chrome/edge)": 47,
-      "m-files desktop client": 12,
-      "windows terminal / powershell": 14,
-      "file explorer": 17,
-      "powertoys": 1,
-      "microsoft teams": 30,
-      "microsoft outlook": 3,
-      "visual studio code": 14
-    },
-    "ctrl+w": {
-      "browser (chrome/edge)": 76
-    },
-    "ctrl+x": {
-      "m-files desktop client": 2,
-      "browser (chrome/edge)": 1,
-      "visual studio code": 2,
-      "file explorer": 3
-    },
-    "ctrl+z": {
-      "browser (chrome/edge)": 1,
-      "visual studio code": 4,
-      "file explorer": 2,
-      "m-files desktop client": 1
-    },
-    "down": {
-      "windows terminal / powershell": 21,
-      "microsoft teams": 1
-    },
-    "enter": {
-      "windows terminal / powershell": 4
-    },
-    "f2": {
-      "browser (chrome/edge)": 1
-    },
-    "f9": {
-      "microsoft teams": 1
-    },
-    "left": {
-      "windows terminal / powershell": 6
-    },
-    "shift+backspace": {
-      "browser (chrome/edge)": 5
-    },
-    "shift+enter": {
-      "microsoft teams": 4,
-      "browser (chrome/edge)": 5
-    },
-    "shift+tab": {
-      "browser (chrome/edge)": 2,
-      "windows terminal / powershell": 2
-    },
-    "space": {
-      "browser (chrome/edge)": 1
-    },
-    "up": {
-      "windows terminal / powershell": 36
-    },
-    "win+c": {
-      "microsoft outlook": 1
-    },
-    "win+e": {
-      "windows terminal / powershell": 1,
-      "browser (chrome/edge)": 1
-    },
-    "win+l": {
-      "microsoft teams": 1
-    },
-    "win+left": {
-      "file explorer": 2
-    },
-    "win+right": {
-      "file explorer": 1
-    },
-    "win+shift+left": {
-      "browser (chrome/edge)": 1
-    },
-    "win+shift+q": {
-      "windows terminal / powershell": 2
-    },
-    "win+shift+right": {
-      "browser (chrome/edge)": 1
-    },
-    "win+shift+s": {
-      "browser (chrome/edge)": 2,
-      "microsoft teams": 1,
-      "m-files desktop client": 1,
-      "file explorer": 1
-    },
-    "win+shift+t": {
-      "browser (chrome/edge)": 1
-    },
-    "win+tab": {
-      "browser (chrome/edge)": 1,
-      "file explorer": 2
-    },
-    "win+up": {
-      "windows terminal / powershell": 1
-    },
-    "win+v": {
-      "browser (chrome/edge)": 1,
-      "microsoft outlook": 1
-    }
-  },
   "usage_source": {
     "file": "shortcut_usage.jsonl",
     "event_type": "shortcut",
-    "app_resolution": "Known foreground executable names mapped to Coach app labels",
-    "used_for": "Choose the most-used assigned app identity when one shortcut label appears for multiple apps; icon selection only."
+    "observed_through": "2026-10-29T21:07:50Z",
+    "app_resolution": "Known foreground executable names mapped to Coach app labels; unknown executables ignored.",
+    "layout": "keybindings_explained.csv"
+  },
+  "shortcut_app_choice": {},
+  "shortcut_app_choice_by_layer": {},
+  "browser_shortcut_choice": {
+    "ctrl+v": "edge",
+    "ctrl+f": "edge",
+    "ctrl+shift+j": "edge",
+    "ctrl+c": "edge",
+    "ctrl+l": "edge",
+    "ctrl+f5": "edge",
+    "f5": "edge",
+    "ctrl+r": "edge",
+    "ctrl+shift+tab": "edge",
+    "ctrl+a": "edge",
+    "ctrl+x": "edge",
+    "ctrl+s": "edge",
+    "ctrl+enter": "edge",
+    "alt+left": "edge",
+    "ctrl+u": "edge",
+    "ctrl+shift+b": "edge",
+    "ctrl+z": "edge",
+    "ctrl+w": "edge",
+    "ctrl+shift+v": "edge",
+    "ctrl+tab": "edge",
+    "ctrl+t": "edge",
+    "ctrl+shift+t": "edge",
+    "ctrl+shift+n": "edge",
+    "ctrl+1": "edge",
+    "ctrl+9": "edge",
+    "ctrl+shift+m": "edge",
+    "ctrl+shift+e": "edge"
+  },
+  "browser_shortcut_choice_by_layer": {
+    "1": {
+      "ctrl+v": "edge",
+      "ctrl+f": "edge",
+      "ctrl+shift+j": "edge"
+    },
+    "2": {
+      "ctrl+c": "edge",
+      "ctrl+l": "edge",
+      "ctrl+f5": "edge",
+      "f5": "edge",
+      "ctrl+r": "edge",
+      "ctrl+f": "edge"
+    },
+    "3": {
+      "ctrl+shift+tab": "edge",
+      "ctrl+a": "edge",
+      "ctrl+x": "edge",
+      "ctrl+c": "edge",
+      "ctrl+v": "edge",
+      "ctrl+s": "edge",
+      "ctrl+enter": "edge",
+      "alt+left": "edge",
+      "ctrl+u": "edge"
+    },
+    "4": {
+      "ctrl+shift+b": "edge",
+      "ctrl+u": "edge",
+      "ctrl+enter": "edge"
+    },
+    "5": {
+      "ctrl+z": "edge",
+      "ctrl+w": "edge"
+    },
+    "6": {
+      "ctrl+shift+v": "edge",
+      "ctrl+enter": "edge",
+      "ctrl+w": "edge",
+      "ctrl+shift+tab": "edge",
+      "ctrl+tab": "edge",
+      "ctrl+t": "edge",
+      "ctrl+shift+t": "edge"
+    },
+    "8": {
+      "ctrl+enter": "edge",
+      "ctrl+shift+n": "edge",
+      "ctrl+1": "edge",
+      "ctrl+u": "edge",
+      "ctrl+9": "edge"
+    },
+    "9": {
+      "ctrl+enter": "edge",
+      "ctrl+shift+m": "edge",
+      "ctrl+u": "edge"
+    },
+    "10": {
+      "ctrl+u": "edge",
+      "ctrl+shift+e": "edge"
+    }
   }
 }

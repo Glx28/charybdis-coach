@@ -1234,19 +1234,15 @@
   function appIconForRow(row) {
     const manifest = state.appIconManifest;
     if (!manifest) return null;
-    const shortcut = clean(row.visual_label).toLowerCase();
+    const shortcut = clean(row.visual_label).replace(/\s+/g, "").toLowerCase();
     let iconRow = row;
     const appRows = state.rows.filter((candidate) =>
-      clean(candidate.visual_label).toLowerCase() === shortcut && rowApp(candidate));
-    const appNames = [...new Set(appRows.map((candidate) => rowApp(candidate).toLowerCase()))];
+      clean(candidate.visual_label).replace(/\s+/g, "").toLowerCase() === shortcut && rowApp(candidate));
+    const appNames = [...new Set(appRows.map((candidate) => rowApp(candidate)))];
     if (appNames.length > 1) {
-      const observed = manifest.shortcut_app_usage?.[shortcut] || {};
-      const preferred = appNames
-        .map((name) => ({ name, count: Number(observed[name] || 0) }))
-        .sort((a, b) => b.count - a.count)[0];
-      if (preferred?.count > 0) {
-        iconRow = appRows.find((candidate) => rowApp(candidate).toLowerCase() === preferred.name) || row;
-      }
+      const preferred = manifest.shortcut_app_choice_by_layer?.[clean(row.layer)]?.[shortcut]
+        || manifest.shortcut_app_choice?.[shortcut];
+      iconRow = appRows.find((candidate) => rowApp(candidate).toLowerCase() === preferred) || row;
     }
     const app = clean(rowApp(iconRow)).toLowerCase();
     const purpose = `${clean(iconRow.purpose)} ${clean(iconRow.visual_label)}`;
@@ -1254,6 +1250,12 @@
       if (new RegExp(rule.pattern, "i").test(purpose)) return rule.icon;
     }
     if (app === "browser (chrome/edge)") {
+      const browser = manifest.browser_shortcut_choice_by_layer?.[clean(row.layer)]?.[shortcut]
+        || manifest.browser_shortcut_choice?.[shortcut];
+      if (browser) {
+        const iconPath = `./assets/app-icons/${browser}.ico`;
+        return { src: iconPath, name: browser === "chrome" ? "Google Chrome" : "Microsoft Edge" };
+      }
       return manifest.browser?.by_shortcut?.[shortcut] || manifest.browser?.default || null;
     }
     return manifest.apps?.[app] || null;
@@ -1552,7 +1554,7 @@
           ? `<span class="key-badge" aria-hidden="true">${escapeHtml(visual.badge)}</span>`
           : "";
         const functionIconHtml = functionIcon
-          ? `<img class="key-function-icon" src="${escapeHtml(functionIcon.src)}" alt="${escapeHtml(functionIcon.name)}" title="${escapeHtml(functionIcon.name)}" loading="lazy" decoding="async">`
+          ? `<img class="key-function-icon${functionIcon.kind === "fluent" ? " key-function-icon-fluent" : ""}${functionIcon.flip ? " key-function-icon-flipped" : ""}" src="${escapeHtml(functionIcon.src)}" alt="${escapeHtml(functionIcon.name)}" title="${escapeHtml(functionIcon.name)}" loading="lazy" decoding="async">`
           : "";
         const appIconHtml = appIcon
           ? `<img class="key-app-icon" src="${escapeHtml(appIcon.src)}" alt="${escapeHtml(appIcon.name)}" title="${escapeHtml(appIcon.name)}" loading="lazy" decoding="async">`

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "source": "PowerToys 0.100.2.0 bundled WinUI3Apps resources from the installed application. Module-specific assets used where shipped; purpose matching is restricted to owning app. Screenshot uses the installed Snipping Tool logo.",
+  "source": "PowerToys 0.100.2.0 bundled WinUI3Apps resources from the installed application. Module-specific assets used where shipped; purpose matching is restricted to owning app. Screenshot uses the installed Snipping Tool logo. Generic action glyphs are Fluent UI System Icons SVGs from microsoft/fluentui-system-icons commit 64e5aa757d1b70c24a283256ddcb8269d0f58773 (MIT license).",
   "purpose_rules": [
     {
       "pattern": "PowerToys Command Palette|CmdPal",
@@ -133,6 +133,661 @@
       "name": "Snipping Tool",
       "src": "./assets/function-icons/powertoys/SnippingTool.png",
       "app_pattern": "Windows 11"
+    },
+    {
+      "pattern": "\\bcopy\\b",
+      "name": "Copy",
+      "src": "./assets/function-icons/fluent/copy.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "\\bpaste\\b",
+      "name": "Paste",
+      "src": "./assets/function-icons/fluent/clipboard_paste.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "\\bcut\\b",
+      "name": "Cut",
+      "src": "./assets/function-icons/fluent/cut.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "\\bundo\\b",
+      "name": "Undo",
+      "src": "./assets/function-icons/fluent/arrow_undo.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "\\bredo\\b",
+      "name": "Redo",
+      "src": "./assets/function-icons/fluent/arrow_redo.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "\\bsave\\b",
+      "name": "Save",
+      "src": "./assets/function-icons/fluent/save.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Zoom out",
+      "name": "Zoom out",
+      "src": "./assets/function-icons/fluent/zoom_out.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Zoom in",
+      "name": "Zoom in",
+      "src": "./assets/function-icons/fluent/zoom_in.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Left click|Right click|Middle click|Ctrl\\+Click|Shift\\+Click",
+      "name": "Mouse click",
+      "src": "./assets/function-icons/fluent/cursor_click.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Add cursor at position|Add cursor above|Add cursor below",
+      "name": "Text cursor",
+      "src": "./assets/function-icons/fluent/cursor.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Find on page|Find next|Find previous|Advanced search|Focus address bar|\\bSearch\\b",
+      "name": "Search",
+      "src": "./assets/function-icons/fluent/search.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "InPrivate|Incognito",
+      "name": "Private browsing",
+      "src": "./assets/function-icons/fluent/tab_in_private.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Task View|Switch apps|Alt\\+Tab|Cycle taskbar apps",
+      "name": "Switch windows",
+      "src": "./assets/function-icons/fluent/window_multiple.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "New virtual desktop|Close current desktop|Show/hide desktop|Minimize all windows|desktop left|desktop right",
+      "name": "Desktop",
+      "src": "./assets/function-icons/fluent/desktop.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Run dialog",
+      "name": "Run dialog",
+      "src": "./assets/function-icons/fluent/apps.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Move to left monitor",
+      "name": "Move to left monitor",
+      "src": "./assets/function-icons/fluent/dual_screen_arrow_right.svg",
+      "kind": "fluent",
+      "flip": true
+    },
+    {
+      "pattern": "Move to right monitor",
+      "name": "Move to right monitor",
+      "src": "./assets/function-icons/fluent/dual_screen_arrow_right.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Snap window left",
+      "name": "Snap left",
+      "src": "./assets/function-icons/fluent/arrow_left.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Snap window right",
+      "name": "Snap right",
+      "src": "./assets/function-icons/fluent/arrow_right.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Back button|\\bBack\\b|Previous (tab|section|unread|channel|slide)|Find previous",
+      "name": "Back / previous",
+      "src": "./assets/function-icons/fluent/arrow_left.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Forward button|\\bForward\\b|Next (tab|section|unread|channel|slide)|Find next",
+      "name": "Forward / next",
+      "src": "./assets/function-icons/fluent/arrow_right.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "New window",
+      "name": "New window",
+      "src": "./assets/function-icons/fluent/window_new.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "New tab",
+      "name": "New tab",
+      "src": "./assets/function-icons/fluent/tab_add.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Downloads",
+      "name": "Downloads",
+      "src": "./assets/function-icons/fluent/arrow_download.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Refresh|Reload|Hard refresh",
+      "name": "Refresh",
+      "src": "./assets/function-icons/fluent/arrow_clockwise.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Permanent delete|Clear browsing data",
+      "name": "Delete",
+      "src": "./assets/function-icons/fluent/delete.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Select all",
+      "name": "Select all",
+      "src": "./assets/function-icons/fluent/select_all_on.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Select entire column|Jump to .*edge of data|Jump to top edge|Jump to bottom edge",
+      "name": "Spreadsheet navigation",
+      "src": "./assets/function-icons/fluent/table.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Edit cell|Unhide rows|Hide rows",
+      "name": "Edit spreadsheet",
+      "src": "./assets/function-icons/fluent/table_edit.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "formula|Calculate all workbooks|AutoSum",
+      "name": "Formula",
+      "src": "./assets/function-icons/fluent/math_formula.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Previous unread|Next unread",
+      "name": "Chat unread",
+      "src": "./assets/function-icons/fluent/chat.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Mark as read",
+      "name": "Mark as read",
+      "src": "./assets/function-icons/fluent/mail_read.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "New meeting",
+      "name": "Meeting",
+      "src": "./assets/function-icons/fluent/call.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Video Conference Mute",
+      "name": "Mute microphone",
+      "src": "./assets/function-icons/fluent/mic_off.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Raise/lower hand",
+      "name": "Raise hand",
+      "src": "./assets/function-icons/fluent/hand_right.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Toggle deafen",
+      "name": "Deafen",
+      "src": "./assets/function-icons/fluent/speaker_mute.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Show commands|Power User menu",
+      "name": "Commands",
+      "src": "./assets/function-icons/fluent/apps_list.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Split pane vertical",
+      "name": "Vertical split",
+      "src": "./assets/function-icons/fluent/split_vertical.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Split pane|Split editor",
+      "name": "Split view",
+      "src": "./assets/function-icons/fluent/split_horizontal.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Open DevTools|Inspect element|Open Console",
+      "name": "Developer tools",
+      "src": "./assets/function-icons/fluent/window_dev_tools.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "View source|Peek definition|Toggle block comment|New terminal",
+      "name": "Code tools",
+      "src": "./assets/function-icons/fluent/code.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Insert newline in multi-line input",
+      "name": "Enter",
+      "src": "./assets/function-icons/fluent/arrow_enter_up.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "\\bPrint\\b",
+      "name": "Print",
+      "src": "./assets/function-icons/fluent/print.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "File Explorer",
+      "name": "Files",
+      "src": "./assets/function-icons/fluent/folder.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Bookmark|Favorites manager|Add to favorites",
+      "name": "Bookmark",
+      "src": "./assets/function-icons/fluent/bookmark.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Open home page",
+      "name": "Home",
+      "src": "./assets/function-icons/fluent/home.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Focus system tray|Notification center|Send notification",
+      "name": "Notification",
+      "src": "./assets/function-icons/fluent/alert.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Settings menu|\\bSettings\\b|Properties",
+      "name": "Settings",
+      "src": "./assets/function-icons/fluent/settings.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Insert current (date|time)",
+      "name": "Date and time",
+      "src": "./assets/function-icons/fluent/clock.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Help",
+      "name": "Help",
+      "src": "./assets/function-icons/fluent/question_circle.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Connect / Cast",
+      "name": "Cast",
+      "src": "./assets/function-icons/fluent/cast.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "\\bScroll_L\\d+\\b|@scroll:",
+      "name": "Scroll",
+      "src": "./assets/function-icons/fluent/dual_screen_vertical_scroll.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Show keyboard shortcuts",
+      "name": "Keyboard shortcuts",
+      "src": "./assets/function-icons/fluent/keyboard.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Cycle permission modes",
+      "name": "Permissions",
+      "src": "./assets/function-icons/fluent/shield.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Close tab|Close window",
+      "name": "Close window or tab",
+      "src": "./assets/function-icons/fluent/dismiss.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Shrink selection|Expand selection|Select range",
+      "name": "Select range",
+      "src": "./assets/function-icons/fluent/table_select_range.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Jump to matching bracket",
+      "name": "Matching bracket",
+      "src": "./assets/function-icons/fluent/code.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Toggle transcript / verbose tool-use view",
+      "name": "Transcript",
+      "src": "./assets/function-icons/fluent/chat.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Right arrow|RightArrow",
+      "name": "Right arrow",
+      "src": "./assets/function-icons/fluent/arrow_right.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Task Manager",
+      "name": "Task Manager",
+      "src": "./assets/function-icons/fluent/apps_list.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Open Proton Pass popup",
+      "name": "Password manager",
+      "src": "./assets/function-icons/fluent/key.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Spell check",
+      "name": "Spell check",
+      "src": "./assets/function-icons/fluent/text_grammar_checkmark.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Switch to tab [1-8]|Last tab",
+      "name": "Switch tab",
+      "src": "./assets/function-icons/fluent/tab.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "View page source|View source",
+      "name": "Source code",
+      "src": "./assets/function-icons/fluent/code.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Clipboard history",
+      "name": "Clipboard history",
+      "src": "./assets/function-icons/fluent/clipboard.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Emoji picker",
+      "name": "Emoji picker",
+      "src": "./assets/function-icons/fluent/emoji.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Toggle sidebar",
+      "name": "Sidebar",
+      "src": "./assets/function-icons/fluent/panel_left.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "\\bHistory\\b",
+      "name": "History",
+      "src": "./assets/function-icons/fluent/history.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Maximize window",
+      "name": "Maximize",
+      "src": "./assets/function-icons/fluent/arrow_maximize.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Minimize / restore|Minimize all except active",
+      "name": "Minimize",
+      "src": "./assets/function-icons/fluent/arrow_minimize.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Select to cell A1|Select to last used cell|Select to top edge|Select to bottom edge|Select to left edge|Select to right edge",
+      "name": "Extend selection",
+      "src": "./assets/function-icons/fluent/table_select_range.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Scroll up one screen",
+      "name": "Scroll",
+      "src": "./assets/function-icons/fluent/dual_screen_vertical_scroll.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Increase font size",
+      "name": "Increase font size",
+      "src": "./assets/function-icons/fluent/font_increase.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Decrease font size",
+      "name": "Decrease font size",
+      "src": "./assets/function-icons/fluent/font_decrease.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Currency format|Number format|General format",
+      "name": "Number format",
+      "src": "./assets/function-icons/fluent/text_number_format.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Percent format",
+      "name": "Percent format",
+      "src": "./assets/function-icons/fluent/text_percent.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Project / display mode",
+      "name": "Display mode",
+      "src": "./assets/function-icons/fluent/desktop.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Toggle device toolbar",
+      "name": "Device toolbar",
+      "src": "./assets/function-icons/fluent/dual_screen_tablet.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Toggle fullscreen",
+      "name": "Full screen",
+      "src": "./assets/function-icons/fluent/full_screen_maximize.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "\\bItalic\\b",
+      "name": "Italic",
+      "src": "./assets/function-icons/fluent/text_italic.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Strikethrough",
+      "name": "Strikethrough",
+      "src": "./assets/function-icons/fluent/text_strikethrough.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Type @ symbol",
+      "name": "Mention",
+      "src": "./assets/function-icons/fluent/mention.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Switch input language|Switch keyboard layout",
+      "name": "Input language",
+      "src": "./assets/function-icons/fluent/local_language.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Reset zoom",
+      "name": "Reset zoom",
+      "src": "./assets/function-icons/fluent/zoom_fit.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Open/switch pinned app",
+      "name": "Pinned app",
+      "src": "./assets/function-icons/fluent/apps.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Autofill login",
+      "name": "Autofill login",
+      "src": "./assets/function-icons/fluent/person_key.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Voice typing",
+      "name": "Voice typing",
+      "src": "./assets/function-icons/fluent/mic.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Open Copilot",
+      "name": "Copilot",
+      "src": "./assets/function-icons/fluent/chat.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Step out",
+      "name": "Step out",
+      "src": "./assets/function-icons/fluent/arrow_step_out.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Step over",
+      "name": "Step over",
+      "src": "./assets/function-icons/fluent/arrow_step_out.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Raw Grave Accent and Tilde|Raw Dash and Underscore|Raw Right Brace|Hold AltGr|Hold Alt for",
+      "name": "Keyboard input",
+      "src": "./assets/function-icons/fluent/keyboard.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Lock PC",
+      "name": "Lock PC",
+      "src": "./assets/function-icons/fluent/lock_closed.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Left arrow|LeftArrow",
+      "name": "Left arrow",
+      "src": "./assets/function-icons/fluent/arrow_left.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Up arrow|UpArrow",
+      "name": "Up arrow",
+      "src": "./assets/function-icons/fluent/arrow_up.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Down arrow|DownArrow",
+      "name": "Down arrow",
+      "src": "./assets/function-icons/fluent/arrow_down.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Add www./. com to URL",
+      "name": "Website address",
+      "src": "./assets/function-icons/fluent/globe.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Read aloud",
+      "name": "Read aloud",
+      "src": "./assets/function-icons/fluent/read_aloud.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Start from current slide",
+      "name": "Start presentation",
+      "src": "./assets/function-icons/fluent/slide_play.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Go to cell A1|Go to last used cell",
+      "name": "Spreadsheet boundary",
+      "src": "./assets/function-icons/fluent/table.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Outdent line",
+      "name": "Outdent",
+      "src": "./assets/function-icons/fluent/text_indent_decrease_ltr.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Indent line",
+      "name": "Indent",
+      "src": "./assets/function-icons/fluent/text_indent_increase_ltr.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Reopen closed tab",
+      "name": "Reopen tab",
+      "src": "./assets/function-icons/fluent/history.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Toggle absolute ref",
+      "name": "Absolute reference",
+      "src": "./assets/function-icons/fluent/math_formula.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Background running Bash command/agent",
+      "name": "Background command",
+      "src": "./assets/function-icons/fluent/code.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Raw Non-US Backslash and Pipe",
+      "name": "Keyboard symbol",
+      "src": "./assets/function-icons/fluent/keyboard.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Go to previous problem",
+      "name": "Previous problem",
+      "src": "./assets/function-icons/fluent/error_circle.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Go to next problem",
+      "name": "Next problem",
+      "src": "./assets/function-icons/fluent/error_circle.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Assign to user",
+      "name": "Assign user",
+      "src": "./assets/function-icons/fluent/person_add.svg",
+      "kind": "fluent"
+    },
+    {
+      "pattern": "Change workflow state",
+      "name": "Workflow state",
+      "src": "./assets/function-icons/fluent/flowchart.svg",
+      "kind": "fluent"
     }
   ]
 }

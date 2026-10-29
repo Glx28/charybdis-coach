@@ -8,4 +8,6 @@ PowerToys module icons were copied from installed PowerToys 0.100.2.0, not recre
 - New+ logo: `C:\Program Files\PowerToys\WinUI3Apps\Assets\NewPlus\New_dark.ico`
 - Snipping Tool logo: installed Windows app logo already copied under `app-icons/`.
 
-`data/function_icon_manifest.json` maps purpose plus owning app to the matching resource. The PowerToys app badge remains visible separately. Function artwork is shown at about 20% of keycap area; app identity stays in the corner badge. Rows with no available dedicated tool icon keep their existing action glyph.
+`data/function_icon_manifest.json` maps purpose plus owning app to the matching resource. The PowerToys app badge remains visible separately. Function artwork is shown at about 20% of keycap area; app identity stays in the 28px top-right corner badge. Rows with no available dedicated tool icon keep their existing action glyph.
+
+Common function icons use Fluent UI System Icons from [microsoft/fluentui-system-icons](https://github.com/microsoft/fluentui-system-icons), commit `64e5aa757d1b70c24a283256ddcb8269d0f58773`, under its MIT license (`fluent/LICENSE.txt`). Monochrome SVGs render white on keycaps.
