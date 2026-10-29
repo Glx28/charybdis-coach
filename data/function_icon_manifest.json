@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "source": "PowerToys 0.100.2.0 bundled WinUI3Apps resources from the installed application. Module-specific assets used where shipped; purpose matching is restricted to owning app. Screenshot uses the installed Snipping Tool logo.",
+  "purpose_rules": [
+    {
+      "pattern": "PowerToys Command Palette|CmdPal",
+      "name": "Command Palette",
+      "src": "./assets/function-icons/powertoys/CmdPal.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "PowerToys Run",
+      "name": "PowerToys Run",
+      "src": "./assets/function-icons/powertoys/PowerToysRun.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "New\\+|create from template",
+      "name": "New+",
+      "src": "./assets/function-icons/powertoys/NewPlus.ico",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Advanced Paste",
+      "name": "Advanced Paste",
+      "src": "./assets/function-icons/powertoys/AdvancedPasteTool.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Color Picker",
+      "name": "Color Picker",
+      "src": "./assets/function-icons/powertoys/ColorPicker.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Mouse Highlighter",
+      "name": "Mouse Highlighter",
+      "src": "./assets/function-icons/powertoys/MouseHighlighter.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Mouse Pointer Crosshairs|Mouse Crosshairs",
+      "name": "Mouse Crosshairs",
+      "src": "./assets/function-icons/powertoys/MouseCrosshairs.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Find My Mouse",
+      "name": "Find My Mouse",
+      "src": "./assets/function-icons/powertoys/FindMyMouse.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Text Extractor|OCR",
+      "name": "Text Extractor",
+      "src": "./assets/function-icons/powertoys/TextExtractor.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Screen Ruler",
+      "name": "Screen Ruler",
+      "src": "./assets/function-icons/powertoys/ScreenRuler.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "FancyZones",
+      "name": "FancyZones",
+      "src": "./assets/function-icons/powertoys/FancyZones.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Workspaces",
+      "name": "Workspaces",
+      "src": "./assets/function-icons/powertoys/Workspaces.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Always on Top",
+      "name": "Always On Top",
+      "src": "./assets/function-icons/powertoys/AlwaysOnTop.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "PowerRename|Rename",
+      "name": "PowerRename",
+      "src": "./assets/function-icons/powertoys/PowerRename.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Peek",
+      "name": "Peek",
+      "src": "./assets/function-icons/powertoys/Peek.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "File Locksmith",
+      "name": "File Locksmith",
+      "src": "./assets/function-icons/powertoys/FileLocksmith.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Image Resizer",
+      "name": "Image Resizer",
+      "src": "./assets/function-icons/powertoys/ImageResizer.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Awake",
+      "name": "Awake",
+      "src": "./assets/function-icons/powertoys/Awake.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Crop and Lock|CropAndLock",
+      "name": "Crop and Lock",
+      "src": "./assets/function-icons/powertoys/CropAndLock.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Keyboard Manager",
+      "name": "Keyboard Manager",
+      "src": "./assets/function-icons/powertoys/KeyboardManager.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Mouse Without Borders",
+      "name": "Mouse Without Borders",
+      "src": "./assets/function-icons/powertoys/MouseWithoutBorders.png",
+      "app_pattern": "PowerToys"
+    },
+    {
+      "pattern": "Screenshot \\(Snip\\)|Screenshot|Snip",
+      "name": "Snipping Tool",
+      "src": "./assets/function-icons/powertoys/SnippingTool.png",
+      "app_pattern": "Windows 11"
+    }
+  ]
+}

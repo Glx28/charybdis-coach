@@ -72,6 +72,8 @@
     layoutSpec: {},
     hostKeyboard: null,
     appShortcutReference: null,
+    appIconManifest: null,
+    functionIconManifest: null,
     displayedLayer: "0",
     liveLayer: "0",
     pinnedLayer: null,
@@ -1229,6 +1231,44 @@
     });
   }
 
+  function appIconForRow(row) {
+    const manifest = state.appIconManifest;
+    if (!manifest) return null;
+    const shortcut = clean(row.visual_label).toLowerCase();
+    let iconRow = row;
+    const appRows = state.rows.filter((candidate) =>
+      clean(candidate.visual_label).toLowerCase() === shortcut && rowApp(candidate));
+    const appNames = [...new Set(appRows.map((candidate) => rowApp(candidate).toLowerCase()))];
+    if (appNames.length > 1) {
+      const observed = manifest.shortcut_app_usage?.[shortcut] || {};
+      const preferred = appNames
+        .map((name) => ({ name, count: Number(observed[name] || 0) }))
+        .sort((a, b) => b.count - a.count)[0];
+      if (preferred?.count > 0) {
+        iconRow = appRows.find((candidate) => rowApp(candidate).toLowerCase() === preferred.name) || row;
+      }
+    }
+    const app = clean(rowApp(iconRow)).toLowerCase();
+    const purpose = `${clean(iconRow.purpose)} ${clean(iconRow.visual_label)}`;
+    for (const rule of manifest.purpose_rules || []) {
+      if (new RegExp(rule.pattern, "i").test(purpose)) return rule.icon;
+    }
+    if (app === "browser (chrome/edge)") {
+      return manifest.browser?.by_shortcut?.[shortcut] || manifest.browser?.default || null;
+    }
+    return manifest.apps?.[app] || null;
+  }
+
+  function functionIconForRow(row) {
+    const purpose = `${clean(row.purpose)} ${clean(row.visual_label)} ${clean(row.parameter)} ${clean(row.usage_notes)}`;
+    const app = rowApp(row);
+    for (const rule of state.functionIconManifest?.purpose_rules || []) {
+      if (rule.app_pattern && !new RegExp(rule.app_pattern, "i").test(app)) continue;
+      if (new RegExp(rule.pattern, "i").test(purpose)) return rule;
+    }
+    return null;
+  }
+
   function groupRows() {
     state.rowsByLayer.clear();
     state.layerProfiles.clear();
@@ -1504,14 +1544,25 @@
         button.dataset.search = rowSearchText(row);
         button.dataset.important = String(isImportant(row));
         button.dataset.keyId = keyId(row);
-        button.title = `${clean(row.visual_label)} — ${clean(row.behavior)} — ${outputDisplayForRow(row)}`;
-        const badgeHtml = visual.badge
+        const appIcon = appIconForRow(row);
+        const functionIcon = functionIconForRow(row);
+        button.title = `${clean(row.visual_label)} — ${clean(row.behavior)} — ${outputDisplayForRow(row)}${appIcon ? ` — ${appIcon.name}` : ""}`;
+        if (functionIcon) button.title += ` — ${functionIcon.name} icon`;
+        const badgeHtml = !functionIcon && visual.badge
           ? `<span class="key-badge" aria-hidden="true">${escapeHtml(visual.badge)}</span>`
+          : "";
+        const functionIconHtml = functionIcon
+          ? `<img class="key-function-icon" src="${escapeHtml(functionIcon.src)}" alt="${escapeHtml(functionIcon.name)}" title="${escapeHtml(functionIcon.name)}" loading="lazy" decoding="async">`
+          : "";
+        const appIconHtml = appIcon
+          ? `<img class="key-app-icon" src="${escapeHtml(appIcon.src)}" alt="${escapeHtml(appIcon.name)}" title="${escapeHtml(appIcon.name)}" loading="lazy" decoding="async">`
           : "";
         const secondaryHtml = visual.secondary
           ? `<div class="key-secondary">${escapeHtml(visual.secondary)}</div>`
           : "";
         button.innerHTML = [
+          appIconHtml,
+          functionIconHtml,
           badgeHtml,
           `<div class="key-primary">${escapeHtml(visual.primary)}</div>`,
           secondaryHtml
@@ -2863,19 +2914,23 @@
   }
 
   async function init() {
-    const [csvText, layoutSpec, appsConfig, hostKeyboard, appShortcutReference, fundamentalsConfig] = await Promise.all([
+    const [csvText, layoutSpec, appsConfig, hostKeyboard, appShortcutReference, fundamentalsConfig, appIconManifest, functionIconManifest] = await Promise.all([
       loadText("./data/keybindings_explained.csv"),
       loadJson("./data/layout_spec.json", {}),
       loadJson("./data/charybdis_apps.json", { apps: [] }),
       loadJson("./data/windows_norwegian_host.json", null),
       loadJson("./data/app_shortcut_reference.json", { apps: {} }),
-      loadJson("./data/fundamentals.json", { fundamentals: [] })
+      loadJson("./data/fundamentals.json", { fundamentals: [] }),
+      loadJson("./data/app_icon_manifest.json", null),
+      loadJson("./data/function_icon_manifest.json", { purpose_rules: [] })
     ]);
     state.rows = normalizeRows(parseCsv(csvText));
     state.layoutSpec = layoutSpec || {};
     state.hostKeyboard = hostKeyboard;
     state.apps = appsConfig.apps || [];
     state.appShortcutReference = appShortcutReference || { apps: {} };
+    state.appIconManifest = appIconManifest;
+    state.functionIconManifest = functionIconManifest;
     state.fundamentals = fundamentalsConfig?.fundamentals || [];
     const device = clean(state.layoutSpec.device) || "Charybdis";
     const host = clean(state.layoutSpec.host_keyboard?.primary) || clean(hostKeyboard?.name) || "";

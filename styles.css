@@ -587,6 +587,29 @@ svg {
   border-radius: 8px;
 }
 
+.key-app-icon {
+  position: absolute;
+  z-index: 1;
+  top: 3px;
+  right: 3px;
+  width: clamp(18px, 1.45vw, 22px);
+  height: clamp(18px, 1.45vw, 22px);
+  object-fit: contain;
+  border-radius: 4px;
+  padding: 1px;
+  background: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+}
+
+.key-function-icon {
+  align-self: center;
+  width: min(45%, 45px);
+  height: min(45%, 45px);
+  object-fit: contain;
+  border-radius: 5px;
+  pointer-events: none;
+}
+
 .keycap:hover,
 .keycap.selected {
   border-color: var(--accent);

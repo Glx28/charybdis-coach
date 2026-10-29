@@ -1,0 +1,561 @@
+{
+  "version": 1,
+  "browser": {
+    "default": {
+      "src": "./assets/app-icons/edge.ico",
+      "name": "Microsoft Edge"
+    },
+    "by_shortcut": {
+      "alt+enter": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 2
+      },
+      "alt+shift+right": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "alt+shift+tab": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 2
+      },
+      "alt+tab": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 26
+      },
+      "alt+up": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "backspace": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "ctrl+a": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 11
+      },
+      "ctrl+backspace": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 12
+      },
+      "ctrl+c": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 93
+      },
+      "ctrl+d": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "ctrl+f": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 19
+      },
+      "ctrl+h": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "ctrl+j": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 2
+      },
+      "ctrl+l": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "ctrl+shift+n": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "ctrl+shift+r": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "ctrl+shift+t": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "ctrl+shift+tab": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 26
+      },
+      "ctrl+t": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "ctrl+tab": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "ctrl+v": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 47
+      },
+      "ctrl+w": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 76
+      },
+      "ctrl+x": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "ctrl+z": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "f2": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "shift+backspace": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 5
+      },
+      "shift+enter": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 5
+      },
+      "shift+tab": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 2
+      },
+      "space": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "win+e": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "win+shift+left": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "win+shift+right": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "win+shift+s": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 2
+      },
+      "win+shift+t": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "win+tab": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      },
+      "win+v": {
+        "src": "./assets/app-icons/edge.ico",
+        "name": "Microsoft Edge",
+        "shortcut_uses": 1
+      }
+    },
+    "usage_source": {
+      "file": "shortcut_usage.jsonl",
+      "events": {
+        "edge": 351
+      },
+      "selection": "Highest logged shortcut-event count for exact chord; Edge is the fallback because it leads total browser shortcut events."
+    }
+  },
+  "purpose_rules": [
+    {
+      "pattern": "command palette|cmdpal",
+      "icon": {
+        "src": "./assets/app-icons/command-palette.png",
+        "name": "PowerToys Command Palette"
+      }
+    },
+    {
+      "pattern": "powertoys run|run launcher",
+      "icon": {
+        "src": "./assets/app-icons/powertoys-run.ico",
+        "name": "PowerToys Run"
+      }
+    },
+    {
+      "pattern": "new\\+|create from template",
+      "icon": {
+        "src": "./assets/app-icons/powertoys-newplus.ico",
+        "name": "PowerToys New+"
+      }
+    },
+    {
+      "pattern": "advanced paste",
+      "icon": {
+        "src": "./assets/app-icons/powertoys-advanced-paste.png",
+        "name": "PowerToys Advanced Paste"
+      }
+    },
+    {
+      "pattern": "screenshot|snip",
+      "icon": {
+        "src": "./assets/app-icons/snipping-tool.png",
+        "name": "Windows Snipping Tool"
+      }
+    },
+    {
+      "pattern": "task manager",
+      "icon": {
+        "src": "./assets/app-icons/task-manager.ico",
+        "name": "Windows Task Manager"
+      }
+    }
+  ],
+  "apps": {
+    "windows 11": {
+      "src": "./assets/app-icons/windows.svg",
+      "name": "Windows 11"
+    },
+    "microsoft excel": {
+      "src": "./assets/app-icons/excel.ico",
+      "name": "Microsoft Excel"
+    },
+    "visual studio code": {
+      "src": "./assets/app-icons/vscode.ico",
+      "name": "Visual Studio Code"
+    },
+    "file explorer": {
+      "src": "./assets/app-icons/explorer.ico",
+      "name": "File Explorer"
+    },
+    "microsoft teams": {
+      "src": "./assets/app-icons/teams.png",
+      "name": "Microsoft Teams"
+    },
+    "powertoys": {
+      "src": "./assets/app-icons/powertoys.ico",
+      "name": "Microsoft PowerToys"
+    },
+    "claude code cli": {
+      "src": "./assets/app-icons/claude.ico",
+      "name": "Claude Code"
+    },
+    "m-files desktop client": {
+      "src": "./assets/app-icons/m-files.ico",
+      "name": "M-Files"
+    },
+    "microsoft word": {
+      "src": "./assets/app-icons/word.ico",
+      "name": "Microsoft Word"
+    },
+    "mouse": {
+      "src": "./assets/app-icons/mouse.svg",
+      "name": "Mouse control"
+    },
+    "discord": {
+      "src": "./assets/app-icons/discord.ico",
+      "name": "Discord"
+    },
+    "windows terminal / powershell": {
+      "src": "./assets/app-icons/terminal.ico",
+      "name": "Windows Terminal / PowerShell"
+    },
+    "microsoft outlook": {
+      "src": "./assets/app-icons/outlook.ico",
+      "name": "Microsoft Outlook"
+    },
+    "microsoft powerpoint": {
+      "src": "./assets/app-icons/powerpoint.ico",
+      "name": "Microsoft PowerPoint"
+    },
+    "raw keys": {
+      "src": "./assets/app-icons/keyboard.svg",
+      "name": "Raw key output"
+    },
+    "modifier keys": {
+      "src": "./assets/app-icons/modifier.svg",
+      "name": "Modifier key"
+    }
+  },
+  "shortcut_app_usage": {
+    "-": {
+      "windows terminal / powershell": 1
+    },
+    "alt+enter": {
+      "browser (chrome/edge)": 2,
+      "microsoft teams": 1
+    },
+    "alt+shift+right": {
+      "browser (chrome/edge)": 1
+    },
+    "alt+shift+tab": {
+      "m-files desktop client": 1,
+      "file explorer": 41,
+      "windows terminal / powershell": 2,
+      "browser (chrome/edge)": 2,
+      "microsoft teams": 1,
+      "visual studio code": 1,
+      "microsoft outlook": 1
+    },
+    "alt+space": {
+      "windows terminal / powershell": 1
+    },
+    "alt+tab": {
+      "browser (chrome/edge)": 26,
+      "file explorer": 70,
+      "microsoft word": 3,
+      "m-files desktop client": 15,
+      "microsoft teams": 37,
+      "microsoft outlook": 7,
+      "windows terminal / powershell": 19,
+      "claude code cli": 1,
+      "visual studio code": 3,
+      "microsoft excel": 3
+    },
+    "alt+up": {
+      "browser (chrome/edge)": 1
+    },
+    "backspace": {
+      "browser (chrome/edge)": 1,
+      "m-files desktop client": 1,
+      "windows terminal / powershell": 20,
+      "claude code cli": 1,
+      "powertoys": 2
+    },
+    "ctrl+0": {
+      "microsoft teams": 1
+    },
+    "ctrl+5": {
+      "windows terminal / powershell": 1
+    },
+    "ctrl+a": {
+      "microsoft teams": 3,
+      "browser (chrome/edge)": 11,
+      "visual studio code": 8,
+      "file explorer": 1,
+      "m-files desktop client": 2
+    },
+    "ctrl+backspace": {
+      "m-files desktop client": 1,
+      "microsoft teams": 16,
+      "browser (chrome/edge)": 12,
+      "powertoys": 2,
+      "windows terminal / powershell": 1,
+      "file explorer": 5
+    },
+    "ctrl+c": {
+      "m-files desktop client": 52,
+      "browser (chrome/edge)": 93,
+      "windows terminal / powershell": 12,
+      "file explorer": 11,
+      "microsoft teams": 31,
+      "microsoft outlook": 1,
+      "microsoft excel": 7,
+      "visual studio code": 6
+    },
+    "ctrl+d": {
+      "browser (chrome/edge)": 1,
+      "visual studio code": 1
+    },
+    "ctrl+f": {
+      "claude code cli": 1,
+      "browser (chrome/edge)": 19,
+      "microsoft outlook": 1,
+      "m-files desktop client": 2
+    },
+    "ctrl+h": {
+      "browser (chrome/edge)": 1
+    },
+    "ctrl+j": {
+      "browser (chrome/edge)": 1,
+      "m-files desktop client": 2,
+      "file explorer": 2
+    },
+    "ctrl+l": {
+      "file explorer": 1,
+      "browser (chrome/edge)": 1
+    },
+    "ctrl+left": {
+      "windows terminal / powershell": 3,
+      "microsoft teams": 4
+    },
+    "ctrl+n": {
+      "visual studio code": 6
+    },
+    "ctrl+q": {
+      "visual studio code": 1,
+      "m-files desktop client": 1
+    },
+    "ctrl+right": {
+      "windows terminal / powershell": 2,
+      "microsoft teams": 2
+    },
+    "ctrl+s": {
+      "microsoft word": 2,
+      "visual studio code": 14
+    },
+    "ctrl+shift+n": {
+      "browser (chrome/edge)": 1,
+      "visual studio code": 1
+    },
+    "ctrl+shift+p": {
+      "visual studio code": 1
+    },
+    "ctrl+shift+r": {
+      "browser (chrome/edge)": 1
+    },
+    "ctrl+shift+s": {
+      "visual studio code": 2
+    },
+    "ctrl+shift+t": {
+      "browser (chrome/edge)": 1
+    },
+    "ctrl+shift+tab": {
+      "browser (chrome/edge)": 26
+    },
+    "ctrl+t": {
+      "browser (chrome/edge)": 1
+    },
+    "ctrl+tab": {
+      "windows terminal / powershell": 1,
+      "browser (chrome/edge)": 1
+    },
+    "ctrl+v": {
+      "browser (chrome/edge)": 47,
+      "m-files desktop client": 12,
+      "windows terminal / powershell": 14,
+      "file explorer": 17,
+      "powertoys": 1,
+      "microsoft teams": 30,
+      "microsoft outlook": 3,
+      "visual studio code": 14
+    },
+    "ctrl+w": {
+      "browser (chrome/edge)": 76
+    },
+    "ctrl+x": {
+      "m-files desktop client": 2,
+      "browser (chrome/edge)": 1,
+      "visual studio code": 2,
+      "file explorer": 3
+    },
+    "ctrl+z": {
+      "browser (chrome/edge)": 1,
+      "visual studio code": 4,
+      "file explorer": 2,
+      "m-files desktop client": 1
+    },
+    "down": {
+      "windows terminal / powershell": 21,
+      "microsoft teams": 1
+    },
+    "enter": {
+      "windows terminal / powershell": 4
+    },
+    "f2": {
+      "browser (chrome/edge)": 1
+    },
+    "f9": {
+      "microsoft teams": 1
+    },
+    "left": {
+      "windows terminal / powershell": 6
+    },
+    "shift+backspace": {
+      "browser (chrome/edge)": 5
+    },
+    "shift+enter": {
+      "microsoft teams": 4,
+      "browser (chrome/edge)": 5
+    },
+    "shift+tab": {
+      "browser (chrome/edge)": 2,
+      "windows terminal / powershell": 2
+    },
+    "space": {
+      "browser (chrome/edge)": 1
+    },
+    "up": {
+      "windows terminal / powershell": 36
+    },
+    "win+c": {
+      "microsoft outlook": 1
+    },
+    "win+e": {
+      "windows terminal / powershell": 1,
+      "browser (chrome/edge)": 1
+    },
+    "win+l": {
+      "microsoft teams": 1
+    },
+    "win+left": {
+      "file explorer": 2
+    },
+    "win+right": {
+      "file explorer": 1
+    },
+    "win+shift+left": {
+      "browser (chrome/edge)": 1
+    },
+    "win+shift+q": {
+      "windows terminal / powershell": 2
+    },
+    "win+shift+right": {
+      "browser (chrome/edge)": 1
+    },
+    "win+shift+s": {
+      "browser (chrome/edge)": 2,
+      "microsoft teams": 1,
+      "m-files desktop client": 1,
+      "file explorer": 1
+    },
+    "win+shift+t": {
+      "browser (chrome/edge)": 1
+    },
+    "win+tab": {
+      "browser (chrome/edge)": 1,
+      "file explorer": 2
+    },
+    "win+up": {
+      "windows terminal / powershell": 1
+    },
+    "win+v": {
+      "browser (chrome/edge)": 1,
+      "microsoft outlook": 1
+    }
+  },
+  "usage_source": {
+    "file": "shortcut_usage.jsonl",
+    "event_type": "shortcut",
+    "app_resolution": "Known foreground executable names mapped to Coach app labels",
+    "used_for": "Choose the most-used assigned app identity when one shortcut label appears for multiple apps; icon selection only."
+  }
+}
