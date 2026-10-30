@@ -1271,6 +1271,26 @@
     return null;
   }
 
+  function functionIconTint(name) {
+    const label = clean(name).toLowerCase();
+    const families = [
+      [/copy|paste|clipboard|cut|save|undo|redo|history|delete|select|edit|indent|outdent|format/, 145],
+      [/zoom|scroll|display|monitor|screen|font|cursor|keyboard/, 174],
+      [/search|browser|website|tab|bookmark|download|refresh|home|globe|navigation|arrow/, 204],
+      [/window|desktop|snap|task manager|split|maximize|minimize|workspace/, 263],
+      [/chat|mail|meeting|mention|voice|microphone|transcript|read aloud|emoji/, 323],
+      [/lock|permission|shield|setting|device|keyboard|language|password|alert|error/, 38],
+      [/code|developer|formula|spreadsheet|table|source/, 190],
+      [/print|presentation|cast|call/, 25],
+    ];
+    const hue = families.find(([pattern]) => pattern.test(label))?.[1] ?? 145;
+    let hash = 0;
+    for (const char of label) hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+    const saturation = 68 + (hash % 5) * 4;
+    const lightness = 61 + ((hash >>> 3) % 7) * 2;
+    return `hsl(${hue} ${saturation}% ${lightness}%)`;
+  }
+
   function groupRows() {
     state.rowsByLayer.clear();
     state.layerProfiles.clear();
@@ -1553,11 +1573,13 @@
         const badgeHtml = !functionIcon && visual.badge
           ? `<span class="key-badge" aria-hidden="true">${escapeHtml(visual.badge)}</span>`
           : "";
-        const functionIconHtml = functionIcon
-          ? `<img class="key-function-icon${functionIcon.kind === "fluent" ? " key-function-icon-fluent" : ""}${functionIcon.flip ? " key-function-icon-flipped" : ""}" src="${escapeHtml(functionIcon.src)}" alt="${escapeHtml(functionIcon.name)}" title="${escapeHtml(functionIcon.name)}" loading="lazy" decoding="async">`
-          : "";
+        const functionIconHtml = functionIcon?.kind === "fluent"
+          ? `<span class="key-function-icon key-function-icon-fluent${functionIcon.flip ? " key-function-icon-flipped" : ""}" role="img" aria-label="${escapeHtml(functionIcon.name)}" title="${escapeHtml(functionIcon.name)}"></span>`
+          : functionIcon
+            ? `<img class="key-function-icon${functionIcon.flip ? " key-function-icon-flipped" : ""}" src="${escapeHtml(functionIcon.src)}" alt="${escapeHtml(functionIcon.name)}" title="${escapeHtml(functionIcon.name)}" loading="lazy" decoding="async">`
+            : "";
         const appIconHtml = appIcon
-          ? `<img class="key-app-icon" src="${escapeHtml(appIcon.src)}" alt="${escapeHtml(appIcon.name)}" title="${escapeHtml(appIcon.name)}" loading="lazy" decoding="async">`
+          ? `<img class="key-app-icon" data-icon-id="${escapeHtml(appIcon.src.split("/").pop().replace(/\.[^.]+$/, "").toLowerCase())}" src="${escapeHtml(appIcon.src)}" alt="${escapeHtml(appIcon.name)}" title="${escapeHtml(appIcon.name)}" loading="lazy" decoding="async">`
           : "";
         const secondaryHtml = visual.secondary
           ? `<div class="key-secondary">${escapeHtml(visual.secondary)}</div>`
@@ -1569,6 +1591,13 @@
           `<div class="key-primary">${escapeHtml(visual.primary)}</div>`,
           secondaryHtml
         ].join("");
+        if (functionIcon?.kind === "fluent") {
+          const icon = button.querySelector(".key-function-icon-fluent");
+          const mask = `url("${new URL(functionIcon.src, document.baseURI).href}")`;
+          icon.style.maskImage = mask;
+          icon.style.webkitMaskImage = mask;
+          icon.style.backgroundColor = functionIconTint(functionIcon.name);
+        }
         button.addEventListener("click", () => onUserSelectKey(row));
         hand.appendChild(button);
       }

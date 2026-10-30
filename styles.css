@@ -601,6 +601,14 @@ svg {
   pointer-events: none;
 }
 
+.key-app-icon[data-icon-id="terminal"] {
+  filter: brightness(0) saturate(100%) invert(69%) sepia(39%) saturate(645%) hue-rotate(100deg) brightness(96%) contrast(90%);
+}
+
+.key-app-icon[data-icon-id="keyboard"] {
+  filter: hue-rotate(300deg) saturate(1.65) brightness(1.08);
+}
+
 .key-function-icon {
   align-self: center;
   width: min(45%, 45px);
@@ -611,7 +619,17 @@ svg {
 }
 
 .key-function-icon-fluent {
-  filter: brightness(0) invert(0.92);
+  display: block;
+  flex: none;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background-color: #52cf9b;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
 .key-function-icon-flipped {
