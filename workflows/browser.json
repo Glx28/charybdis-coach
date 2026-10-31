@@ -19,11 +19,13 @@
         {
           "keys": "Ctrl+Tab",
           "action": "Next tab",
+          "group": "tab-navigation",
           "charybdis": "L2 (x7,y0)"
         },
         {
           "keys": "Ctrl+Shift+Tab",
           "action": "Previous tab",
+          "group": "tab-navigation",
           "charybdis": "L2 (x10,y0)"
         },
         {

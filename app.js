@@ -1437,44 +1437,10 @@
     return best.count > 0 ? best.layer : "";
   }
 
-  // Mirrors evolution/__init__.py's pos.hand == "right" using the same X_RIGHT
-  // physical-grid column set the keyboard renderer already uses.
-  function isRightHandX(x) {
-    return X_RIGHT.includes(Number(x));
-  }
-
-  const MOUSE_BUTTON_IDS = ["1", "2", "3", "4", "5"];
-
-  function rowMouseButton(row) {
-    if (!/^mouse key press$/i.test(row.behavior)) return null;
-    const match = /^mb([1-5])$/i.exec(clean(row.parameter));
-    return match ? match[1] : null;
-  }
-
-  // The keyboard has a dedicated dynamic mouse layer (held via a thumb key), but
-  // which layer index hosts it varies per evolved genome. A layer only qualifies
-  // as "the" mouse layer if it has ALL FIVE mouse buttons (MB1-5) and every one
-  // of them sits on the right hand (x>=7) - matching the optimizer's own
-  // dynamic-mouse-layer acceptance rule. This is a completeness/placement check,
-  // not a "most mouse buttons" popularity contest: a layer with 4 right-hand
-  // buttons plus 1 stray does not qualify, and neither does a layer with 5
-  // buttons if any of them landed on the left hand.
+  // Keep the mouse layer's teaching label consistent with its intended role;
+  // binding validation belongs to the optimizer/export pipeline, not Coach.
   function detectDominantTagLayer() {
-    for (const layer of LAYERS) {
-      if (layer === "0" || layer === "7") continue;
-      const activeRows = (state.rowsByLayer.get(layer) || []).filter((row) => !/transparent|none/i.test(row.behavior));
-      const buttonsFound = new Map();
-      let allRight = true;
-      for (const row of activeRows) {
-        const btn = rowMouseButton(row);
-        if (!btn) continue;
-        buttonsFound.set(btn, row);
-        if (!isRightHandX(row.x)) allRight = false;
-      }
-      const hasAllButtons = MOUSE_BUTTON_IDS.every((id) => buttonsFound.has(id));
-      if (hasAllButtons && allRight) return layer;
-    }
-    return "";
+    return "1";
   }
 
   function layerRole(layer) {
@@ -2731,10 +2697,30 @@
     return CATEGORY_EMOJI_MAP[name] || "";
   }
 
-  function rowForWorkflowShortcut(shortcut) {
+  function rowForWorkflowShortcut(shortcut, preferredLayer = null) {
     if (!shortcut) return null;
+    const candidates = workflowShortcutRows(shortcut);
+    if (preferredLayer !== null && preferredLayer !== undefined) {
+      const preferred = candidates.find((row) => String(row.layer) === String(preferredLayer));
+      if (preferred) return preferred;
+    }
+    if (candidates.length) return candidates[0];
+
+    return null;
+  }
+
+  function workflowShortcutRows(shortcut) {
+    if (!shortcut) return [];
+    const wanted = normalizeShortcutText(shortcut.keys);
+    if (wanted) {
+      const exact = allRows().filter((row) => !/transparent|none/i.test(row.behavior)
+        && shortcutCandidatesForRow(row).has(wanted)
+        && rowMatchesShortcut(row, shortcut.keys, shortcut.action));
+      if (exact.length) return exact;
+    }
+
     const byKeys = rowForShortcutKeys(shortcut.keys, shortcut.action);
-    if (byKeys) return byKeys;
+    if (byKeys) return [byKeys];
 
     // Legacy workflow files may contain stale position hints. Use those only
     // after key/action matching fails, because evolved layouts move layers.
@@ -2744,14 +2730,43 @@
       if (layerMatch && posMatch) {
         const layer = layerMatch[1];
         const row = (state.rowsByLayer.get(layer) || []).find((item) => item.x === posMatch[1] && item.y === posMatch[2]) || null;
-        if (row && rowMatchesShortcut(row, shortcut.keys, shortcut.action)) return row;
+        if (row && rowMatchesShortcut(row, shortcut.keys, shortcut.action)) return [row];
       }
     }
-    return rowForShortcutAction(shortcut.action);
+    const byAction = rowForShortcutAction(shortcut.action);
+    return byAction ? [byAction] : [];
   }
 
-  function displayKeysForShortcut(shortcut) {
-    const row = rowForWorkflowShortcut(shortcut);
+  function workflowGroupPreferredLayers(shortcuts) {
+    // For a declared shortcut group, prefer any layer that already holds
+    // the largest number of its members together.
+    const groups = new Map();
+    for (const shortcut of shortcuts || []) {
+      const group = clean(shortcut?.group);
+      if (!group) continue;
+      if (!groups.has(group)) groups.set(group, []);
+      groups.get(group).push(shortcut);
+    }
+
+    const preferred = new Map();
+    for (const [group, members] of groups) {
+      const membersByLayer = new Map();
+      for (const shortcut of members) {
+        const layers = new Set(workflowShortcutRows(shortcut).map((row) => String(row.layer)));
+        for (const layer of layers) {
+          if (!membersByLayer.has(layer)) membersByLayer.set(layer, new Set());
+          membersByLayer.get(layer).add(shortcut);
+        }
+      }
+      const best = [...membersByLayer.entries()].sort((a, b) =>
+        b[1].size - a[1].size || Number(a[0]) - Number(b[0]))[0];
+      if (best && best[1].size > 1) preferred.set(group, best[0]);
+    }
+    return preferred;
+  }
+
+  function displayKeysForShortcut(shortcut, preferredLayer = null) {
+    const row = rowForWorkflowShortcut(shortcut, preferredLayer);
     if (!row) {
       const gap = workflowShortcutGap(shortcut);
       return {
@@ -2874,9 +2889,11 @@
     }
     const query = workflowState.query.toLowerCase();
     let html = "";
+    const allShortcuts = (app.categories || []).flatMap((cat) => cat.shortcuts || []);
+    const preferredLayers = workflowGroupPreferredLayers(allShortcuts);
     for (const cat of (app.categories || [])) {
       const rows = cat.shortcuts.map((s) => {
-        const keys = displayKeysForShortcut(s);
+        const keys = displayKeysForShortcut(s, preferredLayers.get(clean(s.group)));
         const location = workflowLocationForRow(keys.row);
         const text = `${s.keys} ${s.action} ${s.charybdis || ""} ${keys.display || ""} ${location}`.toLowerCase();
         const hidden = query && !text.includes(query);
@@ -3201,12 +3218,16 @@
   function appShortcutRows(appId) {
     const app = workflowState.apps.get(appId);
     if (!app) return [];
+    const categories = app.categories || [];
+    const allShortcuts = categories.flatMap((cat) => cat.shortcuts || []);
+    const preferredLayers = workflowGroupPreferredLayers(allShortcuts);
     const results = [];
-    for (const cat of (app.categories || [])) {
+    for (const cat of categories) {
       for (const s of (cat.shortcuts || [])) {
-        const matchedRow = rowForWorkflowShortcut(s);
+        const preferredLayer = preferredLayers.get(clean(s.group));
+        const matchedRow = rowForWorkflowShortcut(s, preferredLayer);
         if (matchedRow) {
-          const keys = displayKeysForShortcut(s);
+          const keys = displayKeysForShortcut(s, preferredLayer);
           results.push({
             row: matchedRow,
             appAction: s.action,
