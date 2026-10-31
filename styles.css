@@ -592,8 +592,8 @@ svg {
   z-index: 1;
   top: 3px;
   right: 3px;
-  width: clamp(26px, 2.1vw, 34px);
-  height: clamp(26px, 2.1vw, 34px);
+  width: clamp(32px, 2.6vw, 42px);
+  height: clamp(32px, 2.6vw, 42px);
   object-fit: contain;
   border-radius: 4px;
   padding: 1px;
@@ -1361,6 +1361,14 @@ svg {
   font-size: 0.95rem;
   margin: 0;
 }
+.learn-section-label {
+  color: var(--soft);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
 .learn-app-grid {
   display: flex;
   flex-wrap: wrap;
@@ -1526,6 +1534,14 @@ svg {
 .keycap.answer-correct {
   border-color: var(--accent) !important;
   box-shadow: 0 0 0 2px var(--accent), 0 0 18px rgba(76, 201, 176, 0.5);
+}
+.keycap.learn-target {
+  border-color: #ff2929 !important;
+  background: rgba(255, 35, 35, 0.28) !important;
+  outline: 3px solid #ff2929;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(255, 41, 41, 0.72), 0 0 28px rgba(255, 24, 24, 0.95);
+  z-index: 2;
 }
 .keycap.answer-wrong {
   border-color: var(--danger) !important;
