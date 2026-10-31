@@ -3426,7 +3426,10 @@
   }
 
   const inspectorCollapseBtn = document.getElementById("inspectorCollapseBtn");
-  if (inspectorCollapseBtn) inspectorCollapseBtn.addEventListener("click", toggleInspector);
+  if (inspectorCollapseBtn) inspectorCollapseBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleInspector();
+  });
 
   if (inspectorPanel) inspectorPanel.classList.add("collapsed");
   buildRailColorStrip();
