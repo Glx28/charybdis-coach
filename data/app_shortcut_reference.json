@@ -699,6 +699,23 @@
         "Win+K": "Connect / Cast"
       }
     },
+    "Microsoft Copilot": {
+      "exeNames": [
+        "m365copilot.exe"
+      ],
+      "shortcuts": {
+        "Win+C": "Open Microsoft Copilot or its quick view",
+        "Ctrl+V": "Paste text into the Copilot prompt",
+        "Enter": "Send the current prompt",
+        "Shift+Enter": "Insert a new line in the prompt",
+        "Ctrl+C": "Copy selected text or a response",
+        "Ctrl+Z": "Undo the last text edit",
+        "Alt+Tab": "Switch between Copilot and the previous app",
+        "Win+Tab": "Choose Copilot or another open window",
+        "Win+Shift+Left": "Move the Copilot window to the left monitor",
+        "Win+Shift+Right": "Move the Copilot window to the right monitor"
+      }
+    },
     "Microsoft Word": {
       "exeNames": [
         "winword.exe"

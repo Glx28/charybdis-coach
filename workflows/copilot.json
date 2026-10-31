@@ -1,0 +1,56 @@
+{
+  "id": "copilot",
+  "name": "Microsoft Copilot",
+  "categories": [
+    {
+      "name": "Open Copilot and compose",
+      "shortcuts": [
+        {
+          "keys": "Win+C",
+          "action": "Open Microsoft Copilot or its quick view"
+        },
+        {
+          "keys": "Ctrl+V",
+          "action": "Paste text into the prompt"
+        },
+        {
+          "keys": "Enter",
+          "action": "Send the current prompt"
+        },
+        {
+          "keys": "Shift+Enter",
+          "action": "Insert a new line in the prompt"
+        },
+        {
+          "keys": "Ctrl+C",
+          "action": "Copy selected text or a response"
+        },
+        {
+          "keys": "Ctrl+Z",
+          "action": "Undo the last text edit"
+        }
+      ]
+    },
+    {
+      "name": "Keep Copilot beside your work",
+      "shortcuts": [
+        {
+          "keys": "Alt+Tab",
+          "action": "Switch between Copilot and the previous app"
+        },
+        {
+          "keys": "Win+Tab",
+          "action": "Choose Copilot or another open window"
+        },
+        {
+          "keys": "Win+Shift+Left",
+          "action": "Move the Copilot window to the left monitor"
+        },
+        {
+          "keys": "Win+Shift+Right",
+          "action": "Move the Copilot window to the right monitor"
+        }
+      ]
+    }
+  ]
+}

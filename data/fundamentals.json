@@ -23,6 +23,13 @@
       "explanation": "PowerToys Command Palette (CmdPal): the newer extensible launcher for commands, apps, files and window management. Requires a recent PowerToys version."
     },
     {
+      "name": "Open Microsoft Copilot",
+      "icon": "✨",
+      "combo": "Win+C",
+      "aliases": ["copilot", "microsoft copilot", "open copilot", "copilot quick view"],
+      "explanation": "Opens Microsoft Copilot or its quick view. Windows settings control which view opens."
+    },
+    {
       "name": "Task View / virtual desktops",
       "icon": "🗂️",
       "combo": "Win+Tab",

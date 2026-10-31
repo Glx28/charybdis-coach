@@ -1,7 +1,19 @@
 {
   "version": "2.0",
-  "description": "Workflow guide index — auto-generated from app-keybindings corpus by generate_coach_workflows.js",
+  "description": "Shortcut-learning guides for apps and Windows workflows",
   "apps": [
+    {
+      "id": "copilot",
+      "name": "Microsoft Copilot",
+      "icon": "desktop",
+      "file": "copilot.json",
+      "tags": [
+        "copilot",
+        "microsoft 365",
+        "assistant",
+        "windows"
+      ]
+    },
     {
       "id": "teams",
       "name": "💬 Microsoft Teams",
