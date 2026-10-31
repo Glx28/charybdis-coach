@@ -1,6 +1,6 @@
 # Charybdis Coach
 
-Browser-based interactive keyboard layout coach for the Charybdis split keyboard. Visualizes all keys from the current layout CSV, detects dynamic layer roles from the actual bindings, tracks live layer state, and provides per-app workflow guides.
+Browser-based interactive keyboard layout coach for the Charybdis split keyboard. Visualizes all keys from the current layout CSV, audits the contract-fixed L1 mouse role from actual bindings, infers other mutable layer roles from content, tracks live layer state, and provides per-app workflow guides.
 
 Part of the [Charybdis Keyboard System](https://github.com/Glx28/charybdis-tools#readme) — see the parent README for full setup and how data flows between repos.
 
@@ -51,7 +51,7 @@ workflows/          # Per-app shortcut guides (JSON)
 
 ## Dynamic Layer Rules
 
-The optimizer can assign any workflow to any layer. The coach does not assume fixed meanings such as "L2 is mouse" or "L5 is code." It profiles each layer from the live CSV using binding behavior, shortcut metadata, app names, categories, and usage notes.
+The optimizer assigns workflows across mutable layers. The owner contract reserves L1 for mouse/pointer controls; the coach does not infer another mouse layer or preserve old L5 mouse assumptions. It profiles the remaining mutable layers from the live CSV using binding behavior, shortcut metadata, app names, categories, and usage notes.
 
 Layer names shown in the UI are therefore descriptions of the current exported layout, not permanent firmware contracts. Layer access instructions in Learn mode are also discovered from current momentary/toggle/to-layer bindings.
 
@@ -70,7 +70,7 @@ Entries that cannot be resolved are still shown in the workflow guide instead of
 
 ## Keeping Data in Sync
 
-After applying or exporting a new layout, refresh `data/keybindings_explained.csv`, `data/layout_spec.json`, and workflow metadata from the active layout export. If using the optimizer sync script:
+After applying or exporting a new layout, refresh `data/keybindings_explained.csv`, `data/layout_spec.json`, `data/layout_contract_v1.json`, and workflow metadata from the active layout export. Keep the Coach contract copy byte-identical to the optimizer's versioned source and update its SHA-256 metadata when that source changes. If using the optimizer sync script:
 
 ```powershell
 cd ..\charybdis-optimizer

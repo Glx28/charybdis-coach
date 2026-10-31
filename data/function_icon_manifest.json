@@ -207,7 +207,7 @@
       "kind": "fluent"
     },
     {
-      "pattern": "Task View|Switch apps|Alt\\+Tab|Cycle taskbar apps",
+      "pattern": "Task View|Switch apps|Alt\\+Tab|Cycle taskbar apps|Walk This Way|window switcher",
       "name": "Switch windows",
       "src": "./assets/function-icons/fluent/window_multiple.svg",
       "kind": "fluent"

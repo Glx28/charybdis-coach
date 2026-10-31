@@ -1427,6 +1427,11 @@ svg {
   display: inline-block;
 }
 .learn-access strong { color: var(--accent); }
+.learn-thumb-path { display: flex; justify-content: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+.learn-thumb-cluster { padding: 5px 8px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); }
+.learn-thumb-keys { display: grid; grid-template-columns: repeat(3, 15px); grid-template-rows: repeat(2, 15px); gap: 5px; }
+.learn-thumb-key { display: grid; place-items: center; width: 15px; height: 15px; border: 1px solid var(--line); border-radius: 50%; background: var(--surface-2); color: transparent; font-size: 0; }
+.learn-thumb-key--active { border-color: #ff2929; background: #ff2929; box-shadow: 0 0 0 2px rgba(255, 41, 41, 0.2), 0 0 12px rgba(255, 41, 41, 0.7); }
 .learn-step {
   font-size: 1.4rem;
   font-weight: 600;

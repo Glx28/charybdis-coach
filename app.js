@@ -1037,6 +1037,9 @@
   }
 
   function visualFor(row) {
+    if (/walk this way window switcher/i.test(clean(row?.purpose))) {
+      return { kind: "action", primary: "Walk", badge: "🪟", secondary: "Switch window" };
+    }
     const visual = classifyKey(row);
     if (/key press/i.test(clean(row.behavior))) {
       const glyph = hostGlyphFromEntry(hostOutputEntryForParam(row.parameter), row.modifiers);
@@ -1869,6 +1872,49 @@
   function formatMomentaryAccessPath(targetLayer, targetRow) {
     const result = shortestAccessPaths(targetLayer, { maxResults: 1, momentaryOnly: true });
     return formatAccessPath(result, targetRow);
+  }
+
+  function isThumbPosition(row) {
+    return row && row.y >= 4 && ((row.x >= 3 && row.x <= 5) || (row.x >= 7 && row.x <= 9));
+  }
+
+  function learnMomentaryPath(targetLayer, targetRow) {
+    const result = shortestAccessPaths(targetLayer, { maxResults: 1, momentaryOnly: true });
+    const path = result?.paths?.[0];
+    if (!path) return { summary: "No momentary-hold path found from L0", thumbKeys: [] };
+    if (!path.length) return { summary: `L0 · ${targetRow.x},${targetRow.y}`, thumbKeys: [] };
+    const position = (row) => isThumbPosition(row) ? "" : `x${row.x}, y${row.y}`;
+    const layerPosition = (layer, row) => `L${layer}${position(row) ? ` · ${position(row)}` : ""}`;
+    const segments = [layerPosition(0, path[0].row)];
+    const thumbKeys = path.filter((step) => isThumbPosition(step.row));
+    for (let i = 0; i < path.length; i += 1) {
+      const step = path[i];
+      const next = path[i + 1];
+      segments.push(layerPosition(step.target, next ? next.row : targetRow));
+    }
+    return { summary: segments.join(" → "), thumbKeys };
+  }
+
+  function renderLearnThumbPath(thumbKeys) {
+    if (!learnEls.access || !thumbKeys.length) return;
+    const clusters = new Map();
+    for (const step of thumbKeys) {
+      const side = step.row.x < 6 ? "left" : "right";
+      const layerRows = state.rowsByLayer.get(String(step.row.layer)) || [];
+      const positions = side === "left"
+        ? [[3, 4, 1, 1], [4, 4, 1, 2], [5, 4, 1, 3], [4, 5, 2, 2], [5, 5, 2, 3]]
+        : [[7, 4, 1, 1], [8, 4, 1, 2], [7, 5, 2, 1]];
+      const keys = positions.map(([x, y, gridRow, gridColumn]) => ({
+        row: layerRows.find((item) => item.x === x && item.y === y), x, y, gridRow, gridColumn
+      }));
+      clusters.set(`${step.row.layer}:${side}`, { layer: step.row.layer, side, selected: step.row, keys });
+    }
+    const markup = [...clusters.values()].map(({ layer, side, selected, keys }) =>
+      `<div class="learn-thumb-cluster" aria-label="Layer ${escapeHtml(layer)} ${side} thumb cluster"><div class="learn-thumb-keys">${keys.map(({ row, x, y, gridRow, gridColumn }) =>
+        `<span class="learn-thumb-key${x === selected.x && y === selected.y ? " learn-thumb-key--active" : ""}" style="grid-row:${gridRow};grid-column:${gridColumn}" title="${escapeHtml(clean(row?.visual_label || `x${x} y${y}`))}" aria-label="${escapeHtml(clean(row?.visual_label || `x${x} y${y}`))}">●</span>`
+      ).join("")}</div></div>`
+    ).join("");
+    learnEls.access.insertAdjacentHTML("beforeend", `<div class="learn-thumb-path">${markup}</div>`);
   }
 
   function buildSearchIndex() {
@@ -3913,12 +3959,11 @@
     const sc = learnState.shortcuts[idx];
     const layer = sc.row.layer;
     const layerName = dynamicLayerName(layer);
-    const holdPath = formatMomentaryAccessPath(layer, sc.row);
+    const holdPath = learnMomentaryPath(layer, sc.row);
 
     if (learnEls.access) {
-      learnEls.access.innerHTML = holdPath
-        ? `Momentary hold path: <strong>${escapeHtml(holdPath)}</strong>`
-        : "No momentary-hold path found from L0";
+      learnEls.access.innerHTML = `Momentary hold path: <strong>${escapeHtml(holdPath.summary)}</strong>`;
+      renderLearnThumbPath(holdPath.thumbKeys);
     }
 
     learnEls.step.innerHTML = [

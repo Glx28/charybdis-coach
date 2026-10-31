@@ -3,6 +3,19 @@
   "device": "V&Z-Charydbis",
   "firmware": "ZMK with ZMK Studio",
   "trackball_side": "right thumb",
+  "owner_contract": {
+    "version": "1.4.2",
+    "contract_sha256": "c860a7120c76074e11ff777395aa32dfab62360e94a7058a9d5a0bb0360c738a",
+    "mouse_layer": 1,
+    "mouse_buttons": ["MB1", "MB2", "MB3", "MB4", "MB5"],
+    "fixed_positions": {
+      "MB1": [8, 2],
+      "MB2": [9, 2],
+      "Scroll": [10, 2]
+    },
+    "extra_scroll_count": 2,
+    "l0_mouse_hold": [3, 4]
+  },
   "host_keyboard": {
     "primary": "Windows Norwegian (nb-NO)",
     "config": "layout/windows_norwegian_host.json",
@@ -17,7 +30,7 @@
   },
   "layers": {
     "0": "Base QWERTY",
-    "1": "Dynamic assignment — see current bindings",
+    "1": "Mouse / pointer controls (owner contract v1)",
     "2": "Dynamic assignment — see current bindings",
     "3": "Dynamic assignment — see current bindings",
     "4": "Dynamic assignment — see current bindings",
