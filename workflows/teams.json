@@ -38,13 +38,8 @@
           "charybdis": "L10 (x9,y2)"
         },
         {
-          "keys": "Ctrl+/",
-          "action": "Show keyboard shortcuts",
-          "charybdis": "L5 (x9,y0)"
-        },
-        {
           "keys": "Ctrl+.",
-          "action": "Show commands"
+          "action": "Show keyboard shortcuts"
         },
         {
           "keys": "Ctrl+Shift+F6",
