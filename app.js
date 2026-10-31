@@ -2084,7 +2084,7 @@
   }
 
   function renderStatus() {
-    els.activeLayer.textContent = state.liveLayer || state.displayedLayer || "0";
+    els.activeLayer.textContent = state.displayedLayer || state.liveLayer || "0";
     try { updateRailStrip(); } catch {}
     document.querySelectorAll(".layer-tab").forEach((tab) => {
       const layer = tab.dataset.layer;
@@ -2414,7 +2414,10 @@
       const locked = live.lockedLayer ? String(live.lockedLayer) : "";
       const toggled = normalizeLayerList(live.toggledLayers);
       // Always show the layer the keyboard is actually on; lastKey highlights the thumb source key.
-      const preferredDisplay = state.pinnedLayer || newLiveLayer;
+      const reportedDisplayLayer = live.displayedLayer !== undefined && live.displayedLayer !== null && String(live.displayedLayer) !== ""
+        ? String(live.displayedLayer)
+        : newLiveLayer;
+      const preferredDisplay = state.pinnedLayer || reportedDisplayLayer;
       const layerChanged = newLiveLayer !== state.liveLayer;
       const displayChanged = preferredDisplay !== state.displayedLayer;
 
