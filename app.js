@@ -3225,6 +3225,13 @@
     return els.practiceAppSelect?.value || "";
   }
 
+  function isCommonLearningShortcut(shortcut) {
+    const keys = normalizeShortcutText(shortcut?.keys);
+    const action = clean(shortcut?.action).toLowerCase();
+    return (keys === normalizeShortcutText("F5") && /refresh|reload/.test(action))
+      || (keys === normalizeShortcutText("Ctrl+F") && /find|search/.test(action));
+  }
+
   function appShortcutRows(appId) {
     const app = workflowState.apps.get(appId);
     if (!app) return [];
@@ -3234,6 +3241,7 @@
     const results = [];
     for (const cat of categories) {
       for (const s of (cat.shortcuts || [])) {
+        if (isCommonLearningShortcut(s)) continue;
         const preferredLayer = preferredLayers.get(clean(s.group));
         const matchedRow = rowForWorkflowShortcut(s, preferredLayer);
         const bareBaseKey = String(matchedRow?.layer) === "0" && !clean(s.keys).includes("+");
@@ -3684,7 +3692,8 @@
   // ----- Learn overlay (fullscreen guided app training) -----
   const learnState = { active: false, appId: null, shortcuts: [], index: 0, advanceTimeout: null };
   const COMMON_LEARN_SHORTCUTS = [
-    { keys: "F5", action: "Refresh current page or view", category: "Refresh" }
+    { keys: "F5", action: "Refresh current page or view", category: "Refresh" },
+    { keys: "Ctrl+F", action: "Find on the current page or document", category: "Find / Search" }
   ];
   const learnEls = {
     overlay: document.getElementById("learnOverlay"),
@@ -3763,8 +3772,8 @@
       learnEls.commonGrid.innerHTML = "";
       const commonBtn = document.createElement("button");
       commonBtn.type = "button";
-      commonBtn.className = "learn-app-card";
-      commonBtn.textContent = "Common / General";
+      commonBtn.className = "learn-app-card learn-common-card";
+      commonBtn.innerHTML = '<span class="learn-common-icon" aria-hidden="true">!</span><span>Common / General</span>';
       commonBtn.addEventListener("click", startCommonLearnTour);
       learnEls.commonGrid.appendChild(commonBtn);
     }

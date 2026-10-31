@@ -1388,6 +1388,24 @@ svg {
   min-width: 130px;
   text-align: center;
 }
+.learn-common-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.learn-common-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #ffd43b;
+  border-radius: 50%;
+  color: #ffd43b;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1;
+}
 .learn-app-card:hover {
   border-color: var(--accent);
   background: #123128;
