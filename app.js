@@ -3845,14 +3845,17 @@
     const layer = sc.row.layer;
     const layerName = dynamicLayerName(layer);
     const holdPath = formatMomentaryAccessPath(layer, sc.row);
-    const accessInfo = dynamicLayerAccessInfo(layer);
 
-    if (learnEls.access) learnEls.access.innerHTML = accessInfo;
+    if (learnEls.access) {
+      learnEls.access.innerHTML = holdPath
+        ? `Momentary hold path: <strong>${escapeHtml(holdPath)}</strong>`
+        : "No momentary-hold path found from L0";
+    }
 
     learnEls.step.innerHTML = [
       `<strong>${escapeHtml(sc.appAction)}</strong>`,
       `<span class="learn-keys">${escapeHtml(sc.appKeysDisplay || sc.appKeys)}</span>`,
-      `<span class="learn-pos">${holdPath ? `Hold path: ${escapeHtml(holdPath)}` : "No momentary-hold path found"} &middot; Key: ${escapeHtml(clean(sc.row.visual_label))} &middot; ${escapeHtml(layerName)}</span>`,
+      `<span class="learn-pos">Key: ${escapeHtml(clean(sc.row.visual_label))} &middot; ${escapeHtml(layerName)}</span>`,
     ].join("");
 
     if (learnEls.progress) learnEls.progress.textContent = `${idx + 1} / ${learnState.shortcuts.length} — ${sc.category}`;
