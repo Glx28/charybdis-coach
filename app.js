@@ -3705,9 +3705,12 @@
       checkDrillAnswer(matchInfo.row);
     }
 
-    if (learnState.active && learnEls.autoAdvance?.checked && !event.repeat) {
-      const currentStep = learnState.shortcuts[learnState.index];
-      if (currentStep && keyId(matchInfo.row) === keyId(currentStep.row)) {
+    const currentStep = learnState.active ? learnState.shortcuts[learnState.index] : null;
+    const matchesLearnStep = currentStep && keyId(matchInfo.row) === keyId(currentStep.row);
+    if (matchesLearnStep) {
+      // Keep the matched shortcut inside Learn; the browser may claim combos like Alt+Left.
+      event.preventDefault();
+      if (learnEls.autoAdvance?.checked && !event.repeat) {
         clearTimeout(learnState.advanceTimeout);
         learnState.advanceTimeout = setTimeout(() => {
           learnState.advanceTimeout = null;
